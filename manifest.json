@@ -1,0 +1,26 @@
+{
+  "name": "WooaViewer - 무료 파일 뷰어",
+  "short_name": "WooaViewer",
+  "description": "DOCX, XLSX, DXF, PSD 등 다양한 파일을 설치 없이 브라우저에서 무료로 열어보는 온라인 뷰어입니다.",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "background_color": "#1A1A2E",
+  "theme_color": "#0284C7",
+  "lang": "ko",
+  "orientation": "portrait-primary",
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
