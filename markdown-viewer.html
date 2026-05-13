@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="7396a327607b884b9bef1283dfd3a5c6115a2b50">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown 뷰어 - .md 파일 렌더링 무료 | WooaViewer</title>
+  <meta name="description" content=".md 마크다운 파일을 업로드하거나 붙여넣기하면 바로 렌더링해드립니다. 파일은 서버에 전송되지 않아 안전합니다.">
+  <meta name="keywords" content="마크다운뷰어, Markdown뷰어, md파일열기, README뷰어, 마크다운렌더링, 무료마크다운뷰어">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/markdown-viewer.html">
+  <meta property="og:title" content="Markdown 뷰어 - .md 파일 렌더링 | WooaViewer">
+  <meta property="og:description" content=".md 마크다운 파일을 업로드하거나 붙여넣기하면 바로 렌더링해드립니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/markdown-viewer.html">
+  <meta property="og:locale" content="ko_KR">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Markdown 뷰어","url":"https://wooaviewer.wooahouse.com/markdown-viewer.html","description":".md 마크다운 파일을 렌더링해서 보여주는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .mode-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 16px;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      overflow: hidden;
+      width: fit-content;
+    }
+    .mode-tab {
+      padding: 8px 20px;
+      border: none;
+      background: white;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      color: #6B7280;
+      transition: all 0.15s;
+    }
+    .mode-tab.active { background: #0284C7; color: white; }
+    .mode-tab:not(:last-child) { border-right: 1px solid #E5E7EB; }
+    .md-textarea {
+      width: 100%;
+      min-height: 300px;
+      padding: 16px;
+      border: 2px solid #E5E7EB;
+      border-radius: 10px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      resize: vertical;
+      outline: none;
+      color: #1A1A2E;
+      background: white;
+      box-sizing: border-box;
+    }
+    .md-textarea:focus { border-color: #0284C7; }
+    .md-output {
+      background: white;
+      border-radius: 14px;
+      padding: 36px 44px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      font-family: 'Noto Sans KR', sans-serif;
+      line-height: 1.8;
+      color: #1A1A2E;
+      display: none;
+    }
+    .md-output h1,.md-output h2,.md-output h3,.md-output h4 { margin: 1.2em 0 0.5em; font-weight: 700; }
+    .md-output h1 { font-size: 1.9rem; border-bottom: 2px solid #E5E7EB; padding-bottom: 8px; }
+    .md-output h2 { font-size: 1.45rem; border-bottom: 1px solid #E5E7EB; padding-bottom: 4px; }
+    .md-output h3 { font-size: 1.15rem; }
+    .md-output p { margin-bottom: 0.9em; }
+    .md-output a { color: #0284C7; }
+    .md-output code { background: #F3F4F6; padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.88em; }
+    .md-output pre { background: #1E293B; color: #E2E8F0; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 1em 0; }
+    .md-output pre code { background: none; color: inherit; padding: 0; font-size: 0.9em; }
+    .md-output blockquote { border-left: 4px solid #0284C7; padding: 4px 0 4px 16px; color: #6B7280; margin: 1em 0; }
+    .md-output table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .md-output td, .md-output th { border: 1px solid #E5E7EB; padding: 8px 12px; }
+    .md-output th { background: #F3F4F6; font-weight: 600; }
+    .md-output ul, .md-output ol { padding-left: 1.8em; margin-bottom: 0.85em; }
+    .md-output img { max-width: 100%; }
+    .md-output hr { border: none; border-top: 1px solid #E5E7EB; margin: 1.5em 0; }
+    .render-btn {
+      display: inline-block;
+      background: #0284C7;
+      color: white;
+      padding: 11px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-size: 0.95rem;
+      font-family: inherit;
+      margin-top: 12px;
+    }
+    .render-btn:hover { background: #0369A1; }
+    @media (max-width: 768px) { .md-output { padding: 20px 16px; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a>
+      <a href="xlsx-viewer.html">XLSX</a>
+      <a href="dxf-viewer.html">DXF</a>
+      <a href="psd-viewer.html">PSD</a>
+      <a href="stl-viewer.html">STL</a>
+      <a href="index.html">전체 도구 ›</a>
+    </nav>
+  </div>
+</header>
+
+<div class="our-sites-bar">
+  <span class="our-sites-label">WooaHouse Services</span>
+  <div class="our-sites-links">
+    <a href="https://wooahouse.com/" target="_blank" rel="noopener">🔗 WooaHouse</a>
+    <a href="https://pdfkit.wooahouse.com/" target="_blank" rel="noopener">📄 WooaPDF</a>
+    <a href="https://imagekit.wooahouse.com/" target="_blank" rel="noopener">🖼️ WooaImage</a>
+    <a href="https://colorkit.wooahouse.com/" target="_blank" rel="noopener">🎨 WooaColor</a>
+    <a href="https://textkit.wooahouse.com/" target="_blank" rel="noopener">✏️ WooaText</a>
+    <a href="https://qrkit.wooahouse.com/" target="_blank" rel="noopener">📱 WooaQR</a>
+    <a href="https://calckit.wooahouse.com/" target="_blank" rel="noopener">🧮 WooaCalc</a>
+    <a href="https://chromekit.wooahouse.com/" target="_blank" rel="noopener">🧩 WooaChrome</a>
+    <a href="https://fontkit.wooahouse.com/" target="_blank" rel="noopener">🔤 WooaFont</a>
+    <a href="https://mactools.wooahouse.com/" target="_blank" rel="noopener">🍎 WooaMac</a>
+    <a href="https://pctools.wooahouse.com/" target="_blank" rel="noopener">🖥️ WooaPC</a>
+    <a href="https://vskit.wooahouse.com/" target="_blank" rel="noopener">💻 WooaVS</a>
+    <a href="https://wooaaudio.wooahouse.com/" target="_blank" rel="noopener">🎵 WooaAudio</a>
+    <a href="https://wooaviewer.wooahouse.com/" target="_blank" rel="noopener" class="active">🔍 WooaViewer</a>
+  </div>
+</div>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb">
+    <a href="index.html">WooaViewer</a>
+    <span>›</span>
+    <span>Markdown 뷰어</span>
+  </div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">📋</span>
+    <h1>Markdown 뷰어</h1>
+    <p>.md 파일을 업로드하거나 직접 붙여넣기하면 바로 렌더링됩니다. 파일은 서버에 전송되지 않습니다.</p>
+  </div>
+
+  <div class="mode-tabs">
+    <button class="mode-tab active" id="tabUpload" onclick="switchMode('upload')">파일 업로드</button>
+    <button class="mode-tab" id="tabPaste" onclick="switchMode('paste')">직접 입력</button>
+  </div>
+
+  <div id="uploadSection">
+    <div class="drop-zone" id="dropZone">
+      <span class="drop-zone-icon">📋</span>
+      <h3>Markdown 파일을 여기에 끌어다 놓으세요</h3>
+      <p>.md .markdown .txt 형식을 지원합니다</p>
+      <label class="btn-select">
+        파일 선택
+        <input type="file" id="fileInput" accept=".md,.markdown,.txt" style="display:none">
+      </label>
+    </div>
+  </div>
+
+  <div id="pasteSection" style="display:none">
+    <textarea class="md-textarea" id="mdInput" placeholder="여기에 Markdown 텍스트를 붙여넣으세요..."></textarea>
+    <button class="render-btn" onclick="renderFromInput()">렌더링</button>
+  </div>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div class="md-output" id="mdOutput"></div>
+
+</div>
+
+<aside class="tool-sidebar">
+  <div class="ad-card">
+    <div class="ad-card-label">AD</div>
+    <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="1419180025" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="ad-card">
+    <script>new PartnersCoupang.G({"id":986943,"template":"carousel","trackingCode":"AF5600192","width":"160","height":"200","tsource":""});</script>
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo-footer">WooaViewer</span>
+        <p>다양한 파일을 설치 없이 브라우저에서 안전하게 열어보세요.</p>
+      </div>
+      <div class="footer-links">
+        <h4>문서 뷰어</h4>
+        <a href="docx-viewer.html">DOCX 뷰어</a>
+        <a href="xlsx-viewer.html">XLSX 뷰어</a>
+        <a href="markdown-viewer.html">Markdown 뷰어</a>
+        <a href="epub-viewer.html">EPUB 뷰어</a>
+      </div>
+      <div class="footer-links">
+        <h4>설계 · 3D · 개발</h4>
+        <a href="dxf-viewer.html">DXF 뷰어</a>
+        <a href="psd-viewer.html">PSD 뷰어</a>
+        <a href="stl-viewer.html">STL 뷰어</a>
+        <a href="json-viewer.html">JSON 뷰어</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 WooaViewer. 모든 권리 보유.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">개인정보처리방침</a>
+        <a href="about.html">소개</a>
+      </div>
+    </div>
+    <p class="coupang-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+marked.setOptions({ breaks: true, gfm: true });
+
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const mdOutput = document.getElementById('mdOutput');
+const errorMsg = document.getElementById('errorMsg');
+
+function switchMode(mode) {
+  const isUpload = mode === 'upload';
+  document.getElementById('uploadSection').style.display = isUpload ? 'block' : 'none';
+  document.getElementById('pasteSection').style.display = isUpload ? 'none' : 'block';
+  document.getElementById('tabUpload').classList.toggle('active', isUpload);
+  document.getElementById('tabPaste').classList.toggle('active', !isUpload);
+  mdOutput.style.display = 'none';
+}
+
+function renderMarkdown(text) {
+  mdOutput.innerHTML = marked.parse(text);
+  mdOutput.style.display = 'block';
+  mdOutput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderFromInput() {
+  const text = document.getElementById('mdInput').value.trim();
+  if (!text) { alert('내용을 입력해주세요.'); return; }
+  renderMarkdown(text);
+}
+
+fileInput.addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+});
+
+function loadFile(file) {
+  errorMsg.style.display = 'none';
+  const reader = new FileReader();
+  reader.onload = e => renderMarkdown(e.target.result);
+  reader.onerror = () => {
+    errorMsg.textContent = '파일을 읽는 중 오류가 발생했습니다.';
+    errorMsg.style.display = 'block';
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+</script>
+<script src="js/pwa-install.js"></script>
+</body>
+</html>
