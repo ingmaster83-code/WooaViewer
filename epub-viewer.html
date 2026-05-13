@@ -75,6 +75,7 @@
       border: 1px solid #E5E7EB;
       border-top: none;
       border-radius: 0 0 10px 10px;
+      display: block;
     }
     .toc-panel {
       background: white;
@@ -182,10 +183,11 @@
       <span class="epub-file-name" id="epubFileName"></span>
       <div class="epub-nav-btns">
         <button class="epub-btn" id="prevBtn" onclick="prevPage()">← 이전</button>
+        <span id="chapterInfo" style="font-size:0.82rem;color:#6B7280;min-width:48px;text-align:center;"></span>
         <button class="epub-btn" id="nextBtn" onclick="nextPage()">다음 →</button>
       </div>
     </div>
-    <div id="epubViewer"></div>
+    <iframe id="epubViewer" sandbox="allow-same-origin allow-scripts"></iframe>
     <div class="toc-panel" id="tocPanel" style="display:none">
       <div class="toc-title">목차</div>
       <div id="tocList"></div>
@@ -239,13 +241,18 @@
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <script>
 const dropZone = document.getElementById('dropZone');
 const fileInput = document.getElementById('fileInput');
 const epubContainer = document.getElementById('epubContainer');
 const errorMsg = document.getElementById('errorMsg');
-let rendition = null;
+
+let spine = [];
+let zip = null;
+let opfDir = '';
+let currentIdx = 0;
+const blobUrls = [];
 
 fileInput.addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]); });
 dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
@@ -256,57 +263,155 @@ dropZone.addEventListener('drop', e => {
   if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
 });
 
-function loadFile(file) {
-  errorMsg.style.display = 'none';
-  if (!file.name.toLowerCase().endsWith('.epub')) {
-    errorMsg.textContent = '.epub 파일만 지원합니다.';
-    errorMsg.style.display = 'block';
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.onload = e => {
-    try {
-      if (rendition) rendition.destroy();
-      document.getElementById('epubViewer').innerHTML = '';
-
-      const book = ePub(e.target.result);
-      rendition = book.renderTo('epubViewer', {
-        width: '100%',
-        height: 640,
-        spread: 'none'
-      });
-      rendition.display();
-
-      document.getElementById('epubFileName').textContent = file.name;
-      dropZone.style.display = 'none';
-      epubContainer.style.display = 'block';
-
-      book.loaded.navigation.then(nav => {
-        if (nav.toc && nav.toc.length > 0) {
-          const tocList = document.getElementById('tocList');
-          tocList.innerHTML = '';
-          nav.toc.forEach(item => {
-            const a = document.createElement('a');
-            a.className = 'toc-item';
-            a.textContent = item.label.trim();
-            a.addEventListener('click', () => rendition.display(item.href));
-            tocList.appendChild(a);
-          });
-          document.getElementById('tocPanel').style.display = 'block';
-        }
-      });
-
-    } catch(err) {
-      errorMsg.textContent = '파일을 읽는 중 오류가 발생했습니다. 올바른 .epub 파일인지 확인해주세요.';
-      errorMsg.style.display = 'block';
-    }
-  };
-  reader.readAsArrayBuffer(file);
+function showError(msg) {
+  errorMsg.textContent = msg;
+  errorMsg.style.display = 'block';
 }
 
-function prevPage() { if (rendition) rendition.prev(); }
-function nextPage() { if (rendition) rendition.next(); }
+function resolvePath(base, rel) {
+  if (!rel) return base;
+  if (rel.startsWith('/')) return rel.slice(1);
+  const parts = (base + rel).split('/');
+  const out = [];
+  for (const p of parts) {
+    if (p === '..') out.pop();
+    else if (p !== '.') out.push(p);
+  }
+  return out.join('/');
+}
+
+async function loadFile(file) {
+  errorMsg.style.display = 'none';
+  if (!file.name.toLowerCase().endsWith('.epub')) {
+    showError('.epub 파일만 지원합니다.');
+    return;
+  }
+  blobUrls.forEach(u => URL.revokeObjectURL(u));
+  blobUrls.length = 0;
+
+  try {
+    const ab = await file.arrayBuffer();
+    zip = await JSZip.loadAsync(ab);
+
+    // container.xml → OPF 경로
+    const containerXml = await zip.file('META-INF/container.xml').async('string');
+    const parser = new DOMParser();
+    const containerDoc = parser.parseFromString(containerXml, 'application/xml');
+    const opfPath = containerDoc.querySelector('rootfile').getAttribute('full-path');
+    opfDir = opfPath.includes('/') ? opfPath.substring(0, opfPath.lastIndexOf('/') + 1) : '';
+
+    // OPF 파싱
+    const opfXml = await zip.file(opfPath).async('string');
+    const opfDoc = parser.parseFromString(opfXml, 'application/xml');
+
+    const manifest = {};
+    opfDoc.querySelectorAll('manifest item').forEach(item => {
+      manifest[item.getAttribute('id')] = {
+        href: resolvePath(opfDir, item.getAttribute('href')),
+        type: item.getAttribute('media-type')
+      };
+    });
+
+    spine = [];
+    opfDoc.querySelectorAll('spine itemref').forEach(ref => {
+      const m = manifest[ref.getAttribute('idref')];
+      if (m) spine.push(m.href);
+    });
+
+    if (!spine.length) { showError('읽을 수 있는 챕터가 없습니다.'); return; }
+
+    // NCX 목차
+    const spineEl = opfDoc.querySelector('spine');
+    const ncxId = spineEl ? spineEl.getAttribute('toc') : null;
+    if (ncxId && manifest[ncxId]) {
+      const ncxXml = await zip.file(manifest[ncxId].href).async('string');
+      const ncxDoc = parser.parseFromString(ncxXml, 'application/xml');
+      const tocList = document.getElementById('tocList');
+      tocList.innerHTML = '';
+      ncxDoc.querySelectorAll('navPoint').forEach(np => {
+        const label = np.querySelector('navLabel text');
+        const content = np.querySelector('content');
+        if (!label || !content) return;
+        const chSrc = resolvePath(opfDir, content.getAttribute('src').split('#')[0]);
+        const idx = spine.indexOf(chSrc);
+        const a = document.createElement('a');
+        a.className = 'toc-item';
+        a.textContent = label.textContent.trim();
+        a.addEventListener('click', () => { if (idx >= 0) renderChapter(idx); });
+        tocList.appendChild(a);
+      });
+      document.getElementById('tocPanel').style.display = 'block';
+    }
+
+    document.getElementById('epubFileName').textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+    dropZone.style.display = 'none';
+    epubContainer.style.display = 'block';
+    await renderChapter(0);
+
+  } catch(err) {
+    showError('파일을 읽는 중 오류가 발생했습니다. 올바른 .epub 파일인지 확인해주세요.');
+    console.error(err);
+  }
+}
+
+async function renderChapter(idx) {
+  currentIdx = idx;
+  const chapterPath = spine[idx];
+  const chapterDir = chapterPath.includes('/') ? chapterPath.substring(0, chapterPath.lastIndexOf('/') + 1) : '';
+
+  let html = await zip.file(chapterPath).async('string');
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+
+  // 이미지 → Blob URL 변환
+  for (const img of doc.querySelectorAll('img[src]')) {
+    const src = img.getAttribute('src');
+    if (src.startsWith('data:') || src.startsWith('http')) continue;
+    const imgPath = resolvePath(chapterDir, src);
+    const imgFile = zip.file(imgPath);
+    if (imgFile) {
+      const ext = imgPath.split('.').pop().toLowerCase();
+      const mime = {jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png',gif:'image/gif',svg:'image/svg+xml',webp:'image/webp'}[ext] || 'image/jpeg';
+      const blob = new Blob([await imgFile.async('arraybuffer')], {type: mime});
+      const u = URL.createObjectURL(blob);
+      blobUrls.push(u);
+      img.src = u;
+    }
+  }
+
+  // CSS → 인라인
+  let cssText = '';
+  for (const link of doc.querySelectorAll('link[rel="stylesheet"]')) {
+    const href = link.getAttribute('href');
+    if (!href) continue;
+    const cssPath = resolvePath(chapterDir, href);
+    const cssFile = zip.file(cssPath);
+    if (cssFile) cssText += await cssFile.async('string');
+    link.remove();
+  }
+
+  const baseStyle = `
+    body { font-family: 'Georgia', serif; line-height: 1.85; color: #1A1A2E; padding: 32px 40px; max-width: 720px; margin: 0 auto; }
+    h1,h2,h3 { margin: 1.2em 0 0.5em; }
+    p { margin-bottom: 0.9em; }
+    img { max-width: 100%; height: auto; }
+    @media (max-width:600px) { body { padding: 20px 16px; } }
+  `;
+
+  const srcdoc = `<!DOCTYPE html><html><head><meta charset="UTF-8">
+    <style>${baseStyle}${cssText}</style>
+  </head><body>${doc.body ? doc.body.innerHTML : ''}</body></html>`;
+
+  const iframe = document.getElementById('epubViewer');
+  iframe.srcdoc = srcdoc;
+
+  document.getElementById('prevBtn').disabled = idx === 0;
+  document.getElementById('nextBtn').disabled = idx === spine.length - 1;
+  document.getElementById('chapterInfo').textContent = `${idx + 1} / ${spine.length}`;
+}
+
+function prevPage() { if (currentIdx > 0) renderChapter(currentIdx - 1); }
+function nextPage() { if (currentIdx < spine.length - 1) renderChapter(currentIdx + 1); }
 </script>
 <script src="js/pwa-install.js"></script>
 </body>
