@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="7396a327607b884b9bef1283dfd3a5c6115a2b50">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XML 뷰어 - XML 파일 트리구조로 보기 무료 | WooaViewer</title>
+  <meta name="description" content=".xml 파일을 브라우저에서 무료로 트리 구조로 열어보세요. 접기/펼치기와 문법 강조를 지원합니다.">
+  <meta name="keywords" content="XML뷰어, xml열기, XML트리뷰어, 무료XML뷰어, 온라인XML뷰어, xml파싱">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/xml-viewer.html">
+  <meta property="og:title" content="XML 뷰어 - XML 파일 트리구조로 보기 | WooaViewer">
+  <meta property="og:description" content=".xml 파일을 브라우저에서 무료로 트리 구조로 열어보세요.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/xml-viewer.html">
+  <meta property="og:locale" content="ko_KR">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"XML 뷰어","url":"https://wooaviewer.wooahouse.com/xml-viewer.html","description":".xml 파일을 브라우저에서 무료로 트리 구조로 열어보는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .viewer-tabs { display:flex; gap:0; margin-top:20px; border-bottom:2px solid #E5E7EB; }
+    .vtab { padding:9px 20px; font-size:0.88rem; font-weight:600; color:#9CA3AF; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-2px; transition:all 0.15s; background:none; border-top:none; border-left:none; border-right:none; font-family:inherit; }
+    .vtab.active { color:#0284C7; border-bottom-color:#0284C7; }
+    .vtab-panel { display:none; margin-top:16px; }
+    .vtab-panel.active { display:block; }
+    .paste-area { width:100%; min-height:160px; font-family:monospace; font-size:0.82rem; padding:12px; border:1.5px solid #E5E7EB; border-radius:10px; resize:vertical; outline:none; box-sizing:border-box; color:#1A1A2E; }
+    .paste-area:focus { border-color:#0284C7; }
+    .parse-btn { margin-top:10px; padding:8px 24px; background:#0284C7; color:white; border:none; border-radius:8px; font-size:0.88rem; font-weight:600; cursor:pointer; font-family:inherit; }
+    .parse-btn:hover { background:#0369A1; }
+    .xml-toolbar { display:flex; align-items:center; gap:10px; padding:10px 14px; background:#F3F4F6; border-radius:10px; margin-bottom:12px; flex-wrap:wrap; }
+    .xml-info { font-size:0.82rem; color:#6B7280; flex:1; }
+    .xml-btn { padding:5px 12px; border-radius:6px; border:1px solid #E5E7EB; background:white; font-size:0.78rem; font-weight:600; cursor:pointer; font-family:inherit; color:#1A1A2E; transition:all 0.15s; }
+    .xml-btn:hover { background:#0284C7; color:white; border-color:#0284C7; }
+    .xml-tree { background:white; border:1px solid #E5E7EB; border-radius:10px; padding:16px; font-family:monospace; font-size:0.84rem; line-height:1.6; overflow:auto; max-height:600px; }
+    .x-node { margin-left:20px; }
+    .x-toggle { cursor:pointer; user-select:none; color:#9CA3AF; font-size:0.78rem; margin-right:4px; display:inline-block; width:14px; }
+    .x-tag { color:#0284C7; font-weight:600; }
+    .x-attr-name { color:#7C3AED; }
+    .x-attr-val { color:#D97706; }
+    .x-text { color:#16A34A; }
+    .x-comment { color:#9CA3AF; font-style:italic; }
+    .x-cdata { color:#0891B2; }
+    .x-children { }
+    .x-collapsed > .x-children { display:none; }
+    .x-collapsed > .x-toggle::before { content:'▶'; }
+    .x-expandable > .x-toggle::before { content:'▼'; }
+    .error-parse { color:#EF4444; font-size:0.85rem; margin-top:8px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="json-viewer.html">JSON</a><a href="xml-viewer.html">XML</a>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="index.html">전체 도구 ›</a>
+    </nav>
+  </div>
+</header>
+
+<div class="our-sites-bar">
+  <span class="our-sites-label">WooaHouse Services</span>
+  <div class="our-sites-links">
+    <a href="https://wooahouse.com/" target="_blank" rel="noopener">🔗 WooaHouse</a>
+    <a href="https://pdfkit.wooahouse.com/" target="_blank" rel="noopener">📄 WooaPDF</a>
+    <a href="https://imagekit.wooahouse.com/" target="_blank" rel="noopener">🖼️ WooaImage</a>
+    <a href="https://colorkit.wooahouse.com/" target="_blank" rel="noopener">🎨 WooaColor</a>
+    <a href="https://textkit.wooahouse.com/" target="_blank" rel="noopener">✏️ WooaText</a>
+    <a href="https://qrkit.wooahouse.com/" target="_blank" rel="noopener">📱 WooaQR</a>
+    <a href="https://calckit.wooahouse.com/" target="_blank" rel="noopener">🧮 WooaCalc</a>
+    <a href="https://chromekit.wooahouse.com/" target="_blank" rel="noopener">🧩 WooaChrome</a>
+    <a href="https://fontkit.wooahouse.com/" target="_blank" rel="noopener">🔤 WooaFont</a>
+    <a href="https://mactools.wooahouse.com/" target="_blank" rel="noopener">🍎 WooaMac</a>
+    <a href="https://pctools.wooahouse.com/" target="_blank" rel="noopener">🖥️ WooaPC</a>
+    <a href="https://vskit.wooahouse.com/" target="_blank" rel="noopener">💻 WooaVS</a>
+    <a href="https://wooaaudio.wooahouse.com/" target="_blank" rel="noopener">🎵 WooaAudio</a>
+    <a href="https://wooaviewer.wooahouse.com/" target="_blank" rel="noopener" class="active">🔍 WooaViewer</a>
+  </div>
+</div>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>XML 뷰어</span></div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">📄</span>
+    <h1>XML 뷰어</h1>
+    <p>.xml 파일을 접기/펼치기 트리 구조로 보기 쉽게 표시합니다. 파일 업로드 또는 직접 붙여넣기로 사용하세요.</p>
+  </div>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div class="viewer-tabs">
+    <button class="vtab active" onclick="switchTab('file')">파일 업로드</button>
+    <button class="vtab" onclick="switchTab('paste')">붙여넣기</button>
+  </div>
+
+  <div id="tabFile" class="vtab-panel active">
+    <div class="drop-zone" id="dropZone" style="margin-top:0">
+      <span class="drop-zone-icon">📄</span>
+      <h3>XML 파일을 여기에 끌어다 놓으세요</h3>
+      <p>.xml / .svg / .rss / .atom / .kml 등 XML 기반 형식 지원</p>
+      <label class="btn-select">파일 선택<input type="file" id="fileInput" accept=".xml,.svg,.rss,.atom,.kml,.xsl,.xslt,.gpx,.plist" style="display:none"></label>
+    </div>
+  </div>
+
+  <div id="tabPaste" class="vtab-panel">
+    <textarea class="paste-area" id="pasteArea" placeholder="XML을 여기에 붙여넣으세요..."></textarea>
+    <button class="parse-btn" onclick="parsePaste()">트리로 보기</button>
+  </div>
+
+  <div id="xmlResult" style="display:none; margin-top:16px;">
+    <div class="xml-toolbar">
+      <span class="xml-info" id="xmlInfo"></span>
+      <button class="xml-btn" onclick="expandAll()">모두 펼치기</button>
+      <button class="xml-btn" onclick="collapseAll()">모두 접기</button>
+    </div>
+    <div class="xml-tree" id="xmlTree"></div>
+  </div>
+
+</div>
+
+<aside class="tool-sidebar">
+  <div class="ad-card">
+    <div class="ad-card-label">AD</div>
+    <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="1419180025" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="ad-card">
+    <script>new PartnersCoupang.G({"id":986943,"template":"carousel","trackingCode":"AF5600192","width":"160","height":"200","tsource":""});</script>
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><span class="logo-footer">WooaViewer</span><p>다양한 파일을 설치 없이 브라우저에서 안전하게 열어보세요.</p></div>
+      <div class="footer-links"><h4>문서 뷰어</h4><a href="docx-viewer.html">DOCX 뷰어</a><a href="xlsx-viewer.html">XLSX 뷰어</a><a href="markdown-viewer.html">Markdown 뷰어</a><a href="epub-viewer.html">EPUB 뷰어</a></div>
+      <div class="footer-links"><h4>설계 · 3D · 개발</h4><a href="dxf-viewer.html">DXF 뷰어</a><a href="psd-viewer.html">PSD 뷰어</a><a href="heic-viewer.html">HEIC 뷰어</a><a href="stl-viewer.html">STL 뷰어</a><a href="gcode-viewer.html">GCode 뷰어</a><a href="json-viewer.html">JSON 뷰어</a><a href="xml-viewer.html">XML 뷰어</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 WooaViewer. 모든 권리 보유.</p><div class="footer-bottom-links"><a href="privacy.html">개인정보처리방침</a><a href="about.html">소개</a></div></div>
+    <p class="coupang-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+  </div>
+</footer>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const errorMsg = document.getElementById('errorMsg');
+
+function switchTab(tab) {
+  document.querySelectorAll('.vtab').forEach((t, i) => t.classList.toggle('active', (i === 0) === (tab === 'file')));
+  document.getElementById('tabFile').classList.toggle('active', tab === 'file');
+  document.getElementById('tabPaste').classList.toggle('active', tab === 'paste');
+}
+
+fileInput.addEventListener('change', e => { if (e.target.files[0]) readFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files[0]) readFile(e.dataTransfer.files[0]);
+});
+
+async function readFile(file) {
+  try {
+    const text = await file.text();
+    parseAndRender(text, file.name);
+  } catch (e) {
+    showError('파일을 읽을 수 없습니다: ' + e.message);
+  }
+}
+
+function parsePaste() {
+  const text = document.getElementById('pasteArea').value.trim();
+  if (!text) { showError('XML을 입력해주세요.'); return; }
+  parseAndRender(text, '붙여넣기');
+}
+
+function parseAndRender(text, label) {
+  errorMsg.style.display = 'none';
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(text, 'text/xml');
+  const parseErr = doc.querySelector('parsererror');
+  if (parseErr) {
+    showError('XML 파싱 오류: ' + parseErr.textContent.split('\n')[0]);
+    return;
+  }
+  const nodeCount = doc.querySelectorAll('*').length;
+  document.getElementById('xmlInfo').textContent = label + ' · 요소 ' + nodeCount.toLocaleString() + '개';
+  document.getElementById('xmlTree').innerHTML = '';
+  document.getElementById('xmlTree').appendChild(buildNode(doc.documentElement));
+  document.getElementById('xmlResult').style.display = 'block';
+}
+
+let uid = 0;
+function buildNode(node) {
+  const wrap = document.createElement('div');
+
+  if (node.nodeType === Node.COMMENT_NODE) {
+    const span = document.createElement('span');
+    span.className = 'x-comment';
+    span.textContent = '<!-- ' + esc(node.nodeValue.trim()) + ' -->';
+    wrap.appendChild(span);
+    return wrap;
+  }
+
+  if (node.nodeType === Node.CDATA_SECTION_NODE) {
+    const span = document.createElement('span');
+    span.className = 'x-cdata';
+    span.textContent = '<![CDATA[ ' + esc(node.nodeValue) + ' ]]>';
+    wrap.appendChild(span);
+    return wrap;
+  }
+
+  if (node.nodeType === Node.TEXT_NODE) {
+    const text = node.nodeValue.trim();
+    if (!text) return null;
+    const span = document.createElement('span');
+    span.className = 'x-text';
+    span.textContent = esc(text);
+    wrap.appendChild(span);
+    return wrap;
+  }
+
+  if (node.nodeType !== Node.ELEMENT_NODE) return null;
+
+  // Build child nodes
+  const childNodes = Array.from(node.childNodes)
+    .map(c => buildNode(c))
+    .filter(Boolean);
+
+  const hasChildren = childNodes.length > 0;
+  const id = 'x' + (uid++);
+
+  // Toggle button
+  const toggle = document.createElement('span');
+  toggle.className = 'x-toggle';
+  toggle.innerHTML = hasChildren ? '' : '&nbsp;';
+
+  // Opening tag
+  const openTag = document.createElement('span');
+  let tagHtml = `<span class="x-tag">&lt;${esc(node.tagName)}</span>`;
+  Array.from(node.attributes).forEach(a => {
+    tagHtml += ` <span class="x-attr-name">${esc(a.name)}</span>=<span class="x-attr-val">"${esc(a.value)}"</span>`;
+  });
+
+  if (!hasChildren) {
+    tagHtml += `<span class="x-tag"> /&gt;</span>`;
+    openTag.innerHTML = tagHtml;
+    wrap.appendChild(toggle);
+    wrap.appendChild(openTag);
+    return wrap;
+  }
+
+  tagHtml += `<span class="x-tag">&gt;</span>`;
+  openTag.innerHTML = tagHtml;
+
+  // Children container
+  const childrenDiv = document.createElement('div');
+  childrenDiv.className = 'x-children x-node';
+  childNodes.forEach(c => childrenDiv.appendChild(c));
+
+  // Closing tag
+  const closeTag = document.createElement('span');
+  closeTag.innerHTML = `<span class="x-tag">&lt;/${esc(node.tagName)}&gt;</span>`;
+
+  const row = document.createElement('span');
+  row.id = id;
+  row.className = 'x-expandable';
+
+  toggle.onclick = () => {
+    row.classList.toggle('x-collapsed');
+    row.classList.toggle('x-expandable');
+  };
+
+  row.appendChild(toggle);
+  row.appendChild(openTag);
+  row.appendChild(childrenDiv);
+  row.appendChild(closeTag);
+  wrap.appendChild(row);
+  return wrap;
+}
+
+function expandAll() {
+  document.querySelectorAll('.x-collapsed').forEach(el => {
+    el.classList.remove('x-collapsed');
+    el.classList.add('x-expandable');
+  });
+}
+
+function collapseAll() {
+  document.querySelectorAll('.x-expandable').forEach(el => {
+    el.classList.add('x-collapsed');
+    el.classList.remove('x-expandable');
+  });
+}
+
+function showError(msg) {
+  errorMsg.textContent = msg;
+  errorMsg.style.display = 'block';
+  document.getElementById('xmlResult').style.display = 'none';
+}
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+</script>
+<script src="js/pwa-install.js"></script>
+</body>
+</html>

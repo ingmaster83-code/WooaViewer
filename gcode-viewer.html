@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="7396a327607b884b9bef1283dfd3a5c6115a2b50">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCode 뷰어 - 3D 프린터 슬라이서 파일 브라우저에서 보기 무료 | WooaViewer</title>
+  <meta name="description" content=".gcode 3D 프린터 파일을 브라우저에서 무료로 툴패스를 시각화하세요. 파일은 서버에 전송되지 않아 안전합니다.">
+  <meta name="keywords" content="GCode뷰어, gcode열기, 3D프린터뷰어, 슬라이서뷰어, 무료GCode뷰어, 온라인GCode뷰어">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/gcode-viewer.html">
+  <meta property="og:title" content="GCode 뷰어 - 3D 프린터 슬라이서 파일 보기 | WooaViewer">
+  <meta property="og:description" content=".gcode 파일을 브라우저에서 무료로 툴패스를 시각화하세요.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/gcode-viewer.html">
+  <meta property="og:locale" content="ko_KR">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"GCode 뷰어","url":"https://wooaviewer.wooahouse.com/gcode-viewer.html","description":".gcode 3D 프린터 파일을 브라우저에서 무료로 툴패스를 시각화하는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .gcode-container { display:none; margin-top:20px; }
+    .gcode-stats { display:flex; gap:20px; flex-wrap:wrap; padding:10px 16px; background:#F3F4F6; border-radius:10px; margin-bottom:10px; }
+    .stat-item { display:flex; flex-direction:column; }
+    .stat-label { font-size:0.72rem; color:#9CA3AF; }
+    .stat-value { font-size:0.88rem; font-weight:600; color:#1A1A2E; }
+    .gcode-toolbar { display:flex; align-items:center; gap:10px; padding:10px 14px; background:#F3F4F6; border-radius:10px 10px 0 0; flex-wrap:wrap; }
+    .gcode-file-name { font-size:0.82rem; color:#6B7280; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .gcode-btn { padding:6px 14px; border-radius:6px; border:1px solid #E5E7EB; background:white; font-size:0.82rem; font-weight:600; cursor:pointer; font-family:inherit; color:#1A1A2E; transition:all 0.15s; }
+    .gcode-btn:hover { background:#0284C7; color:white; border-color:#0284C7; }
+    .gcode-btn.active { background:#0284C7; color:white; border-color:#0284C7; }
+    #gcodeCanvas { width:100%; height:520px; background:#0F172A; border:1px solid #E5E7EB; border-top:none; border-radius:0 0 10px 10px; display:block; cursor:grab; }
+    #gcodeCanvas:active { cursor:grabbing; }
+    .stl-hint { font-size:0.78rem; color:#9CA3AF; text-align:center; margin-top:8px; }
+    .legend { display:flex; gap:16px; align-items:center; font-size:0.78rem; color:#6B7280; margin-top:6px; flex-wrap:wrap; }
+    .legend-item { display:flex; align-items:center; gap:5px; }
+    .legend-dot { width:24px; height:3px; border-radius:2px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="dxf-viewer.html">DXF</a><a href="stl-viewer.html">STL</a>
+      <a href="gcode-viewer.html">GCode</a><a href="index.html">전체 도구 ›</a>
+    </nav>
+  </div>
+</header>
+
+<div class="our-sites-bar">
+  <span class="our-sites-label">WooaHouse Services</span>
+  <div class="our-sites-links">
+    <a href="https://wooahouse.com/" target="_blank" rel="noopener">🔗 WooaHouse</a>
+    <a href="https://pdfkit.wooahouse.com/" target="_blank" rel="noopener">📄 WooaPDF</a>
+    <a href="https://imagekit.wooahouse.com/" target="_blank" rel="noopener">🖼️ WooaImage</a>
+    <a href="https://colorkit.wooahouse.com/" target="_blank" rel="noopener">🎨 WooaColor</a>
+    <a href="https://textkit.wooahouse.com/" target="_blank" rel="noopener">✏️ WooaText</a>
+    <a href="https://qrkit.wooahouse.com/" target="_blank" rel="noopener">📱 WooaQR</a>
+    <a href="https://calckit.wooahouse.com/" target="_blank" rel="noopener">🧮 WooaCalc</a>
+    <a href="https://chromekit.wooahouse.com/" target="_blank" rel="noopener">🧩 WooaChrome</a>
+    <a href="https://fontkit.wooahouse.com/" target="_blank" rel="noopener">🔤 WooaFont</a>
+    <a href="https://mactools.wooahouse.com/" target="_blank" rel="noopener">🍎 WooaMac</a>
+    <a href="https://pctools.wooahouse.com/" target="_blank" rel="noopener">🖥️ WooaPC</a>
+    <a href="https://vskit.wooahouse.com/" target="_blank" rel="noopener">💻 WooaVS</a>
+    <a href="https://wooaaudio.wooahouse.com/" target="_blank" rel="noopener">🎵 WooaAudio</a>
+    <a href="https://wooaviewer.wooahouse.com/" target="_blank" rel="noopener" class="active">🔍 WooaViewer</a>
+  </div>
+</div>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>GCode 뷰어</span></div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">⚙️</span>
+    <h1>GCode 뷰어</h1>
+    <p>3D 프린터 슬라이서 .gcode 파일의 툴패스를 브라우저에서 바로 시각화하세요. 급이동(G0)과 절삭이동(G1)을 구분해서 표시합니다.</p>
+  </div>
+
+  <div class="drop-zone" id="dropZone">
+    <span class="drop-zone-icon">⚙️</span>
+    <h3>GCode 파일을 여기에 끌어다 놓으세요</h3>
+    <p>.gcode / .nc / .cnc 형식 지원</p>
+    <label class="btn-select">파일 선택<input type="file" id="fileInput" accept=".gcode,.nc,.cnc,.g" style="display:none"></label>
+  </div>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div class="gcode-container" id="gcodeContainer">
+    <div class="gcode-stats">
+      <div class="stat-item"><span class="stat-label">총 이동</span><span class="stat-value" id="statMoves">-</span></div>
+      <div class="stat-item"><span class="stat-label">절삭 이동</span><span class="stat-value" id="statCut">-</span></div>
+      <div class="stat-item"><span class="stat-label">레이어(Z)</span><span class="stat-value" id="statLayers">-</span></div>
+      <div class="stat-item"><span class="stat-label">크기(X×Y)</span><span class="stat-value" id="statSize">-</span></div>
+    </div>
+    <div class="gcode-toolbar">
+      <span class="gcode-file-name" id="gcodeFileName"></span>
+      <button class="gcode-btn" id="rapidBtn" onclick="toggleRapid()">급이동 표시</button>
+      <button class="gcode-btn" onclick="resetView()">초기화</button>
+    </div>
+    <canvas id="gcodeCanvas"></canvas>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#0284C7"></div><span>절삭 이동 (G1)</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(156,163,175,0.6);border-top:2px dashed rgba(156,163,175,0.6);height:0"></div><span>급이동 (G0)</span></div>
+    </div>
+    <p class="stl-hint">마우스 드래그: 이동 · 휠: 확대/축소</p>
+  </div>
+
+</div>
+
+<aside class="tool-sidebar">
+  <div class="ad-card">
+    <div class="ad-card-label">AD</div>
+    <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="1419180025" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="ad-card">
+    <script>new PartnersCoupang.G({"id":986943,"template":"carousel","trackingCode":"AF5600192","width":"160","height":"200","tsource":""});</script>
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><span class="logo-footer">WooaViewer</span><p>다양한 파일을 설치 없이 브라우저에서 안전하게 열어보세요.</p></div>
+      <div class="footer-links"><h4>문서 뷰어</h4><a href="docx-viewer.html">DOCX 뷰어</a><a href="xlsx-viewer.html">XLSX 뷰어</a><a href="markdown-viewer.html">Markdown 뷰어</a><a href="epub-viewer.html">EPUB 뷰어</a></div>
+      <div class="footer-links"><h4>설계 · 3D · 개발</h4><a href="dxf-viewer.html">DXF 뷰어</a><a href="psd-viewer.html">PSD 뷰어</a><a href="stl-viewer.html">STL 뷰어</a><a href="gcode-viewer.html">GCode 뷰어</a><a href="json-viewer.html">JSON 뷰어</a><a href="xml-viewer.html">XML 뷰어</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 WooaViewer. 모든 권리 보유.</p><div class="footer-bottom-links"><a href="privacy.html">개인정보처리방침</a><a href="about.html">소개</a></div></div>
+    <p class="coupang-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+  </div>
+</footer>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const gcodeContainer = document.getElementById('gcodeContainer');
+const errorMsg = document.getElementById('errorMsg');
+const canvas = document.getElementById('gcodeCanvas');
+const ctx = canvas.getContext('2d');
+
+let allMoves = [];
+let showRapid = false;
+let scale = 1, offX = 0, offY = 0;
+let isDragging = false, lastMX = 0, lastMY = 0;
+let fitScale = 1, fitOffX = 0, fitOffY = 0;
+
+fileInput.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag-over'); if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
+
+async function handleFile(file) {
+  errorMsg.style.display = 'none';
+  try {
+    const text = await file.text();
+    const result = parseGCode(text);
+    if (!result.moves.length) throw new Error('이동 명령(G0/G1)을 찾을 수 없습니다.');
+
+    allMoves = result.moves;
+    document.getElementById('gcodeFileName').textContent = file.name;
+    document.getElementById('statMoves').textContent = result.moves.length.toLocaleString() + '개';
+    document.getElementById('statCut').textContent = result.cutCount.toLocaleString() + '개';
+    document.getElementById('statLayers').textContent = result.layers + '개';
+    document.getElementById('statSize').textContent =
+      result.rangeX.toFixed(1) + ' × ' + result.rangeY.toFixed(1) + ' mm';
+
+    dropZone.style.display = 'none';
+    gcodeContainer.style.display = 'block';
+
+    initCanvas(result);
+    draw();
+  } catch (err) {
+    errorMsg.textContent = 'GCode 파일을 읽는 중 오류가 발생했습니다: ' + err.message;
+    errorMsg.style.display = 'block';
+  }
+}
+
+function parseGCode(text) {
+  const moves = [];
+  let cx = 0, cy = 0, cz = 0;
+  const zSet = new Set();
+  let cutCount = 0;
+  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+
+  for (const raw of text.split('\n')) {
+    const line = raw.replace(/[;(].*/, '').trim().toUpperCase();
+    if (!line) continue;
+
+    const gm = line.match(/G([01])\b/);
+    if (!gm) continue;
+    const gType = parseInt(gm[1]);
+
+    const xm = line.match(/X([-\d.]+)/);
+    const ym = line.match(/Y([-\d.]+)/);
+    const zm = line.match(/Z([-\d.]+)/);
+
+    const nx = xm ? parseFloat(xm[1]) : cx;
+    const ny = ym ? parseFloat(ym[1]) : cy;
+    const nz = zm ? parseFloat(zm[1]) : cz;
+
+    if (nx !== cx || ny !== cy) {
+      moves.push({ type: gType, x1: cx, y1: cy, x2: nx, y2: ny });
+      if (gType === 1) cutCount++;
+      minX = Math.min(minX, cx, nx); maxX = Math.max(maxX, cx, nx);
+      minY = Math.min(minY, cy, ny); maxY = Math.max(maxY, cy, ny);
+    }
+
+    cx = nx; cy = ny; cz = nz;
+    zSet.add(nz.toFixed(3));
+  }
+
+  return {
+    moves, cutCount,
+    layers: zSet.size,
+    minX, maxX, minY, maxY,
+    rangeX: maxX - minX || 0,
+    rangeY: maxY - minY || 0
+  };
+}
+
+function initCanvas(result) {
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  ctx.scale(dpr, dpr);
+
+  const pad = 50;
+  const sx = (W - pad * 2) / (result.rangeX || 1);
+  const sy = (H - pad * 2) / (result.rangeY || 1);
+  fitScale = Math.min(sx, sy);
+
+  const modelW = result.rangeX * fitScale;
+  const modelH = result.rangeY * fitScale;
+  fitOffX = (W - modelW) / 2 - result.minX * fitScale;
+  fitOffY = (H + modelH) / 2 + result.minY * fitScale;
+
+  scale = 1; offX = 0; offY = 0;
+
+  window.addEventListener('resize', () => {
+    canvas.style.width = '100%';
+  });
+}
+
+function toScreen(x, y) {
+  const s = fitScale * scale;
+  return [x * s + fitOffX + offX, -y * s + fitOffY + offY];
+}
+
+function draw() {
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  ctx.clearRect(0, 0, W, H);
+
+  ctx.lineWidth = Math.max(0.5, 0.8 / scale);
+
+  for (const m of allMoves) {
+    if (m.type === 0 && !showRapid) continue;
+    const [x1, y1] = toScreen(m.x1, m.y1);
+    const [x2, y2] = toScreen(m.x2, m.y2);
+
+    if (m.type === 0) {
+      ctx.strokeStyle = 'rgba(156,163,175,0.5)';
+      ctx.setLineDash([4, 4]);
+    } else {
+      ctx.strokeStyle = '#0284C7';
+      ctx.setLineDash([]);
+    }
+
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+  }
+  ctx.setLineDash([]);
+}
+
+canvas.addEventListener('mousedown', e => { isDragging = true; lastMX = e.clientX; lastMY = e.clientY; });
+canvas.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  offX += e.clientX - lastMX;
+  offY += e.clientY - lastMY;
+  lastMX = e.clientX; lastMY = e.clientY;
+  draw();
+});
+canvas.addEventListener('mouseup', () => isDragging = false);
+canvas.addEventListener('mouseleave', () => isDragging = false);
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left;
+  const my = e.clientY - rect.top;
+  const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+  offX = mx + (offX - mx) * factor;
+  offY = my + (offY - my) * factor;
+  scale *= factor;
+  draw();
+}, { passive: false });
+
+// Touch support
+let lastTouchDist = 0;
+canvas.addEventListener('touchstart', e => {
+  if (e.touches.length === 1) { isDragging = true; lastMX = e.touches[0].clientX; lastMY = e.touches[0].clientY; }
+  if (e.touches.length === 2) { lastTouchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); }
+});
+canvas.addEventListener('touchmove', e => {
+  e.preventDefault();
+  if (e.touches.length === 1 && isDragging) {
+    offX += e.touches[0].clientX - lastMX; offY += e.touches[0].clientY - lastMY;
+    lastMX = e.touches[0].clientX; lastMY = e.touches[0].clientY;
+    draw();
+  }
+  if (e.touches.length === 2) {
+    const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+    const factor = d / lastTouchDist;
+    scale *= factor; lastTouchDist = d;
+    draw();
+  }
+}, { passive: false });
+canvas.addEventListener('touchend', () => isDragging = false);
+
+function toggleRapid() {
+  showRapid = !showRapid;
+  const btn = document.getElementById('rapidBtn');
+  btn.classList.toggle('active', showRapid);
+  btn.textContent = showRapid ? '급이동 숨기기' : '급이동 표시';
+  draw();
+}
+
+function resetView() {
+  scale = 1; offX = 0; offY = 0;
+  draw();
+}
+</script>
+<script src="js/pwa-install.js"></script>
+</body>
+</html>

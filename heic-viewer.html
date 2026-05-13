@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="7396a327607b884b9bef1283dfd3a5c6115a2b50">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEIC 뷰어 - 아이폰 사진 파일 브라우저에서 보기 무료 | WooaViewer</title>
+  <meta name="description" content="아이폰 .heic 사진을 별도 코덱 설치 없이 브라우저에서 무료로 열어보세요. PNG/JPG로 저장도 가능합니다.">
+  <meta name="keywords" content="HEIC뷰어, heic열기, 아이폰사진뷰어, heif뷰어, 무료HEIC뷰어, 온라인HEIC뷰어, heic변환">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/heic-viewer.html">
+  <meta property="og:title" content="HEIC 뷰어 - 아이폰 사진 파일 브라우저에서 보기 | WooaViewer">
+  <meta property="og:description" content="아이폰 .heic 사진을 코덱 없이 브라우저에서 무료로 열어보세요.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/heic-viewer.html">
+  <meta property="og:locale" content="ko_KR">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"HEIC 뷰어","url":"https://wooaviewer.wooahouse.com/heic-viewer.html","description":"아이폰 .heic 사진을 코덱 설치 없이 브라우저에서 열어보는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .heic-container { display:none; margin-top:20px; }
+    .heic-info-bar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:10px 16px; background:#F3F4F6; border-radius:10px; margin-bottom:14px; }
+    .heic-info-text { font-size:0.82rem; color:#6B7280; }
+    .heic-preview { text-align:center; background:white; border-radius:12px; padding:20px; box-shadow:0 2px 12px rgba(0,0,0,.08); }
+    .heic-preview img { max-width:100%; height:auto; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.12); }
+    .heic-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; justify-content:center; }
+    .heic-dl-btn { padding:8px 20px; border-radius:8px; background:#0284C7; color:white; border:none; font-size:0.88rem; font-weight:600; cursor:pointer; font-family:inherit; text-decoration:none; transition:background 0.15s; }
+    .heic-dl-btn:hover { background:#0369A1; }
+    .heic-dl-btn.secondary { background:white; color:#0284C7; border:1.5px solid #0284C7; }
+    .heic-dl-btn.secondary:hover { background:#EFF6FF; }
+    .multi-notice { font-size:0.8rem; color:#6B7280; text-align:center; margin-top:8px; }
+    .spinner-wrap { text-align:center; padding:40px; }
+    .spinner { display:inline-block; width:32px; height:32px; border:3px solid #E0F2FE; border-top-color:#0284C7; border-radius:50%; animation:spin .8s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="psd-viewer.html">PSD</a><a href="heic-viewer.html">HEIC</a>
+      <a href="stl-viewer.html">STL</a><a href="index.html">전체 도구 ›</a>
+    </nav>
+  </div>
+</header>
+
+<div class="our-sites-bar">
+  <span class="our-sites-label">WooaHouse Services</span>
+  <div class="our-sites-links">
+    <a href="https://wooahouse.com/" target="_blank" rel="noopener">🔗 WooaHouse</a>
+    <a href="https://pdfkit.wooahouse.com/" target="_blank" rel="noopener">📄 WooaPDF</a>
+    <a href="https://imagekit.wooahouse.com/" target="_blank" rel="noopener">🖼️ WooaImage</a>
+    <a href="https://colorkit.wooahouse.com/" target="_blank" rel="noopener">🎨 WooaColor</a>
+    <a href="https://textkit.wooahouse.com/" target="_blank" rel="noopener">✏️ WooaText</a>
+    <a href="https://qrkit.wooahouse.com/" target="_blank" rel="noopener">📱 WooaQR</a>
+    <a href="https://calckit.wooahouse.com/" target="_blank" rel="noopener">🧮 WooaCalc</a>
+    <a href="https://chromekit.wooahouse.com/" target="_blank" rel="noopener">🧩 WooaChrome</a>
+    <a href="https://fontkit.wooahouse.com/" target="_blank" rel="noopener">🔤 WooaFont</a>
+    <a href="https://mactools.wooahouse.com/" target="_blank" rel="noopener">🍎 WooaMac</a>
+    <a href="https://pctools.wooahouse.com/" target="_blank" rel="noopener">🖥️ WooaPC</a>
+    <a href="https://vskit.wooahouse.com/" target="_blank" rel="noopener">💻 WooaVS</a>
+    <a href="https://wooaaudio.wooahouse.com/" target="_blank" rel="noopener">🎵 WooaAudio</a>
+    <a href="https://wooaviewer.wooahouse.com/" target="_blank" rel="noopener" class="active">🔍 WooaViewer</a>
+  </div>
+</div>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>HEIC 뷰어</span></div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">📷</span>
+    <h1>HEIC 뷰어</h1>
+    <p>아이폰으로 찍은 .heic 사진을 코덱 설치 없이 브라우저에서 바로 열어보세요. PNG 또는 JPG로 저장할 수도 있습니다.</p>
+  </div>
+
+  <div class="drop-zone" id="dropZone">
+    <span class="drop-zone-icon">📷</span>
+    <h3>HEIC 파일을 여기에 끌어다 놓으세요</h3>
+    <p>.heic / .heif 형식 지원</p>
+    <label class="btn-select">파일 선택<input type="file" id="fileInput" accept=".heic,.heif,image/heic,image/heif" style="display:none"></label>
+  </div>
+
+  <div id="loadingWrap" class="spinner-wrap" style="display:none">
+    <div class="spinner"></div>
+    <p style="margin-top:12px;color:#6B7280;font-size:0.88rem">HEIC 파일 변환 중... (파일 크기에 따라 수초 소요)</p>
+  </div>
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div class="heic-container" id="heicContainer">
+    <div class="heic-info-bar">
+      <span class="heic-info-text" id="heicFileName"></span>
+      <span class="heic-info-text" id="heicFileSize"></span>
+      <span class="heic-info-text" id="heicDimensions"></span>
+    </div>
+    <div class="heic-preview">
+      <img id="heicPreview" src="" alt="HEIC 미리보기">
+      <div class="heic-actions">
+        <a id="dlPng" class="heic-dl-btn" download="image.png">PNG로 저장</a>
+        <a id="dlJpg" class="heic-dl-btn secondary" download="image.jpg">JPG로 저장</a>
+      </div>
+      <p class="multi-notice" id="multiNotice" style="display:none"></p>
+    </div>
+  </div>
+
+</div>
+
+<aside class="tool-sidebar">
+  <div class="ad-card">
+    <div class="ad-card-label">AD</div>
+    <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="1419180025" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="ad-card">
+    <script>new PartnersCoupang.G({"id":986943,"template":"carousel","trackingCode":"AF5600192","width":"160","height":"200","tsource":""});</script>
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><span class="logo-footer">WooaViewer</span><p>다양한 파일을 설치 없이 브라우저에서 안전하게 열어보세요.</p></div>
+      <div class="footer-links"><h4>문서 뷰어</h4><a href="docx-viewer.html">DOCX 뷰어</a><a href="xlsx-viewer.html">XLSX 뷰어</a><a href="markdown-viewer.html">Markdown 뷰어</a><a href="epub-viewer.html">EPUB 뷰어</a></div>
+      <div class="footer-links"><h4>설계 · 3D · 개발</h4><a href="dxf-viewer.html">DXF 뷰어</a><a href="psd-viewer.html">PSD 뷰어</a><a href="heic-viewer.html">HEIC 뷰어</a><a href="stl-viewer.html">STL 뷰어</a><a href="gcode-viewer.html">GCode 뷰어</a><a href="json-viewer.html">JSON 뷰어</a><a href="xml-viewer.html">XML 뷰어</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 WooaViewer. 모든 권리 보유.</p><div class="footer-bottom-links"><a href="privacy.html">개인정보처리방침</a><a href="about.html">소개</a></div></div>
+    <p class="coupang-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const heicContainer = document.getElementById('heicContainer');
+const errorMsg = document.getElementById('errorMsg');
+const loadingWrap = document.getElementById('loadingWrap');
+
+fileInput.addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+});
+
+async function loadFile(file) {
+  errorMsg.style.display = 'none';
+  loadingWrap.style.display = 'block';
+  dropZone.style.display = 'none';
+  heicContainer.style.display = 'none';
+
+  try {
+    const blob = new Blob([await file.arrayBuffer()], { type: 'image/heic' });
+
+    // Convert to PNG blob
+    const result = await heic2any({ blob, toType: 'image/png', quality: 1 });
+    const pngBlob = Array.isArray(result) ? result[0] : result;
+
+    // Also prepare JPG blob
+    const jpgResult = await heic2any({ blob, toType: 'image/jpeg', quality: 0.92 });
+    const jpgBlob = Array.isArray(jpgResult) ? jpgResult[0] : jpgResult;
+
+    const pngUrl = URL.createObjectURL(pngBlob);
+    const jpgUrl = URL.createObjectURL(jpgBlob);
+
+    const img = document.getElementById('heicPreview');
+    img.src = pngUrl;
+
+    const baseName = file.name.replace(/\.[^.]+$/, '');
+    document.getElementById('dlPng').href = pngUrl;
+    document.getElementById('dlPng').download = baseName + '.png';
+    document.getElementById('dlJpg').href = jpgUrl;
+    document.getElementById('dlJpg').download = baseName + '.jpg';
+
+    img.onload = () => {
+      document.getElementById('heicDimensions').textContent = img.naturalWidth + ' × ' + img.naturalHeight + 'px';
+    };
+
+    document.getElementById('heicFileName').textContent = file.name;
+    document.getElementById('heicFileSize').textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+
+    if (Array.isArray(result) && result.length > 1) {
+      const notice = document.getElementById('multiNotice');
+      notice.textContent = `이 HEIC 파일에는 ${result.length}개의 이미지가 포함되어 있습니다. 첫 번째 이미지를 표시합니다.`;
+      notice.style.display = 'block';
+    }
+
+    loadingWrap.style.display = 'none';
+    heicContainer.style.display = 'block';
+  } catch (err) {
+    loadingWrap.style.display = 'none';
+    dropZone.style.display = 'block';
+    errorMsg.textContent = 'HEIC 파일을 변환하는 중 오류가 발생했습니다: ' + err.message;
+    errorMsg.style.display = 'block';
+  }
+}
+</script>
+<script src="js/pwa-install.js"></script>
+</body>
+</html>

@@ -18,9 +18,9 @@
   <meta name="naver-site-verification" content="7396a327607b884b9bef1283dfd3a5c6115a2b50">
   <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>설치 없이 무료로 파일 열기 - DOCX, XLSX, DXF, PSD 뷰어 | WooaViewer</title>
-  <meta name="description" content="Word, Excel, CAD, Photoshop 파일을 설치 없이 브라우저에서 무료로 열어보세요. 파일은 서버에 전송되지 않아 안전합니다.">
-  <meta name="keywords" content="파일뷰어, DOCX뷰어, XLSX뷰어, DXF뷰어, PSD뷰어, STL뷰어, 마크다운뷰어, JSON뷰어, 무료뷰어, 온라인뷰어, WooaViewer">
+  <title>설치 없이 무료로 파일 열기 - DOCX, XLSX, DXF, PSD, HEIC 뷰어 | WooaViewer</title>
+  <meta name="description" content="Word, Excel, CAD, Photoshop, 아이폰 사진 파일을 설치 없이 브라우저에서 무료로 열어보세요. 파일은 서버에 전송되지 않아 안전합니다.">
+  <meta name="keywords" content="파일뷰어, DOCX뷰어, XLSX뷰어, DXF뷰어, PSD뷰어, STL뷰어, HEIC뷰어, GCode뷰어, XML뷰어, 마크다운뷰어, JSON뷰어, 무료뷰어, 온라인뷰어, WooaViewer">
   <link rel="canonical" href="https://wooaviewer.wooahouse.com/">
   <meta property="og:title" content="설치 없이 무료로 파일 열기 | WooaViewer">
   <meta property="og:description" content="Word, Excel, CAD, Photoshop 파일을 설치 없이 브라우저에서 무료로 열어보세요.">
@@ -50,7 +50,10 @@
       {"@type":"ListItem","position":5,"name":"STL 뷰어","url":"https://wooaviewer.wooahouse.com/stl-viewer.html"},
       {"@type":"ListItem","position":6,"name":"Markdown 뷰어","url":"https://wooaviewer.wooahouse.com/markdown-viewer.html"},
       {"@type":"ListItem","position":7,"name":"JSON 뷰어","url":"https://wooaviewer.wooahouse.com/json-viewer.html"},
-      {"@type":"ListItem","position":8,"name":"EPUB 뷰어","url":"https://wooaviewer.wooahouse.com/epub-viewer.html"}
+      {"@type":"ListItem","position":8,"name":"EPUB 뷰어","url":"https://wooaviewer.wooahouse.com/epub-viewer.html"},
+      {"@type":"ListItem","position":9,"name":"HEIC 뷰어","url":"https://wooaviewer.wooahouse.com/heic-viewer.html"},
+      {"@type":"ListItem","position":10,"name":"GCode 뷰어","url":"https://wooaviewer.wooahouse.com/gcode-viewer.html"},
+      {"@type":"ListItem","position":11,"name":"XML 뷰어","url":"https://wooaviewer.wooahouse.com/xml-viewer.html"}
     ]
   }
   </script>
@@ -183,6 +186,13 @@
         <div class="tool-name">PSD 뷰어</div>
         <div class="tool-desc">Photoshop 없이 .psd 파일 미리보기</div>
       </a>
+      <a href="heic-viewer.html" class="tool-card">
+        <span class="free-badge">무료</span>
+        <span class="new-badge">NEW</span>
+        <span class="tool-icon">📷</span>
+        <div class="tool-name">HEIC 뷰어</div>
+        <div class="tool-desc">아이폰 .heic 사진 코덱 없이 열기 · PNG/JPG 저장</div>
+      </a>
       <div class="coupang-card">
         <script>new PartnersCoupang.G({"id":986943,"template":"carousel","trackingCode":"AF5600192","width":"160","height":"200","tsource":""});</script>
       </div>
@@ -205,12 +215,26 @@
         <div class="tool-name">STL 뷰어</div>
         <div class="tool-desc">3D 프린팅 .stl 파일 브라우저에서 회전·확인</div>
       </a>
+      <a href="gcode-viewer.html" class="tool-card">
+        <span class="free-badge">무료</span>
+        <span class="new-badge">NEW</span>
+        <span class="tool-icon">⚙️</span>
+        <div class="tool-name">GCode 뷰어</div>
+        <div class="tool-desc">3D 프린터 .gcode 슬라이서 파일 툴패스 시각화</div>
+      </a>
       <a href="json-viewer.html" class="tool-card">
         <span class="free-badge">무료</span>
         <span class="new-badge">NEW</span>
         <span class="tool-icon">🗂️</span>
         <div class="tool-name">JSON 뷰어</div>
         <div class="tool-desc">JSON 파일을 트리 구조로 보기</div>
+      </a>
+      <a href="xml-viewer.html" class="tool-card">
+        <span class="free-badge">무료</span>
+        <span class="new-badge">NEW</span>
+        <span class="tool-icon">📄</span>
+        <div class="tool-name">XML 뷰어</div>
+        <div class="tool-desc">XML 파일을 접기/펼치기 트리 구조로 보기</div>
       </a>
       <div class="coupang-card">
         <script>new PartnersCoupang.G({"id":986943,"template":"carousel","trackingCode":"AF5600192","width":"160","height":"200","tsource":""});</script>
@@ -255,8 +279,11 @@
         <h4>설계 · 3D · 개발</h4>
         <a href="dxf-viewer.html">DXF 뷰어</a>
         <a href="psd-viewer.html">PSD 뷰어</a>
+        <a href="heic-viewer.html">HEIC 뷰어</a>
         <a href="stl-viewer.html">STL 뷰어</a>
+        <a href="gcode-viewer.html">GCode 뷰어</a>
         <a href="json-viewer.html">JSON 뷰어</a>
+        <a href="xml-viewer.html">XML 뷰어</a>
       </div>
       <div class="footer-links">
         <h4>WooaHouse 서비스</h4>
