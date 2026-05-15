@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="7396a327607b884b9bef1283dfd3a5c6115a2b50">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV 뷰어 - CSV 파일을 테이블로 보기, 정렬·검색·구분자 선택 무료 | WooaViewer</title>
+  <meta name="description" content="CSV 파일을 업로드하거나 붙여넣으면 깔끔한 테이블로 표시됩니다. 열 정렬, 실시간 검색 필터링, 쉼표·탭·세미콜론 구분자 선택 기능을 제공합니다. 완전 무료, 서버 전송 없음.">
+  <meta name="keywords" content="CSV뷰어, CSV파일열기, CSV테이블뷰어, 온라인CSV뷰어, 무료CSV뷰어, CSV정렬, CSV검색, CSV데이터뷰어, TSV뷰어, CSV파싱, 데이터파일뷰어">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/csv-viewer.html">
+  <meta property="og:title" content="CSV 뷰어 - CSV 파일을 테이블로 보기, 정렬·검색 지원 | WooaViewer">
+  <meta property="og:description" content="CSV 파일을 테이블로 표시, 열 정렬·실시간 검색·구분자 선택 지원. 완전 무료, 서버 전송 없음.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/csv-viewer.html">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"CSV 뷰어","url":"https://wooaviewer.wooahouse.com/csv-viewer.html","description":"CSV 파일을 테이블로 보여주는 온라인 뷰어. 열 정렬, 실시간 검색, 구분자 선택 지원.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .mode-tabs { display:flex; gap:0; margin-bottom:16px; border:1px solid #E5E7EB; border-radius:8px; overflow:hidden; width:fit-content; }
+    .mode-tab { padding:8px 20px; border:none; background:white; font-size:0.88rem; font-weight:500; cursor:pointer; font-family:inherit; color:#6B7280; transition:all 0.15s; }
+    .mode-tab.active { background:#0284C7; color:white; }
+    .mode-tab:not(:last-child) { border-right:1px solid #E5E7EB; }
+    .csv-options { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
+    .csv-options label { font-size:0.85rem; font-weight:600; color:#374151; }
+    .csv-options select { padding:6px 10px; border:1px solid #E5E7EB; border-radius:6px; font-size:0.85rem; font-family:inherit; color:#374151; outline:none; cursor:pointer; }
+    .csv-options select:focus { border-color:#0284C7; }
+    .csv-textarea { width:100%; min-height:180px; padding:14px; border:2px solid #E5E7EB; border-radius:10px; font-family:'Courier New',monospace; font-size:0.85rem; line-height:1.5; resize:vertical; outline:none; color:#1A1A2E; background:white; box-sizing:border-box; }
+    .csv-textarea:focus { border-color:#0284C7; }
+    .parse-btn { display:inline-block; background:#0284C7; color:white; padding:10px 24px; border-radius:8px; font-weight:600; cursor:pointer; border:none; font-size:0.9rem; font-family:inherit; margin-top:10px; }
+    .parse-btn:hover { background:#0369A1; }
+    .csv-toolbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:10px 14px; background:#F3F4F6; border-radius:10px; margin-top:16px; }
+    .csv-stats { font-size:0.82rem; color:#6B7280; flex:1; }
+    .csv-search { padding:6px 12px; border:1px solid #E5E7EB; border-radius:6px; font-size:0.85rem; font-family:inherit; outline:none; min-width:180px; }
+    .csv-search:focus { border-color:#0284C7; }
+    .csv-tb-btn { padding:5px 12px; border-radius:6px; border:1px solid #E5E7EB; background:white; font-size:0.8rem; font-weight:600; cursor:pointer; font-family:inherit; color:#374151; transition:all 0.15s; }
+    .csv-tb-btn:hover { background:#0284C7; color:white; border-color:#0284C7; }
+    .csv-wrap { overflow:auto; max-height:600px; margin-top:10px; border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,.08); display:none; }
+    .csv-table { border-collapse:collapse; width:100%; background:white; }
+    .csv-table th { background:#f3f4f6; cursor:pointer; padding:8px 12px; border:1px solid #e5e7eb; font-size:0.82rem; font-weight:700; color:#374151; white-space:nowrap; position:sticky; top:0; z-index:1; user-select:none; }
+    .csv-table th:hover { background:#e5e7eb; }
+    .csv-table th .sort-icon { display:inline-block; margin-left:4px; color:#9CA3AF; font-size:0.75rem; }
+    .csv-table th.sort-asc .sort-icon::after { content:'▲'; color:#0284C7; }
+    .csv-table th.sort-desc .sort-icon::after { content:'▼'; color:#0284C7; }
+    .csv-table th:not(.sort-asc):not(.sort-desc) .sort-icon::after { content:'⇅'; }
+    .csv-table td { padding:6px 12px; border:1px solid #e5e7eb; font-size:0.83rem; color:#374151; max-width:300px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .csv-table tr:nth-child(even) td { background:#f9fafb; }
+    .csv-table tr:hover td { background:#EFF6FF; }
+    .csv-no-data { text-align:center; padding:40px; color:#9CA3AF; font-size:0.9rem; }
+    .fullscreen-btn { padding:5px 12px; border-radius:6px; border:1px solid #E5E7EB; background:white; font-size:0.8rem; font-weight:600; cursor:pointer; font-family:inherit; color:#374151; transition:all 0.15s; }
+    .fullscreen-btn:hover { background:#0284C7; color:white; border-color:#0284C7; }
+    .csv-wrap.fullscreen { position:fixed; inset:0; max-height:100vh; border-radius:0; z-index:9999; margin:0; }
+    .csv-wrap.fullscreen .csv-table th { background:#f3f4f6; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="json-viewer.html">JSON</a><a href="xml-viewer.html">XML</a>
+      <a href="index.html">전체 도구 ›</a>
+    </nav>
+  </div>
+</header>
+
+<div class="our-sites-bar">
+  <span class="our-sites-label">WooaHouse Services</span>
+  <div class="our-sites-links">
+    <a href="https://wooahouse.com/" target="_blank" rel="noopener">🔗 WooaHouse</a>
+    <a href="https://pdfkit.wooahouse.com/" target="_blank" rel="noopener">📄 WooaPDF</a>
+    <a href="https://imagekit.wooahouse.com/" target="_blank" rel="noopener">🖼️ WooaImage</a>
+    <a href="https://colorkit.wooahouse.com/" target="_blank" rel="noopener">🎨 WooaColor</a>
+    <a href="https://textkit.wooahouse.com/" target="_blank" rel="noopener">✏️ WooaText</a>
+    <a href="https://qrkit.wooahouse.com/" target="_blank" rel="noopener">📱 WooaQR</a>
+    <a href="https://calckit.wooahouse.com/" target="_blank" rel="noopener">🧮 WooaCalc</a>
+    <a href="https://fontkit.wooahouse.com/" target="_blank" rel="noopener">🔤 WooaFont</a>
+    <a href="https://mactools.wooahouse.com/" target="_blank" rel="noopener">🍎 WooaMac</a>
+    <a href="https://pctools.wooahouse.com/" target="_blank" rel="noopener">🖥️ WooaPC</a>
+    <a href="https://vskit.wooahouse.com/" target="_blank" rel="noopener">💻 WooaVS</a>
+    <a href="https://wooaaudio.wooahouse.com/" target="_blank" rel="noopener">🎵 WooaAudio</a>
+    <a href="https://wooaviewer.wooahouse.com/" target="_blank" rel="noopener" class="active">🔍 WooaViewer</a>
+    <a href="https://wooadev.wooahouse.com/" target="_blank" rel="noopener">🛠️ WooaDev</a>
+  </div>
+</div>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>CSV 뷰어</span></div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">📊</span>
+    <h1>CSV 뷰어</h1>
+    <p>CSV 파일을 업로드하거나 붙여넣기하면 정렬·검색이 가능한 테이블로 보여드립니다.</p>
+  </div>
+
+  <div class="csv-options">
+    <label for="delimSelect">구분자:</label>
+    <select id="delimSelect">
+      <option value=",">쉼표 (,)</option>
+      <option value="	">탭 (\t)</option>
+      <option value=";">세미콜론 (;)</option>
+    </select>
+  </div>
+
+  <div class="mode-tabs">
+    <button class="mode-tab active" id="tabUpload" onclick="switchMode('upload')">파일 업로드</button>
+    <button class="mode-tab" id="tabPaste" onclick="switchMode('paste')">직접 입력</button>
+  </div>
+
+  <div id="uploadSection">
+    <div class="drop-zone" id="dropZone">
+      <span class="drop-zone-icon">📊</span>
+      <h3>CSV 파일을 여기에 끌어다 놓으세요</h3>
+      <p>.csv 형식을 지원합니다</p>
+      <label class="btn-select">파일 선택<input type="file" id="fileInput" accept=".csv,.tsv,.txt" style="display:none"></label>
+    </div>
+  </div>
+
+  <div id="pasteSection" style="display:none">
+    <textarea class="csv-textarea" id="csvInput" placeholder="이름,나이,도시&#10;홍길동,30,서울&#10;김철수,25,부산"></textarea>
+    <button class="parse-btn" onclick="parseFromInput()">파싱</button>
+  </div>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div id="csvToolbar" class="csv-toolbar" style="display:none">
+    <span class="csv-stats" id="csvStats"></span>
+    <input type="search" class="csv-search" id="csvSearch" placeholder="검색..." oninput="filterTable(this.value)">
+    <button class="fullscreen-btn" onclick="toggleFullscreen()">전체화면</button>
+  </div>
+  <div class="csv-wrap" id="csvWrap">
+    <table class="csv-table" id="csvTable"></table>
+  </div>
+
+</div>
+
+<aside class="tool-sidebar">
+  <div class="ad-card">
+    <div class="ad-card-label">AD</div>
+    <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="1419180025" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="ad-card">
+    <script>new PartnersCoupang.G({"id":986943,"template":"carousel","trackingCode":"AF5600192","width":"160","height":"200","tsource":""});</script>
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><span class="logo-footer">WooaViewer</span><p>다양한 파일을 설치 없이 브라우저에서 안전하게 열어보세요.</p></div>
+      <div class="footer-links"><h4>문서 뷰어</h4><a href="docx-viewer.html">DOCX 뷰어</a><a href="xlsx-viewer.html">XLSX 뷰어</a><a href="csv-viewer.html">CSV 뷰어</a><a href="markdown-viewer.html">Markdown 뷰어</a></div>
+      <div class="footer-links"><h4>데이터 · 개발</h4><a href="json-viewer.html">JSON 뷰어</a><a href="xml-viewer.html">XML 뷰어</a><a href="zip-viewer.html">ZIP 뷰어</a><a href="svg-viewer.html">SVG 뷰어</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 WooaViewer. 모든 권리 보유.</p><div class="footer-bottom-links"><a href="privacy.html">개인정보처리방침</a><a href="about.html">소개</a></div></div>
+    <p class="coupang-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+  </div>
+</footer>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const csvWrap = document.getElementById('csvWrap');
+const csvTable = document.getElementById('csvTable');
+const errorMsg = document.getElementById('errorMsg');
+const csvToolbar = document.getElementById('csvToolbar');
+const csvStats = document.getElementById('csvStats');
+
+let allRows = [];
+let headers = [];
+let sortColIdx = -1;
+let sortAsc = true;
+
+function switchMode(m) {
+  const up = m === 'upload';
+  document.getElementById('uploadSection').style.display = up ? 'block' : 'none';
+  document.getElementById('pasteSection').style.display = up ? 'none' : 'block';
+  document.getElementById('tabUpload').classList.toggle('active', up);
+  document.getElementById('tabPaste').classList.toggle('active', !up);
+  csvWrap.style.display = 'none';
+  csvToolbar.style.display = 'none';
+}
+
+fileInput.addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+});
+
+function loadFile(file) {
+  const reader = new FileReader();
+  reader.onload = e => parseCSV(e.target.result, file.name, file.size);
+  reader.readAsText(file, 'UTF-8');
+}
+
+function parseFromInput() {
+  const text = document.getElementById('csvInput').value.trim();
+  if (!text) return;
+  parseCSV(text, '입력', new Blob([text]).size);
+}
+
+function getDelimiter() {
+  return document.getElementById('delimSelect').value;
+}
+
+function parseCSV(text, source, size) {
+  errorMsg.style.display = 'none';
+  const delim = getDelimiter();
+  const result = Papa.parse(text, {
+    delimiter: delim,
+    skipEmptyLines: true
+  });
+  if (result.errors.length && result.data.length === 0) {
+    errorMsg.textContent = 'CSV 파싱 오류: ' + result.errors[0].message;
+    errorMsg.style.display = 'block';
+    return;
+  }
+  if (!result.data.length) {
+    errorMsg.textContent = '데이터가 없습니다.';
+    errorMsg.style.display = 'block';
+    return;
+  }
+  headers = result.data[0].map(h => String(h));
+  allRows = result.data.slice(1).map(row => {
+    while (row.length < headers.length) row.push('');
+    return row.map(c => String(c));
+  });
+  sortColIdx = -1;
+  sortAsc = true;
+  const kb = (size / 1024).toFixed(1);
+  csvStats.dataset.source = source;
+  csvStats.dataset.kb = kb;
+  renderTable(allRows);
+  csvWrap.style.display = 'block';
+  csvToolbar.style.display = 'flex';
+  document.getElementById('csvSearch').value = '';
+  csvWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateStats(filtered) {
+  const source = csvStats.dataset.source || '';
+  const kb = csvStats.dataset.kb || '0';
+  csvStats.textContent = `${source} · ${kb} KB · ${headers.length}열 · ${filtered}행`;
+}
+
+function renderTable(rows) {
+  const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  let html = '<thead><tr>';
+  headers.forEach((h, i) => {
+    let cls = '';
+    if (i === sortColIdx) cls = sortAsc ? 'sort-asc' : 'sort-desc';
+    html += `<th class="${cls}" onclick="sortByCol(${i})">${esc(h)}<span class="sort-icon"></span></th>`;
+  });
+  html += '</tr></thead><tbody>';
+  if (rows.length === 0) {
+    html += `<tr><td colspan="${headers.length}" class="csv-no-data">검색 결과가 없습니다.</td></tr>`;
+  } else {
+    rows.forEach(row => {
+      html += '<tr>';
+      headers.forEach((_, i) => {
+        html += `<td title="${esc(row[i] || '')}">${esc(row[i] || '')}</td>`;
+      });
+      html += '</tr>';
+    });
+  }
+  html += '</tbody>';
+  csvTable.innerHTML = html;
+  updateStats(rows.length);
+}
+
+function sortByCol(idx) {
+  if (sortColIdx === idx) {
+    sortAsc = !sortAsc;
+  } else {
+    sortColIdx = idx;
+    sortAsc = true;
+  }
+  const query = document.getElementById('csvSearch').value.toLowerCase();
+  let rows = query ? allRows.filter(r => r.some(c => c.toLowerCase().includes(query))) : [...allRows];
+  rows.sort((a, b) => {
+    const av = a[idx] || '', bv = b[idx] || '';
+    const an = parseFloat(av), bn = parseFloat(bv);
+    if (!isNaN(an) && !isNaN(bn)) return sortAsc ? an - bn : bn - an;
+    return sortAsc ? av.localeCompare(bv, 'ko') : bv.localeCompare(av, 'ko');
+  });
+  renderTable(rows);
+}
+
+function filterTable(query) {
+  query = query.toLowerCase();
+  let rows = query ? allRows.filter(r => r.some(c => c.toLowerCase().includes(query))) : [...allRows];
+  if (sortColIdx >= 0) {
+    rows.sort((a, b) => {
+      const av = a[sortColIdx] || '', bv = b[sortColIdx] || '';
+      const an = parseFloat(av), bn = parseFloat(bv);
+      if (!isNaN(an) && !isNaN(bn)) return sortAsc ? an - bn : bn - an;
+      return sortAsc ? av.localeCompare(bv, 'ko') : bv.localeCompare(av, 'ko');
+    });
+  }
+  renderTable(rows);
+}
+
+function toggleFullscreen() {
+  csvWrap.classList.toggle('fullscreen');
+  const btn = document.querySelector('.fullscreen-btn');
+  btn.textContent = csvWrap.classList.contains('fullscreen') ? '전체화면 닫기' : '전체화면';
+}
+</script>
+<script src="js/pwa-install.js"></script>
+</body>
+</html>
