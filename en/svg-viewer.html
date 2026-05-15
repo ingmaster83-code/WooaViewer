@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="7396a327607b884b9bef1283dfd3a5c6115a2b50">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG Viewer Free Online – Preview SVG Files, View Source & Convert to PNG | WooaViewer</title>
+  <meta name="description" content="Upload or paste SVG code to preview it instantly. Supports zoom/pan, PNG conversion download, and SVG source code viewing. Perfect for icons and vector images. Free, no server upload.">
+  <meta name="keywords" content="SVG viewer, open SVG file, SVG preview, SVG to PNG, online SVG viewer, free SVG viewer, SVG source viewer, SVG renderer, SVG icon viewer, SVG vector viewer">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/en/svg-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/svg-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/svg-viewer.html">
+  <link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/svg-viewer.html">
+  <meta property="og:title" content="SVG Viewer Free Online – Preview SVG, View Source & Convert to PNG | WooaViewer">
+  <meta property="og:description" content="Preview SVG files, view source code, convert to PNG and download. Zoom/pan supported. Free, no server upload.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/en/svg-viewer.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"SVG 뷰어","url":"https://wooaviewer.wooahouse.com/en/svg-viewer.html","description":"SVG 파일 미리보기, 소스 확인, PNG 변환 다운로드를 제공하는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .mode-tabs { display:flex; gap:0; margin-bottom:16px; border:1px solid #E5E7EB; border-radius:8px; overflow:hidden; width:fit-content; }
+    .mode-tab { padding:8px 20px; border:none; background:white; font-size:0.88rem; font-weight:500; cursor:pointer; font-family:inherit; color:#6B7280; transition:all 0.15s; }
+    .mode-tab.active { background:#0284C7; color:white; }
+    .mode-tab:not(:last-child) { border-right:1px solid #E5E7EB; }
+    .svg-textarea { width:100%; min-height:200px; padding:14px; border:2px solid #E5E7EB; border-radius:10px; font-family:'Courier New',monospace; font-size:0.85rem; line-height:1.5; resize:vertical; outline:none; color:#1A1A2E; background:white; box-sizing:border-box; }
+    .svg-textarea:focus { border-color:#0284C7; }
+    .parse-btn { display:inline-block; background:#0284C7; color:white; padding:10px 24px; border-radius:8px; font-weight:600; cursor:pointer; border:none; font-size:0.9rem; font-family:inherit; margin-top:10px; }
+    .parse-btn:hover { background:#0369A1; }
+    .svg-toolbar { display:none; align-items:center; gap:8px; flex-wrap:wrap; padding:10px 14px; background:#F3F4F6; border-radius:10px; margin-top:16px; }
+    .svg-info { font-size:0.82rem; color:#6B7280; flex:1; }
+    .svg-tb-btn { padding:5px 12px; border-radius:6px; border:1px solid #E5E7EB; background:white; font-size:0.8rem; font-weight:600; cursor:pointer; font-family:inherit; color:#374151; transition:all 0.15s; }
+    .svg-tb-btn:hover { background:#0284C7; color:white; border-color:#0284C7; }
+    .svg-zoom-select { padding:5px 8px; border:1px solid #E5E7EB; border-radius:6px; font-size:0.8rem; font-family:inherit; outline:none; cursor:pointer; }
+    .svg-zoom-select:focus { border-color:#0284C7; }
+    .svg-preview-wrap { display:none; background:white; border-radius:10px; padding:16px; margin-top:10px; box-shadow:0 2px 12px rgba(0,0,0,.08); }
+    .svg-preview-bg-bar { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+    .svg-preview-bg-bar label { font-size:0.82rem; font-weight:600; color:#6B7280; }
+    .bg-btn { width:28px; height:28px; border-radius:6px; border:2px solid #E5E7EB; cursor:pointer; transition:border-color 0.15s; }
+    .bg-btn.active { border-color:#0284C7; }
+    .bg-btn.bg-white { background:white; }
+    .bg-btn.bg-black { background:#111; }
+    .bg-btn.bg-gray { background:#E5E7EB; }
+    .svg-canvas-area { display:flex; justify-content:center; align-items:center; padding:20px; border:1px dashed #E5E7EB; border-radius:8px; overflow:auto; min-height:180px; background:white; transition:background 0.2s; }
+    .svg-canvas-area img { max-width:100%; display:block; transition:transform 0.2s; }
+    .svg-source-wrap { display:none; margin-top:10px; }
+    .svg-source-ta { width:100%; min-height:180px; padding:12px; border:1px solid #E5E7EB; border-radius:8px; font-family:'Courier New',monospace; font-size:0.8rem; line-height:1.5; resize:vertical; background:#F9FAFB; color:#374151; outline:none; box-sizing:border-box; }
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="psd-viewer.html">PSD</a><a href="heic-viewer.html">HEIC</a>
+      <a href="json-viewer.html">JSON</a><a href="csv-viewer.html">CSV</a>
+      <a href="index.html">All Tools ›</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <a href="../svg-viewer.html">KO</a>
+        <span>|</span>
+        <a href="svg-viewer.html" class="active">EN</a>
+      </div>
+      <a href="../about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">About</a>
+    </div>
+  </div>
+</header>
+
+<div class="our-sites-bar">
+  <span class="our-sites-label">WooaHouse Services</span>
+  <div class="our-sites-links">
+    <a href="https://wooahouse.com/" target="_blank" rel="noopener">🔗 WooaHouse</a>
+    <a href="https://pdfkit.wooahouse.com/" target="_blank" rel="noopener">📄 WooaPDF</a>
+    <a href="https://imagekit.wooahouse.com/" target="_blank" rel="noopener">🖼️ WooaImage</a>
+    <a href="https://colorkit.wooahouse.com/" target="_blank" rel="noopener">🎨 WooaColor</a>
+    <a href="https://textkit.wooahouse.com/" target="_blank" rel="noopener">✏️ WooaText</a>
+    <a href="https://qrkit.wooahouse.com/" target="_blank" rel="noopener">📱 WooaQR</a>
+    <a href="https://calckit.wooahouse.com/" target="_blank" rel="noopener">🧮 WooaCalc</a>
+    <a href="https://fontkit.wooahouse.com/" target="_blank" rel="noopener">🔤 WooaFont</a>
+    <a href="https://mactools.wooahouse.com/" target="_blank" rel="noopener">🍎 WooaMac</a>
+    <a href="https://pctools.wooahouse.com/" target="_blank" rel="noopener">🖥️ WooaPC</a>
+    <a href="https://vskit.wooahouse.com/" target="_blank" rel="noopener">💻 WooaVS</a>
+    <a href="https://wooaaudio.wooahouse.com/" target="_blank" rel="noopener">🎵 WooaAudio</a>
+    <a href="https://wooaviewer.wooahouse.com/en/" target="_blank" rel="noopener" class="active">🔍 WooaViewer</a>
+    <a href="https://wooadev.wooahouse.com/" target="_blank" rel="noopener">🛠️ WooaDev</a>
+  </div>
+</div>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>SVG Viewer</span></div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">🔷</span>
+    <h1>SVG Viewer – Preview & Convert SVG Free Online</h1>
+    <p>Upload or paste an SVG file to preview it. Zoom and pan, view source code, and download as PNG. Everything runs in your browser.</p>
+  </div>
+
+  <div class="mode-tabs">
+    <button class="mode-tab active" id="tabUpload" onclick="switchMode('upload')">Upload File</button>
+    <button class="mode-tab" id="tabCode" onclick="switchMode('code')">코드 입력</button>
+  </div>
+
+  <div id="uploadSection">
+    <div class="drop-zone" id="dropZone">
+      <span class="drop-zone-icon">🔷</span>
+      <h3>SVG Drop your file here</h3>
+      <p>.svg 형식을 지원합니다</p>
+      <label class="btn-select">Select File<input type="file" id="fileInput" accept=".svg" style="display:none"></label>
+    </div>
+  </div>
+
+  <div id="codeSection" style="display:none">
+    <textarea class="svg-textarea" id="svgInput" placeholder='<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">&#10;  <circle cx="50" cy="50" r="40" fill="#0284C7"/>&#10;</svg>'></textarea>
+    <button class="parse-btn" onclick="renderFromCode()">미리보기</button>
+  </div>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div class="svg-toolbar" id="svgToolbar">
+    <span class="svg-info" id="svgInfo"></span>
+    <label style="font-size:0.82rem;font-weight:600;color:#6B7280;">확대:</label>
+    <select class="svg-zoom-select" id="zoomSelect" onchange="applyZoom(this.value)">
+      <option value="fit">Fit</option>
+      <option value="50">50%</option>
+      <option value="100" selected>100%</option>
+      <option value="150">150%</option>
+      <option value="200">200%</option>
+    </select>
+    <button class="svg-tb-btn" onclick="toggleSource()">소스 보기</button>
+    <button class="svg-tb-btn" id="downloadBtn" onclick="downloadPNG()">PNG 다운로드</button>
+    <button class="svg-tb-btn" onclick="downloadSVG()">SVG 다운로드</button>
+  </div>
+
+  <div class="svg-preview-wrap" id="svgPreviewWrap">
+    <div class="svg-preview-bg-bar">
+      <label>배경:</label>
+      <button class="bg-btn bg-white active" title="흰색" onclick="setBg('white',this)"></button>
+      <button class="bg-btn bg-black" title="검정" onclick="setBg('#111',this)"></button>
+      <button class="bg-btn bg-gray" title="회색" onclick="setBg('#E5E7EB',this)"></button>
+    </div>
+    <div class="svg-canvas-area" id="svgCanvasArea">
+      <img id="svgImg" alt="SVG 미리보기">
+    </div>
+  </div>
+
+  <div class="svg-source-wrap" id="svgSourceWrap">
+    <textarea class="svg-source-ta" id="svgSourceTa" readonly></textarea>
+  </div>
+
+</div>
+
+<aside class="tool-sidebar">
+  <div class="ad-card">
+    <div class="ad-card-label">AD</div>
+    <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="1419180025" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="ad-card">
+    
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><span class="logo-footer">WooaViewer</span><p>Open various file types safely in your browser — no installation needed.</p></div>
+      <div class="footer-links"><h4>이미지 뷰어</h4><a href="psd-viewer.html">PSD Viewer</a><a href="heic-viewer.html">HEIC Viewer</a><a href="svg-viewer.html">SVG Viewer</a></div>
+      <div class="footer-links"><h4>Data & Dev Tools</h4><a href="json-viewer.html">JSON Viewer</a><a href="xml-viewer.html">XML Viewer</a><a href="csv-viewer.html">CSV Viewer</a><a href="zip-viewer.html">ZIP Viewer</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 WooaViewer. All rights reserved.</p><div class="footer-bottom-links"><a href="../privacy.html">Privacy Policy</a><a href="../about.html">About</a></div></div>
+    
+  </div>
+</footer>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const errorMsg = document.getElementById('errorMsg');
+const svgToolbar = document.getElementById('svgToolbar');
+const svgPreviewWrap = document.getElementById('svgPreviewWrap');
+const svgImg = document.getElementById('svgImg');
+const svgInfo = document.getElementById('svgInfo');
+const svgSourceWrap = document.getElementById('svgSourceWrap');
+const svgSourceTa = document.getElementById('svgSourceTa');
+
+let currentSVGText = '';
+let currentFileName = 'image.svg';
+let currentZoom = 'fit';
+let sourceVisible = false;
+
+function switchMode(m) {
+  const up = m === 'upload';
+  document.getElementById('uploadSection').style.display = up ? 'block' : 'none';
+  document.getElementById('codeSection').style.display = up ? 'none' : 'block';
+  document.getElementById('tabUpload').classList.toggle('active', up);
+  document.getElementById('tabCode').classList.toggle('active', !up);
+  resetUI();
+}
+
+function resetUI() {
+  svgToolbar.style.display = 'none';
+  svgPreviewWrap.style.display = 'none';
+  svgSourceWrap.style.display = 'none';
+  sourceVisible = false;
+  errorMsg.style.display = 'none';
+}
+
+fileInput.addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+});
+
+function loadFile(file) {
+  currentFileName = file.name.replace(/\.svg$/i, '');
+  const reader = new FileReader();
+  reader.onload = e => renderSVG(e.target.result, file.size);
+  reader.readAsText(file, 'UTF-8');
+}
+
+function renderFromCode() {
+  const text = document.getElementById('svgInput').value.trim();
+  if (!text) return;
+  renderSVG(text, new Blob([text]).size);
+}
+
+function sanitizeSVG(svgText) {
+  return svgText
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/on\w+\s*=\s*["'][^"']*["']/gi, '')
+    .replace(/javascript:/gi, '');
+}
+
+function parseSVGDimensions(text) {
+  const widthMatch = text.match(/\bwidth\s*=\s*["']([^"']+)["']/i);
+  const heightMatch = text.match(/\bheight\s*=\s*["']([^"']+)["']/i);
+  const viewBoxMatch = text.match(/viewBox\s*=\s*["']([^"']+)["']/i);
+  return {
+    width: widthMatch ? widthMatch[1] : null,
+    height: heightMatch ? heightMatch[1] : null,
+    viewBox: viewBoxMatch ? viewBoxMatch[1] : null
+  };
+}
+
+function renderSVG(text, size) {
+  errorMsg.style.display = 'none';
+  if (!text.trim().match(/<svg/i)) {
+    errorMsg.textContent = 'SVG 형식이 아닙니다. <svg ...> 태그가 필요합니다.';
+    errorMsg.style.display = 'block';
+    return;
+  }
+  const sanitized = sanitizeSVG(text);
+  currentSVGText = sanitized;
+
+  const dims = parseSVGDimensions(sanitized);
+  const sizeStr = size < 1024 ? size + ' B' : (size / 1024).toFixed(1) + ' KB';
+  let infoText = sizeStr;
+  if (dims.width && dims.height) infoText += ` · ${dims.width} × ${dims.height}`;
+  if (dims.viewBox) infoText += ` · viewBox: ${dims.viewBox}`;
+  svgInfo.textContent = infoText;
+
+  const blob = new Blob([sanitized], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  svgImg.src = url;
+  svgImg.onload = () => { applyZoom(currentZoom); };
+
+  svgToolbar.style.display = 'flex';
+  svgPreviewWrap.style.display = 'block';
+  svgSourceTa.value = sanitized;
+  if (sourceVisible) svgSourceWrap.style.display = 'block';
+
+  svgPreviewWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function applyZoom(val) {
+  currentZoom = val;
+  if (val === 'fit') {
+    svgImg.style.width = '100%';
+    svgImg.style.height = 'auto';
+    svgImg.style.maxWidth = '100%';
+  } else {
+    const pct = parseInt(val);
+    svgImg.style.width = '';
+    svgImg.style.height = '';
+    svgImg.style.maxWidth = pct + '%';
+    svgImg.style.transform = '';
+  }
+}
+
+function setBg(color, btn) {
+  document.getElementById('svgCanvasArea').style.background = color;
+  document.querySelectorAll('.bg-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function toggleSource() {
+  sourceVisible = !sourceVisible;
+  svgSourceWrap.style.display = sourceVisible ? 'block' : 'none';
+  document.querySelector('.svg-tb-btn[onclick="toggleSource()"]').textContent = sourceVisible ? '소스 닫기' : '소스 보기';
+}
+
+function downloadPNG() {
+  if (!currentSVGText) return;
+  const img = new Image();
+  const blob = new Blob([currentSVGText], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  img.onload = () => {
+    const w = img.naturalWidth || 800;
+    const h = img.naturalHeight || 600;
+    const canvas = document.createElement('canvas');
+    const scale = w < 100 ? 4 : w < 400 ? 2 : 1;
+    canvas.width = w * scale;
+    canvas.height = h * scale;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(scale, scale);
+    ctx.drawImage(img, 0, 0);
+    URL.revokeObjectURL(url);
+    const a = document.createElement('a');
+    a.href = canvas.toDataURL('image/png');
+    a.download = (currentFileName || 'image') + '.png';
+    a.click();
+  };
+  img.src = url;
+}
+
+function downloadSVG() {
+  if (!currentSVGText) return;
+  const blob = new Blob([currentSVGText], { type: 'image/svg+xml;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = (currentFileName || 'image') + '.svg';
+  a.click();
+}
+</script>
+<script src="../js/pwa-install.js"></script>
+</body>
+</html>

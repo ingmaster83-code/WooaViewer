@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="7396a327607b884b9bef1283dfd3a5c6115a2b50">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DXF Viewer Free Online – Open CAD Drawing Files Without AutoCAD | WooaViewer</title>
+  <meta name="description" content="Open .dxf CAD drawing files for free in your browser without AutoCAD. Supports zoom and pan for drawing navigation. Files never sent to a server — 100% private.">
+  <meta name="keywords" content="DXF viewer, CAD viewer, drawing viewer, open DXF, AutoCAD viewer, free CAD viewer, online DXF viewer, CAD drawing viewer, DXF online viewer, free drawing viewer">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/en/dxf-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/dxf-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/dxf-viewer.html">
+  <link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/dxf-viewer.html">
+  <meta property="og:title" content="DXF Viewer Free Online – Open CAD Drawings Without AutoCAD | WooaViewer">
+  <meta property="og:description" content="Open .dxf CAD drawing files in your browser for free. Zoom and pan supported. Files never sent to a server.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/en/dxf-viewer.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"DXF 뷰어","url":"https://wooaviewer.wooahouse.com/en/dxf-viewer.html","description":"AutoCAD 없이 .dxf 도면 파일을 브라우저에서 무료로 열어보는 온라인 CAD 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .dxf-container { display:none; margin-top:20px; }
+    .dxf-toolbar {
+      display:flex; align-items:center; gap:10px; padding:10px 14px;
+      background:#F3F4F6; border-radius:10px 10px 0 0; flex-wrap:wrap;
+    }
+    .dxf-file-name { font-size:0.82rem; color:#6B7280; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .dxf-btn {
+      padding:6px 14px; border-radius:6px; border:1px solid #E5E7EB; background:white;
+      font-size:0.82rem; font-weight:600; cursor:pointer; font-family:inherit; color:#1A1A2E; transition:all 0.15s;
+    }
+    .dxf-btn:hover { background:#0284C7; color:white; border-color:#0284C7; }
+    #dxfCanvas {
+      width:100%; height:600px; background:white;
+      border:1px solid #E5E7EB; border-top:none; border-radius:0 0 10px 10px;
+      overflow:hidden; position:relative; cursor:grab;
+    }
+    #dxfCanvas:active { cursor:grabbing; }
+    #dxfCanvas svg { width:100%; height:100%; }
+    .dxf-info { font-size:0.78rem; color:#6B7280; }
+    .dwg-notice {
+      display:flex; align-items:flex-start; gap:10px; padding:12px 16px;
+      background:#FEF9C3; border:1px solid #FDE047; border-radius:8px;
+      font-size:0.85rem; color:#854D0E; margin-top:12px;
+    }
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a>
+      <a href="xlsx-viewer.html">XLSX</a>
+      <a href="dxf-viewer.html">DXF</a>
+      <a href="psd-viewer.html">PSD</a>
+      <a href="stl-viewer.html">STL</a>
+      <a href="index.html">All Tools ›</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <a href="../dxf-viewer.html">KO</a>
+        <span>|</span>
+        <a href="dxf-viewer.html" class="active">EN</a>
+      </div>
+      <a href="../about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">About</a>
+    </div>
+  </div>
+</header>
+
+<div class="our-sites-bar">
+  <span class="our-sites-label">WooaHouse Services</span>
+  <div class="our-sites-links">
+    <a href="https://wooahouse.com/" target="_blank" rel="noopener">🔗 WooaHouse</a>
+    <a href="https://pdfkit.wooahouse.com/" target="_blank" rel="noopener">📄 WooaPDF</a>
+    <a href="https://imagekit.wooahouse.com/" target="_blank" rel="noopener">🖼️ WooaImage</a>
+    <a href="https://colorkit.wooahouse.com/" target="_blank" rel="noopener">🎨 WooaColor</a>
+    <a href="https://textkit.wooahouse.com/" target="_blank" rel="noopener">✏️ WooaText</a>
+    <a href="https://qrkit.wooahouse.com/" target="_blank" rel="noopener">📱 WooaQR</a>
+    <a href="https://calckit.wooahouse.com/" target="_blank" rel="noopener">🧮 WooaCalc</a>
+    <a href="https://fontkit.wooahouse.com/" target="_blank" rel="noopener">🔤 WooaFont</a>
+    <a href="https://mactools.wooahouse.com/" target="_blank" rel="noopener">🍎 WooaMac</a>
+    <a href="https://pctools.wooahouse.com/" target="_blank" rel="noopener">🖥️ WooaPC</a>
+    <a href="https://vskit.wooahouse.com/" target="_blank" rel="noopener">💻 WooaVS</a>
+    <a href="https://wooaaudio.wooahouse.com/" target="_blank" rel="noopener">🎵 WooaAudio</a>
+    <a href="https://wooaviewer.wooahouse.com/en/" target="_blank" rel="noopener" class="active">🔍 WooaViewer</a>
+    <a href="https://wooadev.wooahouse.com/" target="_blank" rel="noopener">🛠️ WooaDev</a>
+  </div>
+</div>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb">
+    <a href="index.html">WooaViewer</a>
+    <span>›</span>
+    <span>DXF Viewer</span>
+  </div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">📐</span>
+    <h1>DXF Viewer – Open CAD Drawings Free Online</h1>
+    <p>Upload a .dxf file to view CAD drawings without AutoCAD. Zoom and pan to explore the drawing. All processing happens in your browser.</p>
+  </div>
+
+  <div class="drop-zone" id="dropZone">
+    <span class="drop-zone-icon">📐</span>
+    <h3>DXF Drop your file here</h3>
+    <p>.dxf 형식만 지원합니다 (DWG는 미지원)</p>
+    <label class="btn-select">
+      Select File
+      <input type="file" id="fileInput" accept=".dxf" style="display:none">
+    </label>
+  </div>
+
+  <div class="dwg-notice">
+    💡 <span><strong>DWG 파일</strong>은 Autodesk 독점 포맷으로 브라우저 지원이 불가합니다. AutoCAD에서 <strong>다른 이름으로 저장 → DXF</strong>로 변환 후 사용해주세요.</span>
+  </div>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div class="dxf-container" id="dxfContainer">
+    <div class="dxf-toolbar">
+      <span class="dxf-file-name" id="dxfFileName"></span>
+      <span class="dxf-info" id="dxfInfo"></span>
+      <button class="dxf-btn" onclick="zoomFit()">전체 보기</button>
+      <button class="dxf-btn" onclick="zoomIn()">확대 +</button>
+      <button class="dxf-btn" onclick="zoomOut()">축소 -</button>
+    </div>
+    <div id="dxfCanvas"></div>
+  </div>
+
+</div>
+
+<aside class="tool-sidebar">
+  <div class="ad-card">
+    <div class="ad-card-label">AD</div>
+    <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="1419180025" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="ad-card">
+    
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><span class="logo-footer">WooaViewer</span><p>Open various file types safely in your browser — no installation needed.</p></div>
+      <div class="footer-links">
+        <h4>Document Viewer</h4>
+        <a href="docx-viewer.html">DOCX Viewer</a><a href="xlsx-viewer.html">XLSX Viewer</a>
+        <a href="markdown-viewer.html">Markdown Viewer</a><a href="epub-viewer.html">EPUB Viewer</a>
+      </div>
+      <div class="footer-links">
+        <h4>Design & 3D & Dev</h4>
+        <a href="dxf-viewer.html">DXF Viewer</a><a href="psd-viewer.html">PSD Viewer</a>
+        <a href="stl-viewer.html">STL Viewer</a><a href="json-viewer.html">JSON Viewer</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 WooaViewer. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="../privacy.html">Privacy Policy</a><a href="../about.html">About</a></div>
+    </div>
+    
+  </div>
+</footer>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const dxfContainer = document.getElementById('dxfContainer');
+const dxfCanvas = document.getElementById('dxfCanvas');
+const errorMsg = document.getElementById('errorMsg');
+
+let scale = 1, panX = 0, panY = 0;
+let svgW = 1, svgH = 1;
+let isPanning = false, startX = 0, startY = 0, startPanX = 0, startPanY = 0;
+
+fileInput.addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+});
+
+function parseDXF(text) {
+  const lines = text.replace(/\r\n/g,'\n').replace(/\r/g,'\n').split('\n');
+  const pairs = [];
+  for (let i = 0; i + 1 < lines.length; i += 2) {
+    const code = parseInt(lines[i].trim(), 10);
+    if (!isNaN(code)) pairs.push([code, lines[i+1].trim()]);
+  }
+
+  const entities = [];
+  let inEntities = false;
+  let entity = null;
+
+  function push() {
+    if (entity && ['LINE','CIRCLE','ARC','LWPOLYLINE','POLYLINE','SPLINE'].includes(entity.type))
+      entities.push(entity);
+  }
+
+  function newEntity(type) {
+    push();
+    entity = { type, x:0, y:0, x2:0, y2:0, radius:0, startAngle:0, endAngle:360, vertices:[], closed:false };
+  }
+
+  for (const [code, val] of pairs) {
+    if (code === 2 && val === 'ENTITIES') { inEntities = true; continue; }
+    if (!inEntities) continue;
+    if (code === 0) {
+      if (val === 'ENDSEC') { push(); break; }
+      newEntity(val); continue;
+    }
+    if (!entity) continue;
+    if (code === 10) {
+      if (entity.type === 'LWPOLYLINE' || entity.type === 'POLYLINE') entity._px = parseFloat(val);
+      else entity.x = parseFloat(val);
+    } else if (code === 20) {
+      if ((entity.type === 'LWPOLYLINE' || entity.type === 'POLYLINE') && entity._px !== undefined) {
+        entity.vertices.push({ x: entity._px, y: parseFloat(val) });
+        delete entity._px;
+      } else entity.y = parseFloat(val);
+    } else if (code === 11) entity.x2 = parseFloat(val);
+    else if (code === 21) entity.y2 = parseFloat(val);
+    else if (code === 40) entity.radius = parseFloat(val);
+    else if (code === 50) entity.startAngle = parseFloat(val);
+    else if (code === 51) entity.endAngle = parseFloat(val);
+    else if (code === 70 && entity.type === 'LWPOLYLINE') entity.closed = (parseInt(val) & 1) === 1;
+  }
+  return entities;
+}
+
+function buildSVG(entities) {
+  let minX=Infinity, minY=Infinity, maxX=-Infinity, maxY=-Infinity;
+  const ex = (x,y) => { if(x<minX)minX=x; if(x>maxX)maxX=x; if(y<minY)minY=y; if(y>maxY)maxY=y; };
+
+  for (const e of entities) {
+    if (e.type==='LINE') { ex(e.x,e.y); ex(e.x2,e.y2); }
+    else if (e.type==='CIRCLE'||e.type==='ARC') { ex(e.x-e.radius,e.y-e.radius); ex(e.x+e.radius,e.y+e.radius); }
+    else if ((e.type==='LWPOLYLINE'||e.type==='POLYLINE') && e.vertices.length) e.vertices.forEach(v=>ex(v.x,v.y));
+  }
+
+  if (!isFinite(minX)) return { svg:'<text x="50" y="50" font-size="14" fill="#999">표시할 도형이 없습니다</text>', w:200, h:100 };
+
+  const pad = Math.max((maxX-minX)*0.05, (maxY-minY)*0.05, 1);
+  minX-=pad; minY-=pad; maxX+=pad; maxY+=pad;
+  const W = maxX-minX||1, H = maxY-minY||1;
+  const sw = W*0.0015;
+
+  const tx = x => x - minX;
+  const ty = y => H - (y - minY);
+
+  const deg2rad = d => d * Math.PI / 180;
+  const parts = [];
+
+  for (const e of entities) {
+    if (e.type==='LINE') {
+      parts.push(`<line x1="${tx(e.x).toFixed(4)}" y1="${ty(e.y).toFixed(4)}" x2="${tx(e.x2).toFixed(4)}" y2="${ty(e.y2).toFixed(4)}" stroke="#1A1A2E" stroke-width="${sw.toFixed(4)}" fill="none"/>`);
+    } else if (e.type==='CIRCLE') {
+      parts.push(`<circle cx="${tx(e.x).toFixed(4)}" cy="${ty(e.y).toFixed(4)}" r="${e.radius.toFixed(4)}" stroke="#1A1A2E" stroke-width="${sw.toFixed(4)}" fill="none"/>`);
+    } else if (e.type==='ARC') {
+      const sa = deg2rad(e.startAngle), ea = deg2rad(e.endAngle);
+      const x1 = tx(e.x + e.radius*Math.cos(sa)), y1 = ty(e.y + e.radius*Math.sin(sa));
+      const x2 = tx(e.x + e.radius*Math.cos(ea)), y2 = ty(e.y + e.radius*Math.sin(ea));
+      let span = e.endAngle - e.startAngle; if (span<=0) span+=360;
+      const large = span>180?1:0;
+      parts.push(`<path d="M ${x1.toFixed(4)} ${y1.toFixed(4)} A ${e.radius.toFixed(4)} ${e.radius.toFixed(4)} 0 ${large} 1 ${x2.toFixed(4)} ${y2.toFixed(4)}" stroke="#1A1A2E" stroke-width="${sw.toFixed(4)}" fill="none"/>`);
+    } else if ((e.type==='LWPOLYLINE'||e.type==='POLYLINE') && e.vertices.length>=2) {
+      const pts = e.vertices.map(v=>`${tx(v.x).toFixed(4)},${ty(v.y).toFixed(4)}`).join(' ');
+      const tag = e.closed ? 'polygon' : 'polyline';
+      parts.push(`<${tag} points="${pts}" stroke="#1A1A2E" stroke-width="${sw.toFixed(4)}" fill="none"/>`);
+    }
+  }
+
+  return { svg: parts.join('\n'), w: W, h: H };
+}
+
+let baseW, baseH;
+
+function loadFile(file) {
+  errorMsg.style.display = 'none';
+  const reader = new FileReader();
+  reader.onload = e => {
+    const text = e.target.result;
+    const entities = parseDXF(text);
+    if (!entities.length) {
+      errorMsg.textContent = '도형을 찾을 수 없습니다. 올바른 DXF 파일인지 확인해주세요.';
+      errorMsg.style.display = 'block'; return;
+    }
+    const { svg, w, h } = buildSVG(entities);
+    baseW = w; baseH = h;
+    dxfCanvas.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w.toFixed(4)} ${h.toFixed(4)}" id="dxfSvg" style="width:100%;height:100%"><rect width="${w}" height="${h}" fill="white"/>${svg}</svg>`;
+    document.getElementById('dxfFileName').textContent = file.name;
+    document.getElementById('dxfInfo').textContent = `도형 ${entities.length}개`;
+    dropZone.style.display = 'none';
+    dxfContainer.style.display = 'block';
+    scale=1; panX=0; panY=0;
+    setupPan();
+  };
+  reader.onerror = () => { errorMsg.textContent = 'Cannot read file.'; errorMsg.style.display = 'block'; };
+  reader.readAsText(file, 'UTF-8');
+}
+
+function applyTransform() {
+  const svg = document.getElementById('dxfSvg');
+  if (!svg) return;
+  svg.style.transform = `translate(${panX}px,${panY}px) scale(${scale})`;
+  svg.style.transformOrigin = '0 0';
+}
+
+function zoomFit() { scale=1; panX=0; panY=0; applyTransform(); }
+function zoomIn() { scale = Math.min(scale*1.3, 20); applyTransform(); }
+function zoomOut() { scale = Math.max(scale/1.3, 0.1); applyTransform(); }
+
+function setupPan() {
+  dxfCanvas.addEventListener('wheel', e => {
+    e.preventDefault();
+    const factor = e.deltaY < 0 ? 1.15 : 1/1.15;
+    scale = Math.min(Math.max(scale*factor, 0.1), 20);
+    applyTransform();
+  }, { passive: false });
+
+  dxfCanvas.addEventListener('mousedown', e => {
+    isPanning=true; startX=e.clientX; startY=e.clientY; startPanX=panX; startPanY=panY;
+  });
+  window.addEventListener('mousemove', e => {
+    if (!isPanning) return;
+    panX = startPanX + (e.clientX - startX);
+    panY = startPanY + (e.clientY - startY);
+    applyTransform();
+  });
+  window.addEventListener('mouseup', () => isPanning=false);
+
+  dxfCanvas.addEventListener('touchstart', e => {
+    if (e.touches.length===1) { isPanning=true; startX=e.touches[0].clientX; startY=e.touches[0].clientY; startPanX=panX; startPanY=panY; }
+  });
+  dxfCanvas.addEventListener('touchmove', e => {
+    if (!isPanning||e.touches.length!==1) return;
+    panX=startPanX+(e.touches[0].clientX-startX); panY=startPanY+(e.touches[0].clientY-startY);
+    applyTransform(); e.preventDefault();
+  }, { passive:false });
+  dxfCanvas.addEventListener('touchend', () => isPanning=false);
+}
+</script>
+<script src="../js/pwa-install.js"></script>
+</body>
+</html>
