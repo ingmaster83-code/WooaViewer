@@ -52,6 +52,12 @@
     .svg-canvas-area img { max-width:100%; display:block; transition:transform 0.2s; }
     .svg-source-wrap { display:none; margin-top:10px; }
     .svg-source-ta { width:100%; min-height:180px; padding:12px; border:1px solid #E5E7EB; border-radius:8px; font-family:'Courier New',monospace; font-size:0.8rem; line-height:1.5; resize:vertical; background:#F9FAFB; color:#374151; outline:none; box-sizing:border-box; }
+  
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
   </style>
 </head>
 <body>
@@ -64,6 +70,14 @@
       <a href="json-viewer.html">JSON</a><a href="csv-viewer.html">CSV</a>
       <a href="index.html">전체 도구 ›</a>
     </nav>
+  <div class="header-right">
+    <div class="lang-switcher">
+      <a href="svg-viewer.html" class="active">KO</a>
+      <span>|</span>
+      <a href="en/svg-viewer.html">EN</a>
+    </div>
+    <a href="about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">소개</a>
+    </div>
   </div>
 </header>
 

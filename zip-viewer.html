@@ -49,6 +49,12 @@
     .zip-preview-text { width:100%; background:#F9FAFB; border:1px solid #E5E7EB; border-radius:6px; padding:12px; font-family:'Courier New',monospace; font-size:0.82rem; line-height:1.6; color:#374151; resize:none; outline:none; box-sizing:border-box; min-height:200px; }
     .zip-preview-img { max-width:100%; max-height:380px; border-radius:6px; display:block; margin:0 auto; }
     .zip-icon { font-size:1rem; }
+  
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
   </style>
 </head>
 <body>
@@ -61,6 +67,14 @@
       <a href="json-viewer.html">JSON</a><a href="csv-viewer.html">CSV</a>
       <a href="index.html">전체 도구 ›</a>
     </nav>
+  <div class="header-right">
+    <div class="lang-switcher">
+      <a href="zip-viewer.html" class="active">KO</a>
+      <span>|</span>
+      <a href="en/zip-viewer.html">EN</a>
+    </div>
+    <a href="about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">소개</a>
+    </div>
   </div>
 </header>
 
