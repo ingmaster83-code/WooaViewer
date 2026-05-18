@@ -896,8 +896,10 @@ def build_page(filename, meta):
     # WooaViewer has header-right with 소개 link on some pages; insert lang-switcher
     # Replace existing header-right 소개 link or insert before </div></header>
     if 'header-right' in html:
+        # Match header-right div even when it contains nested divs (lang-switcher)
+        # Uses .*? (DOTALL) to skip over any nested content, anchors on the about link + closing </div>
         html = re.sub(
-            r'<div class="header-right">[^<]*<a href="about\.html"[^>]*>[^<]*</a>[^<]*</div>',
+            r'<div class="header-right">.*?<a href="(?:\.\.\/)?about\.html"[^>]*>[^<]*</a>\s*</div>',
             f'<div class="header-right">\n'
             f'      <div class="lang-switcher">\n'
             f'        <a href="../{filename}">KO</a>\n'
