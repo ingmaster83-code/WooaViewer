@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="7396a327607b884b9bef1283dfd3a5c6115a2b50">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diff Viewer Free Online – Compare Two Text Files, Highlight Changes | WooaViewer</title>
+  <meta name="description" content="Paste or upload two text files to compare them and highlight added, deleted, and changed lines. Filter by change type. Free, no server upload, pure browser-based comparison.">
+  <meta name="keywords" content="diff viewer, text compare, file compare, diff checker, online diff tool, free diff viewer, compare two files, text diff, code diff, diff file viewer, compare text online">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/en/diff-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/diff-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/diff-viewer.html">
+  <link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/diff-viewer.html">
+  <meta property="og:title" content="Diff Viewer Free Online – Compare Two Text Files, Highlight Changes | WooaViewer">
+  <meta property="og:description" content="Compare two text files and highlight added, deleted, and changed lines. Filter by change type. Free, no server upload.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/en/diff-viewer.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Diff 뷰어","url":"https://wooaviewer.wooahouse.com/en/diff-viewer.html","description":"두 텍스트 파일을 비교하여 차이점을 보여주는 온라인 뷰어.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .lang-switcher{display:flex;align-items:center;gap:4px}.lang-switcher a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.8rem;font-weight:600;padding:3px 8px;border-radius:12px;transition:background 0.15s}.lang-switcher a.active{color:white;background:rgba(255,255,255,0.25)}.lang-switcher a:hover{color:white;background:rgba(255,255,255,0.18)}.lang-switcher span{color:rgba(255,255,255,0.3);font-size:0.75rem}
+    .diff-inputs { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+    @media(max-width:640px){ .diff-inputs { grid-template-columns:1fr; } }
+    .diff-panel-label { font-size:0.82rem; font-weight:700; color:#6B7280; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center; }
+    .diff-textarea { width:100%; height:220px; padding:12px; border:2px solid #E5E7EB; border-radius:10px; font-family:'Courier New',monospace; font-size:0.82rem; line-height:1.5; resize:vertical; outline:none; color:#1A1A2E; background:white; box-sizing:border-box; }
+    .diff-textarea:focus { border-color:#0284C7; }
+    .diff-file-btn { padding:4px 10px; border-radius:6px; border:1px solid #E5E7EB; background:white; font-size:0.78rem; cursor:pointer; font-family:inherit; color:#374151; }
+    .diff-file-btn:hover { border-color:#0284C7; color:#0284C7; }
+    .compare-btn { display:inline-block; background:#0284C7; color:white; padding:10px 28px; border-radius:8px; font-weight:600; cursor:pointer; border:none; font-size:0.9rem; font-family:inherit; margin-bottom:16px; }
+    .compare-btn:hover { background:#0369A1; }
+    .diff-stats { background:#F3F4F6; border-radius:10px; padding:12px 16px; font-size:0.85rem; color:#374151; margin-bottom:12px; display:flex; gap:16px; flex-wrap:wrap; }
+    .stat-add { color:#16A34A; font-weight:700; }
+    .stat-del { color:#DC2626; font-weight:700; }
+    .stat-same { color:#6B7280; }
+    .diff-result { background:white; border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,.08); overflow:auto; max-height:600px; font-family:'Courier New',monospace; font-size:0.83rem; line-height:1.7; display:none; border:1px solid #E5E7EB; }
+    .diff-line { display:flex; }
+    .diff-line-num { width:48px; min-width:48px; padding:0 8px; text-align:right; font-size:0.75rem; color:#9CA3AF; background:#F9FAFB; border-right:1px solid #E5E7EB; user-select:none; display:flex; align-items:center; justify-content:flex-end; gap:4px; }
+    .diff-line-content { padding:0 12px; white-space:pre-wrap; word-break:break-all; flex:1; }
+    .diff-add { background:#DCFCE7; }
+    .diff-add .diff-line-num { background:#BBF7D0; }
+    .diff-add .diff-line-content::before { content:'+ '; color:#16A34A; font-weight:700; }
+    .diff-del { background:#FEE2E2; }
+    .diff-del .diff-line-num { background:#FECACA; }
+    .diff-del .diff-line-content::before { content:'- '; color:#DC2626; font-weight:700; }
+    .diff-same .diff-line-content::before { content:'  '; }
+    .diff-hunk { background:#EFF6FF; border-top:1px solid #BFDBFE; border-bottom:1px solid #BFDBFE; padding:4px 12px; font-size:0.78rem; color:#1D4ED8; font-weight:600; }
+    .diff-toolbar { display:flex; gap:10px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
+    .diff-tb-btn { padding:5px 12px; border-radius:6px; border:1px solid #E5E7EB; background:white; font-size:0.8rem; font-weight:600; cursor:pointer; font-family:inherit; color:#374151; transition:all 0.15s; }
+    .diff-tb-btn:hover { background:#0284C7; color:white; border-color:#0284C7; }
+    .diff-tb-btn.active { background:#0284C7; color:white; border-color:#0284C7; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="json-viewer.html">JSON</a><a href="yaml-viewer.html">YAML</a>
+      <a href="diff-viewer.html" class="active">Diff</a>
+      <a href="xml-viewer.html">XML</a><a href="csv-viewer.html">CSV</a>
+      <a href="index.html">All Tools ›</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <a href="diff-viewer.html" class="active">KO</a>
+        <span>|</span>
+        <a href="en/diff-viewer.html">EN</a>
+      </div>
+      <a href="../about.html" style="color:rgba(255,255,255,0.85);font-size:0.85rem;text-decoration:none;margin-left:8px;">About</a>
+    </div>
+  </div>
+</header>
+
+<div class="our-sites-bar"><span class="our-sites-label">WooaHouse Services</span><div class="our-sites-links"><a href="https://wooahouse.com/" target="_blank" rel="noopener">🔗 WooaHouse</a><a href="https://pdfkit.wooahouse.com/" target="_blank" rel="noopener">📄 WooaPDF</a><a href="https://imagekit.wooahouse.com/" target="_blank" rel="noopener">🖼️ WooaImage</a><a href="https://colorkit.wooahouse.com/" target="_blank" rel="noopener">🎨 WooaColor</a><a href="https://textkit.wooahouse.com/" target="_blank" rel="noopener">✏️ WooaText</a><a href="https://qrkit.wooahouse.com/" target="_blank" rel="noopener">📱 WooaQR</a><a href="https://calckit.wooahouse.com/" target="_blank" rel="noopener">🧮 WooaCalc</a><a href="https://fontkit.wooahouse.com/" target="_blank" rel="noopener">🔤 WooaFont</a><a href="https://mactools.wooahouse.com/" target="_blank" rel="noopener">🍎 WooaMac</a><a href="https://pctools.wooahouse.com/" target="_blank" rel="noopener">🖥️ WooaPC</a><a href="https://vskit.wooahouse.com/" target="_blank" rel="noopener">💻 WooaVS</a><a href="https://wooaaudio.wooahouse.com/" target="_blank" rel="noopener">🎵 WooaAudio</a><a href="https://wooaviewer.wooahouse.com/en/" target="_blank" rel="noopener" class="active">🔍 WooaViewer</a><a href="https://wooadev.wooahouse.com/" target="_blank" rel="noopener">🛠️ WooaDev</a><a href="https://wooaocr.wooahouse.com/" target="_blank" rel="noopener">🔍 WooaOCR</a><a href="https://wooasheet.wooahouse.com/" target="_blank" rel="noopener">📊 WooaSheet</a></div></div>
+</div>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>Diff Viewer</span></div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">🔀</span>
+    <h1>Diff Viewer – Compare Text Files Free Online</h1>
+    <p>Paste or upload two text files to compare them side by side. Added lines are shown in green, deleted lines in red. Filter by change type. All runs in your browser.</p>
+  </div>
+
+  <div class="diff-inputs">
+    <div>
+      <div class="diff-panel-label">
+        원본 (A)
+        <label class="diff-file-btn">📂 파일<input type="file" id="fileA" accept=".txt,.md,.json,.yaml,.yml,.xml,.csv,.js,.ts,.py,.html,.css,.java,.go,.rs,.c,.cpp,.sh,.conf,.env,.log" style="display:none"></label>
+      </div>
+      <textarea class="diff-textarea" id="textA" placeholder="원본 텍스트 또는 코드를 붙여넣으세요..."></textarea>
+    </div>
+    <div>
+      <div class="diff-panel-label">
+        변경본 (B)
+        <label class="diff-file-btn">📂 파일<input type="file" id="fileB" accept=".txt,.md,.json,.yaml,.yml,.xml,.csv,.js,.ts,.py,.html,.css,.java,.go,.rs,.c,.cpp,.sh,.conf,.env,.log" style="display:none"></label>
+      </div>
+      <textarea class="diff-textarea" id="textB" placeholder="변경된 텍스트 또는 코드를 붙여넣으세요..."></textarea>
+    </div>
+  </div>
+
+  <button class="compare-btn" onclick="runDiff()">🔍 비교하기</button>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div id="diffStats" class="diff-stats" style="display:none"></div>
+
+  <div id="diffToolbar" class="diff-toolbar" style="display:none">
+    <button class="diff-tb-btn active" id="btnAll" onclick="setFilter('all')">All</button>
+    <button class="diff-tb-btn" id="btnAdd" onclick="setFilter('add')">Added</button>
+    <button class="diff-tb-btn" id="btnDel" onclick="setFilter('del')">Deleted</button>
+    <button class="diff-tb-btn" id="btnChange" onclick="setFilter('change')">Changed</button>
+  </div>
+
+  <div class="diff-result" id="diffResult"></div>
+
+</div>
+
+<aside class="tool-sidebar">
+  <div class="ad-card">
+    <div class="ad-card-label">AD</div>
+    <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="1419180025" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="ad-card">
+    
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><span class="logo-footer">WooaViewer</span><p>Open various file types safely in your browser — no installation needed.</p></div>
+      <div class="footer-links"><h4>Document Viewer</h4><a href="docx-viewer.html">DOCX Viewer</a><a href="xlsx-viewer.html">XLSX Viewer</a><a href="pptx-viewer.html">PPTX Viewer</a><a href="markdown-viewer.html">Markdown Viewer</a><a href="epub-viewer.html">EPUB Viewer</a></div>
+      <div class="footer-links"><h4>Design & 3D & Dev</h4><a href="json-viewer.html">JSON Viewer</a><a href="yaml-viewer.html">YAML Viewer</a><a href="diff-viewer.html">Diff Viewer</a><a href="eml-viewer.html">EML Viewer</a><a href="xml-viewer.html">XML Viewer</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 WooaViewer. All rights reserved.</p><div class="footer-bottom-links"><a href="../privacy.html">Privacy Policy</a><a href="../about.html">About</a></div></div>
+    
+  </div>
+</footer>
+
+<script>
+document.getElementById('fileA').addEventListener('change', e => { if(e.target.files[0]) loadFile(e.target.files[0],'textA'); });
+document.getElementById('fileB').addEventListener('change', e => { if(e.target.files[0]) loadFile(e.target.files[0],'textB'); });
+
+function loadFile(file, targetId) {
+  const r = new FileReader();
+  r.onload = e => document.getElementById(targetId).value = e.target.result;
+  r.readAsText(file, 'UTF-8');
+}
+
+let diffData = [];
+
+// Myers diff algorithm (LCS-based)
+function computeDiff(aLines, bLines) {
+  const n = aLines.length, m = bLines.length;
+  const max = n + m;
+  const v = new Array(2*max+1).fill(0);
+  const trace = [];
+
+  for (let d = 0; d <= max; d++) {
+    trace.push([...v]);
+    for (let k = -d; k <= d; k += 2) {
+      let x;
+      if (k === -d || (k !== d && v[k-1+max] < v[k+1+max])) {
+        x = v[k+1+max];
+      } else {
+        x = v[k-1+max] + 1;
+      }
+      let y = x - k;
+      while (x < n && y < m && aLines[x] === bLines[y]) { x++; y++; }
+      v[k+max] = x;
+      if (x >= n && y >= m) {
+        return backtrack(trace, aLines, bLines, n, m, max);
+      }
+    }
+  }
+  return backtrack(trace, aLines, bLines, n, m, max);
+}
+
+function backtrack(trace, a, b, n, m, max) {
+  const result = [];
+  let x = n, y = m;
+  for (let d = trace.length-1; d >= 0; d--) {
+    const v = trace[d];
+    const k = x - y;
+    let prevK;
+    if (k === -d || (k !== d && v[k-1+max] < v[k+1+max])) {
+      prevK = k + 1;
+    } else {
+      prevK = k - 1;
+    }
+    const prevX = v[prevK+max];
+    const prevY = prevX - prevK;
+    while (x > prevX && y > prevY) { x--; y--; result.push({type:'same',a:a[x],b:b[y],ai:x,bi:y}); }
+    if (d > 0) {
+      if (x === prevX) { y--; result.push({type:'add',b:b[y],bi:y}); }
+      else { x--; result.push({type:'del',a:a[x],ai:x}); }
+    }
+  }
+  return result.reverse();
+}
+
+function runDiff() {
+  const ta = document.getElementById('textA').value;
+  const tb = document.getElementById('textB').value;
+  const errEl = document.getElementById('errorMsg');
+  if (!ta.trim() && !tb.trim()) {
+    errEl.textContent = '원본(A)과 변경본(B) 중 하나 이상을 입력하세요.';
+    errEl.style.display = 'block'; return;
+  }
+  errEl.style.display = 'none';
+  const aLines = ta.split('\n');
+  const bLines = tb.split('\n');
+  diffData = computeDiff(aLines, bLines);
+  renderDiff(diffData, 'all');
+  const adds = diffData.filter(d=>d.type==='add').length;
+  const dels = diffData.filter(d=>d.type==='del').length;
+  const sames = diffData.filter(d=>d.type==='same').length;
+  const stats = document.getElementById('diffStats');
+  stats.innerHTML = `<span class="stat-add">+${adds} 추가</span><span class="stat-del">-${dels} 삭제</span><span class="stat-same">${sames} 동일</span>`;
+  stats.style.display = 'flex';
+  document.getElementById('diffToolbar').style.display = 'flex';
+  document.getElementById('diffResult').style.display = 'block';
+  document.getElementById('diffResult').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function renderDiff(data, filter) {
+  const result = document.getElementById('diffResult');
+  let html = '';
+  let lineA = 1, lineB = 1;
+  const CONTEXT = 3;
+  let lastShownIdx = -1;
+
+  data.forEach((item, idx) => {
+    const show = filter === 'all' ||
+      (filter === 'add' && item.type === 'add') ||
+      (filter === 'del' && item.type === 'del') ||
+      (filter === 'change' && item.type !== 'same');
+
+    if (item.type === 'same') {
+      // context lines for non-all filters
+      const nearChange = filter !== 'all' && data.slice(Math.max(0,idx-CONTEXT), idx+CONTEXT+1).some(d=>d.type!=='same');
+      if (filter === 'all' || nearChange) {
+        if (lastShownIdx >= 0 && idx - lastShownIdx > 1 && filter !== 'all') {
+          html += `<div class="diff-hunk">... (${idx - lastShownIdx - 1}줄 생략) ...</div>`;
+        }
+        html += `<div class="diff-line diff-same"><div class="diff-line-num">${lineA}<br>${lineB}</div><div class="diff-line-content">${esc(item.a??'')}</div></div>`;
+        lastShownIdx = idx;
+      }
+      lineA++; lineB++;
+    } else if (item.type === 'del') {
+      if (lastShownIdx >= 0 && idx - lastShownIdx > 1 && filter !== 'all') {
+        html += `<div class="diff-hunk">... (${idx - lastShownIdx - 1}줄 생략) ...</div>`;
+      }
+      if (filter === 'all' || filter === 'del' || filter === 'change') {
+        html += `<div class="diff-line diff-del"><div class="diff-line-num">${lineA}<br></div><div class="diff-line-content">${esc(item.a)}</div></div>`;
+        lastShownIdx = idx;
+      }
+      lineA++;
+    } else if (item.type === 'add') {
+      if (lastShownIdx >= 0 && idx - lastShownIdx > 1 && filter !== 'all') {
+        html += `<div class="diff-hunk">... (${idx - lastShownIdx - 1}줄 생략) ...</div>`;
+      }
+      if (filter === 'all' || filter === 'add' || filter === 'change') {
+        html += `<div class="diff-line diff-add"><div class="diff-line-num"><br>${lineB}</div><div class="diff-line-content">${esc(item.b)}</div></div>`;
+        lastShownIdx = idx;
+      }
+      lineB++;
+    }
+  });
+  result.innerHTML = html || '<div style="padding:20px;color:#9CA3AF;text-align:center;">차이점이 없습니다.</div>';
+}
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function setFilter(f) {
+  ['all','add','del','change'].forEach(k => document.getElementById('btn'+k.charAt(0).toUpperCase()+k.slice(1)).classList.toggle('active', k===f));
+  if (diffData.length) renderDiff(diffData, f);
+}
+</script>
+<script src="../js/pwa-install.js"></script>
+</body>
+</html>

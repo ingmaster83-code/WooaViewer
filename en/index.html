@@ -61,13 +61,24 @@
       {"@type":"ListItem","position":12,"name":"CSV 뷰어","url":"https://wooaviewer.wooahouse.com/csv-viewer.html"},
       {"@type":"ListItem","position":13,"name":"ZIP 내용물 뷰어","url":"https://wooaviewer.wooahouse.com/zip-viewer.html"},
       {"@type":"ListItem","position":14,"name":"SVG 뷰어","url":"https://wooaviewer.wooahouse.com/svg-viewer.html"},
-      {"@type":"ListItem","position":15,"name":"폰트 뷰어","url":"https://wooaviewer.wooahouse.com/font-viewer.html"}
+      {"@type":"ListItem","position":15,"name":"폰트 뷰어","url":"https://wooaviewer.wooahouse.com/font-viewer.html"},
+      {"@type":"ListItem","position":16,"name":"PPTX 뷰어","url":"https://wooaviewer.wooahouse.com/pptx-viewer.html"},
+      {"@type":"ListItem","position":17,"name":"EML 뷰어","url":"https://wooaviewer.wooahouse.com/eml-viewer.html"},
+      {"@type":"ListItem","position":18,"name":"YAML 뷰어","url":"https://wooaviewer.wooahouse.com/yaml-viewer.html"},
+      {"@type":"ListItem","position":19,"name":"Diff 뷰어","url":"https://wooaviewer.wooahouse.com/diff-viewer.html"}
     ]
   }
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+  </style>
 </head>
 <body>
 
@@ -83,12 +94,17 @@
       <a href="index.html">All Tools ›</a>
     </nav>
     <div class="header-right">
-      <a href="../about.html" style="color:rgba(255,255,255,0.85);font-size:0.85rem;text-decoration:none;">About</a>
+      <div class="lang-switcher">
+        <a href="index.html" class="active">KO</a>
+        <span>|</span>
+        <a href="en/index.html">EN</a>
+      </div>
+      <a href="../about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">About</a>
     </div>
   </div>
 </header>
 
-<div class="our-sites-bar"><span class="our-sites-label">WooaHouse Services</span><div class="our-sites-links"><a href="https://wooahouse.com/" target="_blank" rel="noopener">🔗 WooaHouse</a><a href="https://pdfkit.wooahouse.com/" target="_blank" rel="noopener">📄 WooaPDF</a><a href="https://imagekit.wooahouse.com/" target="_blank" rel="noopener">🖼️ WooaImage</a><a href="https://colorkit.wooahouse.com/" target="_blank" rel="noopener">🎨 WooaColor</a><a href="https://textkit.wooahouse.com/" target="_blank" rel="noopener">✏️ WooaText</a><a href="https://qrkit.wooahouse.com/" target="_blank" rel="noopener">📱 WooaQR</a><a href="https://calckit.wooahouse.com/" target="_blank" rel="noopener">🧮 WooaCalc</a><a href="https://fontkit.wooahouse.com/" target="_blank" rel="noopener">🔤 WooaFont</a><a href="https://mactools.wooahouse.com/" target="_blank" rel="noopener">🍎 WooaMac</a><a href="https://pctools.wooahouse.com/" target="_blank" rel="noopener">🖥️ WooaPC</a><a href="https://vskit.wooahouse.com/" target="_blank" rel="noopener">💻 WooaVS</a><a href="https://wooaaudio.wooahouse.com/" target="_blank" rel="noopener">🎵 WooaAudio</a><a href="https://wooaviewer.wooahouse.com/" target="_blank" rel="noopener" class="active">🔍 WooaViewer</a><a href="https://wooadev.wooahouse.com/" target="_blank" rel="noopener">🛠️ WooaDev</a><a href="https://wooaocr.wooahouse.com/" target="_blank" rel="noopener">🔍 WooaOCR</a><a href="https://wooasheet.wooahouse.com/" target="_blank" rel="noopener">📊 WooaSheet</a></div></div>
+<div class="our-sites-bar"><span class="our-sites-label">WooaHouse Services</span><div class="our-sites-links"><a href="https://wooahouse.com/" target="_blank" rel="noopener">🔗 WooaHouse</a><a href="https://pdfkit.wooahouse.com/" target="_blank" rel="noopener">📄 WooaPDF</a><a href="https://imagekit.wooahouse.com/" target="_blank" rel="noopener">🖼️ WooaImage</a><a href="https://colorkit.wooahouse.com/" target="_blank" rel="noopener">🎨 WooaColor</a><a href="https://textkit.wooahouse.com/" target="_blank" rel="noopener">✏️ WooaText</a><a href="https://qrkit.wooahouse.com/" target="_blank" rel="noopener">📱 WooaQR</a><a href="https://calckit.wooahouse.com/" target="_blank" rel="noopener">🧮 WooaCalc</a><a href="https://fontkit.wooahouse.com/" target="_blank" rel="noopener">🔤 WooaFont</a><a href="https://mactools.wooahouse.com/" target="_blank" rel="noopener">🍎 WooaMac</a><a href="https://pctools.wooahouse.com/" target="_blank" rel="noopener">🖥️ WooaPC</a><a href="https://vskit.wooahouse.com/" target="_blank" rel="noopener">💻 WooaVS</a><a href="https://wooaaudio.wooahouse.com/" target="_blank" rel="noopener">🎵 WooaAudio</a><a href="https://wooaviewer.wooahouse.com/en/" target="_blank" rel="noopener" class="active">🔍 WooaViewer</a><a href="https://wooadev.wooahouse.com/" target="_blank" rel="noopener">🛠️ WooaDev</a><a href="https://wooaocr.wooahouse.com/" target="_blank" rel="noopener">🔍 WooaOCR</a><a href="https://wooasheet.wooahouse.com/" target="_blank" rel="noopener">📊 WooaSheet</a></div></div>
 </div>
 
 <section class="hero">
@@ -145,6 +161,20 @@
         <span class="tool-icon">📚</span>
         <div class="tool-name">EPUB Viewer</div>
         <div class="tool-desc">Read .epub eBook files in your browser</div>
+      </a>
+      <a href="pptx-viewer.html" class="tool-card">
+        <span class="free-badge">Free</span>
+        <span class="new-badge">NEW</span>
+        <span class="tool-icon">📑</span>
+        <div class="tool-name">PPTX Viewer</div>
+        <div class="tool-desc">Open .pptx slides without PowerPoint</div>
+      </a>
+      <a href="eml-viewer.html" class="tool-card">
+        <span class="free-badge">Free</span>
+        <span class="new-badge">NEW</span>
+        <span class="tool-icon">📧</span>
+        <div class="tool-name">EML Viewer</div>
+        <div class="tool-desc">View .eml email sender, body & attachments</div>
       </a>
     </div>
   </div>
@@ -243,6 +273,18 @@
         <div class="tool-name">Font Viewer</div>
         <div class="tool-desc">Preview TTF/OTF/WOFF font files, adjust size & weight</div>
       </a>
+      <a href="yaml-viewer.html" class="tool-card">
+        <span class="new-badge">NEW</span><span class="free-badge">Free</span>
+        <span class="tool-icon">🗃️</span>
+        <div class="tool-name">YAML Viewer</div>
+        <div class="tool-desc">View .yaml / .yml files as an interactive tree</div>
+      </a>
+      <a href="diff-viewer.html" class="tool-card">
+        <span class="new-badge">NEW</span><span class="free-badge">Free</span>
+        <span class="tool-icon">🔀</span>
+        <div class="tool-name">Diff Viewer</div>
+        <div class="tool-desc">Compare two text files and highlight differences</div>
+      </a>
     </div>
   </div>
 
@@ -279,6 +321,8 @@
         <a href="xlsx-viewer.html">XLSX Viewer</a>
         <a href="markdown-viewer.html">Markdown Viewer</a>
         <a href="epub-viewer.html">EPUB Viewer</a>
+        <a href="pptx-viewer.html">PPTX Viewer</a>
+        <a href="eml-viewer.html">EML Viewer</a>
       </div>
       <div class="footer-links">
         <h4>Design & 3D & Dev</h4>
@@ -289,6 +333,8 @@
         <a href="gcode-viewer.html">GCode Viewer</a>
         <a href="json-viewer.html">JSON Viewer</a>
         <a href="xml-viewer.html">XML Viewer</a>
+        <a href="yaml-viewer.html">YAML Viewer</a>
+        <a href="diff-viewer.html">Diff Viewer</a>
         <a href="csv-viewer.html">CSV Viewer</a>
         <a href="zip-viewer.html">ZIP Viewer</a>
         <a href="svg-viewer.html">SVG Viewer</a>
