@@ -187,7 +187,7 @@ async function loadFile(file) {
 
     for (let i = 0; i < slideFiles.length; i++) {
       const xml = await zip.files[slideFiles[i]].async('text');
-      const slide = parseSlide(xml, i + 1, zip, slideFiles[i], imgMap);
+      const slide = await parseSlide(xml, i + 1, zip, slideFiles[i], imgMap);
       slides.push(slide);
     }
 
@@ -201,34 +201,65 @@ async function loadFile(file) {
   }
 }
 
-function parseSlide(xml, num, zip, slidePath, imgMap) {
+async function parseSlide(xml, num, zip, slidePath, imgMap) {
   const parser = new DOMParser();
   const doc = parser.parseFromString(xml, 'text/xml');
 
-  // 텍스트 추출
+  // ── 텍스트 추출 ──
   const texts = [];
-  const paras = doc.querySelectorAll('sp');
-  paras.forEach(sp => {
+  doc.querySelectorAll('sp').forEach(sp => {
     const txBody = sp.querySelector('txBody');
     if (!txBody) return;
-    const isTitle = sp.querySelector('ph[type="title"], ph[type="ctrTitle"]');
+    const isTitle = !!sp.querySelector('ph[type="title"], ph[type="ctrTitle"]');
     const lines = [];
     txBody.querySelectorAll('a\\:p, p').forEach(p => {
-      const t = Array.from(p.querySelectorAll('a\\:t, t')).map(n=>n.textContent).join('');
+      const t = Array.from(p.querySelectorAll('a\\:t, t')).map(n => n.textContent).join('');
       if (t.trim()) lines.push(t.trim());
     });
-    if (lines.length) texts.push({ isTitle: !!isTitle, lines });
+    if (lines.length) texts.push({ isTitle, lines });
   });
 
-  // 이미지 관계 추출 (slide.rels)
-  const relsPath = slidePath.replace('slides/slide','slides/_rels/slide').replace('.xml','.xml.rels');
+  // ── 이미지 추출: .rels 파일로 rId → 미디어 경로 매핑 ──
   const images = [];
-  // imgMap에서 Slides 내 blipFill 참조 추출
-  const blipNS = doc.querySelectorAll('blipFill, p\\:blipFill');
-  // 이미지는 실제 파일 존재 여부로 처리
-  // (rId 매핑 없이 미디어 파일을 순서대로 보여줌)
+  // relsPath: ppt/slides/_rels/slide1.xml.rels
+  const parts = slidePath.split('/');          // ['ppt','slides','slide1.xml']
+  const relsPath = `ppt/slides/_rels/${parts[parts.length-1]}.rels`;
+  const relsEntry = zip.files[relsPath];
 
-  return { num, texts, slideFile: slidePath };
+  if (relsEntry) {
+    const relsXml = await relsEntry.async('text');
+    const relsDoc = parser.parseFromString(relsXml, 'text/xml');
+    // rId → 상대 경로 맵
+    const ridMap = {};
+    relsDoc.querySelectorAll('Relationship').forEach(rel => {
+      const type = rel.getAttribute('Type') || '';
+      if (type.includes('/image')) {
+        const rid    = rel.getAttribute('Id');
+        const target = rel.getAttribute('Target'); // e.g. ../media/image1.png
+        // normalize to ppt/media/imageN.xxx
+        const absPath = target.startsWith('..') ? 'ppt/' + target.replace('../','') : target;
+        ridMap[rid] = absPath;
+      }
+    });
+
+    // slide XML에서 blip rId 추출
+    // <a:blip r:embed="rId2"/> — namespace-aware 방식
+    const blips = doc.querySelectorAll('blip');
+    blips.forEach(blip => {
+      // getAttribute는 prefix:name 형식으로 직접 안 됨 → attributes 전체 탐색
+      let rid = null;
+      for (const attr of blip.attributes) {
+        if (attr.localName === 'embed') { rid = attr.value; break; }
+      }
+      if (!rid) return;
+      const mediaPath = ridMap[rid];
+      if (mediaPath && imgMap[mediaPath]) {
+        images.push(imgMap[mediaPath]);
+      }
+    });
+  }
+
+  return { num, texts, images };
 }
 
 function renderSlides(slides, filename) {
@@ -248,14 +279,24 @@ function renderSlides(slides, filename) {
     });
     if (!titleHtml && s.texts.length) {
       titleHtml = `<div class="slide-title">${esc(s.texts[0].lines.join(' '))}</div>`;
-      bodyLines = s.texts.slice(1).flatMap(t=>t.lines);
+      bodyLines = s.texts.slice(1).flatMap(t => t.lines);
     }
+
+    const imgsHtml = s.images.length
+      ? s.images.map(src =>
+          `<div class="slide-img-wrap"><img src="${src}" alt="Slides 이미지" loading="lazy"></div>`
+        ).join('')
+      : '';
+
+    const hasContent = titleHtml || bodyLines.length || imgsHtml;
 
     card.innerHTML = `
       <div class="slide-num">Slides ${s.num}</div>
       <div class="slide-content">
         ${titleHtml}
-        ${bodyLines.length ? `<div class="slide-body">${esc(bodyLines.join('\n'))}</div>` : '<div class="slide-body" style="color:#9CA3AF;font-style:italic;">내용 없음</div>'}
+        ${bodyLines.length ? `<div class="slide-body">${esc(bodyLines.join('\n'))}</div>` : ''}
+        ${imgsHtml}
+        ${!hasContent ? '<div class="slide-body" style="color:#9CA3AF;font-style:italic;">내용 없음</div>' : ''}
       </div>`;
     slideGrid.appendChild(card);
   });
