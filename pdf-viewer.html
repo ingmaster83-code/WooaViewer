@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+<meta charset="UTF-8">
+<meta name="naver-site-verification" content="7396a327607b884b9bef1283dfd3a5c6115a2b50">
+<meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF 뷰어 - PDF 파일 설치 없이 브라우저에서 무료 열기 | WooaViewer</title>
+<meta name="description" content="Adobe Acrobat 없이 PDF 파일을 브라우저에서 바로 열어보세요. 페이지 이동, 확대/축소 지원. 파일은 서버에 전송되지 않아 완전히 안전합니다. 무료, 설치 불필요.">
+<meta name="keywords" content="PDF뷰어,온라인PDF뷰어,PDF열기,무료PDF뷰어,PDF파일보기,브라우저PDF,PDF온라인,PDF뷰어무료,PDF파일열기">
+<link rel="canonical" href="https://wooaviewer.wooahouse.com/pdf-viewer.html">
+<link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/pdf-viewer.html">
+<link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/pdf-viewer.html">
+<link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/pdf-viewer.html">
+<meta property="og:title" content="PDF 뷰어 - 설치 없이 PDF 파일 열기 | WooaViewer">
+<meta property="og:description" content="PDF 파일을 브라우저에서 바로 열어보세요. 무료, 서버 전송 없음.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wooaviewer.wooahouse.com/pdf-viewer.html">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"PDF 뷰어","url":"https://wooaviewer.wooahouse.com/pdf-viewer.html","description":"Adobe Acrobat 없이 PDF 파일을 브라우저에서 열어보는 무료 온라인 뷰어.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+<script src="https://ads-partners.coupang.com/g.js"></script>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0284C7">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .lang-switcher{display:flex;align-items:center;gap:4px}.lang-switcher a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.8rem;font-weight:600;padding:3px 8px;border-radius:12px;transition:background 0.15s}.lang-switcher a.active{color:white;background:rgba(255,255,255,0.25)}.lang-switcher a:hover{color:white;background:rgba(255,255,255,0.18)}.lang-switcher span{color:rgba(255,255,255,0.3);font-size:0.75rem}
+  .pdf-toolbar{display:none;align-items:center;gap:8px;flex-wrap:wrap;background:#F3F4F6;border:1px solid #E5E7EB;border-radius:10px;padding:10px 14px;margin-bottom:16px}
+  .pdf-toolbar.visible{display:flex}
+  .pdf-tb-btn{padding:6px 12px;border-radius:6px;border:1px solid #D1D5DB;background:white;font-size:0.82rem;font-weight:600;cursor:pointer;font-family:inherit;color:#374151;transition:all 0.15s;line-height:1}
+  .pdf-tb-btn:hover{background:#0284C7;color:white;border-color:#0284C7}
+  .pdf-tb-btn:disabled{opacity:0.4;cursor:not-allowed}
+  .pdf-tb-btn:disabled:hover{background:white;color:#374151;border-color:#D1D5DB}
+  .pdf-page-info{font-size:0.85rem;font-weight:600;color:#374151;display:flex;align-items:center;gap:4px}
+  .pdf-page-input{width:52px;text-align:center;border:1px solid #D1D5DB;border-radius:6px;padding:4px 6px;font-size:0.85rem;font-family:inherit;font-weight:600}
+  .pdf-zoom-sel{border:1px solid #D1D5DB;border-radius:6px;padding:5px 8px;font-size:0.82rem;font-family:inherit;background:white;cursor:pointer}
+  .pdf-sep{width:1px;height:24px;background:#D1D5DB;flex-shrink:0}
+  .pdf-file-info{font-size:0.8rem;color:#6B7280;margin-left:4px}
+  #pdfContainer{display:none;flex-direction:column;align-items:center;gap:16px;padding:8px 0}
+  #pdfContainer.visible{display:flex}
+  .pdf-page-wrap{position:relative;box-shadow:0 4px 20px rgba(0,0,0,.15);border-radius:4px;overflow:hidden;background:white;max-width:100%}
+  .pdf-page-wrap canvas{display:block;max-width:100%;height:auto}
+  .pdf-page-badge{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.5);color:white;font-size:0.72rem;padding:2px 7px;border-radius:10px;font-weight:600;pointer-events:none;user-select:none}
+  .pdf-placeholder{display:flex;align-items:center;justify-content:center;background:#F9FAFB;color:#9CA3AF;font-size:0.85rem;min-height:250px;min-width:300px;border-radius:4px}
+  .pdf-progress{background:#E5E7EB;border-radius:4px;height:4px;margin-bottom:12px;overflow:hidden;display:none}
+  .pdf-progress.visible{display:block}
+  .pdf-progress-bar{height:4px;background:#0284C7;border-radius:4px;transition:width 0.2s}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a>
+      <a href="xlsx-viewer.html">XLSX</a>
+      <a href="pptx-viewer.html">PPTX</a>
+      <a href="pdf-viewer.html" class="active">PDF</a>
+      <a href="index.html">전체 도구 ›</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <a href="pdf-viewer.html" class="active">KO</a>
+        <span>|</span>
+        <a href="en/pdf-viewer.html">EN</a>
+      </div>
+      <a href="about.html" style="color:rgba(255,255,255,0.85);font-size:0.85rem;text-decoration:none;margin-left:8px;">소개</a>
+    </div>
+  </div>
+</header>
+
+<div class="our-sites-bar"><span class="our-sites-label">WooaHouse Services</span><div class="our-sites-links"><a href="https://wooahouse.com/" target="_blank" rel="noopener">🔗 WooaHouse</a><a href="https://pdfkit.wooahouse.com/" target="_blank" rel="noopener">📄 WooaPDF</a><a href="https://imagekit.wooahouse.com/" target="_blank" rel="noopener">🖼️ WooaImage</a><a href="https://colorkit.wooahouse.com/" target="_blank" rel="noopener">🎨 WooaColor</a><a href="https://textkit.wooahouse.com/" target="_blank" rel="noopener">✏️ WooaText</a><a href="https://qrkit.wooahouse.com/" target="_blank" rel="noopener">📱 WooaQR</a><a href="https://calckit.wooahouse.com/" target="_blank" rel="noopener">🧮 WooaCalc</a><a href="https://fontkit.wooahouse.com/" target="_blank" rel="noopener">🔤 WooaFont</a><a href="https://mactools.wooahouse.com/" target="_blank" rel="noopener">🍎 WooaMac</a><a href="https://pctools.wooahouse.com/" target="_blank" rel="noopener">🖥️ WooaPC</a><a href="https://vskit.wooahouse.com/" target="_blank" rel="noopener">💻 WooaVS</a><a href="https://wooaaudio.wooahouse.com/" target="_blank" rel="noopener">🎵 WooaAudio</a><a href="https://wooaviewer.wooahouse.com/" target="_blank" rel="noopener" class="active">🔍 WooaViewer</a><a href="https://wooadev.wooahouse.com/" target="_blank" rel="noopener">🛠️ WooaDev</a><a href="https://wooaocr.wooahouse.com/" target="_blank" rel="noopener">🔍 WooaOCR</a><a href="https://wooasheet.wooahouse.com/" target="_blank" rel="noopener">📊 WooaSheet</a></div></div>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>PDF 뷰어</span></div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">📄</span>
+    <h1>PDF 뷰어</h1>
+    <p>Adobe Acrobat 없이 PDF 파일을 브라우저에서 바로 열어보세요. 페이지 이동과 확대/축소를 지원합니다.</p>
+  </div>
+
+  <div class="drop-zone" id="dropZone">
+    <span class="drop-zone-icon">📄</span>
+    <h3>PDF 파일을 여기에 끌어다 놓으세요</h3>
+    <p>.pdf 형식 지원 · 최대 100MB</p>
+    <label class="btn-select">파일 선택<input type="file" id="fileInput" accept=".pdf,application/pdf" style="display:none"></label>
+  </div>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <!-- 진행률 바 -->
+  <div class="pdf-progress" id="progressWrap">
+    <div class="pdf-progress-bar" id="progressBar" style="width:0%"></div>
+  </div>
+
+  <!-- 툴바 -->
+  <div class="pdf-toolbar" id="pdfToolbar">
+    <button class="pdf-tb-btn" id="btnPrev" onclick="goPage(-1)">◀ 이전</button>
+    <div class="pdf-page-info">
+      <input type="number" class="pdf-page-input" id="pageInput" min="1" value="1">
+      <span>/ <span id="totalPagesEl">0</span></span>
+    </div>
+    <button class="pdf-tb-btn" id="btnNext" onclick="goPage(1)">다음 ▶</button>
+    <div class="pdf-sep"></div>
+    <button class="pdf-tb-btn" onclick="changeZoom(-0.25)" title="축소">−</button>
+    <select class="pdf-zoom-sel" id="zoomSel" onchange="setZoomFromSel()">
+      <option value="fit">너비 맞춤</option>
+      <option value="0.5">50%</option>
+      <option value="0.75">75%</option>
+      <option value="1">100%</option>
+      <option value="1.25">125%</option>
+      <option value="1.5">150%</option>
+      <option value="2">200%</option>
+    </select>
+    <button class="pdf-tb-btn" onclick="changeZoom(0.25)" title="확대">+</button>
+    <div class="pdf-sep"></div>
+    <button class="pdf-tb-btn" onclick="resetViewer()">🔄 다시 열기</button>
+    <span class="pdf-file-info" id="fileInfoEl"></span>
+  </div>
+
+  <!-- 페이지 렌더링 영역 -->
+  <div id="pdfContainer"></div>
+
+  <div class="tips-panel" style="margin-top:24px;"><h3>💡 Tips</h3><ul>
+    <li>파일은 브라우저 안에서만 처리되며 서버에 전송되지 않습니다</li>
+    <li>페이지 번호 입력 후 Enter를 누르면 해당 페이지로 이동합니다</li>
+    <li>확대/축소는 − / + 버튼 또는 드롭다운으로 조절하세요</li>
+    <li>암호로 보호된 PDF는 열리지 않을 수 있습니다</li>
+    <li>페이지 수가 많은 대용량 PDF는 렌더링에 시간이 걸릴 수 있습니다</li>
+  </ul></div>
+
+  <div style="margin-top:24px;"><h2 style="font-size:1.1rem;font-weight:700;margin-bottom:16px;">자주 묻는 질문</h2>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <details style="border:1px solid var(--border,#E5E7EB);border-radius:8px;padding:12px 16px;background:var(--bg2,#F9FAFB)"><summary style="cursor:pointer;font-weight:600;">PDF 파일이 열리지 않으면 어떻게 하나요?</summary><p style="margin:8px 0 0;color:#6B7280;font-size:0.88rem;">암호로 보호된 PDF는 열리지 않습니다. 손상된 파일도 지원되지 않을 수 있습니다. WooaPDF에서 암호를 먼저 해제하거나 다른 파일로 시도해 보세요.</p></details>
+      <details style="border:1px solid var(--border,#E5E7EB);border-radius:8px;padding:12px 16px;background:var(--bg2,#F9FAFB)"><summary style="cursor:pointer;font-weight:600;">파일이 인터넷에 업로드되나요?</summary><p style="margin:8px 0 0;color:#6B7280;font-size:0.88rem;">아니요. 모든 처리는 브라우저 안에서만 이루어지며 파일은 서버로 전송되지 않습니다. 완전히 안전합니다.</p></details>
+      <details style="border:1px solid var(--border,#E5E7EB);border-radius:8px;padding:12px 16px;background:var(--bg2,#F9FAFB)"><summary style="cursor:pointer;font-weight:600;">텍스트 복사나 인쇄가 가능한가요?</summary><p style="margin:8px 0 0;color:#6B7280;font-size:0.88rem;">현재 버전은 캔버스 이미지 렌더링 방식으로 텍스트 선택은 지원하지 않습니다. 인쇄는 브라우저 기본 인쇄(Ctrl+P)를 이용하세요.</p></details>
+      <details style="border:1px solid var(--border,#E5E7EB);border-radius:8px;padding:12px 16px;background:var(--bg2,#F9FAFB)"><summary style="cursor:pointer;font-weight:600;">PDF를 편집하거나 변환하려면?</summary><p style="margin:8px 0 0;color:#6B7280;font-size:0.88rem;"><a href="https://pdfkit.wooahouse.com/" target="_blank" rel="noopener" style="color:#0284C7">WooaPDF</a>에서 병합·분할·압축·Word 변환 등 다양한 PDF 편집 도구를 무료로 사용하실 수 있습니다.</p></details>
+    </div>
+  </div>
+
+</div>
+
+<aside class="tool-sidebar">
+  <div class="ad-card">
+    <div class="ad-card-label">AD</div>
+    <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="1419180025" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+  <div class="ad-card">
+    <script>new PartnersCoupang.G({"id":986943,"template":"carousel","trackingCode":"AF5600192","width":"160","height":"200","tsource":""});</script>
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><span class="logo-footer">WooaViewer</span><p>다양한 파일을 설치 없이 브라우저에서 안전하게 열어보세요.</p></div>
+      <div class="footer-links"><h4>문서 뷰어</h4><a href="docx-viewer.html">DOCX 뷰어</a><a href="xlsx-viewer.html">XLSX 뷰어</a><a href="pptx-viewer.html">PPTX 뷰어</a><a href="pdf-viewer.html">PDF 뷰어</a><a href="markdown-viewer.html">Markdown 뷰어</a><a href="epub-viewer.html">EPUB 뷰어</a></div>
+      <div class="footer-links"><h4>설계 · 3D · 개발</h4><a href="dxf-viewer.html">DXF 뷰어</a><a href="json-viewer.html">JSON 뷰어</a><a href="yaml-viewer.html">YAML 뷰어</a><a href="diff-viewer.html">Diff 뷰어</a><a href="eml-viewer.html">EML 뷰어</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 WooaViewer. 모든 권리 보유.</p><div class="footer-bottom-links"><a href="privacy.html">개인정보처리방침</a><a href="about.html">소개</a></div></div>
+    <p class="coupang-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+
+let pdfDoc = null, totalPages = 0, currentPage = 1;
+let zoomMode = 'fit'; // 'fit' | numeric string like '1.25'
+let lastFitScale = 1.0;
+let rendering = false;
+
+const dropZone   = document.getElementById('dropZone');
+const fileInput  = document.getElementById('fileInput');
+const errorMsg   = document.getElementById('errorMsg');
+const pdfToolbar = document.getElementById('pdfToolbar');
+const pdfContainer = document.getElementById('pdfContainer');
+const pageInput  = document.getElementById('pageInput');
+const totalPagesEl = document.getElementById('totalPagesEl');
+const fileInfoEl = document.getElementById('fileInfoEl');
+const btnPrev    = document.getElementById('btnPrev');
+const btnNext    = document.getElementById('btnNext');
+const progressWrap = document.getElementById('progressWrap');
+const progressBar  = document.getElementById('progressBar');
+
+// ── 이벤트 ──
+fileInput.addEventListener('change', e => { if(e.target.files[0]) loadFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if(e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+});
+pageInput.addEventListener('keydown', e => { if(e.key === 'Enter') { e.preventDefault(); jumpToPage(); } });
+pageInput.addEventListener('blur', jumpToPage);
+
+// ── 파일 로드 ──
+async function loadFile(file) {
+  if(!file.name.toLowerCase().endsWith('.pdf') && file.type !== 'application/pdf') {
+    showError('PDF 파일만 지원합니다.'); return;
+  }
+  showError('');
+  try {
+    const ab = await file.arrayBuffer();
+    const loadTask = pdfjsLib.getDocument({ data: ab });
+    pdfDoc = await loadTask.promise;
+    totalPages = pdfDoc.numPages;
+    currentPage = 1;
+
+    totalPagesEl.textContent = totalPages;
+    pageInput.max = totalPages;
+    pageInput.value = 1;
+    fileInfoEl.textContent = file.name + ' · ' + totalPages + '페이지 · ' + (file.size / 1024 / 1024).toFixed(1) + ' MB';
+
+    dropZone.style.display = 'none';
+    pdfToolbar.classList.add('visible');
+    pdfContainer.classList.add('visible');
+    pdfContainer.style.display = 'flex';
+    pdfContainer.style.flexDirection = 'column';
+    pdfContainer.style.alignItems = 'center';
+    pdfContainer.style.gap = '16px';
+
+    await buildAllPages();
+    updateNavBtns();
+  } catch(err) {
+    showError('PDF를 열 수 없습니다: ' + (err.message || '알 수 없는 오류'));
+  }
+}
+
+// ── 전체 페이지 빌드 (placeholder → render) ──
+async function buildAllPages() {
+  pdfContainer.innerHTML = '';
+  progressWrap.classList.add('visible');
+  progressBar.style.width = '0%';
+
+  // 플레이스홀더 생성
+  for(let i = 1; i <= totalPages; i++) {
+    const wrap = document.createElement('div');
+    wrap.className = 'pdf-page-wrap';
+    wrap.id = 'ppw-' + i;
+    const ph = document.createElement('div');
+    ph.className = 'pdf-placeholder';
+    ph.textContent = i + ' / ' + totalPages + ' 페이지 렌더링 중...';
+    wrap.appendChild(ph);
+    pdfContainer.appendChild(wrap);
+  }
+
+  // 순차 렌더링
+  for(let i = 1; i <= totalPages; i++) {
+    await renderPage(i);
+    progressBar.style.width = Math.round((i / totalPages) * 100) + '%';
+  }
+  progressWrap.classList.remove('visible');
+}
+
+// ── 단일 페이지 렌더링 ──
+async function renderPage(num) {
+  const page = await pdfDoc.getPage(num);
+  const s = getScale(page);
+  const vp = page.getViewport({ scale: s });
+
+  const canvas = document.createElement('canvas');
+  canvas.width  = Math.floor(vp.width);
+  canvas.height = Math.floor(vp.height);
+
+  await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+
+  const wrap = document.getElementById('ppw-' + num);
+  if(!wrap) return;
+  wrap.innerHTML = '';
+  wrap.appendChild(canvas);
+
+  const badge = document.createElement('div');
+  badge.className = 'pdf-page-badge';
+  badge.textContent = num + ' / ' + totalPages;
+  wrap.appendChild(badge);
+}
+
+// ── 스케일 계산 ──
+function getScale(page) {
+  if(zoomMode === 'fit') {
+    const vp1 = page.getViewport({ scale: 1 });
+    const containerW = Math.max(300, (pdfContainer.clientWidth || 720) - 8);
+    lastFitScale = containerW / vp1.width;
+    return lastFitScale;
+  }
+  return parseFloat(zoomMode);
+}
+
+// ── 전체 재렌더링 ──
+async function reRenderAll() {
+  if(rendering || !pdfDoc) return;
+  rendering = true;
+  progressWrap.classList.add('visible');
+  progressBar.style.width = '0%';
+  for(let i = 1; i <= totalPages; i++) {
+    await renderPage(i);
+    progressBar.style.width = Math.round((i / totalPages) * 100) + '%';
+  }
+  progressWrap.classList.remove('visible');
+  rendering = false;
+}
+
+// ── 페이지 이동 ──
+function goPage(dir) {
+  const t = currentPage + dir;
+  if(t < 1 || t > totalPages) return;
+  currentPage = t;
+  pageInput.value = t;
+  updateNavBtns();
+  scrollToPage(t);
+}
+
+function jumpToPage() {
+  let v = parseInt(pageInput.value);
+  if(isNaN(v) || v < 1) v = 1;
+  if(v > totalPages) v = totalPages;
+  currentPage = v;
+  pageInput.value = v;
+  updateNavBtns();
+  scrollToPage(v);
+}
+
+function scrollToPage(num) {
+  const el = document.getElementById('ppw-' + num);
+  if(el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateNavBtns() {
+  btnPrev.disabled = currentPage <= 1;
+  btnNext.disabled = currentPage >= totalPages;
+}
+
+// ── 줌 ──
+function changeZoom(delta) {
+  const cur = (zoomMode === 'fit') ? lastFitScale : parseFloat(zoomMode);
+  let next = Math.round((cur + delta) * 100) / 100;
+  next = Math.max(0.25, Math.min(3.0, next));
+  zoomMode = String(next);
+  // 드롭다운을 가장 가까운 프리셋으로 맞추기
+  const opts = ['0.5','0.75','1','1.25','1.5','2'];
+  const closest = opts.reduce((a, b) =>
+    Math.abs(parseFloat(a) - next) <= Math.abs(parseFloat(b) - next) ? a : b
+  );
+  document.getElementById('zoomSel').value =
+    Math.abs(parseFloat(closest) - next) < 0.01 ? closest : 'fit';
+  reRenderAll();
+}
+
+function setZoomFromSel() {
+  zoomMode = document.getElementById('zoomSel').value; // 'fit' or '0.5' etc.
+  reRenderAll();
+}
+
+// ── 에러 ──
+function showError(msg) {
+  errorMsg.textContent = msg;
+  errorMsg.style.display = msg ? 'block' : 'none';
+}
+
+// ── 리셋 ──
+function resetViewer() {
+  pdfDoc = null; totalPages = 0; currentPage = 1; zoomMode = 'fit'; rendering = false;
+  pdfContainer.classList.remove('visible');
+  pdfContainer.style.display = 'none';
+  pdfContainer.innerHTML = '';
+  pdfToolbar.classList.remove('visible');
+  progressWrap.classList.remove('visible');
+  showError('');
+  dropZone.style.display = '';
+  fileInput.value = '';
+  document.getElementById('zoomSel').value = 'fit';
+}
+</script>
+<script src="js/pwa-install.js"></script>
+</body>
+</html>
