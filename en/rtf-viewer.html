@@ -85,6 +85,7 @@
   <div id="errorMsg" class="alert alert-error" style="display:none"></div>
   <div class="result-card" id="resultCard"><div class="rtf-body" id="rtfBody"></div></div>
   <div class="result-stats" id="resultStats"></div>
+<div class="wooa-orig-anchor"></div>
 <div class="tips-panel"><h3>💡 Tips</h3><ul><li>The plain text content of the RTF file is displayed.</li><li>Most characters including Korean, English, and special symbols are supported.</li><li>For editing, open the file in Word, Hangeul, or LibreOffice.</li></ul></div>
 <div class="faq-section"><h2>Frequently Asked Questions</h2><details><summary>Can I view images embedded in an RTF file?</summary><p>Text content is displayed, but images embedded in RTF are not currently shown.</p></details><details><summary>Is formatting (bold, color, etc.) preserved?</summary><p>The current version extracts plain text without formatting. Use Word or LibreOffice to view with formatting.</p></details><details><summary>Are my files uploaded to the internet?</summary><p>No. All processing happens entirely in your browser. Files are never sent to any server.</p></details></div>
 
@@ -163,7 +164,6 @@ function parseRTF(rtf, fname, fsize) {
   document.getElementById('resultCard').scrollIntoView({behavior:'smooth', block:'start'});
 }
 </script>
-  <div class="wooa-orig-anchor"></div>
 <script src="../js/wooahouse-originals-tool-en.js"></script>
 <script src="../js/pwa-install.js"></script>
 </body>

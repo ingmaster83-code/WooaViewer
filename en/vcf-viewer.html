@@ -92,6 +92,7 @@
   <div id="errorMsg" class="alert alert-error" style="display:none"></div>
   <div id="vcfList" class="vcf-list" style="display:none"></div>
   <div class="vcf-count" id="vcfCount"></div>
+<div class="wooa-orig-anchor"></div>
 <div class="tips-panel"><h3>💡 Tips</h3><ul><li>Multiple contacts in a single .vcf file are all displayed.</li><li>Contact photos are shown if included in the vCard.</li><li>Supports exports from iPhone, Android, Outlook, and Google Contacts.</li></ul></div>
 <div class="faq-section"><h2>Frequently Asked Questions</h2><details><summary>Can I open a file with multiple contacts?</summary><p>Yes, multi-contact vCard files are supported and all contacts are displayed as individual cards.</p></details><details><summary>Can I edit or save contacts?</summary><p>The current viewer is view-only. For editing, use your phone's contacts app or Outlook.</p></details><details><summary>Are my files uploaded to the internet?</summary><p>No. All processing happens entirely in your browser. Files are never sent to any server.</p></details></div>
 
@@ -196,7 +197,6 @@ function decodeVcfVal(s) {
   return s.replace(/\\,/g,',').replace(/\\;/g,';').replace(/\\n/g,'\n').replace(/\\\\/g,'\\');
 }
 </script>
-  <div class="wooa-orig-anchor"></div>
 <script src="../js/wooahouse-originals-tool-en.js"></script>
 <script src="../js/pwa-install.js"></script>
 </body>

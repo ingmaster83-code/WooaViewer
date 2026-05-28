@@ -90,6 +90,7 @@
   <div id="errorMsg" class="alert alert-error" style="display:none"></div>
   <div class="result-card" id="resultCard"><div class="odt-body" id="odtBody"></div></div>
   <div class="odt-meta" id="odtMeta"></div>
+<div class="wooa-orig-anchor"></div>
 <div class="tips-panel"><h3>💡 Tips</h3><ul><li>Supports LibreOffice Writer (.odt) and Calc (.ods) files.</li><li>Basic formatting including paragraphs, tables, and lists is rendered.</li><li>For editing, use LibreOffice or Google Docs.</li></ul></div>
 <div class="faq-section"><h2>Frequently Asked Questions</h2><details><summary>Why aren't images displaying?</summary><p>Embedded images have partial support in the current version. If images don't appear, open the file directly in LibreOffice.</p></details><details><summary>Can I open ODP (presentation) files?</summary><p>Currently ODT (documents) and ODS (spreadsheets) are supported. ODP support is not yet available.</p></details><details><summary>Are my files uploaded to the internet?</summary><p>No. All processing happens entirely in your browser. Files are never sent to any server.</p></details></div>
 
@@ -174,7 +175,6 @@ function odtNodeToHtml(node) {
   return inner;
 }
 </script>
-  <div class="wooa-orig-anchor"></div>
 <script src="../js/wooahouse-originals-tool-en.js"></script>
 <script src="../js/pwa-install.js"></script>
 </body>

@@ -91,6 +91,7 @@
   <div id="errorMsg" class="alert alert-error" style="display:none"></div>
   <div id="icsList" class="ics-list" style="display:none"></div>
   <div class="ics-count" id="icsCount"></div>
+<div class="wooa-orig-anchor"></div>
 <div class="tips-panel"><h3>💡 Tips</h3><ul><li>Supports .ics files exported from Google Calendar, Outlook, and Apple Calendar.</li><li>Multiple events in one file are sorted by date automatically.</li><li>Recurring events (RRULE) are shown as single entries.</li></ul></div>
 <div class="faq-section"><h2>Frequently Asked Questions</h2><details><summary>Are recurring events displayed?</summary><p>Events with a recurrence rule (RRULE) are shown once as the base event. Use a calendar app to see all occurrences.</p></details><details><summary>Can I view files with many events?</summary><p>Yes, all events in a .ics file are displayed, sorted by start date.</p></details><details><summary>Are my files uploaded to the internet?</summary><p>No. All processing happens entirely in your browser. Files are never sent to any server.</p></details></div>
 
@@ -195,7 +196,6 @@ function formatICSDate(s, tz) {
   return `${year}-${mon}-${day} ${h}:${m}${tzStr}`;
 }
 </script>
-  <div class="wooa-orig-anchor"></div>
 <script src="../js/wooahouse-originals-tool-en.js"></script>
 <script src="../js/pwa-install.js"></script>
 </body>
