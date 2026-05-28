@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="b97d5945d07fd0d0993c3f853a7b793a2ecc6293">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOG 뷰어 - 로그 파일 열기 구문 강조 무료 온라인 | WooaViewer</title>
+  <meta name="description" content=".log .txt 로그 파일을 업로드하면 ERROR·WARN·INFO·DEBUG 레벨별 색상 강조와 검색 기능을 제공합니다. 서버 로그·애플리케이션 로그를 무료로 분석하세요.">
+  <meta name="keywords" content="LOG뷰어,로그뷰어,로그파일열기,서버로그분석,온라인LOG뷰어,무료로그뷰어,로그파일분석,로그파싱">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/log-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/log-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/log-viewer.html">
+  <link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/log-viewer.html">
+  <meta property="og:title" content="LOG 뷰어 - 로그 파일 색상 강조 및 검색 | WooaViewer">
+  <meta property="og:description" content=".log 파일을 업로드해 ERROR·WARN·INFO 레벨별 색상으로 분석하세요. 무료, 서버 전송 없음.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/log-viewer.html">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <meta property="og:site_name" content="WooaViewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LOG 뷰어 - 로그 파일 색상 강조 및 검색 | WooaViewer">
+  <meta name="twitter:description" content=".log 파일을 업로드해 ERROR·WARN·INFO 레벨별 색상으로 분석하세요. 무료, 서버 전송 없음.">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"LOG 뷰어","url":"https://wooaviewer.wooahouse.com/log-viewer.html","description":".log 로그 파일을 브라우저에서 열어 레벨별 색상 강조와 검색으로 분석하는 온라인 뷰어.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+    .result-card { background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08); padding:24px; margin-top:16px; display:none; }
+    .result-stats { font-size:0.82rem; color:#6B7280; margin-top:8px; }
+    .log-toolbar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:8px; }
+    .log-toolbar input { flex:1; min-width:150px; padding:6px 12px; border:1px solid #D1D5DB; border-radius:6px; font-size:0.85rem; }
+    .log-toolbar select { padding:6px 10px; border:1px solid #D1D5DB; border-radius:6px; font-size:0.85rem; }
+    .log-wrap { background:#1E1E1E; border-radius:8px; overflow:auto; max-height:600px; padding:8px 0; font-family:'Courier New',Consolas,monospace; font-size:0.82rem; line-height:1.6; }
+    .log-line { display:flex; gap:0; padding:0 4px; }
+    .log-line:hover { background:rgba(255,255,255,.05); }
+    .log-num { color:#4B5563; min-width:52px; text-align:right; padding-right:12px; user-select:none; flex-shrink:0; }
+    .log-text { color:#D1D5DB; white-space:pre; word-break:break-all; }
+    .log-error .log-text { color:#F87171; }
+    .log-warn .log-text { color:#FCD34D; }
+    .log-info .log-text { color:#6EE7B7; }
+    .log-debug .log-text { color:#93C5FD; }
+    .log-stats { font-size:0.82rem; color:#6B7280; margin-top:8px; display:flex; gap:16px; flex-wrap:wrap; }
+    .log-stat-item { display:flex; gap:4px; align-items:center; }
+    .log-badge { padding:2px 7px; border-radius:10px; font-size:0.72rem; font-weight:700; }
+    .bg-error { background:#FEE2E2; color:#DC2626; }
+    .bg-warn { background:#FEF3C7; color:#D97706; }
+    .bg-info { background:#D1FAE5; color:#059669; }
+    .bg-debug { background:#DBEAFE; color:#2563EB; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="dxf-viewer.html">DXF</a><a href="psd-viewer.html">PSD</a>
+      <a href="stl-viewer.html">STL</a><a href="index.html">전체 도구 ›</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <a href="log-viewer.html" class="active">KO</a>
+        <span>|</span>
+        <a href="en/log-viewer.html">EN</a>
+      </div>
+      <a href="about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">소개</a>
+    </div>
+  </div>
+</header>
+<script src="js/wooa-sites-bar.js"></script>
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<div class="page-with-sidebar">
+<div class="tool-page">
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>LOG 뷰어</span></div>
+  <div class="tool-header">
+    <span class="tool-header-icon">📋</span>
+    <h1>LOG 뷰어</h1>
+    <p>.log 파일을 업로드하면 ERROR·WARN·INFO·DEBUG 레벨별 색상 강조와 키워드 검색을 제공합니다.</p>
+  </div>
+  <div id="uploadSection">
+    <div class="drop-zone" id="dropZone">
+      <span class="drop-zone-icon">📋</span>
+      <h3>LOG 파일을 여기에 끌어다 놓으세요</h3>
+      <p>.log,.txt,.out,.err 형식 · 서버 전송 없음</p>
+      <label class="btn-select">파일 선택<input type="file" id="fileInput" accept=".log,.txt,.out,.err" style="display:none"></label>
+    </div>
+  </div>
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+  <div class="result-card" id="resultCard">
+    <div class="log-toolbar">
+      <input type="text" id="logSearch" placeholder="검색..." oninput="filterLog()">
+      <select id="logLevel" onchange="filterLog()">
+        <option value="">전체 레벨</option>
+        <option value="error">ERROR</option>
+        <option value="warn">WARN</option>
+        <option value="info">INFO</option>
+        <option value="debug">DEBUG</option>
+      </select>
+    </div>
+    <div class="log-wrap" id="logWrap"></div>
+    <div class="log-stats" id="logStats"></div>
+  </div>
+<div class="tips-panel" style="margin-top:24px;"><h3>💡 Tips</h3><ul><li>ERROR·WARN·INFO·DEBUG 레벨별로 필터링하여 볼 수 있습니다.</li><li>검색창에 키워드를 입력하면 해당 키워드가 포함된 줄만 표시됩니다.</li><li>최대 10만 줄까지 표시 가능합니다.</li></ul></div>
+<div style="margin-top:24px;"><h2 style="font-size:1.1rem;font-weight:700;margin-bottom:16px;">자주 묻는 질문</h2><div style="display:flex;flex-direction:column;gap:8px;"><details style="border:1px solid var(--border,#E5E7EB);border-radius:8px;padding:12px 16px;background:var(--bg2,#F9FAFB)"><summary style="cursor:pointer;font-weight:600;">어떤 로그 형식을 지원하나요?</summary><p style="margin:8px 0 0;color:#6B7280;font-size:0.88rem;">특정 형식 제약 없이 텍스트 기반 로그 파일이면 모두 지원합니다. ERROR, WARN, INFO, DEBUG 키워드를 자동 감지합니다.</p></details><details style="border:1px solid var(--border,#E5E7EB);border-radius:8px;padding:12px 16px;background:var(--bg2,#F9FAFB)"><summary style="cursor:pointer;font-weight:600;">로그 레벨 감지가 안 되는 경우가 있나요?</summary><p style="margin:8px 0 0;color:#6B7280;font-size:0.88rem;">로그 레벨 키워드가 대소문자 구분 없이 감지됩니다. 커스텀 형식의 경우 키워드 검색으로 필터링하세요.</p></details><details style="border:1px solid var(--border,#E5E7EB);border-radius:8px;padding:12px 16px;background:var(--bg2,#F9FAFB)"><summary style="cursor:pointer;font-weight:600;">파일이 인터넷에 업로드되나요?</summary><p style="margin:8px 0 0;color:#6B7280;font-size:0.88rem;">아니요. 모든 처리는 브라우저 안에서만 이루어지며 파일은 서버로 전송되지 않습니다. 완전히 안전합니다.</p></details></div></div>
+
+</div>
+<aside class="tool-sidebar">
+  <div class="ad-card">
+    <div class="ad-card-label">AD</div>
+    <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="1419180025" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="ad-card">
+    <script>new PartnersCoupang.G({"id":986943,"template":"carousel","trackingCode":"AF5600192","width":"160","height":"200","tsource":""});</script>
+  </div>
+</aside>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><span class="logo-footer">WooaViewer</span><p>다양한 파일을 설치 없이 브라우저에서 안전하게 열어보세요.</p></div>
+      <div class="footer-links"><h4>문서 뷰어</h4><a href="docx-viewer.html">DOCX 뷰어</a><a href="xlsx-viewer.html">XLSX 뷰어</a><a href="pptx-viewer.html">PPTX 뷰어</a><a href="eml-viewer.html">EML 뷰어</a><a href="rtf-viewer.html">RTF 뷰어</a><a href="vcf-viewer.html">VCF 뷰어</a><a href="ics-viewer.html">ICS 뷰어</a><a href="msg-viewer.html">MSG 뷰어</a><a href="odt-viewer.html">ODT 뷰어</a></div>
+      <div class="footer-links"><h4>설계 · 개발 · 기타</h4><a href="dxf-viewer.html">DXF 뷰어</a><a href="psd-viewer.html">PSD 뷰어</a><a href="heic-viewer.html">HEIC 뷰어</a><a href="tiff-viewer.html">TIFF 뷰어</a><a href="json-viewer.html">JSON 뷰어</a><a href="yaml-viewer.html">YAML 뷰어</a><a href="torrent-viewer.html">토렌트 뷰어</a><a href="log-viewer.html">LOG 뷰어</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 WooaViewer. 모든 권리 보유.</p><div class="footer-bottom-links"><a href="privacy.html">개인정보처리방침</a><a href="about.html">소개</a></div></div>
+    <p class="coupang-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+  </div>
+</footer>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const errorMsg = document.getElementById('errorMsg');
+fileInput.addEventListener('change', e => { if(e.target.files[0]) loadFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if(e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+});
+function showError(msg) { errorMsg.textContent = msg; errorMsg.style.display = 'block'; }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function formatBytes(b) {
+  if(b<1024) return b+' B';
+  if(b<1024*1024) return (b/1024).toFixed(1)+' KB';
+  return (b/1024/1024).toFixed(1)+' MB';
+}
+let allLines = [];
+function loadFile(file) {
+  errorMsg.style.display = 'none';
+  const reader = new FileReader();
+  reader.onload = e => parseLog(e.target.result, file.name, file.size);
+  reader.readAsText(file, 'UTF-8');
+}
+function parseLog(text, fname, fsize) {
+  allLines = text.split(/\r?\n/);
+  if (allLines.length > 100000) allLines = allLines.slice(0, 100000);
+  renderLog(allLines);
+  document.getElementById('resultCard').style.display = 'block';
+  document.getElementById('resultCard').scrollIntoView({behavior:'smooth', block:'start'});
+}
+function getLevel(line) {
+  if (/\b(?:ERROR|FATAL|CRITICAL|SEVERE)\b/i.test(line)) return 'error';
+  if (/\b(?:WARN(?:ING)?)\b/i.test(line)) return 'warn';
+  if (/\bINFO\b/i.test(line)) return 'info';
+  if (/\b(?:DEBUG|TRACE|VERBOSE)\b/i.test(line)) return 'debug';
+  return '';
+}
+function renderLog(lines) {
+  let err=0, warn=0, info=0, dbg=0;
+  const html = lines.map((line, i) => {
+    const lvl = getLevel(line);
+    if(lvl==='error') err++;
+    else if(lvl==='warn') warn++;
+    else if(lvl==='info') info++;
+    else if(lvl==='debug') dbg++;
+    const num = String(i+1).padStart(5,' ');
+    return `<div class="log-line ${lvl?'log-'+lvl:''}"><span class="log-num">${num}</span><span class="log-text">${esc(line)}</span></div>`;
+  }).join('');
+  document.getElementById('logWrap').innerHTML = html;
+  document.getElementById('logStats').innerHTML =
+    `<span class="log-stat-item"><span class="log-badge bg-error">ERROR</span>${err}</span>` +
+    `<span class="log-stat-item"><span class="log-badge bg-warn">WARN</span>${warn}</span>` +
+    `<span class="log-stat-item"><span class="log-badge bg-info">INFO</span>${info}</span>` +
+    `<span class="log-stat-item"><span class="log-badge bg-debug">DEBUG</span>${dbg}</span>` +
+    `<span style="color:#9CA3AF">${lines.length}줄</span>`;
+}
+function filterLog() {
+  const search = document.getElementById('logSearch').value.toLowerCase();
+  const level = document.getElementById('logLevel').value;
+  const filtered = allLines.filter(line => {
+    if (level && getLevel(line) !== level) return false;
+    if (search && !line.toLowerCase().includes(search)) return false;
+    return true;
+  });
+  renderLog(filtered);
+}
+</script>
+  <div class="wooa-orig-anchor"></div>
+<script src="js/wooahouse-originals-tool.js"></script>
+<script src="js/pwa-install.js"></script>
+</body>
+</html>
