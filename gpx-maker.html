@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="b97d5945d07fd0d0993c3f853a7b793a2ecc6293">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPX 만들기 - GPS 경로 생성·편집 무료 온라인 | WooaViewer</title>
+  <meta name="description" content="지도를 클릭해 GPS 경로를 만들고 GPX 파일로 저장하세요. 기존 GPX 파일 불러와 수정도 가능합니다. 설치 없이 브라우저에서 무료로 사용 가능.">
+  <meta name="keywords" content="GPX만들기,GPX생성기,GPS경로만들기,GPX편집,GPX파일생성,온라인GPX에디터,무료GPX생성,경로만들기">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/gpx-maker.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/gpx-maker.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/gpx-maker.html">
+  <link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/gpx-maker.html">
+  <meta property="og:title" content="GPX 만들기 - GPS 경로 생성·편집 무료 온라인 | WooaViewer">
+  <meta property="og:description" content="지도 클릭으로 경로를 그리고 GPX 파일로 저장. 기존 GPX 수정도 가능. 무료, 서버 전송 없음.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/gpx-maker.html">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <meta property="og:site_name" content="WooaViewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GPX 만들기 - GPS 경로 생성·편집 무료 온라인 | WooaViewer">
+  <meta name="twitter:description" content="지도 클릭으로 경로를 그리고 GPX 파일로 저장. 기존 GPX 수정도 가능.">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"GPX 만들기","url":"https://wooaviewer.wooahouse.com/gpx-maker.html","description":"지도를 클릭해 GPS 경로를 만들고 GPX 파일로 저장하는 온라인 도구. 기존 GPX 편집 지원.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .lang-switcher{display:flex;align-items:center;gap:4px;}
+    .lang-switcher a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.8rem;font-weight:600;padding:3px 8px;border-radius:12px;transition:background 0.15s;}
+    .lang-switcher a.active{color:white;background:rgba(255,255,255,0.25);}
+    .lang-switcher a:hover{color:white;background:rgba(255,255,255,0.18);}
+    .lang-switcher span{color:rgba(255,255,255,0.3);font-size:0.75rem;}
+
+    /* ── GPX Maker 전용 스타일 ── */
+    .gpx-maker-wrap{display:flex;flex-direction:column;gap:10px;margin-top:4px;}
+
+    .gpx-name-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+    .gpx-name-bar label{font-size:0.85rem;font-weight:600;color:#374151;white-space:nowrap;}
+    .gpx-name-bar input{flex:1;min-width:160px;padding:7px 12px;border:1px solid #D1D5DB;border-radius:8px;font-size:0.9rem;outline:none;transition:border-color .2s;}
+    .gpx-name-bar input:focus{border-color:#0284C7;box-shadow:0 0 0 3px rgba(2,132,199,.12);}
+
+    .gpx-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+    .gpx-toolbar .sep{width:1px;height:28px;background:#E5E7EB;margin:0 2px;}
+
+    .mode-btn{padding:7px 14px;border-radius:8px;border:1px solid #D1D5DB;background:white;font-size:0.84rem;font-weight:600;cursor:pointer;transition:all .15s;color:#374151;}
+    .mode-btn:hover{border-color:#0284C7;color:#0284C7;}
+    .mode-btn.active{background:#0284C7;border-color:#0284C7;color:white;}
+
+    .act-btn{padding:7px 13px;border-radius:8px;border:1px solid #D1D5DB;background:white;font-size:0.84rem;cursor:pointer;transition:all .15s;color:#374151;font-weight:500;}
+    .act-btn:hover{background:#F3F4F6;}
+    .act-btn.danger:hover{background:#FEF2F2;border-color:#FCA5A5;color:#DC2626;}
+    .act-btn.primary{background:#0284C7;border-color:#0284C7;color:white;font-weight:600;}
+    .act-btn.primary:hover{background:#0369a1;}
+
+    .load-btn{padding:7px 13px;border-radius:8px;border:1px solid #D1D5DB;background:white;font-size:0.84rem;cursor:pointer;transition:all .15s;color:#374151;font-weight:500;}
+    .load-btn:hover{background:#F3F4F6;}
+
+    #gpxMakerMap{height:480px;border-radius:10px;overflow:hidden;border:1px solid #E5E7EB;cursor:crosshair;}
+    #gpxMakerMap.mode-wpt{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ctext y='16' font-size='16'%3E🚩%3C/text%3E%3C/svg%3E") 2 16, crosshair;}
+
+    .gpx-stats-bar{display:flex;flex-wrap:wrap;gap:10px;}
+    .gpx-stat-chip{background:#F1F5F9;border-radius:8px;padding:8px 14px;font-size:0.83rem;}
+    .gpx-stat-chip span{font-weight:700;color:#0284C7;}
+
+    .gpx-hint{background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:10px 14px;font-size:0.82rem;color:#78350F;line-height:1.6;}
+    .gpx-hint strong{color:#92400E;}
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="gpx-viewer.html">GPX 뷰어</a>
+      <a href="json-viewer.html">JSON</a>
+      <a href="log-viewer.html">LOG</a>
+      <a href="index.html">전체 도구 ›</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <a href="gpx-maker.html" class="active">KO</a>
+        <span>|</span>
+        <a href="en/gpx-maker.html">EN</a>
+      </div>
+      <a href="about.html" style="color:rgba(255,255,255,0.85);font-size:0.85rem;text-decoration:none;margin-left:8px;">소개</a>
+    </div>
+  </div>
+</header>
+<script src="js/wooa-sites-bar.js"></script>
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<div class="page-with-sidebar">
+<div class="tool-page">
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>GPX 만들기</span></div>
+  <div class="tool-header">
+    <span class="tool-header-icon">✏️</span>
+    <h1>GPX 만들기</h1>
+    <p>지도를 클릭해 GPS 경로를 그리고 GPX 파일로 저장하세요. 기존 GPX를 불러와 수정할 수도 있습니다.</p>
+  </div>
+
+  <div class="gpx-maker-wrap">
+
+    <!-- 경로 이름 -->
+    <div class="gpx-name-bar">
+      <label for="routeName">📝 경로 이름</label>
+      <input type="text" id="routeName" placeholder="내 경로" maxlength="80">
+    </div>
+
+    <!-- 툴바 -->
+    <div class="gpx-toolbar">
+      <button id="modeTrack" class="mode-btn active" onclick="setMode('track')" title="지도 클릭으로 트랙 포인트 추가">📍 경로 추가</button>
+      <button id="modeWpt" class="mode-btn" onclick="setMode('waypoint')" title="지도 클릭으로 웨이포인트 추가">🚩 웨이포인트</button>
+      <div class="sep"></div>
+      <button class="act-btn" onclick="undoLast()" title="마지막 추가한 포인트 제거">↩️ 실행 취소</button>
+      <button class="act-btn danger" onclick="confirmClear()" title="모든 포인트 삭제">🗑️ 전체 삭제</button>
+      <div class="sep"></div>
+      <label class="load-btn" title="기존 GPX 파일 불러와 수정">📂 GPX 불러오기<input type="file" id="gpxLoadInput" accept=".gpx" style="display:none" onchange="loadGPXFile(this)"></label>
+      <button class="act-btn primary" onclick="saveGPX()" title="GPX 파일로 저장">💾 GPX 저장</button>
+      <button class="act-btn" onclick="locateMe()" title="내 위치로 이동" style="margin-left:auto;">📡 내 위치</button>
+    </div>
+
+    <!-- 지도 -->
+    <div id="gpxMakerMap"></div>
+
+    <!-- 통계 -->
+    <div class="gpx-stats-bar" id="gpxStatsBar">
+      <div class="gpx-stat-chip">트랙 포인트 <span id="statPts">0</span>개</div>
+      <div class="gpx-stat-chip">거리 <span id="statDist">0.00</span> km</div>
+      <div class="gpx-stat-chip">웨이포인트 <span id="statWpts">0</span>개</div>
+    </div>
+
+    <!-- 사용 안내 -->
+    <div class="gpx-hint" id="modeHint">
+      <strong>📍 경로 추가 모드:</strong> 지도를 클릭하면 트랙 포인트가 추가됩니다. 클릭한 순서대로 경로가 연결됩니다. 기존 포인트를 클릭하면 삭제합니다.
+    </div>
+
+  </div><!-- .gpx-maker-wrap -->
+
+<div class="wooa-orig-anchor"></div>
+<div class="tips-panel">
+  <h3>💡 Tips</h3>
+  <ul>
+    <li>등산·자전거·마라톤 경로 계획 시 지도를 클릭해 경로를 미리 그려보고 GPX로 내보낼 수 있습니다. Garmin·Strava·카카오맵 등에서 GPX 가져오기로 바로 사용 가능합니다.</li>
+    <li>기존 GPX 파일을 불러오면 기존 경로와 웨이포인트가 지도에 로드됩니다. 포인트를 추가·삭제하고 다시 저장해 경로를 수정하세요.</li>
+    <li>웨이포인트를 클릭하면 팝업이 열립니다. 팝업의 <strong>삭제</strong> 버튼으로 제거할 수 있습니다. 트랙 포인트는 파란 점을 클릭해 삭제합니다.</li>
+  </ul>
+</div>
+<div class="faq-section">
+  <h2>자주 묻는 질문</h2>
+  <details>
+    <summary>만든 GPX 파일을 어디에서 사용할 수 있나요?</summary>
+    <p>Garmin 기기, Strava, 카카오맵, OsmAnd, AllTrails 등 거의 모든 GPS 앱과 기기에서 GPX 파일을 가져올 수 있습니다. 각 앱의 "경로 가져오기" 또는 "GPX 가져오기" 기능을 사용하세요.</p>
+  </details>
+  <details>
+    <summary>고도 정보(elevation)를 추가할 수 있나요?</summary>
+    <p>현재 버전에서는 클릭으로 추가한 포인트에 고도 정보가 포함되지 않습니다. 고도 데이터가 필요하다면 GPX를 저장한 뒤 GPSBabel이나 GPS Visualizer 같은 도구로 고도 데이터를 추가할 수 있습니다.</p>
+  </details>
+  <details>
+    <summary>파일이 서버에 업로드되나요?</summary>
+    <p>아니요. 모든 처리는 브라우저 안에서만 이루어지며 파일은 서버로 전송되지 않습니다. 지도 타일만 OpenStreetMap 서버에서 로드됩니다.</p>
+  </details>
+</div>
+
+</div><!-- .tool-page -->
+<aside class="tool-sidebar"></aside>
+</div><!-- .page-with-sidebar -->
+<footer class="footer"></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// ── 상태 ──────────────────────────────────────────────────────────────────
+let map, polyline;
+let trackPoints = [];   // {lat, lon, marker}
+let waypoints   = [];   // {lat, lon, name, marker}
+let actionStack = [];   // {type:'track'|'waypoint'}
+let mode = 'track';
+
+// ── 지도 초기화 ───────────────────────────────────────────────────────────
+map = L.map('gpxMakerMap', {center:[36.5,127.8], zoom:7});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  maxZoom:19
+}).addTo(map);
+
+polyline = L.polyline([], {color:'#0284C7', weight:3, opacity:0.85}).addTo(map);
+
+map.on('click', e => {
+  if (mode === 'track') addTrackPoint(e.latlng);
+  else addWaypoint(e.latlng);
+});
+
+// ── 트랙 포인트 아이콘 ────────────────────────────────────────────────────
+const trackIcon = idx => L.divIcon({
+  className:'',
+  html:`<div style="width:12px;height:12px;background:#0284C7;border:2px solid white;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.35);cursor:pointer;" title="클릭해서 삭제"></div>`,
+  iconSize:[12,12], iconAnchor:[6,6]
+});
+
+// ── 모드 전환 ─────────────────────────────────────────────────────────────
+function setMode(m) {
+  mode = m;
+  document.getElementById('modeTrack').classList.toggle('active', m === 'track');
+  document.getElementById('modeWpt').classList.toggle('active', m === 'waypoint');
+  const mapEl = document.getElementById('gpxMakerMap');
+  mapEl.classList.toggle('mode-wpt', m === 'waypoint');
+  document.getElementById('modeHint').innerHTML = m === 'track'
+    ? '<strong>📍 경로 추가 모드:</strong> 지도를 클릭하면 트랙 포인트가 추가됩니다. 파란 점을 클릭하면 삭제합니다.'
+    : '<strong>🚩 웨이포인트 모드:</strong> 지도를 클릭하면 이름을 입력하고 웨이포인트를 추가합니다. 마커를 클릭해 삭제할 수 있습니다.';
+}
+
+// ── 트랙 포인트 추가 ──────────────────────────────────────────────────────
+function addTrackPoint(latlng) {
+  const idx = trackPoints.length;
+  const marker = L.marker(latlng, {icon: trackIcon(idx)}).addTo(map);
+  marker.on('click', e => {
+    L.DomEvent.stopPropagation(e);
+    removeTrackPoint(trackPoints.indexOf(trackPoints.find(p => p.marker === marker)));
+  });
+  trackPoints.push({lat: latlng.lat, lon: latlng.lng, marker});
+  actionStack.push({type:'track'});
+  updatePolyline();
+  updateStats();
+}
+
+function removeTrackPoint(idx) {
+  if (idx < 0 || idx >= trackPoints.length) return;
+  map.removeLayer(trackPoints[idx].marker);
+  trackPoints.splice(idx, 1);
+  updatePolyline();
+  updateStats();
+}
+
+// ── 웨이포인트 추가 ───────────────────────────────────────────────────────
+function addWaypoint(latlng) {
+  const name = prompt('웨이포인트 이름을 입력하세요:', '웨이포인트 ' + (waypoints.length + 1));
+  if (name === null) return; // 취소
+  const wpName = name.trim() || ('웨이포인트 ' + (waypoints.length + 1));
+  const marker = L.marker(latlng).addTo(map);
+  marker.bindPopup(`<strong>${escHTML(wpName)}</strong><br><button onclick="removeWaypointByMarker(this)" style="margin-top:6px;padding:3px 10px;border:none;background:#DC2626;color:white;border-radius:4px;cursor:pointer;font-size:0.8rem;">삭제</button>`);
+  marker._wpRef = {lat: latlng.lat, lon: latlng.lng, name: wpName};
+  waypoints.push({lat: latlng.lat, lon: latlng.lng, name: wpName, marker});
+  actionStack.push({type:'waypoint'});
+  updateStats();
+}
+
+function removeWaypointByMarker(btn) {
+  const popup = btn.closest('.leaflet-popup');
+  const marker = findMarkerByPopupEl(popup);
+  if (!marker) return;
+  const idx = waypoints.findIndex(w => w.marker === marker);
+  if (idx >= 0) {
+    map.removeLayer(waypoints[idx].marker);
+    waypoints.splice(idx, 1);
+    updateStats();
+  }
+}
+
+function findMarkerByPopupEl(popupEl) {
+  for (const wp of waypoints) {
+    if (wp.marker.getPopup() && wp.marker.getPopup()._container === popupEl) return wp.marker;
+  }
+  return null;
+}
+
+// ── 실행 취소 ─────────────────────────────────────────────────────────────
+function undoLast() {
+  if (!actionStack.length) return;
+  const last = actionStack.pop();
+  if (last.type === 'track' && trackPoints.length) {
+    const pt = trackPoints.pop();
+    map.removeLayer(pt.marker);
+    updatePolyline();
+  } else if (last.type === 'waypoint' && waypoints.length) {
+    const wp = waypoints.pop();
+    map.closePopup();
+    map.removeLayer(wp.marker);
+  }
+  updateStats();
+}
+
+// ── 전체 삭제 ─────────────────────────────────────────────────────────────
+function confirmClear() {
+  if (!trackPoints.length && !waypoints.length) return;
+  if (!confirm('모든 트랙 포인트와 웨이포인트를 삭제하시겠습니까?')) return;
+  clearAll();
+}
+
+function clearAll() {
+  trackPoints.forEach(p => map.removeLayer(p.marker));
+  waypoints.forEach(w => map.removeLayer(w.marker));
+  trackPoints = []; waypoints = []; actionStack = [];
+  updatePolyline();
+  updateStats();
+}
+
+// ── polyline 업데이트 ─────────────────────────────────────────────────────
+function updatePolyline() {
+  polyline.setLatLngs(trackPoints.map(p => [p.lat, p.lon]));
+}
+
+// ── 통계 업데이트 ─────────────────────────────────────────────────────────
+function updateStats() {
+  let dist = 0;
+  for (let i = 1; i < trackPoints.length; i++) {
+    dist += haversine(trackPoints[i-1].lat, trackPoints[i-1].lon, trackPoints[i].lat, trackPoints[i].lon);
+  }
+  document.getElementById('statPts').textContent = trackPoints.length;
+  document.getElementById('statDist').textContent = (dist / 1000).toFixed(2);
+  document.getElementById('statWpts').textContent = waypoints.length;
+}
+
+// ── 내 위치 ───────────────────────────────────────────────────────────────
+function locateMe() {
+  map.locate({setView: true, maxZoom: 14});
+}
+
+// ── GPX 불러오기 ──────────────────────────────────────────────────────────
+function loadGPXFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => importGPX(e.target.result);
+  reader.readAsText(file, 'UTF-8');
+  input.value = '';
+}
+
+function importGPX(text) {
+  clearAll();
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, 'text/xml');
+    if (doc.querySelector('parsererror')) { alert('GPX 파일을 파싱할 수 없습니다.'); return; }
+
+    // 경로 이름
+    const name = doc.querySelector('metadata name, trk name')?.textContent || '';
+    if (name) document.getElementById('routeName').value = name;
+
+    // 트랙 포인트
+    doc.querySelectorAll('trkpt').forEach(pt => {
+      const lat = parseFloat(pt.getAttribute('lat'));
+      const lon = parseFloat(pt.getAttribute('lon'));
+      if (!isNaN(lat) && !isNaN(lon)) addTrackPoint(L.latLng(lat, lon));
+    });
+
+    // 웨이포인트
+    doc.querySelectorAll('wpt').forEach(pt => {
+      const lat = parseFloat(pt.getAttribute('lat'));
+      const lon = parseFloat(pt.getAttribute('lon'));
+      const wpName = pt.querySelector('name')?.textContent || '웨이포인트';
+      if (!isNaN(lat) && !isNaN(lon)) {
+        const latlng = L.latLng(lat, lon);
+        const marker = L.marker(latlng).addTo(map);
+        marker.bindPopup(`<strong>${escHTML(wpName)}</strong><br><button onclick="removeWaypointByMarker(this)" style="margin-top:6px;padding:3px 10px;border:none;background:#DC2626;color:white;border-radius:4px;cursor:pointer;font-size:0.8rem;">삭제</button>`);
+        waypoints.push({lat, lon, name: wpName, marker});
+        actionStack.push({type:'waypoint'});
+      }
+    });
+
+    updateStats();
+
+    // 지도 범위 맞추기
+    const allPts = [...trackPoints.map(p => [p.lat, p.lon]), ...waypoints.map(w => [w.lat, w.lon])];
+    if (allPts.length) map.fitBounds(L.latLngBounds(allPts).pad(0.1));
+
+  } catch(e) { alert('GPX 파싱 오류: ' + e.message); }
+}
+
+// ── GPX 저장 ──────────────────────────────────────────────────────────────
+function saveGPX() {
+  if (!trackPoints.length && !waypoints.length) {
+    alert('저장할 포인트가 없습니다. 지도를 클릭해 경로를 먼저 그려주세요.');
+    return;
+  }
+  const name = document.getElementById('routeName').value.trim() || '내 경로';
+  const now = new Date().toISOString();
+
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+  xml += `<gpx version="1.1" creator="WooaViewer GPX Maker" xmlns="http://www.topografix.com/GPX/1/1">\n`;
+  xml += `  <metadata>\n    <name>${escXML(name)}</name>\n    <time>${now}</time>\n  </metadata>\n`;
+
+  for (const wp of waypoints) {
+    xml += `  <wpt lat="${wp.lat.toFixed(7)}" lon="${wp.lon.toFixed(7)}"><name>${escXML(wp.name)}</name></wpt>\n`;
+  }
+
+  if (trackPoints.length) {
+    xml += `  <trk>\n    <name>${escXML(name)}</name>\n    <trkseg>\n`;
+    for (const pt of trackPoints) {
+      xml += `      <trkpt lat="${pt.lat.toFixed(7)}" lon="${pt.lon.toFixed(7)}"></trkpt>\n`;
+    }
+    xml += `    </trkseg>\n  </trk>\n`;
+  }
+
+  xml += `</gpx>`;
+
+  const blob = new Blob([xml], {type: 'application/gpx+xml'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = name.replace(/[\\/:*?"<>|]/g, '_') + '.gpx';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+}
+
+// ── 유틸 ─────────────────────────────────────────────────────────────────
+function haversine(la1, lo1, la2, lo2) {
+  const R=6371000, f1=la1*Math.PI/180, f2=la2*Math.PI/180;
+  const df=(la2-la1)*Math.PI/180, dl=(lo2-lo1)*Math.PI/180;
+  const a=Math.sin(df/2)**2+Math.cos(f1)*Math.cos(f2)*Math.sin(dl/2)**2;
+  return 2*R*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+function escHTML(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function escXML(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');}
+</script>
+<script src="js/wooahouse-originals-tool.js"></script>
+<script src="js/pwa-install.js"></script>
+<script src="js/wooa-sidebar.js"></script>
+<script src="js/wooa-footer.js"></script>
+</body>
+</html>
