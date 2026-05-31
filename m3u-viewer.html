@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="b97d5945d07fd0d0993c3f853a7b793a2ecc6293">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M3U M3U8 재생목록 뷰어 무료 온라인 | WooaViewer</title>
+  <meta name="description" content=".m3u .m3u8 재생목록 파일을 업로드하면 트랙 제목·재생 시간·URL을 표로 확인합니다. 설치 없이 브라우저에서 무료로 열어보세요.">
+  <meta name="keywords" content="M3U뷰어,M3U8뷰어,재생목록뷰어,M3U파일열기,IPTV재생목록,플레이리스트뷰어,온라인M3U뷰어">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/m3u-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/m3u-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/m3u-viewer.html">
+  <link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/m3u-viewer.html">
+  <meta property="og:title" content="M3U/M3U8 재생목록 뷰어 | WooaViewer">
+  <meta property="og:description" content=".m3u .m3u8 파일의 트랙 목록을 확인하세요. 무료, 서버 전송 없음.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/m3u-viewer.html">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <meta property="og:site_name" content="WooaViewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="M3U/M3U8 재생목록 뷰어 | WooaViewer">
+  <meta name="twitter:description" content=".m3u .m3u8 파일의 트랙 목록을 확인하세요. 무료, 서버 전송 없음.">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"M3U/M3U8 뷰어","url":"https://wooaviewer.wooahouse.com/m3u-viewer.html","description":".m3u .m3u8 재생목록 파일의 트랙·시간·URL을 파싱해 표시하는 온라인 뷰어.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+    .result-card { background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08); padding:24px; margin-top:16px; display:none; }
+    .result-stats { font-size:0.82rem; color:#6B7280; margin-top:8px; }
+    .m3u-table{width:100%;border-collapse:collapse;font-size:0.86rem;}
+    .m3u-table th{background:#F1F5F9;color:#374151;font-weight:600;padding:8px 12px;text-align:left;border-bottom:2px solid #E5E7EB;}
+    .m3u-num{color:#9CA3AF;width:45px;text-align:right;padding-right:12px;}
+    .m3u-title{color:#1A1A2E;font-weight:500;}
+    .m3u-dur{color:#0284C7;white-space:nowrap;width:70px;text-align:right;font-family:monospace;font-size:0.82rem;}
+    .m3u-url{color:#6B7280;font-size:0.78rem;font-family:monospace;word-break:break-all;max-width:300px;}
+    .m3u-table tr:hover td{background:#F8FAFC;}
+    .m3u-table td{padding:7px 12px;border-bottom:1px solid #F3F4F6;vertical-align:middle;}
+    .m3u-stats{font-size:0.82rem;color:#6B7280;margin-top:8px;}
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="json-viewer.html">JSON</a><a href="log-viewer.html">LOG</a>
+      <a href="index.html">전체 도구 ›</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <a href="m3u-viewer.html" class="active">KO</a>
+        <span>|</span>
+        <a href="en/m3u-viewer.html">EN</a>
+      </div>
+      <a href="about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">소개</a>
+    </div>
+  </div>
+</header>
+<script src="js/wooa-sites-bar.js"></script>
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<div class="page-with-sidebar">
+<div class="tool-page">
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>M3U/M3U8 뷰어</span></div>
+  <div class="tool-header">
+    <span class="tool-header-icon">🎵</span>
+    <h1>M3U / M3U8 재생목록 뷰어</h1>
+    <p>.m3u .m3u8 재생목록 파일을 업로드하면 트랙 제목·재생 시간·URL을 즉시 확인합니다.</p>
+  </div>
+  <div id="uploadSection">
+    <div class="drop-zone" id="dropZone">
+      <span class="drop-zone-icon">🎵</span>
+      <h3>M3U / M3U8 파일을 여기에 끌어다 놓으세요</h3>
+      <p>.m3u,.m3u8 형식 · 서버 전송 없음</p>
+      <label class="btn-select">파일 선택<input type="file" id="fileInput" accept=".m3u,.m3u8" style="display:none"></label>
+    </div>
+  </div>
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+  <div class="result-card" id="resultCard">
+    <div style="overflow:auto;max-height:500px;">
+      <table class="m3u-table"><thead><tr><th class="m3u-num">#</th><th>제목</th><th class="m3u-dur">시간</th><th>URL</th></tr></thead>
+      <tbody id="m3uBody"></tbody></table>
+    </div>
+  </div>
+  <div class="m3u-stats" id="m3uStats"></div>
+<div class="wooa-orig-anchor"></div>
+<div class="tips-panel">
+  <h3>💡 Tips</h3>
+  <ul>
+    <li>확장 M3U 형식은 <code>#EXTM3U</code> 헤더와 <code>#EXTINF:재생시간,제목</code> 태그로 구성됩니다.</li>
+    <li>M3U8은 M3U와 동일하지만 UTF-8 인코딩을 명시한 버전입니다. HLS 스트리밍에도 사용됩니다.</li>
+    <li>IPTV 재생목록 파일도 대부분 M3U 형식으로 이 뷰어로 확인할 수 있습니다.</li>
+  </ul>
+</div>
+<div class="faq-section">
+  <h2>자주 묻는 질문</h2>
+  <details><summary>M3U와 M3U8의 차이는?</summary><p>M3U는 Media Playlist의 약자로 단순 텍스트 재생목록입니다. M3U8은 동일하지만 UTF-8 인코딩을 명시하며, Apple의 HTTP Live Streaming(HLS) 프로토콜에서도 사용됩니다.</p></details>
+  <details><summary>재생 시간이 -1로 표시되는 경우는?</summary><p>라이브 스트리밍 URL이거나 재생 시간 정보가 없는 항목입니다. 이 뷰어에서는 -1 또는 정보 없음(-)으로 표시됩니다.</p></details>
+  <details><summary>파일이 서버에 업로드되나요?</summary><p>아니요. 모든 처리는 브라우저 안에서만 이루어지며 파일은 서버로 전송되지 않습니다. 완전히 안전합니다.</p></details>
+</div>
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+<footer class="footer"></footer>
+
+<script>
+const dropZone=document.getElementById('dropZone');
+const fileInput=document.getElementById('fileInput');
+const errorMsg=document.getElementById('errorMsg');
+fileInput.addEventListener('change',e=>{if(e.target.files[0])loadFile(e.target.files[0]);});
+dropZone.addEventListener('dragover',e=>{e.preventDefault();dropZone.classList.add('drag-over');});
+dropZone.addEventListener('dragleave',()=>dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop',e=>{e.preventDefault();dropZone.classList.remove('drag-over');if(e.dataTransfer.files[0])loadFile(e.dataTransfer.files[0]);});
+function showError(msg){errorMsg.textContent=msg;errorMsg.style.display='block';}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function formatBytes(b){if(b<1024)return b+' B';if(b<1048576)return (b/1024).toFixed(1)+' KB';return (b/1048576).toFixed(1)+' MB';}
+function loadFile(file){
+  errorMsg.style.display='none';
+  const reader=new FileReader();
+  reader.onload=e=>parseM3U(e.target.result,file.name,file.size);
+  reader.readAsText(file,'UTF-8');
+}
+function parseM3U(text,fname,fsize){
+  const lines=text.replace(/\r\n/g,'\n').replace(/\r/g,'\n').split('\n');
+  const tracks=[]; let info=null;
+  for(const line of lines){
+    const t=line.trim();
+    if(!t||t==='#EXTM3U')continue;
+    if(t.startsWith('#EXTINF:')){
+      const rest=t.substring(8);
+      const ci=rest.indexOf(',');
+      const dur=ci>0?parseFloat(rest.substring(0,ci)):0;
+      const title=ci>0?rest.substring(ci+1).trim():'';
+      info={dur,title};
+    } else if(!t.startsWith('#')){
+      tracks.push({num:tracks.length+1,title:info?.title||t.split('/').pop().split('\\').pop()||'',dur:info?.dur||0,url:t});
+      info=null;
+    }
+  }
+  if(!tracks.length){showError('재생목록 항목을 찾을 수 없습니다.');return;}
+  document.getElementById('m3uBody').innerHTML=tracks.map(t=>{
+    const d=t.dur>0?fmtDur(t.dur):'-';
+    return `<tr><td class="m3u-num">${t.num}</td><td class="m3u-title">${esc(t.title||'(제목 없음)')}</td><td class="m3u-dur">${d}</td><td class="m3u-url">${esc(t.url)}</td></tr>`;
+  }).join('');
+  const td=tracks.reduce((s,t)=>s+(t.dur>0?t.dur:0),0);
+  document.getElementById('m3uStats').textContent=`${fname} · ${tracks.length}개 트랙${td>0?' · 총 '+fmtDur(td):''} · ${formatBytes(fsize)}`;
+  document.getElementById('resultCard').style.display='block';
+  document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function fmtDur(s){
+  const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=Math.floor(s%60);
+  if(h>0)return `${h}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+  return `${m}:${String(sec).padStart(2,'0')}`;
+}
+</script>
+<script src="js/wooahouse-originals-tool.js"></script>
+<script src="js/pwa-install.js"></script>
+<script src="js/wooa-sidebar.js"></script>
+<script src="js/wooa-footer.js"></script>
+</body>
+</html>

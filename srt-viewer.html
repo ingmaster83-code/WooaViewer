@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="b97d5945d07fd0d0993c3f853a7b793a2ecc6293">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRT VTT 자막 뷰어 - 자막 파일 열기 무료 온라인 | WooaViewer</title>
+  <meta name="description" content=".srt .vtt 자막 파일을 업로드하면 자막 번호·시간 코드·텍스트를 표로 확인합니다. 설치 없이 브라우저에서 무료로 자막 파일을 열어보세요.">
+  <meta name="keywords" content="SRT뷰어,VTT뷰어,자막파일열기,SRT파일보기,VTT파일보기,온라인자막뷰어,자막파일변환,자막확인">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/srt-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/srt-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/srt-viewer.html">
+  <link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/srt-viewer.html">
+  <meta property="og:title" content="SRT/VTT 자막 뷰어 - 자막 파일 브라우저에서 열기 | WooaViewer">
+  <meta property="og:description" content=".srt .vtt 자막 파일을 업로드해 시간 코드와 텍스트를 확인하세요. 무료, 서버 전송 없음.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/srt-viewer.html">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <meta property="og:site_name" content="WooaViewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SRT/VTT 자막 뷰어 - 자막 파일 브라우저에서 열기 | WooaViewer">
+  <meta name="twitter:description" content=".srt .vtt 자막 파일을 업로드해 시간 코드와 텍스트를 확인하세요. 무료, 서버 전송 없음.">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"SRT/VTT 자막 뷰어","url":"https://wooaviewer.wooahouse.com/srt-viewer.html","description":".srt .vtt 자막 파일을 브라우저에서 열어 시간 코드와 텍스트를 확인하는 온라인 뷰어.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+    .result-card { background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08); padding:24px; margin-top:16px; display:none; }
+    .result-stats { font-size:0.82rem; color:#6B7280; margin-top:8px; }
+    .sub-table{width:100%;border-collapse:collapse;font-size:0.88rem;}
+    .sub-table th{background:#F1F5F9;color:#374151;font-weight:600;padding:8px 12px;text-align:left;border-bottom:2px solid #E5E7EB;}
+    .sub-num{color:#9CA3AF;width:50px;text-align:right;padding-right:16px;}
+    .sub-time{color:#0284C7;white-space:nowrap;width:200px;font-family:monospace;font-size:0.82rem;}
+    .sub-text{color:#1A1A2E;line-height:1.5;}
+    .sub-table tr:hover td{background:#F8FAFC;}
+    .sub-table td{padding:7px 12px;border-bottom:1px solid #F3F4F6;vertical-align:top;}
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="json-viewer.html">JSON</a><a href="log-viewer.html">LOG</a>
+      <a href="index.html">전체 도구 ›</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <a href="srt-viewer.html" class="active">KO</a>
+        <span>|</span>
+        <a href="en/srt-viewer.html">EN</a>
+      </div>
+      <a href="about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">소개</a>
+    </div>
+  </div>
+</header>
+<script src="js/wooa-sites-bar.js"></script>
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<div class="page-with-sidebar">
+<div class="tool-page">
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>SRT/VTT 자막 뷰어</span></div>
+  <div class="tool-header">
+    <span class="tool-header-icon">💬</span>
+    <h1>SRT / VTT 자막 뷰어</h1>
+    <p>.srt 또는 .vtt 자막 파일을 업로드하면 자막 목록을 즉시 확인합니다. 설치 불필요.</p>
+  </div>
+  <div id="uploadSection">
+    <div class="drop-zone" id="dropZone">
+      <span class="drop-zone-icon">💬</span>
+      <h3>SRT / VTT 파일을 여기에 끌어다 놓으세요</h3>
+      <p>.srt,.vtt 형식 · 서버 전송 없음</p>
+      <label class="btn-select">파일 선택<input type="file" id="fileInput" accept=".srt,.vtt" style="display:none"></label>
+    </div>
+  </div>
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+  <div class="result-card" id="resultCard">
+    <div style="overflow:auto;max-height:500px;">
+      <table class="sub-table"><thead><tr><th class="sub-num">#</th><th class="sub-time">시간 코드</th><th>자막 텍스트</th></tr></thead>
+      <tbody id="subBody"></tbody></table>
+    </div>
+  </div>
+  <div class="result-stats" id="subStats"></div>
+<div class="wooa-orig-anchor"></div>
+<div class="tips-panel">
+  <h3>💡 Tips</h3>
+  <ul>
+    <li>SRT는 숫자 번호 → 시간 코드 → 자막 텍스트 순서로 구성되며 블록은 빈 줄로 구분됩니다.</li>
+    <li>VTT 파일은 첫 줄이 반드시 <strong>WEBVTT</strong>로 시작해야 합니다. YouTube·HTML5 &lt;track&gt; 태그에 사용됩니다.</li>
+    <li>한글이 깨진다면 파일을 UTF-8로 재저장하세요. Windows 메모장 → 다른 이름으로 저장 → 인코딩: UTF-8.</li>
+  </ul>
+</div>
+<div class="faq-section">
+  <h2>자주 묻는 질문</h2>
+  <details><summary>SRT와 VTT의 차이는 무엇인가요?</summary><p>SRT는 가장 보편적인 자막 형식으로 영화·드라마에 많이 쓰입니다. VTT는 웹 브라우저 &lt;video&gt; 태그 및 YouTube에서 사용하며 스타일 태그를 지원합니다.</p></details>
+  <details><summary>한글 자막이 깨지는 경우 어떻게 하나요?</summary><p>EUC-KR 또는 CP949 인코딩인 경우 깨질 수 있습니다. 메모장이나 VSCode에서 파일을 열고 UTF-8로 저장 후 다시 업로드하세요.</p></details>
+  <details><summary>파일이 서버에 업로드되나요?</summary><p>아니요. 모든 처리는 브라우저 안에서만 이루어지며 파일은 서버로 전송되지 않습니다. 완전히 안전합니다.</p></details>
+</div>
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+<footer class="footer"></footer>
+
+<script>
+const dropZone=document.getElementById('dropZone');
+const fileInput=document.getElementById('fileInput');
+const errorMsg=document.getElementById('errorMsg');
+fileInput.addEventListener('change',e=>{if(e.target.files[0])loadFile(e.target.files[0]);});
+dropZone.addEventListener('dragover',e=>{e.preventDefault();dropZone.classList.add('drag-over');});
+dropZone.addEventListener('dragleave',()=>dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop',e=>{e.preventDefault();dropZone.classList.remove('drag-over');if(e.dataTransfer.files[0])loadFile(e.dataTransfer.files[0]);});
+function showError(msg){errorMsg.textContent=msg;errorMsg.style.display='block';}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function formatBytes(b){if(b<1024)return b+' B';if(b<1048576)return (b/1024).toFixed(1)+' KB';return (b/1048576).toFixed(1)+' MB';}
+function loadFile(file){
+  errorMsg.style.display='none';
+  const reader=new FileReader();
+  reader.onload=e=>parseSub(e.target.result,file.name,file.size);
+  reader.readAsText(file,'UTF-8');
+}
+function parseSub(text,fname,fsize){
+  const isVTT=fname.toLowerCase().endsWith('.vtt');
+  const entries=isVTT?parseVTT(text):parseSRT(text);
+  if(!entries.length){showError('자막 항목을 찾을 수 없습니다. 올바른 SRT/VTT 파일인지 확인하세요.');return;}
+  document.getElementById('subBody').innerHTML=entries.map((e,i)=>
+    `<tr><td class="sub-num">${i+1}</td><td class="sub-time">${esc(e.time)}</td><td class="sub-text">${esc(e.text).replace(/\n/g,'<br>')}</td></tr>`
+  ).join('');
+  document.getElementById('resultCard').style.display='block';
+  document.getElementById('subStats').textContent=fname+' · '+entries.length+'개 자막 · '+formatBytes(fsize);
+  document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function parseSRT(text){
+  text=text.replace(/\r\n/g,'\n').replace(/\r/g,'\n').trim();
+  const entries=[]; const blocks=text.split(/\n\n+/);
+  for(const block of blocks){
+    const lines=block.trim().split('\n'); if(!lines.length)continue;
+    let i=0; if(/^\d+$/.test(lines[0].trim()))i=1;
+    if(i>=lines.length)continue;
+    const tm=lines[i].match(/(\d{2}:\d{2}:\d{2}[,.]\d{3})\s*-->\s*(\d{2}:\d{2}:\d{2}[,.]\d{3})/);
+    if(!tm)continue;
+    const time=tm[1].replace(',','.')+' → '+tm[2].replace(',','.');
+    const t=lines.slice(i+1).join('\n').trim();
+    if(t)entries.push({time,text:t});
+  }
+  return entries;
+}
+function parseVTT(text){
+  text=text.replace(/\r\n/g,'\n').replace(/\r/g,'\n');
+  if(!text.startsWith('WEBVTT')){showError('올바른 VTT 파일이 아닙니다.');return[];}
+  const entries=[]; const blocks=text.split(/\n\n+/);
+  for(const block of blocks){
+    const lines=block.trim().split('\n'); let i=0;
+    if(!lines[i]||!lines[i].includes('-->'))i=1;
+    if(i>=lines.length)continue;
+    const tm=lines[i].match(/([\d:]+\.\d{3})\s*-->\s*([\d:]+\.\d{3})/);
+    if(!tm)continue;
+    const time=tm[1]+' → '+tm[2];
+    const t=lines.slice(i+1).join('\n').replace(/<[^>]+>/g,'').trim();
+    if(t)entries.push({time,text:t});
+  }
+  return entries;
+}
+</script>
+<script src="js/wooahouse-originals-tool.js"></script>
+<script src="js/pwa-install.js"></script>
+<script src="js/wooa-sidebar.js"></script>
+<script src="js/wooa-footer.js"></script>
+</body>
+</html>
