@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="GCode ビューア 無料オンライン インストール不要 — 3Dプリンタの工具経路をレイヤーごとに可視化 | WooaViewer">
   <meta name="twitter:description" content="ブラウザで.gcode 3Dプリンタスライサーファイルの工具経路をレイヤーごとに無料で可視化。CuraおよびPrusaSlicerのGCodeに対応。ファイルはサーバーに送信されません、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"GCode 뷰어","url":"https://wooaviewer.wooahouse.com/ja/gcode-viewer.html","description":".gcode 3D 프린터 파일을 브라우저에서 무료로 툴패스를 레이어별 시각화하는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"GCode ビューア","url":"https://wooaviewer.wooahouse.com/ja/gcode-viewer.html","description":".gcode 3D 프린터 파일을 브라우저에서 무료로 툴패스를 레이어별 시각화하는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -136,10 +136,10 @@
   <div class="related-tools">
   <h2>関連ツール</h2>
   <div class="related-grid">
-    <a href="stl-viewer.html" class="related-card"><span class="related-icon">🖨️</span><span>STL 뷰어</span></a>
-    <a href="gpx-viewer.html" class="related-card"><span class="related-icon">🗺️</span><span>GPX 뷰어</span></a>
+    <a href="stl-viewer.html" class="related-card"><span class="related-icon">🖨️</span><span>STL ビューア</span></a>
+    <a href="gpx-viewer.html" class="related-card"><span class="related-icon">🗺️</span><span>GPX ビューア</span></a>
     <a href="gpx-maker.html" class="related-card"><span class="related-icon">✏️</span><span>GPX 만들기</span></a>
-    <a href="docx-viewer.html" class="related-card"><span class="related-icon">📝</span><span>DOCX 뷰어</span></a>
+    <a href="docx-viewer.html" class="related-card"><span class="related-icon">📝</span><span>DOCX ビューア</span></a>
   </div>
 </div>
 <div class="wooa-orig-anchor"></div>
@@ -185,7 +185,7 @@ async function handleFile(file) {
     initCanvas(result);
     draw();
   } catch (err) {
-    errorMsg.textContent = 'GCode 파일을 읽는 중 오류가 발생했습니다: ' + err.message;
+    errorMsg.textContent = 'GCode ファイルの読み込み中にエラーが発生しました: ' + err.message;
     errorMsg.style.display = 'block';
   }
 }

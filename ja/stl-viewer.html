@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="STL ビューア 無料オンライン インストール不要 — 3Dプリントモデルファイルを表示 | WooaViewer">
   <meta name="twitter:description" content="ブラウザで.stl 3Dプリントモデルファイルを無料で表示。360° 3Dビューでモデルを回転、ズーム、検査。ファイルはサーバーに送信されません、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"STL 뷰어","url":"https://wooaviewer.wooahouse.com/ja/stl-viewer.html","description":".stl 3D 프린팅 파일을 브라우저에서 무료로 회전·확대해서 확인하는 온라인 3D 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"STL ビューア","url":"https://wooaviewer.wooahouse.com/ja/stl-viewer.html","description":".stl 3D 프린팅 파일을 브라우저에서 무료로 회전·확대해서 확인하는 온라인 3D 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -117,10 +117,10 @@
   <div class="related-tools">
   <h2>関連ツール</h2>
   <div class="related-grid">
-    <a href="gcode-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>GCode 뷰어</span></a>
-    <a href="gpx-viewer.html" class="related-card"><span class="related-icon">🗺️</span><span>GPX 뷰어</span></a>
+    <a href="gcode-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>GCode ビューア</span></a>
+    <a href="gpx-viewer.html" class="related-card"><span class="related-icon">🗺️</span><span>GPX ビューア</span></a>
     <a href="gpx-maker.html" class="related-card"><span class="related-icon">✏️</span><span>GPX 만들기</span></a>
-    <a href="docx-viewer.html" class="related-card"><span class="related-icon">📝</span><span>DOCX 뷰어</span></a>
+    <a href="docx-viewer.html" class="related-card"><span class="related-icon">📝</span><span>DOCX ビューア</span></a>
   </div>
 </div>
 <div class="wooa-orig-anchor"></div>
@@ -223,7 +223,7 @@ async function handleFile(file) {
     stlContainer.style.display = 'block';
     resizeRenderer();
   } catch (err) {
-    errorMsg.textContent = 'STL 파일을 읽는 중 오류가 발생했습니다: ' + err.message;
+    errorMsg.textContent = 'STL ファイルの読み込み中にエラーが発生しました: ' + err.message;
     errorMsg.style.display = 'block';
   }
 }

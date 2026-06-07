@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="Markdown ビューア 無料オンライン インストール不要 — .mdファイルをレンダリング・プレビュー | WooaViewer">
   <meta name="twitter:description" content="Markdown（.md）ファイルをアップロードまたは貼り付けてHTMLとして即座にレンダリング。README.mdプレビューとコードブロックのシンタックスハイライトに対応。ファイルはサーバーに送信されません、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Markdown 뷰어","url":"https://wooaviewer.wooahouse.com/ja/markdown-viewer.html","description":".md 마크다운 파일을 HTML로 렌더링해서 미리보는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Markdown ビューア","url":"https://wooaviewer.wooahouse.com/ja/markdown-viewer.html","description":".md 마크다운 파일을 HTML로 렌더링해서 미리보는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -203,10 +203,10 @@
   <div class="related-tools">
   <h2>関連ツール</h2>
   <div class="related-grid">
-    <a href="docx-viewer.html" class="related-card"><span class="related-icon">📝</span><span>DOCX 뷰어</span></a>
-    <a href="xlsx-viewer.html" class="related-card"><span class="related-icon">📊</span><span>XLSX 뷰어</span></a>
-    <a href="epub-viewer.html" class="related-card"><span class="related-icon">📚</span><span>EPUB 뷰어</span></a>
-    <a href="pptx-viewer.html" class="related-card"><span class="related-icon">📑</span><span>PPTX 뷰어</span></a>
+    <a href="docx-viewer.html" class="related-card"><span class="related-icon">📝</span><span>DOCX ビューア</span></a>
+    <a href="xlsx-viewer.html" class="related-card"><span class="related-icon">📊</span><span>XLSX ビューア</span></a>
+    <a href="epub-viewer.html" class="related-card"><span class="related-icon">📚</span><span>EPUB ビューア</span></a>
+    <a href="pptx-viewer.html" class="related-card"><span class="related-icon">📑</span><span>PPTX ビューア</span></a>
   </div>
 </div>
 <div class="wooa-orig-anchor"></div>
@@ -256,7 +256,7 @@ function loadFile(file) {
   const reader = new FileReader();
   reader.onload = e => renderMarkdown(e.target.result);
   reader.onerror = () => {
-    errorMsg.textContent = '파일을 읽는 중 오류가 발생했습니다.';
+    errorMsg.textContent = 'ファイルの読み込み中にエラーが発生しました.';
     errorMsg.style.display = 'block';
   };
   reader.readAsText(file, 'UTF-8');
