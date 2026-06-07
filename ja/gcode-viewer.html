@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="GCode ビューア 無料オンライン インストール不要 — 3Dプリンタの工具経路をレイヤーごとに可視化 | WooaViewer">
   <meta name="twitter:description" content="ブラウザで.gcode 3Dプリンタスライサーファイルの工具経路をレイヤーごとに無料で可視化。CuraおよびPrusaSlicerのGCodeに対応。ファイルはサーバーに送信されません、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"GCode ビューア","url":"https://wooaviewer.wooahouse.com/ja/gcode-viewer.html","description":".gcode 3D 프린터 파일을 브라우저에서 무료로 툴패스를 레이어별 시각화하는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"GCode ビューア","url":"https://wooaviewer.wooahouse.com/ja/gcode-viewer.html","description":".gcode 3Dプリンターファイルをブラウザでレイヤー別にツールパスを可視化するオンラインビューア","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -108,22 +108,22 @@
 
   <div class="gcode-container" id="gcodeContainer">
     <div class="gcode-stats">
-      <div class="stat-item"><span class="stat-label">총 이동</span><span class="stat-value" id="statMoves">-</span></div>
-      <div class="stat-item"><span class="stat-label">절삭 이동</span><span class="stat-value" id="statCut">-</span></div>
-      <div class="stat-item"><span class="stat-label">레이어(Z)</span><span class="stat-value" id="statLayers">-</span></div>
-      <div class="stat-item"><span class="stat-label">크기(X×Y)</span><span class="stat-value" id="statSize">-</span></div>
+      <div class="stat-item"><span class="stat-label">総移動</span><span class="stat-value" id="statMoves">-</span></div>
+      <div class="stat-item"><span class="stat-label">切削移動</span><span class="stat-value" id="statCut">-</span></div>
+      <div class="stat-item"><span class="stat-label">レイヤー(Z)</span><span class="stat-value" id="statLayers">-</span></div>
+      <div class="stat-item"><span class="stat-label">サイズ(X×Y)</span><span class="stat-value" id="statSize">-</span></div>
     </div>
     <div class="gcode-toolbar">
       <span class="gcode-file-name" id="gcodeFileName"></span>
-      <button class="gcode-btn" id="rapidBtn" onclick="toggleRapid()">급이동 표시</button>
-      <button class="gcode-btn" onclick="resetView()">초기화</button>
+      <button class="gcode-btn" id="rapidBtn" onclick="toggleRapid()">急速移動を表示</button>
+      <button class="gcode-btn" onclick="resetView()">リセット</button>
     </div>
     <canvas id="gcodeCanvas"></canvas>
     <div class="legend">
-      <div class="legend-item"><div class="legend-dot" style="background:#0284C7"></div><span>절삭 이동 (G1)</span></div>
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(156,163,175,0.6);border-top:2px dashed rgba(156,163,175,0.6);height:0"></div><span>급이동 (G0)</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#0284C7"></div><span>切削移動 (G1)</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(156,163,175,0.6);border-top:2px dashed rgba(156,163,175,0.6);height:0"></div><span>急速移動 (G0)</span></div>
     </div>
-    <p class="stl-hint">마우스 드래그: 이동 · 휠: 확대/축소</p>
+    <p class="stl-hint">マウスドラッグ: 移動 · ホイール: 拡大/縮小</p>
   </div>
 
 <div class="related-tools">
@@ -131,7 +131,7 @@
   <div class="related-grid">
     <a href="stl-viewer.html" class="related-card"><span class="related-icon">🖨️</span><span>STL ビューア</span></a>
     <a href="gpx-viewer.html" class="related-card"><span class="related-icon">🗺️</span><span>GPX ビューア</span></a>
-    <a href="gpx-maker.html" class="related-card"><span class="related-icon">✏️</span><span>GPX 만들기</span></a>
+    <a href="gpx-maker.html" class="related-card"><span class="related-icon">✏️</span><span>GPXを作成</span></a>
     <a href="docx-viewer.html" class="related-card"><span class="related-icon">📝</span><span>DOCX ビューア</span></a>
   </div>
 </div>
@@ -169,13 +169,13 @@ async function handleFile(file) {
   try {
     const text = await file.text();
     const result = parseGCode(text);
-    if (!result.moves.length) throw new Error('이동 명령(G0/G1)을 찾을 수 없습니다.');
+    if (!result.moves.length) throw new Error('移動コマンド(G0/G1)が見つかりません。');
 
     allMoves = result.moves;
     document.getElementById('gcodeFileName').textContent = file.name;
-    document.getElementById('statMoves').textContent = result.moves.length.toLocaleString() + '개';
-    document.getElementById('statCut').textContent = result.cutCount.toLocaleString() + '개';
-    document.getElementById('statLayers').textContent = result.layers + '개';
+    document.getElementById('statMoves').textContent = result.moves.length.toLocaleString() + '件';
+    document.getElementById('statCut').textContent = result.cutCount.toLocaleString() + '件';
+    document.getElementById('statLayers').textContent = result.layers + '件';
     document.getElementById('statSize').textContent =
       result.rangeX.toFixed(1) + ' × ' + result.rangeY.toFixed(1) + ' mm';
 
@@ -337,7 +337,7 @@ function toggleRapid() {
   showRapid = !showRapid;
   const btn = document.getElementById('rapidBtn');
   btn.classList.toggle('active', showRapid);
-  btn.textContent = showRapid ? '급이동 숨기기' : '급이동 표시';
+  btn.textContent = showRapid ? '急速移動を非表示' : '急速移動を表示';
   draw();
 }
 

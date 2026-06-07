@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="Diff ビューア 無料オンライン インストール不要 — 2つのテキストファイルを比較 | WooaViewer">
   <meta name="twitter:description" content="2つのテキストファイルを貼り付けるかアップロードして比較し、追加・削除・変更された行をハイライト表示。無料、サーバーアップロードなし、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Diff ビューア","url":"https://wooaviewer.wooahouse.com/ja/diff-viewer.html","description":"두 텍스트 파일을 비교하여 차이점을 보여주는 온라인 뷰어.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Diff ビューア","url":"https://wooaviewer.wooahouse.com/ja/diff-viewer.html","description":"2つのテキストファイルを比較して差分を表示するオンラインビューア。","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -109,21 +109,21 @@
   <div class="diff-inputs">
     <div>
       <div class="diff-panel-label">
-        원본 (A)
-        <label class="diff-file-btn">📂 파일<input type="file" id="fileA" accept=".txt,.md,.json,.yaml,.yml,.xml,.csv,.js,.ts,.py,.html,.css,.java,.go,.rs,.c,.cpp,.sh,.conf,.env,.log" style="display:none"></label>
+        元のテキスト (A)
+        <label class="diff-file-btn">📂 ファイル<input type="file" id="fileA" accept=".txt,.md,.json,.yaml,.yml,.xml,.csv,.js,.ts,.py,.html,.css,.java,.go,.rs,.c,.cpp,.sh,.conf,.env,.log" style="display:none"></label>
       </div>
-      <textarea class="diff-textarea" id="textA" placeholder="원본 텍스트 또는 코드를 붙여넣으세요..."></textarea>
+      <textarea class="diff-textarea" id="textA" placeholder="元のテキストまたはコードを貼り付けてください..."></textarea>
     </div>
     <div>
       <div class="diff-panel-label">
-        변경본 (B)
-        <label class="diff-file-btn">📂 파일<input type="file" id="fileB" accept=".txt,.md,.json,.yaml,.yml,.xml,.csv,.js,.ts,.py,.html,.css,.java,.go,.rs,.c,.cpp,.sh,.conf,.env,.log" style="display:none"></label>
+        変更後 (B)
+        <label class="diff-file-btn">📂 ファイル<input type="file" id="fileB" accept=".txt,.md,.json,.yaml,.yml,.xml,.csv,.js,.ts,.py,.html,.css,.java,.go,.rs,.c,.cpp,.sh,.conf,.env,.log" style="display:none"></label>
       </div>
-      <textarea class="diff-textarea" id="textB" placeholder="변경된 텍스트 또는 코드를 붙여넣으세요..."></textarea>
+      <textarea class="diff-textarea" id="textB" placeholder="変更後のテキストまたはコードを貼り付けてください..."></textarea>
     </div>
   </div>
 
-  <button class="compare-btn" onclick="runDiff()">🔍 비교하기</button>
+  <button class="compare-btn" onclick="runDiff()">🔍 比較</button>
 
   <div id="errorMsg" class="alert alert-error" style="display:none"></div>
 
@@ -224,7 +224,7 @@ function runDiff() {
   const tb = document.getElementById('textB').value;
   const errEl = document.getElementById('errorMsg');
   if (!ta.trim() && !tb.trim()) {
-    errEl.textContent = '원본(A)과 변경본(B) 중 하나 이상을 입력하세요.';
+    errEl.textContent = '元のテキスト(A)か変更後(B)のどちらかを入力してください。';
     errEl.style.display = 'block'; return;
   }
   errEl.style.display = 'none';
@@ -236,7 +236,7 @@ function runDiff() {
   const dels = diffData.filter(d=>d.type==='del').length;
   const sames = diffData.filter(d=>d.type==='same').length;
   const stats = document.getElementById('diffStats');
-  stats.innerHTML = `<span class="stat-add">+${adds} 추가</span><span class="stat-del">-${dels} 삭제</span><span class="stat-same">${sames} 동일</span>`;
+  stats.innerHTML = `<span class="stat-add">+${adds} 追加</span><span class="stat-del">-${dels} 削除</span><span class="stat-same">${sames} 同一</span>`;
   stats.style.display = 'flex';
   document.getElementById('diffToolbar').style.display = 'flex';
   document.getElementById('diffResult').style.display = 'block';
@@ -261,7 +261,7 @@ function renderDiff(data, filter) {
       const nearChange = filter !== 'all' && data.slice(Math.max(0,idx-CONTEXT), idx+CONTEXT+1).some(d=>d.type!=='same');
       if (filter === 'all' || nearChange) {
         if (lastShownIdx >= 0 && idx - lastShownIdx > 1 && filter !== 'all') {
-          html += `<div class="diff-hunk">... (${idx - lastShownIdx - 1}줄 생략) ...</div>`;
+          html += `<div class="diff-hunk">... (${idx - lastShownIdx - 1}行省略) ...</div>`;
         }
         html += `<div class="diff-line diff-same"><div class="diff-line-num">${lineA}<br>${lineB}</div><div class="diff-line-content">${esc(item.a??'')}</div></div>`;
         lastShownIdx = idx;
@@ -269,7 +269,7 @@ function renderDiff(data, filter) {
       lineA++; lineB++;
     } else if (item.type === 'del') {
       if (lastShownIdx >= 0 && idx - lastShownIdx > 1 && filter !== 'all') {
-        html += `<div class="diff-hunk">... (${idx - lastShownIdx - 1}줄 생략) ...</div>`;
+        html += `<div class="diff-hunk">... (${idx - lastShownIdx - 1}行省略) ...</div>`;
       }
       if (filter === 'all' || filter === 'del' || filter === 'change') {
         html += `<div class="diff-line diff-del"><div class="diff-line-num">${lineA}<br></div><div class="diff-line-content">${esc(item.a)}</div></div>`;
@@ -278,7 +278,7 @@ function renderDiff(data, filter) {
       lineA++;
     } else if (item.type === 'add') {
       if (lastShownIdx >= 0 && idx - lastShownIdx > 1 && filter !== 'all') {
-        html += `<div class="diff-hunk">... (${idx - lastShownIdx - 1}줄 생략) ...</div>`;
+        html += `<div class="diff-hunk">... (${idx - lastShownIdx - 1}行省略) ...</div>`;
       }
       if (filter === 'all' || filter === 'add' || filter === 'change') {
         html += `<div class="diff-line diff-add"><div class="diff-line-num"><br>${lineB}</div><div class="diff-line-content">${esc(item.b)}</div></div>`;
@@ -287,7 +287,7 @@ function renderDiff(data, filter) {
       lineB++;
     }
   });
-  result.innerHTML = html || '<div style="padding:20px;color:#9CA3AF;text-align:center;">차이점이 없습니다.</div>';
+  result.innerHTML = html || '<div style="padding:20px;color:#9CA3AF;text-align:center;">差分がありません。</div>';
 }
 
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }

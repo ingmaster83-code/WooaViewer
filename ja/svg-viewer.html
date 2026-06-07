@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="SVG ビューア 無料オンライン インストール不要 — SVGファイルをプレビュー・ソース表示・PNG変換 | WooaViewer">
   <meta name="twitter:description" content="SVGコードをアップロードまたは貼り付けて即座にプレビュー。ズーム/パン、PNG変換ダウンロード、SVGソースコード表示に対応。無料、サーバーアップロードなし、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"SVG ビューア","url":"https://wooaviewer.wooahouse.com/ja/svg-viewer.html","description":"SVG 파일 미리보기, 소스 확인, PNG 변환 다운로드를 제공하는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"SVG ビューア","url":"https://wooaviewer.wooahouse.com/ja/svg-viewer.html","description":"SVGファイルのプレビュー、ソース確認、PNG変換ダウンロードを提供するオンラインビューア","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -109,7 +109,7 @@
 
   <div class="mode-tabs">
     <button class="mode-tab active" id="tabUpload" onclick="switchMode('upload')">Upload File</button>
-    <button class="mode-tab" id="tabCode" onclick="switchMode('code')">코드 입력</button>
+    <button class="mode-tab" id="tabCode" onclick="switchMode('code')">コード入力</button>
   </div>
 
   <div id="uploadSection">
@@ -123,14 +123,14 @@
 
   <div id="codeSection" style="display:none">
     <textarea class="svg-textarea" id="svgInput" placeholder='<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">&#10;  <circle cx="50" cy="50" r="40" fill="#0284C7"/>&#10;</svg>'></textarea>
-    <button class="parse-btn" onclick="renderFromCode()">미리보기</button>
+    <button class="parse-btn" onclick="renderFromCode()">プレビュー</button>
   </div>
 
   <div id="errorMsg" class="alert alert-error" style="display:none"></div>
 
   <div class="svg-toolbar" id="svgToolbar">
     <span class="svg-info" id="svgInfo"></span>
-    <label style="font-size:0.82rem;font-weight:600;color:#6B7280;">확대:</label>
+    <label style="font-size:0.82rem;font-weight:600;color:#6B7280;">拡大:</label>
     <select class="svg-zoom-select" id="zoomSelect" onchange="applyZoom(this.value)">
       <option value="fit">Fit</option>
       <option value="50">50%</option>
@@ -138,20 +138,20 @@
       <option value="150">150%</option>
       <option value="200">200%</option>
     </select>
-    <button class="svg-tb-btn" onclick="toggleSource()">소스 보기</button>
-    <button class="svg-tb-btn" id="downloadBtn" onclick="downloadPNG()">PNG 다운로드</button>
-    <button class="svg-tb-btn" onclick="downloadSVG()">SVG 다운로드</button>
+    <button class="svg-tb-btn" onclick="toggleSource()">ソースを表示</button>
+    <button class="svg-tb-btn" id="downloadBtn" onclick="downloadPNG()">PNGダウンロード</button>
+    <button class="svg-tb-btn" onclick="downloadSVG()">SVGダウンロード</button>
   </div>
 
   <div class="svg-preview-wrap" id="svgPreviewWrap">
     <div class="svg-preview-bg-bar">
-      <label>배경:</label>
-      <button class="bg-btn bg-white active" title="흰색" onclick="setBg('white',this)"></button>
-      <button class="bg-btn bg-black" title="검정" onclick="setBg('#111',this)"></button>
-      <button class="bg-btn bg-gray" title="회색" onclick="setBg('#E5E7EB',this)"></button>
+      <label>背景:</label>
+      <button class="bg-btn bg-white active" title="白" onclick="setBg('white',this)"></button>
+      <button class="bg-btn bg-black" title="黒" onclick="setBg('#111',this)"></button>
+      <button class="bg-btn bg-gray" title="グレー" onclick="setBg('#E5E7EB',this)"></button>
     </div>
     <div class="svg-canvas-area" id="svgCanvasArea">
-      <img id="svgImg" alt="SVG 미리보기">
+      <img id="svgImg" alt="SVGプレビュー">
     </div>
   </div>
 
@@ -253,7 +253,7 @@ function parseSVGDimensions(text) {
 function renderSVG(text, size) {
   errorMsg.style.display = 'none';
   if (!text.trim().match(/<svg/i)) {
-    errorMsg.textContent = 'SVG 형식이 아닙니다. <svg ...> 태그가 필요합니다.';
+    errorMsg.textContent = 'SVG形式ではありません。<svg ...>タグが必要です。';
     errorMsg.style.display = 'block';
     return;
   }
@@ -304,7 +304,7 @@ function setBg(color, btn) {
 function toggleSource() {
   sourceVisible = !sourceVisible;
   svgSourceWrap.style.display = sourceVisible ? 'block' : 'none';
-  document.querySelector('.svg-tb-btn[onclick="toggleSource()"]').textContent = sourceVisible ? '소스 닫기' : '소스 보기';
+  document.querySelector('.svg-tb-btn[onclick="toggleSource()"]').textContent = sourceVisible ? 'ソースを閉じる' : 'ソースを表示';
 }
 
 function downloadPNG() {

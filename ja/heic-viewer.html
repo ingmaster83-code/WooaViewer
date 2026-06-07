@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="HEIC ビューア 無料オンライン インストール不要 — iPhoneの写真をコーデックなしで開く | WooaViewer">
   <meta name="twitter:description" content="コーデックのインストールなしでブラウザでiPhoneの.heicおよび.heif写真を無料で開く。PNGまたはJPGとして変換・保存可能。ファイルはサーバーに送信されません、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"HEIC ビューア","url":"https://wooaviewer.wooahouse.com/ja/heic-viewer.html","description":"아이폰 .heic 사진을 코덱 설치 없이 브라우저에서 열어보고 PNG/JPG로 저장하는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"HEIC ビューア","url":"https://wooaviewer.wooahouse.com/ja/heic-viewer.html","description":"iPhoneの.heic写真をコーデックインストールなしでブラウザで開きPNG/JPGで保存するオンラインビューア","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -104,7 +104,7 @@
 
   <div id="loadingWrap" class="spinner-wrap" style="display:none">
     <div class="spinner"></div>
-    <p style="margin-top:12px;color:#6B7280;font-size:0.88rem">HEIC 파일 변환 중... (파일 크기에 따라 수초 소요)</p>
+    <p style="margin-top:12px;color:#6B7280;font-size:0.88rem">HEICファイル変換中...（ファイルサイズにより数秒かかります）</p>
   </div>
   <div id="errorMsg" class="alert alert-error" style="display:none"></div>
 
@@ -115,10 +115,10 @@
       <span class="heic-info-text" id="heicDimensions"></span>
     </div>
     <div class="heic-preview">
-      <img id="heicPreview" src="" alt="HEIC 미리보기">
+      <img id="heicPreview" src="" alt="HEICプレビュー">
       <div class="heic-actions">
-        <a id="dlPng" class="heic-dl-btn" download="image.png">PNG로 저장</a>
-        <a id="dlJpg" class="heic-dl-btn secondary" download="image.jpg">JPG로 저장</a>
+        <a id="dlPng" class="heic-dl-btn" download="image.png">PNGで保存</a>
+        <a id="dlJpg" class="heic-dl-btn secondary" download="image.jpg">JPGで保存</a>
       </div>
       <p class="multi-notice" id="multiNotice" style="display:none"></p>
     </div>
@@ -197,7 +197,7 @@ async function loadFile(file) {
 
     if (Array.isArray(result) && result.length > 1) {
       const notice = document.getElementById('multiNotice');
-      notice.textContent = `이 HEIC 파일에는 ${result.length}개의 이미지가 포함되어 있습니다. 첫 번째 이미지를 표시합니다.`;
+      notice.textContent = `このHEICファイルには${result.length}枚の画像が含まれています。最初の画像を表示します。`;
       notice.style.display = 'block';
     }
 
@@ -206,7 +206,7 @@ async function loadFile(file) {
   } catch (err) {
     loadingWrap.style.display = 'none';
     dropZone.style.display = 'block';
-    errorMsg.textContent = 'HEIC 파일을 변환하는 중 오류가 발생했습니다: ' + err.message;
+    errorMsg.textContent = 'HEICファイルの変換中にエラーが発生しました: ' + err.message;
     errorMsg.style.display = 'block';
   }
 }

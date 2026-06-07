@@ -150,19 +150,19 @@ function loadFile(file) {
 }
 function parseMSG(buffer, fname, fsize) {
   try {
-    if (typeof MSGReader === 'undefined') { showError('라이브러리 로딩에 실패했습니다. 새로고침 후 다시 시도하세요.'); return; }
+    if (typeof MSGReader === 'undefined') { showError('ライブラリの読み込みに失敗しました。ページを再読み込みしてください。'); return; }
     const reader = new MSGReader(buffer);
     const data = reader.getFileData();
-    if (!data || data.error) { showError('MSG 파일을 파싱할 수 없습니다.'); return; }
+    if (!data || data.error) { showError('MSGファイルを解析できません。'); return; }
     const hEl = document.getElementById('msgHeaders');
     const rows = [
-      ['발신자', (data.senderName||'')+(data.senderEmail?' <'+data.senderEmail+'>':'')],
-      ['수신자', (data.recipients||[]).map(r=>r.name||(r.email||'')).join(', ')],
-      ['날짜', data.creationTime||data.messageDeliveryTime||''],
-      ['제목', data.subject||'(제목 없음)'],
+      ['送信者', (data.senderName||'')+(data.senderEmail?' <'+data.senderEmail+'>':'')],
+      ['受信者', (data.recipients||[]).map(r=>r.name||(r.email||'')).join(', ')],
+      ['日付', data.creationTime||data.messageDeliveryTime||''],
+      ['件名', data.subject||'(件名なし)'],
     ].filter(r=>r[1]);
     hEl.innerHTML = rows.map(([l,v]) => {
-      const cls = l==='제목' ? 'msg-subject' : 'msg-val';
+      const cls = l==='件名' ? 'msg-subject' : 'msg-val';
       return `<div class="msg-row"><span class="msg-lbl">${esc(l)}</span><span class="${cls}">${esc(v)}</span></div>`;
     }).join('');
     const body = data.body || data.bodyHTML || '';
@@ -171,17 +171,17 @@ function parseMSG(buffer, fname, fsize) {
       const blob = new Blob([data.bodyHTML], {type:'text/html'});
       bodyEl.innerHTML = `<iframe src="${URL.createObjectURL(blob)}" style="width:100%;min-height:300px;max-height:500px;border:none;border-radius:6px;" sandbox="allow-same-origin"></iframe>`;
     } else {
-      bodyEl.textContent = body || '(본문 없음)';
+      bodyEl.textContent = body || '(本文なし)';
     }
     const atts = data.attachments || [];
     if (atts.length) {
-      document.getElementById('msgAttList').innerHTML = atts.map(a=>`<div class="msg-att-item">📎 ${esc(a.fileName||'첨부파일')}</div>`).join('');
+      document.getElementById('msgAttList').innerHTML = atts.map(a=>`<div class="msg-att-item">📎 ${esc(a.fileName||'添付ファイル')}</div>`).join('');
       document.getElementById('msgAtts').style.display = 'block';
     }
     document.getElementById('msgCard').style.display = 'block';
     document.getElementById('msgStats').textContent = fname + ' · ' + formatBytes(fsize);
     document.getElementById('msgCard').scrollIntoView({behavior:'smooth', block:'start'});
-  } catch(e) { showError('파싱 오류: ' + e.message); }
+  } catch(e) { showError('解析エラー: ' + e.message); }
 }
 </script>
 <script src="../js/wooahouse-originals-tool-ja.js"></script>

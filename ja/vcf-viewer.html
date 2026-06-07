@@ -142,7 +142,7 @@ function parseVCF(text, fname, fsize) {
   text = text.replace(/\r\n /g, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
   text = text.replace(/\n /g, '');
   const blocks = text.split(/BEGIN:VCARD/i).filter(b => b.trim());
-  if (!blocks.length) { showError('VCF 파일을 파싱할 수 없습니다.'); return; }
+  if (!blocks.length) { showError('VCFファイルを解析できません。'); return; }
   const contacts = blocks.map(block => {
     const lines = block.split('\n');
     const c = {};
@@ -157,7 +157,7 @@ function parseVCF(text, fname, fsize) {
       if (key === 'FN') c.name = decodeVcfVal(val);
       else if (key === 'ORG') c.org = decodeVcfVal(val).replace(/;/g,' ').trim();
       else if (key === 'TITLE') c.title = decodeVcfVal(val);
-      else if (key === 'TEL') { (c.phones=c.phones||[]).push({type: params.includes('cell')||params.includes('mobile')?'휴대폰':params.includes('work')?'직장':params.includes('home')?'집':'전화', val}); }
+      else if (key === 'TEL') { (c.phones=c.phones||[]).push({type: params.includes('cell')||params.includes('mobile')?'携帯':params.includes('work')?'会社':params.includes('home')?'自宅':'電話', val}); }
       else if (key === 'EMAIL') (c.emails=c.emails||[]).push(val);
       else if (key === 'ADR') { const parts=val.split(';').filter(Boolean); if(parts.length)(c.addrs=c.addrs||[]).push(parts.join(', ')); }
       else if (key === 'BDAY') c.bday = val;
@@ -167,24 +167,24 @@ function parseVCF(text, fname, fsize) {
     }
     return c;
   }).filter(c => c.name);
-  if (!contacts.length) { showError('연락처 정보를 찾을 수 없습니다.'); return; }
+  if (!contacts.length) { showError('連絡先情報が見つかりません。'); return; }
   const list = document.getElementById('vcfList');
   list.innerHTML = contacts.map(c => {
     let html = '';
     if (c.photo) html += `<img class="vcf-photo" src="data:image/jpeg;base64,${c.photo}" onerror="this.style.display='none'">`;
     html += `<div class="vcf-name">${esc(c.name||'')}</div>`;
-    if (c.org) html += row('조직', c.org);
-    if (c.title) html += row('직책', c.title);
+    if (c.org) html += row('会社', c.org);
+    if (c.title) html += row('役職', c.title);
     (c.phones||[]).forEach(p => html += row(p.type, p.val));
-    (c.emails||[]).forEach(e => html += row('이메일', e));
-    (c.addrs||[]).forEach(a => html += row('주소', a));
-    if (c.bday) html += row('생년월일', c.bday);
-    if (c.url) html += row('웹사이트', c.url);
-    if (c.note) html += row('메모', c.note.substring(0,200));
+    (c.emails||[]).forEach(e => html += row('メール', e));
+    (c.addrs||[]).forEach(a => html += row('住所', a));
+    if (c.bday) html += row('生年月日', c.bday);
+    if (c.url) html += row('ウェブサイト', c.url);
+    if (c.note) html += row('メモ', c.note.substring(0,200));
     return `<div class="vcf-card">${html}</div>`;
   }).join('');
   list.style.display = 'flex';
-  document.getElementById('vcfCount').textContent = `${fname} · ${contacts.length}개 연락처 · ${formatBytes(fsize)}`;
+  document.getElementById('vcfCount').textContent = `${fname} · ${contacts.length}件の連絡先 · ${formatBytes(fsize)}`;
   list.scrollIntoView({behavior:'smooth', block:'start'});
 }
 function row(lbl, val) {

@@ -108,8 +108,8 @@
   <div class="related-grid">
     <a href="torrent-viewer.html" class="related-card"><span class="related-icon">🔗</span><span>トレント ビューア</span></a>
     <a href="cbz-viewer.html" class="related-card"><span class="related-icon">📚</span><span>CBZ ビューア</span></a>
-    <a href="srt-viewer.html" class="related-card"><span class="related-icon">💬</span><span>SRT/VTT 자막 뷰어</span></a>
-    <a href="m3u-viewer.html" class="related-card"><span class="related-icon">🎵</span><span>M3U/M3U8 뷰어</span></a>
+    <a href="srt-viewer.html" class="related-card"><span class="related-icon">💬</span><span>SRT/VTT ビューア</span></a>
+    <a href="m3u-viewer.html" class="related-card"><span class="related-icon">🎵</span><span>M3U/M3U8 ビューア</span></a>
   </div>
 </div>
 <div class="wooa-orig-anchor"></div>
@@ -145,7 +145,7 @@ function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').
 function formatBytes(b){if(b<1024)return b+' B';if(b<1048576)return (b/1024).toFixed(1)+' KB';return (b/1048576).toFixed(1)+' MB';}
 function loadFile(file){
   errorMsg.style.display='none';
-  if(file.size>100*1024*1024){showError('파일 크기가 100MB를 초과합니다.');return;}
+  if(file.size>100*1024*1024){showError('ファイルサイズが100MBを超えています。');return;}
   const reader=new FileReader();
   reader.onload=e=>{
     const bytes=new Uint8Array(e.target.result);
@@ -154,7 +154,7 @@ function loadFile(file){
       let tarBytes=bytes;
       if(name.endsWith('.gz')||name.endsWith('.tgz'))tarBytes=pako.ungzip(bytes);
       parseTAR(tarBytes,file.name,file.size);
-    }catch(e2){showError('파싱 오류: '+e2.message);}
+    }catch(e2){showError('解析エラー: '+e2.message);}
   };
   reader.readAsArrayBuffer(file);
 }
@@ -174,18 +174,18 @@ function parseTAR(bytes,fname,fsize){
     if(name)files.push({name,size,isDir:type==='5'||name.endsWith('/')});
     off+=512+Math.ceil(size/512)*512;
   }
-  if(!files.length){showError('TAR 구조를 파싱할 수 없습니다. 올바른 TAR/TAR.GZ 파일인지 확인하세요.');return;}
+  if(!files.length){showError('TAR構造を解析できません。正しいTAR/TAR.GZファイルか確認してください。');return;}
   const dirs=files.filter(f=>f.isDir).length; const fileCount=files.length-dirs;
   const totalSize=files.filter(f=>!f.isDir).reduce((s,f)=>s+f.size,0);
   document.getElementById('tarInfo').innerHTML=[
-    ['파일 수',fileCount+'개'],['폴더 수',dirs+'개'],['전체 크기',formatBytes(totalSize)]
+    ['ファイル数',fileCount+'件'],['フォルダ数',dirs+'件'],['合計サイズ',formatBytes(totalSize)]
   ].map(([l,v])=>`<div class="tar-row"><span class="tar-lbl">${l}</span><span class="tar-val">${v}</span></div>`).join('');
   const ft=document.getElementById('tarFilesTitle');
-  ft.textContent=`📂 파일 목록 (${files.length}개)`;ft.style.display='block';
+  ft.textContent=`📂 ファイル一覧 (${files.length}件)`;ft.style.display='block';
   const show=files.slice(0,500);
   document.getElementById('tarList').innerHTML=show.map(f=>
     `<div class="tar-file"><span class="tar-file-name${f.isDir?' tar-dir':''}">${f.isDir?'📁 ':'📄 '}${esc(f.name)}</span><span class="tar-file-size">${f.isDir?'':formatBytes(f.size)}</span></div>`
-  ).join('')+(files.length>500?`<div style="text-align:center;color:#9CA3AF;padding:8px;font-size:0.82rem">... 외 ${files.length-500}개</div>`:'');
+  ).join('')+(files.length>500?`<div style="text-align:center;color:#9CA3AF;padding:8px;font-size:0.82rem">... 他 ${files.length-500}件</div>`:'');
   document.getElementById('resultCard').style.display='block';
   document.getElementById('tarStats').textContent=fname+' · '+formatBytes(fsize);
   document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'start'});

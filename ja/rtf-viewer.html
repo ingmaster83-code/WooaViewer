@@ -131,7 +131,7 @@ function loadFile(file) {
   reader.readAsText(file, 'windows-1252');
 }
 function parseRTF(rtf, fname, fsize) {
-  if (!rtf.startsWith('{\\rtf')) { showError('올바른 RTF 파일이 아닙니다.'); return; }
+  if (!rtf.startsWith('{\\rtf')) { showError('正しいRTFファイルではありません。'); return; }
   let text = rtf;
   // Remove font/color/stylesheet tables and image groups
   text = text.replace(/\{\\(?:fonttbl|colortbl|stylesheet|info|pict|object)[^{}]*(?:\{[^{}]*\}[^{}]*)*\}/g, '');

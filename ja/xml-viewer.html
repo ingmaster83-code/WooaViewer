@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="XML ビューア 無料オンライン インストール不要 — ツリー構造で表示・折りたたみ | WooaViewer">
   <meta name="twitter:description" content="ブラウザで.xmlファイルを無料でインタラクティブなツリー構造として開く。要素の折りたたみ・展開、シンタックスハイライトに対応。RSS、SVG、HTMLすべてのXML形式をサポート。インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"XML ビューア","url":"https://wooaviewer.wooahouse.com/ja/xml-viewer.html","description":".xml 파일을 브라우저에서 무료로 트리 구조로 열어보는 온라인 뷰어. 접기/펼치기, 문법 강조 지원.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"XML ビューア","url":"https://wooaviewer.wooahouse.com/ja/xml-viewer.html","description":".xmlファイルをブラウザで無料でツリー構造で開くオンラインビューア。折りたたみ・展開・シンタックスハイライトに対応。","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -111,8 +111,8 @@
   <div id="errorMsg" class="alert alert-error" style="display:none"></div>
 
   <div class="viewer-tabs">
-    <button class="vtab active" onclick="switchTab('file')">파일 업로드</button>
-    <button class="vtab" onclick="switchTab('paste')">붙여넣기</button>
+    <button class="vtab active" onclick="switchTab('file')">ファイルをアップロード</button>
+    <button class="vtab" onclick="switchTab('paste')">貼り付け</button>
   </div>
 
   <div id="tabFile" class="vtab-panel active">
@@ -125,15 +125,15 @@
   </div>
 
   <div id="tabPaste" class="vtab-panel">
-    <textarea class="paste-area" id="pasteArea" placeholder="XML을 여기에 붙여넣으세요..."></textarea>
-    <button class="parse-btn" onclick="parsePaste()">트리로 보기</button>
+    <textarea class="paste-area" id="pasteArea" placeholder="ここにXMLを貼り付けてください..."></textarea>
+    <button class="parse-btn" onclick="parsePaste()">ツリーで表示</button>
   </div>
 
   <div id="xmlResult" style="display:none; margin-top:16px;">
     <div class="xml-toolbar">
       <span class="xml-info" id="xmlInfo"></span>
-      <button class="xml-btn" onclick="expandAll()">모두 펼치기</button>
-      <button class="xml-btn" onclick="collapseAll()">모두 접기</button>
+      <button class="xml-btn" onclick="expandAll()">すべて展開</button>
+      <button class="xml-btn" onclick="collapseAll()">すべて折りたたむ</button>
     </div>
     <div class="xml-tree" id="xmlTree"></div>
   </div>
@@ -144,7 +144,7 @@
     <a href="json-viewer.html" class="related-card"><span class="related-icon">🗂️</span><span>JSON ビューア</span></a>
     <a href="csv-viewer.html" class="related-card"><span class="related-icon">📊</span><span>CSV ビューア</span></a>
     <a href="yaml-viewer.html" class="related-card"><span class="related-icon">🗃️</span><span>YAML ビューア</span></a>
-    <a href="ini-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>INI/CFG 뷰어</span></a>
+    <a href="ini-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>INI/CFG ビューア</span></a>
   </div>
 </div>
 <div class="wooa-orig-anchor"></div>
@@ -181,14 +181,14 @@ async function readFile(file) {
     const text = await file.text();
     parseAndRender(text, file.name);
   } catch (e) {
-    showError('파일을 읽을 수 없습니다: ' + e.message);
+    showError('ファイルを読み込めません: ' + e.message);
   }
 }
 
 function parsePaste() {
   const text = document.getElementById('pasteArea').value.trim();
-  if (!text) { showError('XML을 입력해주세요.'); return; }
-  parseAndRender(text, '붙여넣기');
+  if (!text) { showError('XMLを入力してください。'); return; }
+  parseAndRender(text, '貼り付け');
 }
 
 function parseAndRender(text, label) {
@@ -197,11 +197,11 @@ function parseAndRender(text, label) {
   const doc = parser.parseFromString(text, 'text/xml');
   const parseErr = doc.querySelector('parsererror');
   if (parseErr) {
-    showError('XML 파싱 오류: ' + parseErr.textContent.split('\n')[0]);
+    showError('XML解析エラー: ' + parseErr.textContent.split('\n')[0]);
     return;
   }
   const nodeCount = doc.querySelectorAll('*').length;
-  document.getElementById('xmlInfo').textContent = label + ' · 요소 ' + nodeCount.toLocaleString() + '개';
+  document.getElementById('xmlInfo').textContent = label + ' · 要素 ' + nodeCount.toLocaleString() + '件';
   document.getElementById('xmlTree').innerHTML = '';
   document.getElementById('xmlTree').appendChild(buildNode(doc.documentElement));
   document.getElementById('xmlResult').style.display = 'block';

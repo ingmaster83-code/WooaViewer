@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="PPTX ビューア 無料オンライン インストール不要 — PowerPointなしでスライドを開く | WooaViewer">
   <meta name="twitter:description" content="Microsoft PowerPointなしでブラウザで.pptxファイルを無料で開く。スライドのタイトル、本文テキストを表示し、スライドをナビゲート。ファイルはサーバーに送信されません、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"PPTX ビューア","url":"https://wooaviewer.wooahouse.com/ja/pptx-viewer.html","description":"파워포인트 없이 .pptx 파일을 브라우저에서 열어보는 무료 온라인 뷰어.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"PPTX ビューア","url":"https://wooaviewer.wooahouse.com/ja/pptx-viewer.html","description":"PowerPointなしで.pptxファイルをブラウザで開く無料オンラインビューア。","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -106,10 +106,10 @@
 
   <div id="toolbar" class="pptx-toolbar" style="display:none">
     <div class="view-toggle">
-      <button class="view-tab active" id="viewGrid" onclick="setView('grid')">⊞ 그리드</button>
-      <button class="view-tab" id="viewList" onclick="setView('list')">≡ 목록</button>
+      <button class="view-tab active" id="viewGrid" onclick="setView('grid')">⊞ グリッド</button>
+      <button class="view-tab" id="viewList" onclick="setView('list')">≡ リスト</button>
     </div>
-    <button class="pptx-tb-btn" onclick="resetViewer()">🔄 다시 열기</button>
+    <button class="pptx-tb-btn" onclick="resetViewer()">🔄 再度開く</button>
   </div>
 
   <div id="slideGrid" class="slide-grid"></div>
@@ -157,7 +157,7 @@ function showError(msg) {
 
 async function loadFile(file) {
   if (!file.name.toLowerCase().endsWith('.pptx')) {
-    showError('.pptx 파일만 지원합니다.'); return;
+    showError('.pptxファイルのみ対応しています。'); return;
   }
   errorMsg.style.display = 'none';
   try {
@@ -171,7 +171,7 @@ async function loadFile(file) {
         return na - nb;
       });
 
-    if (!slideFiles.length) { showError('Slides를 찾을 수 없습니다.'); return; }
+    if (!slideFiles.length) { showError('スライドが見つかりません。'); return; }
 
     // 이미지 맵 (rId → base64)
     const imgMap = {};
@@ -193,10 +193,10 @@ async function loadFile(file) {
     renderSlides(slides, file.name);
     dropZone.style.display = 'none';
     slideStats.style.display = 'block';
-    slideStats.textContent = `📊 ${file.name} · Slides ${slides.length}장 · ${(file.size/1024).toFixed(1)} KB`;
+    slideStats.textContent = `📊 ${file.name} · スライド ${slides.length}枚 · ${(file.size/1024).toFixed(1)} KB`;
     toolbar.style.display = 'flex';
   } catch(e) {
-    showError('파일 파싱 오류: ' + e.message);
+    showError('ファイル解析エラー: ' + e.message);
   }
 }
 
@@ -283,7 +283,7 @@ function renderSlides(slides, filename) {
 
     const imgsHtml = s.images.length
       ? s.images.map(src =>
-          `<div class="slide-img-wrap"><img src="${src}" alt="Slides 이미지" loading="lazy"></div>`
+          `<div class="slide-img-wrap"><img src="${src}" alt="スライド画像" loading="lazy"></div>`
         ).join('')
       : '';
 
@@ -295,7 +295,7 @@ function renderSlides(slides, filename) {
         ${titleHtml}
         ${bodyLines.length ? `<div class="slide-body">${esc(bodyLines.join('\n'))}</div>` : ''}
         ${imgsHtml}
-        ${!hasContent ? '<div class="slide-body" style="color:#9CA3AF;font-style:italic;">내용 없음</div>' : ''}
+        ${!hasContent ? '<div class="slide-body" style="color:#9CA3AF;font-style:italic;">内容なし</div>' : ''}
       </div>`;
     slideGrid.appendChild(card);
   });

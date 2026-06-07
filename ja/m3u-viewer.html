@@ -104,10 +104,10 @@
 <div class="related-tools">
   <h2>関連ツール</h2>
   <div class="related-grid">
-    <a href="tar-viewer.html" class="related-card"><span class="related-icon">📦</span><span>TAR/GZ 뷰어</span></a>
+    <a href="tar-viewer.html" class="related-card"><span class="related-icon">📦</span><span>TAR/GZ ビューア</span></a>
     <a href="torrent-viewer.html" class="related-card"><span class="related-icon">🔗</span><span>トレント ビューア</span></a>
     <a href="cbz-viewer.html" class="related-card"><span class="related-icon">📚</span><span>CBZ ビューア</span></a>
-    <a href="srt-viewer.html" class="related-card"><span class="related-icon">💬</span><span>SRT/VTT 자막 뷰어</span></a>
+    <a href="srt-viewer.html" class="related-card"><span class="related-icon">💬</span><span>SRT/VTT ビューア</span></a>
   </div>
 </div>
 <div class="wooa-orig-anchor"></div>
@@ -164,13 +164,13 @@ function parseM3U(text,fname,fsize){
       info=null;
     }
   }
-  if(!tracks.length){showError('재생목록 항목을 찾을 수 없습니다.');return;}
+  if(!tracks.length){showError('再生リストの項目が見つかりません。');return;}
   document.getElementById('m3uBody').innerHTML=tracks.map(t=>{
     const d=t.dur>0?fmtDur(t.dur):'-';
-    return `<tr><td class="m3u-num">${t.num}</td><td class="m3u-title">${esc(t.title||'(제목 없음)')}</td><td class="m3u-dur">${d}</td><td class="m3u-url">${esc(t.url)}</td></tr>`;
+    return `<tr><td class="m3u-num">${t.num}</td><td class="m3u-title">${esc(t.title||'(タイトルなし)')}</td><td class="m3u-dur">${d}</td><td class="m3u-url">${esc(t.url)}</td></tr>`;
   }).join('');
   const td=tracks.reduce((s,t)=>s+(t.dur>0?t.dur:0),0);
-  document.getElementById('m3uStats').textContent=`${fname} · ${tracks.length}개 트랙${td>0?' · 총 '+fmtDur(td):''} · ${formatBytes(fsize)}`;
+  document.getElementById('m3uStats').textContent=`${fname} · ${tracks.length}曲${td>0?' · 合計 '+fmtDur(td):''} · ${formatBytes(fsize)}`;
   document.getElementById('resultCard').style.display='block';
   document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'start'});
 }

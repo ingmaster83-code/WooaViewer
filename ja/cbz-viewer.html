@@ -101,10 +101,10 @@
 <div class="related-tools">
   <h2>関連ツール</h2>
   <div class="related-grid">
-    <a href="tar-viewer.html" class="related-card"><span class="related-icon">📦</span><span>TAR/GZ 뷰어</span></a>
+    <a href="tar-viewer.html" class="related-card"><span class="related-icon">📦</span><span>TAR/GZ ビューア</span></a>
     <a href="torrent-viewer.html" class="related-card"><span class="related-icon">🔗</span><span>トレント ビューア</span></a>
-    <a href="srt-viewer.html" class="related-card"><span class="related-icon">💬</span><span>SRT/VTT 자막 뷰어</span></a>
-    <a href="m3u-viewer.html" class="related-card"><span class="related-icon">🎵</span><span>M3U/M3U8 뷰어</span></a>
+    <a href="srt-viewer.html" class="related-card"><span class="related-icon">💬</span><span>SRT/VTT ビューア</span></a>
+    <a href="m3u-viewer.html" class="related-card"><span class="related-icon">🎵</span><span>M3U/M3U8 ビューア</span></a>
   </div>
 </div>
 <div class="wooa-orig-anchor"></div>
@@ -146,15 +146,15 @@ function loadFile(file){
 }
 async function parseCBZ(buffer,fname,fsize){
   try{
-    if(typeof JSZip==='undefined'){showError('라이브러리 로딩 실패. 새로고침 후 재시도하세요.');return;}
+    if(typeof JSZip==='undefined'){showError('ライブラリの読み込みに失敗しました。ページを再読み込みしてください。');return;}
     const zip=await JSZip.loadAsync(buffer);
     const imgExts=/\.(jpg|jpeg|png|gif|webp|bmp)$/i;
     const imgFiles=[];
     zip.forEach((path,file)=>{if(!file.dir&&imgExts.test(path))imgFiles.push({path,file});});
-    if(!imgFiles.length){showError('이미지를 찾을 수 없습니다. 올바른 CBZ 파일인지 확인하세요.');return;}
+    if(!imgFiles.length){showError('画像が見つかりません。正しいCBZファイルか確認してください。');return;}
     imgFiles.sort((a,b)=>a.path.localeCompare(b.path,undefined,{numeric:true}));
     const MAX=50; const show=imgFiles.slice(0,MAX);
-    document.getElementById('cbzStats').textContent=`${fname} · ${imgFiles.length}페이지${imgFiles.length>MAX?' (최대 50페이지 표시)':''} · ${formatBytes(fsize)}`;
+    document.getElementById('cbzStats').textContent=`${fname} · ${imgFiles.length}ページ${imgFiles.length>MAX?' (最大50ページ表示)':''} · ${formatBytes(fsize)}`;
     const grid=document.getElementById('cbzGrid'); grid.innerHTML='';
     for(let i=0;i<show.length;i++){
       const {path,file}=show[i];
@@ -167,7 +167,7 @@ async function parseCBZ(buffer,fname,fsize){
     }
     document.getElementById('resultCard').style.display='block';
     document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'start'});
-  }catch(e){showError('파싱 오류: '+e.message);}
+  }catch(e){showError('解析エラー: '+e.message);}
 }
 </script>
 <script src="../js/wooahouse-originals-tool-ja.js"></script>

@@ -164,22 +164,22 @@ function parseICS(text, fname, fsize) {
       case 'URL': ev.url = val; break;
     }
   }
-  if (!events.length) { showError('이벤트를 찾을 수 없습니다. 올바른 .ics 파일인지 확인하세요.'); return; }
+  if (!events.length) { showError('イベントが見つかりません。正しい.icsファイルか確認してください。'); return; }
   // Sort by start date
   events.sort((a,b) => (a.start||'').localeCompare(b.start||''));
   const list = document.getElementById('icsList');
   list.innerHTML = events.map(ev => {
-    let html = `<div class="ics-title">${esc(ev.title||'(제목 없음)')}</div>`;
-    if(ev.start) html += irow('시작', ev.start);
-    if(ev.end) html += irow('종료', ev.end);
-    if(ev.location) html += irow('장소', ev.location);
-    if(ev.organizer) html += irow('주최자', ev.organizer);
-    if(ev.status) html += irow('상태', ev.status);
-    if(ev.desc) html += irow('설명', ev.desc);
+    let html = `<div class="ics-title">${esc(ev.title||'(タイトルなし)')}</div>`;
+    if(ev.start) html += irow('開始', ev.start);
+    if(ev.end) html += irow('終了', ev.end);
+    if(ev.location) html += irow('場所', ev.location);
+    if(ev.organizer) html += irow('主催者', ev.organizer);
+    if(ev.status) html += irow('状態', ev.status);
+    if(ev.desc) html += irow('説明', ev.desc);
     return `<div class="ics-event">${html}</div>`;
   }).join('');
   list.style.display = 'flex';
-  document.getElementById('icsCount').textContent = `${fname} · ${events.length}개 이벤트 · ${formatBytes(fsize)}`;
+  document.getElementById('icsCount').textContent = `${fname} · ${events.length}件のイベント · ${formatBytes(fsize)}`;
   list.scrollIntoView({behavior:'smooth', block:'start'});
 }
 function irow(lbl, val) { return `<div class="ics-row"><span class="ics-lbl">${esc(lbl)}</span><span class="ics-val">${esc(val)}</span></div>`; }

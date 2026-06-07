@@ -163,7 +163,7 @@ function renderHex(bytes,fname,fsize){
     lines.push(`<div class="hex-row"><span class="hex-off">${offStr}</span><span class="hex-hex">${hexStr}</span><span class="hex-asc">${esc(asc)}</span></div>`);
   }
   document.getElementById('hexContent').innerHTML=lines.join('');
-  document.getElementById('hexStats').textContent=`${fname} · 표시: ${bytes.length}바이트 (전체: ${formatBytes(fsize)})`;
+  document.getElementById('hexStats').textContent=`${fname} · 表示: ${bytes.length}バイト (合計: ${formatBytes(fsize)})`;
   document.getElementById('resultCard').style.display='block';
   document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'start'});
 }

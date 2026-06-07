@@ -104,10 +104,10 @@
 <div class="related-tools">
   <h2>関連ツール</h2>
   <div class="related-grid">
-    <a href="tar-viewer.html" class="related-card"><span class="related-icon">📦</span><span>TAR/GZ 뷰어</span></a>
+    <a href="tar-viewer.html" class="related-card"><span class="related-icon">📦</span><span>TAR/GZ ビューア</span></a>
     <a href="cbz-viewer.html" class="related-card"><span class="related-icon">📚</span><span>CBZ ビューア</span></a>
-    <a href="srt-viewer.html" class="related-card"><span class="related-icon">💬</span><span>SRT/VTT 자막 뷰어</span></a>
-    <a href="m3u-viewer.html" class="related-card"><span class="related-icon">🎵</span><span>M3U/M3U8 뷰어</span></a>
+    <a href="srt-viewer.html" class="related-card"><span class="related-icon">💬</span><span>SRT/VTT ビューア</span></a>
+    <a href="m3u-viewer.html" class="related-card"><span class="related-icon">🎵</span><span>M3U/M3U8 ビューア</span></a>
   </div>
 </div>
 <div class="wooa-orig-anchor"></div>
@@ -146,7 +146,7 @@ function loadFile(file) {
 function parseTorrent(bytes, fname, fsize) {
   try {
     const [data] = bdecode(bytes, 0);
-    if (!data || typeof data !== 'object') { showError('올바른 torrent 파일이 아닙니다.'); return; }
+    if (!data || typeof data !== 'object') { showError('正しいTorrentファイルではありません。'); return; }
     const info = data['info'] || {};
     const name = bstr(info['name'] || info['name.utf-8'] || '');
     const announce = bstr(data['announce'] || '');
@@ -171,30 +171,30 @@ function parseTorrent(bytes, fname, fsize) {
     }
     // Build info rows
     const rows = [];
-    if (name) rows.push(['이름', name]);
-    rows.push(['전체 크기', formatBytes(totalSize)]);
-    rows.push(['파일 수', files.length + '개']);
-    if (announce) rows.push(['트래커', announce]);
-    if (comment) rows.push(['설명', comment]);
-    if (creationDate) rows.push(['생성일', creationDate]);
-    if (createdBy) rows.push(['생성 앱', createdBy]);
+    if (name) rows.push(['ファイル名', name]);
+    rows.push(['合計サイズ', formatBytes(totalSize)]);
+    rows.push(['ファイル数', files.length + '件']);
+    if (announce) rows.push(['トラッカー', announce]);
+    if (comment) rows.push(['説明', comment]);
+    if (creationDate) rows.push(['作成日', creationDate]);
+    if (createdBy) rows.push(['作成ツール', createdBy]);
     document.getElementById('torInfo').innerHTML = rows.map(([l,v]) =>
       `<div class="tor-row"><span class="tor-lbl">${esc(l)}</span><span class="tor-val">${esc(v)}</span></div>`
     ).join('');
     if (files.length) {
       const ft = document.getElementById('torFilesTitle');
-      ft.textContent = '📂 파일 목록 (' + files.length + '개)';
+      ft.textContent = '📂 ファイル一覧 (' + files.length + '件)';
       ft.style.display = 'block';
       // Sort by name, show max 500
       const show = files.slice().sort((a,b)=>a.name.localeCompare(b.name)).slice(0,500);
       document.getElementById('torFiles').innerHTML = show.map(f =>
         `<div class="tor-file"><span class="tor-file-name">${esc(f.name)}</span><span class="tor-file-size">${formatBytes(f.size)}</span></div>`
-      ).join('') + (files.length>500?`<div style="text-align:center;color:#9CA3AF;padding:8px;font-size:0.82rem;">... 외 ${files.length-500}개</div>`:'');
+      ).join('') + (files.length>500?`<div style="text-align:center;color:#9CA3AF;padding:8px;font-size:0.82rem;">... 他 ${files.length-500}件</div>`:'');
     }
     document.getElementById('resultCard').style.display = 'block';
     document.getElementById('torStats').textContent = fname + ' · ' + formatBytes(fsize);
     document.getElementById('resultCard').scrollIntoView({behavior:'smooth', block:'start'});
-  } catch(e) { showError('파싱 오류: ' + e.message); }
+  } catch(e) { showError('解析エラー: ' + e.message); }
 }
 function bstr(v) {
   if (!v) return '';

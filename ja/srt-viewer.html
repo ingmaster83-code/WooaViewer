@@ -102,10 +102,10 @@
 <div class="related-tools">
   <h2>関連ツール</h2>
   <div class="related-grid">
-    <a href="tar-viewer.html" class="related-card"><span class="related-icon">📦</span><span>TAR/GZ 뷰어</span></a>
+    <a href="tar-viewer.html" class="related-card"><span class="related-icon">📦</span><span>TAR/GZ ビューア</span></a>
     <a href="torrent-viewer.html" class="related-card"><span class="related-icon">🔗</span><span>トレント ビューア</span></a>
     <a href="cbz-viewer.html" class="related-card"><span class="related-icon">📚</span><span>CBZ ビューア</span></a>
-    <a href="m3u-viewer.html" class="related-card"><span class="related-icon">🎵</span><span>M3U/M3U8 뷰어</span></a>
+    <a href="m3u-viewer.html" class="related-card"><span class="related-icon">🎵</span><span>M3U/M3U8 ビューア</span></a>
   </div>
 </div>
 <div class="wooa-orig-anchor"></div>
@@ -148,12 +148,12 @@ function loadFile(file){
 function parseSub(text,fname,fsize){
   const isVTT=fname.toLowerCase().endsWith('.vtt');
   const entries=isVTT?parseVTT(text):parseSRT(text);
-  if(!entries.length){showError('자막 항목을 찾을 수 없습니다. 올바른 SRT/VTT 파일인지 확인하세요.');return;}
+  if(!entries.length){showError('字幕項目が見つかりません。正しいSRT/VTTファイルか確認してください。');return;}
   document.getElementById('subBody').innerHTML=entries.map((e,i)=>
     `<tr><td class="sub-num">${i+1}</td><td class="sub-time">${esc(e.time)}</td><td class="sub-text">${esc(e.text).replace(/\n/g,'<br>')}</td></tr>`
   ).join('');
   document.getElementById('resultCard').style.display='block';
-  document.getElementById('subStats').textContent=fname+' · '+entries.length+'개 자막 · '+formatBytes(fsize);
+  document.getElementById('subStats').textContent=fname+' · '+entries.length+'件の字幕 · '+formatBytes(fsize);
   document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function parseSRT(text){
@@ -173,7 +173,7 @@ function parseSRT(text){
 }
 function parseVTT(text){
   text=text.replace(/\r\n/g,'\n').replace(/\r/g,'\n');
-  if(!text.startsWith('WEBVTT')){showError('올바른 VTT 파일이 아닙니다.');return[];}
+  if(!text.startsWith('WEBVTT')){showError('正しいVTTファイルではありません。');return[];}
   const entries=[]; const blocks=text.split(/\n\n+/);
   for(const block of blocks){
     const lines=block.trim().split('\n'); let i=0;

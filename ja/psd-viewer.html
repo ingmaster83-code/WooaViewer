@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="PSD ビューア 無料オンライン インストール不要 — Photoshopなしでレイヤーリスト表示 | WooaViewer">
   <meta name="twitter:description" content="Adobe Photoshopなしでブラウザで.psdファイルを無料でプレビュー。レイヤーリストと合成画像のプレビューを表示。ファイルはサーバーに送信されません、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"PSD ビューア","url":"https://wooaviewer.wooahouse.com/ja/psd-viewer.html","description":"Photoshop 없이 .psd 파일을 브라우저에서 무료로 열어보는 온라인 뷰어. 레이어 목록 확인 지원.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"PSD ビューア","url":"https://wooaviewer.wooahouse.com/ja/psd-viewer.html","description":"Photoshopなしで.psdファイルをブラウザで無料で開くオンラインビューア。レイヤー一覧確認に対応。","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -104,7 +104,7 @@
     <label class="btn-select">ファイルを選択<input type="file" id="fileInput" accept=".psd" style="display:none"></label>
   </div>
 
-  <div id="loadingWrap" class="spinner-wrap" style="display:none"><div class="spinner"></div><p style="margin-top:12px;color:#6B7280;font-size:0.88rem">PSD 파일 분석 중...</p></div>
+  <div id="loadingWrap" class="spinner-wrap" style="display:none"><div class="spinner"></div><p style="margin-top:12px;color:#6B7280;font-size:0.88rem">PSDファイル解析中...</p></div>
   <div id="errorMsg" class="alert alert-error" style="display:none"></div>
 
   <div class="psd-container" id="psdContainer">
@@ -113,9 +113,9 @@
       <span class="psd-info-text" id="psdSize"></span>
       <span class="psd-info-text" id="psdLayers"></span>
     </div>
-    <div class="psd-preview"><img id="psdPreview" src="" alt="PSD 미리보기"></div>
+    <div class="psd-preview"><img id="psdPreview" src="" alt="PSDプレビュー"></div>
     <div class="layer-panel" id="layerPanel" style="display:none">
-      <div class="layer-title">레이어 목록</div>
+      <div class="layer-title">レイヤー一覧</div>
       <div id="layerList"></div>
     </div>
   </div>
@@ -165,20 +165,20 @@ function loadFile(file) {
 
       // 합성 이미지
       const canvas = psd.canvas;
-      if (!canvas) { throw new Error('합성 이미지를 추출할 수 없습니다.'); }
+      if (!canvas) { throw new Error('合成画像を抽出できません。'); }
       document.getElementById('psdPreview').src = canvas.toDataURL('image/png');
       document.getElementById('psdFileName').textContent = file.name;
       document.getElementById('psdSize').textContent = `${psd.width} × ${psd.height}px`;
 
       // 레이어 목록
       const layers = flattenLayers(psd.children || []);
-      document.getElementById('psdLayers').textContent = `레이어 ${layers.length}개`;
+      document.getElementById('psdLayers').textContent = `レイヤー ${layers.length}件`;
       if (layers.length) {
         const list = document.getElementById('layerList');
         list.innerHTML = layers.map(l => {
           const thumb = l.canvas ? `<img class="layer-thumb" src="${l.canvas.toDataURL()}" alt="">` : `<div class="layer-thumb"></div>`;
           const hidden = l.hidden ? ' layer-hidden' : '';
-          const type = l.children ? '그룹' : (l.text ? '텍스트' : '레이어');
+          const type = l.children ? 'グループ' : (l.text ? 'テキスト' : 'レイヤー');
           return `<div class="layer-item${hidden}">${thumb}<span class="layer-name">${esc(l.name||'(unnamed)')}</span><span class="layer-type">${type}</span></div>`;
         }).join('');
         document.getElementById('layerPanel').style.display='block';

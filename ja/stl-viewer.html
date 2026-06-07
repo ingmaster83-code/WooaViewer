@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="STL ビューア 無料オンライン インストール不要 — 3Dプリントモデルファイルを表示 | WooaViewer">
   <meta name="twitter:description" content="ブラウザで.stl 3Dプリントモデルファイルを無料で表示。360° 3Dビューでモデルを回転、ズーム、検査。ファイルはサーバーに送信されません、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"STL ビューア","url":"https://wooaviewer.wooahouse.com/ja/stl-viewer.html","description":".stl 3D 프린팅 파일을 브라우저에서 무료로 회전·확대해서 확인하는 온라인 3D 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"STL ビューア","url":"https://wooaviewer.wooahouse.com/ja/stl-viewer.html","description":".stl 3Dプリントファイルをブラウザで無料で回転·拡大確認するオンライン3Dビューア","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -100,11 +100,11 @@
   <div class="stl-container" id="stlContainer">
     <div class="stl-toolbar">
       <span class="stl-file-name" id="stlFileName"></span>
-      <button class="stl-btn" id="wireBtn" onclick="toggleWire()">와이어프레임</button>
-      <button class="stl-btn" onclick="resetCamera()">초기화</button>
+      <button class="stl-btn" id="wireBtn" onclick="toggleWire()">ワイヤーフレーム</button>
+      <button class="stl-btn" onclick="resetCamera()">リセット</button>
     </div>
     <canvas id="stlCanvas"></canvas>
-    <p class="stl-hint">마우스 드래그: 회전 · 휠: 확대/축소 · 우클릭 드래그: 이동</p>
+    <p class="stl-hint">マウスドラッグ: 回転 · ホイール: 拡大/縮小 · 右クリックドラッグ: 移動</p>
   </div>
 
 <div class="related-tools">
@@ -112,7 +112,7 @@
   <div class="related-grid">
     <a href="gcode-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>GCode ビューア</span></a>
     <a href="gpx-viewer.html" class="related-card"><span class="related-icon">🗺️</span><span>GPX ビューア</span></a>
-    <a href="gpx-maker.html" class="related-card"><span class="related-icon">✏️</span><span>GPX 만들기</span></a>
+    <a href="gpx-maker.html" class="related-card"><span class="related-icon">✏️</span><span>GPXを作成</span></a>
     <a href="docx-viewer.html" class="related-card"><span class="related-icon">📝</span><span>DOCX ビューア</span></a>
   </div>
 </div>
@@ -233,7 +233,7 @@ window.toggleWire = function() {
   isWire = !isWire;
   mesh.visible = !isWire;
   wireframe.visible = isWire;
-  document.getElementById('wireBtn').textContent = isWire ? '솔리드' : '와이어프레임';
+  document.getElementById('wireBtn').textContent = isWire ? 'ソリッド' : 'ワイヤーフレーム';
 };
 
 window.resetCamera = function() {

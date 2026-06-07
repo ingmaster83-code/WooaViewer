@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="EPUB ビューア 無料オンライン インストール不要 — ブラウザで電子書籍を読む | WooaViewer">
   <meta name="twitter:description" content="アプリなしでブラウザで.epub電子書籍ファイルを無料で読む。ページめくり、目次ナビゲーション、章ジャンプに対応。ファイルはサーバーに送信されません、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"EPUB ビューア","url":"https://wooaviewer.wooahouse.com/ja/epub-viewer.html","description":".epub 전자책 파일을 브라우저에서 무료로 읽어보는 온라인 뷰어. 목차 탐색, 페이지 넘기기 지원.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"EPUB ビューア","url":"https://wooaviewer.wooahouse.com/ja/epub-viewer.html","description":".epub電子書籍ファイルをブラウザで無料で読むオンラインビューア。目次ナビ・ページ送りに対応。","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -187,14 +187,14 @@
     <div class="epub-toolbar">
       <span class="epub-file-name" id="epubFileName"></span>
       <div class="epub-nav-btns">
-        <button class="epub-btn" id="prevBtn" onclick="prevPage()">← 이전</button>
+        <button class="epub-btn" id="prevBtn" onclick="prevPage()">← 前へ</button>
         <span id="chapterInfo" style="font-size:0.82rem;color:#6B7280;min-width:48px;text-align:center;"></span>
-        <button class="epub-btn" id="nextBtn" onclick="nextPage()">다음 →</button>
+        <button class="epub-btn" id="nextBtn" onclick="nextPage()">次へ →</button>
       </div>
     </div>
     <iframe id="epubViewer" sandbox="allow-same-origin allow-scripts"></iframe>
     <div class="toc-panel" id="tocPanel" style="display:none">
-      <div class="toc-title">목차</div>
+      <div class="toc-title">目次</div>
       <div id="tocList"></div>
     </div>
   </div>
@@ -260,7 +260,7 @@ function resolvePath(base, rel) {
 async function loadFile(file) {
   errorMsg.style.display = 'none';
   if (!file.name.toLowerCase().endsWith('.epub')) {
-    showError('.epub 파일만 지원합니다.');
+    showError('.epubファイルのみ対応しています。');
     return;
   }
   blobUrls.forEach(u => URL.revokeObjectURL(u));
@@ -295,7 +295,7 @@ async function loadFile(file) {
       if (m) spine.push(m.href);
     });
 
-    if (!spine.length) { showError('읽을 수 있는 챕터가 없습니다.'); return; }
+    if (!spine.length) { showError('読めるチャプターがありません。'); return; }
 
     // NCX 목차
     const spineEl = opfDoc.querySelector('spine');
@@ -326,7 +326,7 @@ async function loadFile(file) {
     await renderChapter(0);
 
   } catch(err) {
-    showError('ファイルの読み込み中にエラーが発生しました. 올바른 .epub 파일인지 확인해주세요.');
+    showError('ファイルの読み込み中にエラーが発生しました。正しい.epubファイルか確認してください。');
     console.error(err);
   }
 }

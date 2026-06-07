@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="JSON ビューア 無料オンライン インストール不要 — ツリー構造で表示・検索 | WooaViewer">
   <meta name="twitter:description" content="JSONファイルをアップロードまたは貼り付けてインタラクティブなツリー構造で表示。キーの折りたたみ・展開、リアルタイム検索、構文エラー検出。無料、サーバーアップロードなし、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"JSON ビューア","url":"https://wooaviewer.wooahouse.com/ja/json-viewer.html","description":"JSON 파일을 트리 구조로 보여주는 온라인 뷰어. 접기/펼치기, 실시간 검색 지원.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"JSON ビューア","url":"https://wooaviewer.wooahouse.com/ja/json-viewer.html","description":"JSONファイルをツリー構造で表示するオンラインビューア。折りたたみ・展開・リアルタイム検索に対応。","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -127,8 +127,8 @@
 
   <div id="jsonToolbar" class="json-toolbar" style="display:none">
     <span class="json-stats" id="jsonStats"></span>
-    <button class="json-tb-btn" onclick="expandAll()">전체 펼치기</button>
-    <button class="json-tb-btn" onclick="collapseAll()">전체 접기</button>
+    <button class="json-tb-btn" onclick="expandAll()">すべて展開</button>
+    <button class="json-tb-btn" onclick="collapseAll()">すべて折りたたむ</button>
   </div>
   <div class="json-tree" id="jsonTree"></div>
 
@@ -138,7 +138,7 @@
     <a href="xml-viewer.html" class="related-card"><span class="related-icon">📄</span><span>XML ビューア</span></a>
     <a href="csv-viewer.html" class="related-card"><span class="related-icon">📊</span><span>CSV ビューア</span></a>
     <a href="yaml-viewer.html" class="related-card"><span class="related-icon">🗃️</span><span>YAML ビューア</span></a>
-    <a href="ini-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>INI/CFG 뷰어</span></a>
+    <a href="ini-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>INI/CFG ビューア</span></a>
   </div>
 </div>
 <div class="wooa-orig-anchor"></div>
@@ -178,19 +178,19 @@ function loadFile(file) {
   reader.readAsText(file,'UTF-8');
 }
 function parseFromInput() {
-  renderJSON(document.getElementById('jsonInput').value.trim(), '입력');
+  renderJSON(document.getElementById('jsonInput').value.trim(), '入力');
 }
 
 function renderJSON(text, source) {
   errorMsg.style.display='none';
   let data;
   try { data = JSON.parse(text); } catch(e) {
-    errorMsg.textContent = 'JSON 파싱 오류: ' + e.message;
+    errorMsg.textContent = 'JSON解析エラー: ' + e.message;
     errorMsg.style.display='block'; return;
   }
   const size = new Blob([text]).size;
   const keys = countKeys(data);
-  document.getElementById('jsonStats').textContent = `${source} · ${(size/1024).toFixed(1)} KB · 키 ${keys}개`;
+  document.getElementById('jsonStats').textContent = `${source} · ${(size/1024).toFixed(1)} KB · キー ${keys}件`;
   jsonTree.innerHTML = buildTree(data);
   jsonTree.style.display='block';
   jsonToolbar.style.display='flex';
@@ -217,14 +217,14 @@ function buildTree(val, depth=0) {
     if (!val.length) return `<span>[]</span>`;
     const id = 'j' + Math.random().toString(36).slice(2);
     const items = val.map((v,i) => `<div><span class="j-num">${i}</span>: ${buildTree(v, depth+1)}</div>`).join('');
-    return `<span class="j-toggle" onclick="toggle('${id}')">▼</span>[<span class="j-summary">${val.length}개</span><div class="j-children" id="${id}">${items}</div>]`;
+    return `<span class="j-toggle" onclick="toggle('${id}')">▼</span>[<span class="j-summary">${val.length}件</span><div class="j-children" id="${id}">${items}</div>]`;
   }
 
   const keys = Object.keys(val);
   if (!keys.length) return `<span>{}</span>`;
   const id = 'j' + Math.random().toString(36).slice(2);
   const items = keys.map(k => `<div><span class="j-key">"${esc(k)}"</span>: ${buildTree(val[k], depth+1)}</div>`).join('');
-  return `<span class="j-toggle" onclick="toggle('${id}')">▼</span>{<span class="j-summary">${keys.length}개</span><div class="j-children" id="${id}">${items}</div>}`;
+  return `<span class="j-toggle" onclick="toggle('${id}')">▼</span>{<span class="j-summary">${keys.length}件</span><div class="j-children" id="${id}">${items}</div>}`;
 }
 
 function toggle(id) {

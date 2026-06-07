@@ -104,7 +104,7 @@
   <div class="related-grid">
     <a href="stl-viewer.html" class="related-card"><span class="related-icon">🖨️</span><span>STL ビューア</span></a>
     <a href="gcode-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>GCode ビューア</span></a>
-    <a href="gpx-maker.html" class="related-card"><span class="related-icon">✏️</span><span>GPX 만들기</span></a>
+    <a href="gpx-maker.html" class="related-card"><span class="related-icon">✏️</span><span>GPXを作成</span></a>
     <a href="docx-viewer.html" class="related-card"><span class="related-icon">📝</span><span>DOCX ビューア</span></a>
   </div>
 </div>
@@ -150,10 +150,10 @@ function parseGPX(text,fname,fsize){
   try{
     const parser=new DOMParser();
     const doc=parser.parseFromString(text,'text/xml');
-    if(doc.querySelector('parsererror')){showError('GPX 파일 파싱 오류입니다.');return;}
+    if(doc.querySelector('parsererror')){showError('GPXファイルの解析エラーです。');return;}
     const trkpts=Array.from(doc.querySelectorAll('trkpt'));
     const wpts=Array.from(doc.querySelectorAll('wpt'));
-    if(!trkpts.length&&!wpts.length){showError('트랙 포인트 또는 웨이포인트를 찾을 수 없습니다.');return;}
+    if(!trkpts.length&&!wpts.length){showError('トラックポイントまたはウェイポイントが見つかりません。');return;}
     const pts=trkpts.map(p=>({lat:parseFloat(p.getAttribute('lat')),lon:parseFloat(p.getAttribute('lon')),ele:parseFloat(p.querySelector('ele')?.textContent||0)})).filter(p=>!isNaN(p.lat)&&!isNaN(p.lon));
     const wps=wpts.map(p=>({lat:parseFloat(p.getAttribute('lat')),lon:parseFloat(p.getAttribute('lon')),name:p.querySelector('name')?.textContent||'WP'}));
     let dist=0;
@@ -161,10 +161,10 @@ function parseGPX(text,fname,fsize){
     const eles=pts.map(p=>p.ele).filter(e=>e>0);
     const gpxName=doc.querySelector('metadata name,trk name')?.textContent||fname;
     document.getElementById('gpxName').textContent=gpxName;
-    let statsHtml=`<div class="gpx-stat"><div class="gpx-stat-lbl">트랙 포인트</div><div class="gpx-stat-val">${pts.length.toLocaleString()}</div></div>`;
-    statsHtml+=`<div class="gpx-stat"><div class="gpx-stat-lbl">총 거리</div><div class="gpx-stat-val">${(dist/1000).toFixed(2)} km</div></div>`;
-    statsHtml+=`<div class="gpx-stat"><div class="gpx-stat-lbl">웨이포인트</div><div class="gpx-stat-val">${wps.length}</div></div>`;
-    if(eles.length)statsHtml+=`<div class="gpx-stat"><div class="gpx-stat-lbl">고도 범위</div><div class="gpx-stat-val">${Math.min(...eles).toFixed(0)}~${Math.max(...eles).toFixed(0)}m</div></div>`;
+    let statsHtml=`<div class="gpx-stat"><div class="gpx-stat-lbl">トラックポイント</div><div class="gpx-stat-val">${pts.length.toLocaleString()}</div></div>`;
+    statsHtml+=`<div class="gpx-stat"><div class="gpx-stat-lbl">総距離</div><div class="gpx-stat-val">${(dist/1000).toFixed(2)} km</div></div>`;
+    statsHtml+=`<div class="gpx-stat"><div class="gpx-stat-lbl">ウェイポイント</div><div class="gpx-stat-val">${wps.length}</div></div>`;
+    if(eles.length)statsHtml+=`<div class="gpx-stat"><div class="gpx-stat-lbl">標高範囲</div><div class="gpx-stat-val">${Math.min(...eles).toFixed(0)}~${Math.max(...eles).toFixed(0)}m</div></div>`;
     document.getElementById('gpxStats').innerHTML=statsHtml;
     document.getElementById('resultCard').style.display='block';
     if(!_map){
@@ -179,7 +179,7 @@ function parseGPX(text,fname,fsize){
     wps.forEach(w=>L.marker([w.lat,w.lon]).addTo(_map).bindPopup(esc(w.name)));
     document.getElementById('gpxFileStat').textContent=fname+' · '+formatBytes(fsize);
     document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'start'});
-  }catch(e){showError('파싱 오류: '+e.message);}
+  }catch(e){showError('解析エラー: '+e.message);}
 }
 function haversine(la1,lo1,la2,lo2){
   const R=6371000,f1=la1*Math.PI/180,f2=la2*Math.PI/180;

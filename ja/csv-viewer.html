@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="CSV ビューア 無料オンライン インストール不要 — CSVファイルをテーブルとして表示 | WooaViewer">
   <meta name="twitter:description" content="CSVファイルをアップロードまたは貼り付けてテーブルとして表示。列の並び替え、リアルタイム検索、区切り文字の選択に対応。無料、サーバーアップロードなし、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"CSV ビューア","url":"https://wooaviewer.wooahouse.com/ja/csv-viewer.html","description":"CSV 파일을 테이블로 보여주는 온라인 뷰어. 열 정렬, 실시간 검색, 구분자 선택 지원.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"CSV ビューア","url":"https://wooaviewer.wooahouse.com/ja/csv-viewer.html","description":"CSVファイルをテーブル表示するオンラインビューア。列ソート・リアルタイム検索・区切り文字選択に対応。","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <link rel="manifest" href="../manifest.json">
@@ -120,7 +120,7 @@
     <label for="delimSelect">Delimiter:</label>
     <select id="delimSelect">
       <option value=",">Comma (,)</option>
-      <option value="	">탭 (\t)</option>
+      <option value="	">タブ (\t)</option>
       <option value=";">Semicolon (;)</option>
     </select>
   </div>
@@ -140,7 +140,7 @@
   </div>
 
   <div id="pasteSection" style="display:none">
-    <textarea class="csv-textarea" id="csvInput" placeholder="이름,나이,도시&#10;홍길동,30,서울&#10;김철수,25,부산"></textarea>
+    <textarea class="csv-textarea" id="csvInput" placeholder="名前,年齢,都市&#10;山田太郎,30,東京&#10;田中花子,25,大阪"></textarea>
     <button class="parse-btn" onclick="parseFromInput()">Parse</button>
   </div>
 
@@ -161,7 +161,7 @@
     <a href="json-viewer.html" class="related-card"><span class="related-icon">🗂️</span><span>JSON ビューア</span></a>
     <a href="xml-viewer.html" class="related-card"><span class="related-icon">📄</span><span>XML ビューア</span></a>
     <a href="yaml-viewer.html" class="related-card"><span class="related-icon">🗃️</span><span>YAML ビューア</span></a>
-    <a href="ini-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>INI/CFG 뷰어</span></a>
+    <a href="ini-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>INI/CFG ビューア</span></a>
   </div>
 </div>
 <div class="wooa-orig-anchor"></div>
@@ -259,7 +259,7 @@ function parseCSV(text, source, size) {
 function updateStats(filtered) {
   const source = csvStats.dataset.source || '';
   const kb = csvStats.dataset.kb || '0';
-  csvStats.textContent = `${source} · ${kb} KB · ${headers.length}열 · ${filtered}행`;
+  csvStats.textContent = `${source} · ${kb} KB · ${headers.length}列 · ${filtered}行`;
 }
 
 function renderTable(rows) {
@@ -272,7 +272,7 @@ function renderTable(rows) {
   });
   html += '</tr></thead><tbody>';
   if (rows.length === 0) {
-    html += `<tr><td colspan="${headers.length}" class="csv-no-data">검색 결과가 없습니다.</td></tr>`;
+    html += `<tr><td colspan="${headers.length}" class="csv-no-data">検索結果がありません。</td></tr>`;
   } else {
     rows.forEach(row => {
       html += '<tr>';

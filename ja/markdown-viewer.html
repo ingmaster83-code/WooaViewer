@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="Markdown ビューア 無料オンライン インストール不要 — .mdファイルをレンダリング・プレビュー | WooaViewer">
   <meta name="twitter:description" content="Markdown（.md）ファイルをアップロードまたは貼り付けてHTMLとして即座にレンダリング。README.mdプレビューとコードブロックのシンタックスハイライトに対応。ファイルはサーバーに送信されません、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Markdown ビューア","url":"https://wooaviewer.wooahouse.com/ja/markdown-viewer.html","description":".md 마크다운 파일을 HTML로 렌더링해서 미리보는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Markdown ビューア","url":"https://wooaviewer.wooahouse.com/ja/markdown-viewer.html","description":".mdマークダウンファイルをHTMLでレンダリングしてプレビューするオンラインビューア","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -185,8 +185,8 @@
   </div>
 
   <div id="pasteSection" style="display:none">
-    <textarea class="md-textarea" id="mdInput" placeholder="여기에 Markdown 텍스트를 붙여넣으세요..."></textarea>
-    <button class="render-btn" onclick="renderFromInput()">렌더링</button>
+    <textarea class="md-textarea" id="mdInput" placeholder="ここにMarkdownテキストを貼り付けてください..."></textarea>
+    <button class="render-btn" onclick="renderFromInput()">レンダリング</button>
   </div>
 
   <div id="errorMsg" class="alert alert-error" style="display:none"></div>
@@ -238,7 +238,7 @@ function renderMarkdown(text) {
 
 function renderFromInput() {
   const text = document.getElementById('mdInput').value.trim();
-  if (!text) { alert('내용을 입력해주세요.'); return; }
+  if (!text) { alert('内容を入力してください。'); return; }
   renderMarkdown(text);
 }
 

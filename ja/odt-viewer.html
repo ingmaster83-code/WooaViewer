@@ -137,10 +137,10 @@ function loadFile(file) {
 }
 async function parseODT(buffer, fname, fsize) {
   try {
-    if (typeof JSZip === 'undefined') { showError('라이브러리 로딩에 실패했습니다.'); return; }
+    if (typeof JSZip === 'undefined') { showError('ライブラリの読み込みに失敗しました。'); return; }
     const zip = await JSZip.loadAsync(buffer);
     const contentFile = zip.file('content.xml');
-    if (!contentFile) { showError('content.xml을 찾을 수 없습니다. 올바른 ODT/ODS 파일인지 확인하세요.'); return; }
+    if (!contentFile) { showError('content.xmlが見つかりません。正しいODT/ODSファイルか確認してください。'); return; }
     const xmlStr = await contentFile.async('string');
     const parser = new DOMParser();
     const doc = parser.parseFromString(xmlStr, 'text/xml');
@@ -149,7 +149,7 @@ async function parseODT(buffer, fname, fsize) {
     document.getElementById('resultCard').style.display = 'block';
     document.getElementById('odtMeta').textContent = fname + ' · ' + formatBytes(fsize);
     document.getElementById('resultCard').scrollIntoView({behavior:'smooth', block:'start'});
-  } catch(e) { showError('파싱 오류: ' + e.message); }
+  } catch(e) { showError('解析エラー: ' + e.message); }
 }
 function odtNodeToHtml(node) {
   if (node.nodeType === 3) return esc(node.textContent);

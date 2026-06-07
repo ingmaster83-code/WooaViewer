@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="DXF ビューア 無料オンライン インストール不要 — AutoCADなしでCAD図面ファイルを開く | WooaViewer">
   <meta name="twitter:description" content="AutoCADなしでブラウザで.dxf CAD図面ファイルを無料で開く。ズームとパンで図面を操作可能。ファイルはサーバーに送信されません — 100%プライベート、インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"DXF ビューア","url":"https://wooaviewer.wooahouse.com/ja/dxf-viewer.html","description":"AutoCAD 없이 .dxf 도면 파일을 브라우저에서 무료로 열어보는 온라인 CAD 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"DXF ビューア","url":"https://wooaviewer.wooahouse.com/ja/dxf-viewer.html","description":"AutoCADなしで.dxf図面ファイルをブラウザで無料で開くオンラインCADビューア","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -123,7 +123,7 @@
   </div>
 
   <div class="dwg-notice">
-    💡 <span><strong>DWG 파일</strong>은 Autodesk 독점 포맷으로 브라우저 지원이 불가합니다. AutoCAD에서 <strong>다른 이름으로 저장 → DXF</strong>로 변환 후 사용해주세요.</span>
+    💡 <span><strong>DWGファイル</strong>はAutodeskの専用フォーマットのためブラウザ対応不可です。AutoCADで<strong>名前を付けて保存 → DXF</strong>に変換してからご使用ください。</span>
   </div>
 
   <div id="errorMsg" class="alert alert-error" style="display:none"></div>
@@ -132,9 +132,9 @@
     <div class="dxf-toolbar">
       <span class="dxf-file-name" id="dxfFileName"></span>
       <span class="dxf-info" id="dxfInfo"></span>
-      <button class="dxf-btn" onclick="zoomFit()">전체 보기</button>
-      <button class="dxf-btn" onclick="zoomIn()">확대 +</button>
-      <button class="dxf-btn" onclick="zoomOut()">축소 -</button>
+      <button class="dxf-btn" onclick="zoomFit()">全体表示</button>
+      <button class="dxf-btn" onclick="zoomIn()">拡大 +</button>
+      <button class="dxf-btn" onclick="zoomOut()">縮小 -</button>
     </div>
     <div id="dxfCanvas"></div>
   </div>
@@ -235,7 +235,7 @@ function buildSVG(entities) {
     else if ((e.type==='LWPOLYLINE'||e.type==='POLYLINE') && e.vertices.length) e.vertices.forEach(v=>ex(v.x,v.y));
   }
 
-  if (!isFinite(minX)) return { svg:'<text x="50" y="50" font-size="14" fill="#999">표시할 도형이 없습니다</text>', w:200, h:100 };
+  if (!isFinite(minX)) return { svg:'<text x="50" y="50" font-size="14" fill="#999">表示する図形がありません</text>', w:200, h:100 };
 
   const pad = Math.max((maxX-minX)*0.05, (maxY-minY)*0.05, 1);
   minX-=pad; minY-=pad; maxX+=pad; maxY+=pad;
@@ -279,14 +279,14 @@ function loadFile(file) {
     const text = e.target.result;
     const entities = parseDXF(text);
     if (!entities.length) {
-      errorMsg.textContent = '도형을 찾을 수 없습니다. 올바른 DXF 파일인지 확인해주세요.';
+      errorMsg.textContent = '図形が見つかりません。正しいDXFファイルか確認してください。';
       errorMsg.style.display = 'block'; return;
     }
     const { svg, w, h } = buildSVG(entities);
     baseW = w; baseH = h;
     dxfCanvas.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w.toFixed(4)} ${h.toFixed(4)}" id="dxfSvg" style="width:100%;height:100%"><rect width="${w}" height="${h}" fill="white"/>${svg}</svg>`;
     document.getElementById('dxfFileName').textContent = file.name;
-    document.getElementById('dxfInfo').textContent = `도형 ${entities.length}개`;
+    document.getElementById('dxfInfo').textContent = `図形 ${entities.length}件`;
     dropZone.style.display = 'none';
     dxfContainer.style.display = 'block';
     scale=1; panX=0; panY=0;

@@ -150,19 +150,19 @@ function loadFile(file) {
 }
 function parseTIFF(buffer, fname, fsize) {
   try {
-    if (typeof UTIF === 'undefined') { showError('라이브러리 로딩에 실패했습니다.'); return; }
+    if (typeof UTIF === 'undefined') { showError('ライブラリの読み込みに失敗しました。'); return; }
     tiffBuffer = buffer;
     tiffPages = UTIF.decode(buffer);
-    if (!tiffPages.length) { showError('TIFF 파일을 읽을 수 없습니다.'); return; }
+    if (!tiffPages.length) { showError('TIFFファイルを読み込めません。'); return; }
     tiffCurrentPage = 0;
     if (tiffPages.length > 1) {
       document.getElementById('tiffNav').style.display = 'flex';
     }
     renderPage(tiffCurrentPage);
     document.getElementById('resultCard').style.display = 'block';
-    document.getElementById('tiffMeta').textContent = fname + ' · ' + tiffPages.length + '페이지 · ' + formatBytes(fsize);
+    document.getElementById('tiffMeta').textContent = fname + ' · ' + tiffPages.length + 'ページ · ' + formatBytes(fsize);
     document.getElementById('resultCard').scrollIntoView({behavior:'smooth', block:'start'});
-  } catch(e) { showError('파싱 오류: ' + e.message); }
+  } catch(e) { showError('解析エラー: ' + e.message); }
 }
 function renderPage(idx) {
   UTIF.decodeImage(tiffBuffer, tiffPages[idx]);

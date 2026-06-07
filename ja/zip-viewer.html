@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="ZIP ビューア 無料オンライン インストール不要 — ZIPファイルの内容を表示 | WooaViewer">
   <meta name="twitter:description" content="ZIPファイルをアップロードしてツリー構造で内容を表示。内部のテキストファイルと画像ファイルをクリックしてプレビュー。解凍せずにZIPの内容を確認。インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"ZIP 내용물 뷰어","url":"https://wooaviewer.wooahouse.com/ja/zip-viewer.html","description":"ZIP 압축 파일의 내부 목록을 트리 구조로 보여주는 온라인 뷰어. 텍스트·이미지 미리보기 지원.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"ZIP ビューア","url":"https://wooaviewer.wooahouse.com/ja/zip-viewer.html","description":"ZIP圧縮ファイルの内容一覧をツリー構造で表示するオンラインビューア。テキスト・画像プレビューに対応。","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
   <link rel="manifest" href="../manifest.json">
@@ -114,9 +114,9 @@
   <div id="errorMsg" class="alert alert-error" style="display:none"></div>
 
   <div class="zip-summary" id="zipSummary">
-    <span id="sumFiles">파일 0개</span>
-    <span id="sumFolders">폴더 0개</span>
-    <span id="sumSize">총 0 KB</span>
+    <span id="sumFiles">ファイル 0件</span>
+    <span id="sumFolders">フォルダ 0件</span>
+    <span id="sumSize">合計 0 KB</span>
   </div>
 
   <div class="zip-tree" id="zipTree"></div>
@@ -124,7 +124,7 @@
   <div class="zip-preview" id="zipPreview">
     <div class="zip-preview-header">
       <div class="zip-preview-title" id="previewTitle"></div>
-      <button class="zip-preview-close" onclick="closePreview()">닫기</button>
+      <button class="zip-preview-close" onclick="closePreview()">閉じる</button>
     </div>
     <div class="zip-preview-content" id="previewContent"></div>
   </div>
@@ -227,16 +227,16 @@ function loadZip(file) {
       node[fname] = { __type: 'file', __path: path, __size: uncompressedSize, __entry: entry };
     });
 
-    document.getElementById('sumFiles').textContent = '파일 ' + fileCount + '개';
-    document.getElementById('sumFolders').textContent = '폴더 ' + folderCount + '개';
-    document.getElementById('sumSize').textContent = '총 ' + fmtSize(totalSize);
+    document.getElementById('sumFiles').textContent = 'ファイル ' + fileCount + '件';
+    document.getElementById('sumFolders').textContent = 'フォルダ ' + folderCount + '件';
+    document.getElementById('sumSize').textContent = '合計 ' + fmtSize(totalSize);
     zipSummary.style.display = 'block';
 
     zipTree.innerHTML = renderTree(root, 0);
     zipTree.style.display = 'block';
     zipTree.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }).catch(err => {
-    errorMsg.textContent = 'ZIP 파일을 읽을 수 없습니다: ' + err.message;
+    errorMsg.textContent = 'ZIPファイルを読み込めません: ' + err.message;
     errorMsg.style.display = 'block';
   });
 }

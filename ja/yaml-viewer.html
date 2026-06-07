@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="YAML ビューア 無料オンライン インストール不要 — YAMLファイルをツリー構造で表示 | WooaViewer">
   <meta name="twitter:description" content="YAML（.yaml/.yml）ファイルをアップロードまたは貼り付けてインタラクティブなツリー構造として表示。ノードの折りたたみ・展開、設定ファイルとCI/CDパイプラインをサポート。インストール不要。">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"YAML ビューア","url":"https://wooaviewer.wooahouse.com/ja/yaml-viewer.html","description":"YAML 파일을 트리 구조로 보여주는 온라인 뷰어. 접기/펼치기, 구문 오류 검출 지원.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"YAML ビューア","url":"https://wooaviewer.wooahouse.com/ja/yaml-viewer.html","description":"YAMLファイルをツリー構造で表示するオンラインビューア。折りたたみ・展開・構文エラー検出に対応。","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0284C7">
@@ -116,8 +116,8 @@
 
   <div id="yamlToolbar" class="yaml-toolbar" style="display:none">
     <span class="yaml-stats" id="yamlStats"></span>
-    <button class="yaml-tb-btn" onclick="expandAll()">전체 펼치기</button>
-    <button class="yaml-tb-btn" onclick="collapseAll()">전체 접기</button>
+    <button class="yaml-tb-btn" onclick="expandAll()">すべて展開</button>
+    <button class="yaml-tb-btn" onclick="collapseAll()">すべて折りたたむ</button>
   </div>
   <div class="yaml-tree" id="yamlTree"></div>
 
@@ -127,7 +127,7 @@
     <a href="json-viewer.html" class="related-card"><span class="related-icon">🗂️</span><span>JSON ビューア</span></a>
     <a href="xml-viewer.html" class="related-card"><span class="related-icon">📄</span><span>XML ビューア</span></a>
     <a href="csv-viewer.html" class="related-card"><span class="related-icon">📊</span><span>CSV ビューア</span></a>
-    <a href="ini-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>INI/CFG 뷰어</span></a>
+    <a href="ini-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>INI/CFG ビューア</span></a>
   </div>
 </div>
 <div class="wooa-orig-anchor"></div>
@@ -169,18 +169,18 @@ function loadFile(file) {
 }
 function parseFromInput() {
   const text = document.getElementById('yamlInput').value.trim();
-  renderYAML(text, '입력', new Blob([text]).size);
+  renderYAML(text, '入力', new Blob([text]).size);
 }
 
 function renderYAML(text, source, size) {
   errorMsg.style.display = 'none';
   let data;
   try { data = jsyaml.load(text); } catch(e) {
-    errorMsg.textContent = 'YAML 파싱 오류: ' + e.message;
+    errorMsg.textContent = 'YAML解析エラー: ' + e.message;
     errorMsg.style.display = 'block'; return;
   }
   const keys = countKeys(data);
-  document.getElementById('yamlStats').textContent = `${source} · ${(size/1024).toFixed(1)} KB · 키 ${keys}개`;
+  document.getElementById('yamlStats').textContent = `${source} · ${(size/1024).toFixed(1)} KB · キー ${keys}件`;
   yamlTree.innerHTML = buildTree(data);
   yamlTree.style.display = 'block';
   yamlToolbar.style.display = 'flex';
@@ -207,14 +207,14 @@ function buildTree(val, depth=0) {
     if (!val.length) return `<span>[]</span>`;
     const id = 'y' + Math.random().toString(36).slice(2);
     const items = val.map((v,i) => `<div><span class="j-num">${i}</span>: ${buildTree(v,depth+1)}</div>`).join('');
-    return `<span class="j-toggle" onclick="toggle('${id}')">▼</span>[<span class="j-summary">${val.length}개</span><div class="j-children" id="${id}">${items}</div>]`;
+    return `<span class="j-toggle" onclick="toggle('${id}')">▼</span>[<span class="j-summary">${val.length}件</span><div class="j-children" id="${id}">${items}</div>]`;
   }
 
   const keys = Object.keys(val);
   if (!keys.length) return `<span>{}</span>`;
   const id = 'y' + Math.random().toString(36).slice(2);
   const items = keys.map(k => `<div><span class="j-key">"${esc(k)}"</span>: ${buildTree(val[k],depth+1)}</div>`).join('');
-  return `<span class="j-toggle" onclick="toggle('${id}')">▼</span>{<span class="j-summary">${keys.length}개</span><div class="j-children" id="${id}">${items}</div>}`;
+  return `<span class="j-toggle" onclick="toggle('${id}')">▼</span>{<span class="j-summary">${keys.length}件</span><div class="j-children" id="${id}">${items}</div>}`;
 }
 
 function toggle(id) {
