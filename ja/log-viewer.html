@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="b97d5945d07fd0d0993c3f853a7b793a2ecc6293">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOG ビューア 無料オンライン インストール不要 — ログファイルをシンタックスハイライトで表示 | WooaViewer</title>
+  <meta name="description" content="ブラウザで.logおよび.txtログファイルを開く。ERROR、WARN、INFO、DEBUGレベルのカラーハイライト、キーワード検索・フィルタリング。無料、サーバーアップロードなし、インストール不要。">
+  <meta name="keywords" content="LOGビューア, ログファイルビューア, logを開く, シンタックスハイライト">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/ja/log-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/log-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/log-viewer.html">
+    <link rel="alternate" hreflang="ja" href="https://wooaviewer.wooahouse.com/ja/log-viewer.html">
+<link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/log-viewer.html">
+  <meta property="og:title" content="LOG ビューア 無料オンライン インストール不要 — ログファイルをシンタックスハイライトで表示 | WooaViewer">
+  <meta property="og:description" content="ブラウザで.logおよび.txtログファイルを開く。ERROR、WARN、INFO、DEBUGレベルのカラーハイライト、キーワード検索・フィルタリング。無料、サーバーアップロードなし、インストール不要。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/ja/log-viewer.html">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <meta property="og:site_name" content="WooaViewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LOG ビューア 無料オンライン インストール不要 — ログファイルをシンタックスハイライトで表示 | WooaViewer">
+  <meta name="twitter:description" content="ブラウザで.logおよび.txtログファイルを開く。ERROR、WARN、INFO、DEBUGレベルのカラーハイライト、キーワード検索・フィルタリング。無料、サーバーアップロードなし、インストール不要。">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"LOG Viewer","url":"https://wooaviewer.wooahouse.com/ja/log-viewer.html","description":"Online viewer for .log files — color-coded by log level with keyword search.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+    .result-card { background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08); padding:24px; margin-top:16px; display:none; }
+    .result-stats { font-size:0.82rem; color:#6B7280; margin-top:8px; }
+    .log-toolbar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:8px; }
+    .log-toolbar input { flex:1; min-width:150px; padding:6px 12px; border:1px solid #D1D5DB; border-radius:6px; font-size:0.85rem; }
+    .log-toolbar select { padding:6px 10px; border:1px solid #D1D5DB; border-radius:6px; font-size:0.85rem; }
+    .log-wrap { background:#1E1E1E; border-radius:8px; overflow:auto; max-height:600px; padding:8px 0; font-family:'Courier New',Consolas,monospace; font-size:0.82rem; line-height:1.6; }
+    .log-line { display:flex; gap:0; padding:0 4px; }
+    .log-line:hover { background:rgba(255,255,255,.05); }
+    .log-num { color:#4B5563; min-width:52px; text-align:right; padding-right:12px; user-select:none; flex-shrink:0; }
+    .log-text { color:#D1D5DB; white-space:pre; word-break:break-all; }
+    .log-error .log-text { color:#F87171; }
+    .log-warn .log-text { color:#FCD34D; }
+    .log-info .log-text { color:#6EE7B7; }
+    .log-debug .log-text { color:#93C5FD; }
+    .log-stats { font-size:0.82rem; color:#6B7280; margin-top:8px; display:flex; gap:16px; flex-wrap:wrap; }
+    .log-stat-item { display:flex; gap:4px; align-items:center; }
+    .log-badge { padding:2px 7px; border-radius:10px; font-size:0.72rem; font-weight:700; }
+    .bg-error { background:#FEE2E2; color:#DC2626; }
+    .bg-warn { background:#FEF3C7; color:#D97706; }
+    .bg-info { background:#D1FAE5; color:#059669; }
+    .bg-debug { background:#DBEAFE; color:#2563EB; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="dxf-viewer.html">DXF</a><a href="psd-viewer.html">PSD</a>
+      <a href="stl-viewer.html">STL</a><a href="index.html">すべてのツール ›</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <a href="../log-viewer.html">KO</a>
+        <span>|</span>
+        <a href="../en/log-viewer.html">EN</a>
+        <span>|</span>
+        <a href="log-viewer.html" class="active">JA</a>
+      </div>
+      <a href="../about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">About</a>
+    </div>
+  </div>
+</header>
+<script src="../js/wooa-sites-bar.js"></script>
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<div class="page-with-sidebar">
+<div class="tool-page">
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>LOG Viewer</span></div>
+  <div class="tool-header">
+    <span class="tool-header-icon">📋</span>
+    <h1>LOG ビューア — ログファイルをシンタックスハイライトで無料で開く</h1>
+    <p>.logおよび.txtログファイルをアップロードして開く。ERROR、WARN、INFO、DEBUGレベルのカラーハイライトとキーワード検索に対応。</p>
+  </div>
+  <div id="uploadSection">
+    <div class="drop-zone" id="dropZone">
+      <span class="drop-zone-icon">📋</span>
+      <h3>Drop a LOG file here</h3>
+      <p>.log,.txt,.out,.err format · Files never sent to server</p>
+      <label class="btn-select">Choose File<input type="file" id="fileInput" accept=".log,.txt,.out,.err" style="display:none"></label>
+    </div>
+  </div>
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+  <div class="result-card" id="resultCard">
+    <div class="log-toolbar">
+      <input type="text" id="logSearch" placeholder="Search..." oninput="filterLog()">
+      <select id="logLevel" onchange="filterLog()">
+        <option value="">All levels</option>
+        <option value="error">ERROR</option>
+        <option value="warn">WARN</option>
+        <option value="info">INFO</option>
+        <option value="debug">DEBUG</option>
+      </select>
+    </div>
+    <div class="log-wrap" id="logWrap"></div>
+    <div class="log-stats" id="logStats"></div>
+  </div>
+<div class="related-tools">
+  <h2>関連ツール</h2>
+  <div class="related-grid">
+    <a href="json-viewer.html" class="related-card"><span class="related-icon">🗂️</span><span>JSON 뷰어</span></a>
+    <a href="xml-viewer.html" class="related-card"><span class="related-icon">📄</span><span>XML 뷰어</span></a>
+    <a href="csv-viewer.html" class="related-card"><span class="related-icon">📊</span><span>CSV 뷰어</span></a>
+    <a href="yaml-viewer.html" class="related-card"><span class="related-icon">🗃️</span><span>YAML 뷰어</span></a>
+  </div>
+</div>
+<div class="wooa-orig-anchor"></div>
+<div class="tips-panel"><h3>💡 ヒント</h3><ul><li>Filter by ERROR, WARN, INFO, or DEBUG level.</li><li>Type in the search box to show only lines containing a keyword.</li><li>Up to 100,000 lines can be displayed.</li></ul></div>
+<div class="faq-section"><h2>よくある質問</h2><details><summary>What log formats are supported?</summary><p>Any text-based log file is supported. ERROR, WARN, INFO, and DEBUG keywords are auto-detected regardless of case.</p></details><details><summary>What if my log levels aren't detected?</summary><p>Keywords are detected case-insensitively. For custom formats, use the keyword search to filter.</p></details><details><summary>ファイルはインターネットにアップロードされますか？</summary><p>いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。</p></details></div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+<footer class="footer"></footer>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const errorMsg = document.getElementById('errorMsg');
+fileInput.addEventListener('change', e => { if(e.target.files[0]) loadFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if(e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+});
+function showError(msg) { errorMsg.textContent = msg; errorMsg.style.display = 'block'; }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function formatBytes(b) {
+  if(b<1024) return b+' B';
+  if(b<1024*1024) return (b/1024).toFixed(1)+' KB';
+  return (b/1024/1024).toFixed(1)+' MB';
+}
+let allLines = [];
+function loadFile(file) {
+  errorMsg.style.display = 'none';
+  const reader = new FileReader();
+  reader.onload = e => parseLog(e.target.result, file.name, file.size);
+  reader.readAsText(file, 'UTF-8');
+}
+function parseLog(text, fname, fsize) {
+  allLines = text.split(/\r?\n/);
+  if (allLines.length > 100000) allLines = allLines.slice(0, 100000);
+  renderLog(allLines);
+  document.getElementById('resultCard').style.display = 'block';
+  document.getElementById('resultCard').scrollIntoView({behavior:'smooth', block:'start'});
+}
+function getLevel(line) {
+  if (/\b(?:ERROR|FATAL|CRITICAL|SEVERE)\b/i.test(line)) return 'error';
+  if (/\b(?:WARN(?:ING)?)\b/i.test(line)) return 'warn';
+  if (/\bINFO\b/i.test(line)) return 'info';
+  if (/\b(?:DEBUG|TRACE|VERBOSE)\b/i.test(line)) return 'debug';
+  return '';
+}
+function renderLog(lines) {
+  let err=0, warn=0, info=0, dbg=0;
+  const html = lines.map((line, i) => {
+    const lvl = getLevel(line);
+    if(lvl==='error') err++;
+    else if(lvl==='warn') warn++;
+    else if(lvl==='info') info++;
+    else if(lvl==='debug') dbg++;
+    const num = String(i+1).padStart(5,' ');
+    return `<div class="log-line ${lvl?'log-'+lvl:''}"><span class="log-num">${num}</span><span class="log-text">${esc(line)}</span></div>`;
+  }).join('');
+  document.getElementById('logWrap').innerHTML = html;
+  document.getElementById('logStats').innerHTML =
+    `<span class="log-stat-item"><span class="log-badge bg-error">ERROR</span>${err}</span>` +
+    `<span class="log-stat-item"><span class="log-badge bg-warn">WARN</span>${warn}</span>` +
+    `<span class="log-stat-item"><span class="log-badge bg-info">INFO</span>${info}</span>` +
+    `<span class="log-stat-item"><span class="log-badge bg-debug">DEBUG</span>${dbg}</span>` +
+    `<span style="color:#9CA3AF">${lines.length}줄</span>`;
+}
+function filterLog() {
+  const search = document.getElementById('logSearch').value.toLowerCase();
+  const level = document.getElementById('logLevel').value;
+  const filtered = allLines.filter(line => {
+    if (level && getLevel(line) !== level) return false;
+    if (search && !line.toLowerCase().includes(search)) return false;
+    return true;
+  });
+  renderLog(filtered);
+}
+</script>
+<script src="../js/wooahouse-originals-tool-ja.js"></script>
+<script src="../js/pwa-install.js"></script>
+<script src="../js/wooa-sidebar-ja.js"></script>
+<script src="../js/wooa-footer-ja.js"></script>
+</body>
+</html>

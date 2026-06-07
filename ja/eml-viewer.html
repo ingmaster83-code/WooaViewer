@@ -1,0 +1,468 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="b97d5945d07fd0d0993c3f853a7b793a2ecc6293">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EML ビューア 無料オンライン インストール不要 — メールファイルを開く | WooaViewer</title>
+  <meta name="description" content="ブラウザで.emlメールファイルを無料で開く。送信者、受信者、件名、日付、メール本文（HTMLとテキスト）を表示。添付ファイルリストも表示。ファイルはサーバーに送信されません、インストール不要。">
+  <meta name="keywords" content="EMLビューア, メールファイルビューア, emlを開く, メールビューア">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/ja/eml-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/eml-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/eml-viewer.html">
+    <link rel="alternate" hreflang="ja" href="https://wooaviewer.wooahouse.com/ja/eml-viewer.html">
+<link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/eml-viewer.html">
+  <meta property="og:title" content="EML ビューア 無料オンライン インストール不要 — メールファイルを開く | WooaViewer">
+  <meta property="og:description" content="ブラウザで.emlメールファイルを無料で開く。送信者、受信者、件名、日付、メール本文（HTMLとテキスト）を表示。添付ファイルリストも表示。ファイルはサーバーに送信されません、インストール不要。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/ja/eml-viewer.html">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <meta property="og:site_name" content="WooaViewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EML ビューア 無料オンライン インストール不要 — メールファイルを開く | WooaViewer">
+  <meta name="twitter:description" content="ブラウザで.emlメールファイルを無料で開く。送信者、受信者、件名、日付、メール本文（HTMLとテキスト）を表示。添付ファイルリストも表示。ファイルはサーバーに送信されません、インストール不要。">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"EML 뷰어","url":"https://wooaviewer.wooahouse.com/ja/eml-viewer.html","description":".eml 이메일 파일을 브라우저에서 열어 본문과 첨부파일을 확인하는 온라인 뷰어.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+
+    .eml-card { background:white; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08); overflow:hidden; margin-top:16px; display:none; }
+    .eml-headers { background:#F8FAFC; border-bottom:1px solid #E5E7EB; padding:20px 24px; }
+    .eml-header-row { display:grid; grid-template-columns:90px 1fr; gap:6px 12px; align-items:baseline; }
+    .eml-header-row + .eml-header-row { margin-top:6px; }
+    .eml-lbl { font-size:0.8rem; font-weight:700; color:#6B7280; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; }
+    .eml-val { font-size:0.9rem; color:#1A1A2E; word-break:break-word; }
+    .eml-subject { font-size:1.05rem; font-weight:700; color:#0284C7; }
+    .eml-body-tabs { display:flex; gap:0; border-bottom:1px solid #E5E7EB; background:#F8FAFC; }
+    .eml-body-tab { padding:10px 20px; border:none; background:transparent; font-size:0.85rem; font-weight:600; cursor:pointer; color:#6B7280; font-family:inherit; border-bottom:2px solid transparent; transition:all 0.15s; }
+    .eml-body-tab.active { color:#0284C7; border-bottom-color:#0284C7; background:white; }
+    .eml-body-tab:hover:not(.active) { color:#374151; background:#F3F4F6; }
+    .eml-body-panel { padding:20px 24px; }
+    .eml-plain { font-family:'Courier New',monospace; font-size:0.85rem; line-height:1.7; white-space:pre-wrap; word-break:break-word; color:#374151; max-height:500px; overflow:auto; }
+    .eml-html-frame { width:100%; min-height:300px; max-height:560px; border:none; border-radius:6px; background:white; }
+    .eml-attachments { border-top:1px solid #E5E7EB; padding:16px 24px; background:#FFFBEB; }
+    .eml-att-title { font-size:0.85rem; font-weight:700; color:#92400E; margin-bottom:10px; }
+    .eml-att-list { display:flex; flex-wrap:wrap; gap:8px; }
+    .eml-att-item { display:flex; align-items:center; gap:6px; background:white; border:1px solid #FDE68A; border-radius:8px; padding:6px 12px; font-size:0.82rem; color:#374151; }
+    .eml-att-icon { font-size:1rem; }
+    .eml-att-size { color:#9CA3AF; font-size:0.75rem; }
+    .eml-stats { font-size:0.82rem; color:#6B7280; margin-top:8px; }
+    .eml-no-body { color:#9CA3AF; font-style:italic; font-size:0.9rem; text-align:center; padding:30px 0; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="dxf-viewer.html">DXF</a><a href="psd-viewer.html">PSD</a>
+      <a href="stl-viewer.html">STL</a><a href="index.html">すべてのツール ›</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <a href="../eml-viewer.html">KO</a>
+        <span>|</span>
+        <a href="../en/eml-viewer.html">EN</a>
+        <span>|</span>
+        <a href="eml-viewer.html" class="active">JA</a>
+      </div>
+      <a href="../about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">About</a>
+    </div>
+  </div>
+</header>
+
+<script src="../js/wooa-sites-bar.js"></script>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>EML Viewer</span></div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">📧</span>
+    <h1>EML ビューア — メールファイルを無料でオンラインで開く</h1>
+    <p>.emlメールファイルをアップロードして、送信者、受信者、件名、本文、添付ファイルを表示。</p>
+  </div>
+
+  <div id="uploadSection">
+    <div class="drop-zone" id="dropZone">
+      <span class="drop-zone-icon">📧</span>
+      <h3>EML Drop your file here</h3>
+      <p>Supports .eml format</p>
+      <label class="btn-select">ファイルを選択<input type="file" id="fileInput" accept=".eml" style="display:none"></label>
+    </div>
+  </div>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div class="eml-card" id="emlCard">
+    <div class="eml-headers" id="emlHeaders"></div>
+    <div class="eml-body-tabs" id="emlBodyTabs"></div>
+    <div class="eml-body-panel" id="emlBodyPanel"></div>
+    <div class="eml-attachments" id="emlAttachments" style="display:none">
+      <div class="eml-att-title">📎 Attachments</div>
+      <div class="eml-att-list" id="emlAttList"></div>
+    </div>
+  </div>
+
+  <div class="eml-stats" id="emlStats"></div>
+
+<div class="tips-panel"><h3>💡 ヒント</h3><ul><li>Switch between HTML and plain text views using the tabs.</li><li>Attachment list is shown automatically at the bottom of the email.</li><li>Supports .eml files exported from Outlook, Thunderbird, Gmail, and more.</li></ul></div>
+<div class="faq-section"><h2>よくある質問</h2><details><summary>Can I download attachments?</summary><p>The current version displays the attachment list only. Downloading is not supported.</p></details><details><summary>Can I open .msg files?</summary><p>Only .eml format is supported. For .msg files, use the MSG Viewer.</p></details><details><summary>ファイルはインターネットにアップロードされますか？</summary><p>いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。</p></details></div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+
+  <div class="related-tools">
+  <h2>関連ツール</h2>
+  <div class="related-grid">
+    <a href="docx-viewer.html" class="related-card"><span class="related-icon">📝</span><span>DOCX 뷰어</span></a>
+    <a href="xlsx-viewer.html" class="related-card"><span class="related-icon">📊</span><span>XLSX 뷰어</span></a>
+    <a href="markdown-viewer.html" class="related-card"><span class="related-icon">📋</span><span>Markdown 뷰어</span></a>
+    <a href="epub-viewer.html" class="related-card"><span class="related-icon">📚</span><span>EPUB 뷰어</span></a>
+  </div>
+</div>
+<div class="wooa-orig-anchor"></div>
+<footer class="footer"></footer>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const errorMsg = document.getElementById('errorMsg');
+const emlCard = document.getElementById('emlCard');
+
+fileInput.addEventListener('change', e => { if(e.target.files[0]) loadFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if(e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+});
+
+function loadFile(file) {
+  const reader = new FileReader();
+  reader.onload = e => parseEML(e.target.result, file.name, file.size);
+  reader.readAsText(file, 'UTF-8');
+}
+
+// ── MIME 파서 ──────────────────────────────────────────────────────────────
+function parseHeaders(raw) {
+  // RFC 2822: header folding (lines starting with space/tab are continuations)
+  const unfolded = raw.replace(/\r?\n[ \t]+/g, ' ');
+  const lines = unfolded.split(/\r?\n/);
+  const headers = {};
+  for (const line of lines) {
+    const m = line.match(/^([^:]+):\s*(.*)/);
+    if (m) {
+      const key = m[1].trim().toLowerCase();
+      if (!headers[key]) headers[key] = [];
+      headers[key].push(m[2].trim());
+    }
+  }
+  return headers;
+}
+
+function getBoundary(contentType) {
+  const m = contentType && contentType.match(/boundary=["']?([^"';\s]+)["']?/i);
+  return m ? m[1] : null;
+}
+
+function getCharset(contentType) {
+  const m = contentType && contentType.match(/charset=["']?([^"';\s]+)["']?/i);
+  return m ? m[1].toLowerCase() : 'utf-8';
+}
+
+function decodeTransferEncoding(body, encoding) {
+  if (!encoding) return body;
+  const enc = encoding.trim().toLowerCase();
+  if (enc === 'base64') {
+    try {
+      // Remove whitespace from base64
+      const cleaned = body.replace(/\s+/g, '');
+      return atob(cleaned);
+    } catch(e) { return body; }
+  }
+  if (enc === 'quoted-printable') {
+    return body
+      .replace(/=\r?\n/g, '')               // soft line breaks
+      .replace(/=([0-9A-Fa-f]{2})/g, (_, h) => String.fromCharCode(parseInt(h, 16)));
+  }
+  return body; // 7bit, 8bit, binary
+}
+
+function decodeMIMEWords(str) {
+  // =?charset?encoding?text?=
+  if (!str) return '';
+  return str.replace(/=\?([^?]+)\?([BbQq])\?([^?]*)\?=/g, (_, charset, encoding, text) => {
+    try {
+      if (encoding.toUpperCase() === 'B') {
+        const bytes = atob(text);
+        if (charset.toLowerCase().includes('utf-8') || charset.toLowerCase().includes('utf8')) {
+          const arr = new Uint8Array(bytes.length);
+          for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
+          return new TextDecoder('utf-8').decode(arr);
+        }
+        return bytes;
+      }
+      if (encoding.toUpperCase() === 'Q') {
+        const decoded = text.replace(/_/g, ' ').replace(/=([0-9A-Fa-f]{2})/g, (_, h) => String.fromCharCode(parseInt(h, 16)));
+        return decoded;
+      }
+    } catch(e) {}
+    return text;
+  });
+}
+
+function splitMultipart(body, boundary) {
+  const delimiter = '--' + boundary;
+  const endDelimiter = '--' + boundary + '--';
+  const parts = [];
+  const lines = body.split(/\r?\n/);
+  let inPart = false;
+  let currentLines = [];
+
+  for (const line of lines) {
+    if (line.trim() === endDelimiter || line.trim().startsWith(endDelimiter)) {
+      if (inPart && currentLines.length) parts.push(currentLines.join('\n'));
+      break;
+    }
+    if (line.trim() === delimiter || line.trim().startsWith(delimiter + ' ') || line.trim().startsWith(delimiter + '\t')) {
+      if (inPart && currentLines.length) parts.push(currentLines.join('\n'));
+      inPart = true;
+      currentLines = [];
+    } else if (inPart) {
+      currentLines.push(line);
+    }
+  }
+  if (inPart && currentLines.length) parts.push(currentLines.join('\n'));
+  return parts;
+}
+
+function parsePart(raw) {
+  // Split headers from body at first blank line
+  const sep = raw.match(/\r?\n\r?\n/);
+  if (!sep) return { headers: {}, body: raw };
+  const sepIdx = raw.indexOf(sep[0]);
+  const headerRaw = raw.substring(0, sepIdx);
+  const body = raw.substring(sepIdx + sep[0].length);
+  const headers = parseHeaders(headerRaw);
+  return { headers, body };
+}
+
+// ── Main parser ──────────────────────────────────────────────────────────
+function parseEML(text, filename, filesize) {
+  errorMsg.style.display = 'none';
+
+  // Normalize line endings
+  text = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+
+  // Split at first blank line
+  const bodyStart = text.indexOf('\n\n');
+  if (bodyStart === -1) {
+    showError('EML 파일을 파싱할 수 없습니다. 올바른 .eml 파일인지 확인해주세요.');
+    return;
+  }
+
+  const headerRaw = text.substring(0, bodyStart);
+  const bodyRaw   = text.substring(bodyStart + 2);
+  const headers   = parseHeaders(headerRaw);
+
+  const from    = decodeMIMEWords((headers['from'] || [''])[0]);
+  const to      = decodeMIMEWords((headers['to'] || [''])[0]);
+  const cc      = decodeMIMEWords((headers['cc'] || [''])[0]);
+  const subject = decodeMIMEWords((headers['subject'] || ['(제목 없음)'])[0]);
+  const date    = (headers['date'] || [''])[0];
+  const msgId   = (headers['message-id'] || [''])[0];
+  const contentType = (headers['content-type'] || ['text/plain'])[0];
+
+  // Render headers
+  const hRows = [
+    ['발신자', from],
+    ['수신자', to],
+  ];
+  if (cc) hRows.push(['참조', cc]);
+  hRows.push(['날짜', date]);
+  hRows.push(['제목', subject]);
+
+  let headerHtml = '<div class="eml-header-row">' +
+    hRows.map(([l, v]) => {
+      const cls = l === '제목' ? 'eml-subject' : 'eml-val';
+      return `<span class="eml-lbl">${esc(l)}</span><span class="${cls}">${esc(v)}</span>`;
+    }).join('</div><div class="eml-header-row">') +
+    '</div>';
+  document.getElementById('emlHeaders').innerHTML = headerHtml;
+
+  // Parse body parts
+  let plainText = '';
+  let htmlText  = '';
+  const attachments = [];
+
+  const boundary = getBoundary(contentType);
+
+  if (boundary) {
+    // Multipart — recurse into parts
+    extractParts(bodyRaw, boundary, { plain: '', html: '', atts: attachments }, (result) => {
+      plainText = result.plain;
+      htmlText  = result.html;
+    });
+  } else {
+    // Single part
+    const transferEnc = (headers['content-transfer-encoding'] || [''])[0];
+    const decoded = decodeTransferEncoding(bodyRaw, transferEnc);
+    if (contentType.includes('text/html')) {
+      htmlText = decoded;
+    } else {
+      plainText = decoded;
+    }
+  }
+
+  // Render body tabs
+  const tabsEl  = document.getElementById('emlBodyTabs');
+  const panelEl = document.getElementById('emlBodyPanel');
+  tabsEl.innerHTML = '';
+  panelEl.innerHTML = '';
+
+  const hasBoth = plainText && htmlText;
+
+  if (htmlText) {
+    const btn = document.createElement('button');
+    btn.className = 'eml-body-tab' + (hasBoth ? '' : ' active');
+    btn.textContent = 'HTML';
+    btn.onclick = () => showBodyTab('html', btn, plainText, htmlText);
+    if (!hasBoth) btn.classList.add('active');
+    tabsEl.appendChild(btn);
+  }
+  if (plainText) {
+    const btn = document.createElement('button');
+    btn.className = 'eml-body-tab' + (!htmlText ? ' active' : '');
+    btn.textContent = '텍스트';
+    btn.onclick = () => showBodyTab('plain', btn, plainText, htmlText);
+    tabsEl.appendChild(btn);
+  }
+
+  if (!plainText && !htmlText) {
+    panelEl.innerHTML = '<div class="eml-no-body">No body content found.</div>';
+  } else if (htmlText) {
+    showBodyPanel('html', panelEl, plainText, htmlText);
+  } else {
+    showBodyPanel('plain', panelEl, plainText, htmlText);
+  }
+
+  // Attachments
+  if (attachments.length) {
+    const attEl = document.getElementById('emlAttachments');
+    const listEl = document.getElementById('emlAttList');
+    listEl.innerHTML = attachments.map(a => {
+      const icon = getAttIcon(a.name);
+      const sizeStr = a.size > 0 ? ` · ${formatBytes(a.size)}` : '';
+      return `<div class="eml-att-item"><span class="eml-att-icon">${icon}</span><span>${esc(a.name)}</span><span class="eml-att-size">${sizeStr}</span></div>`;
+    }).join('');
+    attEl.style.display = 'block';
+  }
+
+  // Stats
+  document.getElementById('emlStats').textContent = `${filename} · ${formatBytes(filesize)}`;
+
+  emlCard.style.display = 'block';
+  emlCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function extractParts(bodyRaw, boundary, result, cb) {
+  const parts = splitMultipart(bodyRaw, boundary);
+  for (const partRaw of parts) {
+    const { headers, body } = parsePart(partRaw);
+    const ct = (headers['content-type'] || ['text/plain'])[0].toLowerCase();
+    const te = (headers['content-transfer-encoding'] || [''])[0];
+    const disp = (headers['content-disposition'] || [''])[0].toLowerCase();
+    const innerBoundary = getBoundary((headers['content-type'] || [''])[0]);
+
+    if (innerBoundary) {
+      // Nested multipart
+      extractParts(body, innerBoundary, result, cb);
+      continue;
+    }
+
+    const decoded = decodeTransferEncoding(body, te);
+
+    if (disp.includes('attachment') || (disp.includes('inline') && !ct.includes('text/'))) {
+      // Attachment
+      const nameMatch = (headers['content-disposition'] || [''])[0].match(/filename\*?=["']?(?:.*'')?([^"';\s]+)/i)
+        || (headers['content-type'] || [''])[0].match(/name=["']?([^"';\s]+)/i);
+      const attName = nameMatch ? decodeMIMEWords(decodeURIComponent(nameMatch[1])) : '첨부파일';
+      result.atts.push({ name: attName, size: body.length });
+    } else if (ct.startsWith('text/html')) {
+      if (!result.html) result.html = decoded;
+    } else if (ct.startsWith('text/plain')) {
+      if (!result.plain) result.plain = decoded;
+    } else if (ct.startsWith('text/')) {
+      if (!result.plain) result.plain = decoded;
+    }
+  }
+  cb(result);
+}
+
+function showBodyTab(type, clickedBtn, plain, html) {
+  document.querySelectorAll('.eml-body-tab').forEach(b => b.classList.remove('active'));
+  clickedBtn.classList.add('active');
+  showBodyPanel(type, document.getElementById('emlBodyPanel'), plain, html);
+}
+
+function showBodyPanel(type, panel, plain, html) {
+  if (type === 'html') {
+    const blob = new Blob([html], { type: 'text/html' });
+    const url  = URL.createObjectURL(blob);
+    panel.innerHTML = `<iframe class="eml-html-frame" src="${url}" sandbox="allow-same-origin"></iframe>`;
+  } else {
+    panel.innerHTML = `<div class="eml-plain">${esc(plain)}</div>`;
+  }
+}
+
+function showError(msg) {
+  errorMsg.textContent = msg;
+  errorMsg.style.display = 'block';
+}
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function formatBytes(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1024*1024) return (b/1024).toFixed(1) + ' KB';
+  return (b/1024/1024).toFixed(1) + ' MB';
+}
+
+function getAttIcon(name) {
+  const ext = (name.split('.').pop() || '').toLowerCase();
+  const map = { pdf:'📄', doc:'📝', docx:'📝', xls:'📊', xlsx:'📊', ppt:'📋', pptx:'📋',
+    jpg:'🖼️', jpeg:'🖼️', png:'🖼️', gif:'🖼️', zip:'🗜️', rar:'🗜️',
+    mp3:'🎵', mp4:'🎬', txt:'📃', csv:'📊', xml:'📄', json:'🗂️', html:'🌐' };
+  return map[ext] || '📎';
+}
+</script>
+<script src="../js/wooahouse-originals-tool-ja.js"></script>
+<script src="../js/pwa-install.js"></script>
+<script src="../js/wooa-sidebar-ja.js"></script>
+<script src="../js/wooa-footer-ja.js"></script>
+</body>
+</html>

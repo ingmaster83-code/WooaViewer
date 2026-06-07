@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="b97d5945d07fd0d0993c3f853a7b793a2ecc6293">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCode ビューア 無料オンライン インストール不要 — 3Dプリンタの工具経路をレイヤーごとに可視化 | WooaViewer</title>
+  <meta name="description" content="ブラウザで.gcode 3Dプリンタスライサーファイルの工具経路をレイヤーごとに無料で可視化。CuraおよびPrusaSlicerのGCodeに対応。ファイルはサーバーに送信されません、インストール不要。">
+  <meta name="keywords" content="GCodeビューア, 3Dプリンタビューア, gcodeを開く, スライサービューア">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/ja/gcode-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/gcode-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/gcode-viewer.html">
+    <link rel="alternate" hreflang="ja" href="https://wooaviewer.wooahouse.com/ja/gcode-viewer.html">
+<link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/gcode-viewer.html">
+  <meta property="og:title" content="GCode ビューア 無料オンライン インストール不要 — 3Dプリンタの工具経路をレイヤーごとに可視化 | WooaViewer">
+  <meta property="og:description" content="ブラウザで.gcode 3Dプリンタスライサーファイルの工具経路をレイヤーごとに無料で可視化。CuraおよびPrusaSlicerのGCodeに対応。ファイルはサーバーに送信されません、インストール不要。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/ja/gcode-viewer.html">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <meta property="og:site_name" content="WooaViewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GCode ビューア 無料オンライン インストール不要 — 3Dプリンタの工具経路をレイヤーごとに可視化 | WooaViewer">
+  <meta name="twitter:description" content="ブラウザで.gcode 3Dプリンタスライサーファイルの工具経路をレイヤーごとに無料で可視化。CuraおよびPrusaSlicerのGCodeに対応。ファイルはサーバーに送信されません、インストール不要。">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"GCode 뷰어","url":"https://wooaviewer.wooahouse.com/ja/gcode-viewer.html","description":".gcode 3D 프린터 파일을 브라우저에서 무료로 툴패스를 레이어별 시각화하는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .gcode-container { display:none; margin-top:20px; }
+    .gcode-stats { display:flex; gap:20px; flex-wrap:wrap; padding:10px 16px; background:#F3F4F6; border-radius:10px; margin-bottom:10px; }
+    .stat-item { display:flex; flex-direction:column; }
+    .stat-label { font-size:0.72rem; color:#9CA3AF; }
+    .stat-value { font-size:0.88rem; font-weight:600; color:#1A1A2E; }
+    .gcode-toolbar { display:flex; align-items:center; gap:10px; padding:10px 14px; background:#F3F4F6; border-radius:10px 10px 0 0; flex-wrap:wrap; }
+    .gcode-file-name { font-size:0.82rem; color:#6B7280; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .gcode-btn { padding:6px 14px; border-radius:6px; border:1px solid #E5E7EB; background:white; font-size:0.82rem; font-weight:600; cursor:pointer; font-family:inherit; color:#1A1A2E; transition:all 0.15s; }
+    .gcode-btn:hover { background:#0284C7; color:white; border-color:#0284C7; }
+    .gcode-btn.active { background:#0284C7; color:white; border-color:#0284C7; }
+    #gcodeCanvas { width:100%; height:520px; background:#0F172A; border:1px solid #E5E7EB; border-top:none; border-radius:0 0 10px 10px; display:block; cursor:grab; }
+    #gcodeCanvas:active { cursor:grabbing; }
+    .stl-hint { font-size:0.78rem; color:#9CA3AF; text-align:center; margin-top:8px; }
+    .legend { display:flex; gap:16px; align-items:center; font-size:0.78rem; color:#6B7280; margin-top:6px; flex-wrap:wrap; }
+    .legend-item { display:flex; align-items:center; gap:5px; }
+    .legend-dot { width:24px; height:3px; border-radius:2px; }
+  
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="dxf-viewer.html">DXF</a><a href="stl-viewer.html">STL</a>
+      <a href="gcode-viewer.html">GCode</a><a href="index.html">すべてのツール ›</a>
+    </nav>
+  <div class="header-right">
+      <div class="lang-switcher">
+        <a href="../gcode-viewer.html">KO</a>
+        <span>|</span>
+        <a href="../en/gcode-viewer.html">EN</a>
+        <span>|</span>
+        <a href="gcode-viewer.html" class="active">JA</a>
+      </div>
+      <a href="../about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">About</a>
+    </div>
+  </div>
+</header>
+
+<script src="../js/wooa-sites-bar.js"></script>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>GCode Viewer</span></div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">⚙️</span>
+    <h1>GCode ビューア — 3Dプリンタファイルを無料で可視化</h1>
+    <p>.gcodeファイルをアップロードして、3Dプリンタの工具経路をレイヤーごとに可視化。</p>
+  </div>
+
+  <div class="drop-zone" id="dropZone">
+    <span class="drop-zone-icon">⚙️</span>
+    <h3>GCode Drop your file here</h3>
+    <p>.gcode / .nc / .cnc 형식 지원</p>
+    <label class="btn-select">ファイルを選択<input type="file" id="fileInput" accept=".gcode,.nc,.cnc,.g" style="display:none"></label>
+  </div>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div class="gcode-container" id="gcodeContainer">
+    <div class="gcode-stats">
+      <div class="stat-item"><span class="stat-label">총 이동</span><span class="stat-value" id="statMoves">-</span></div>
+      <div class="stat-item"><span class="stat-label">절삭 이동</span><span class="stat-value" id="statCut">-</span></div>
+      <div class="stat-item"><span class="stat-label">레이어(Z)</span><span class="stat-value" id="statLayers">-</span></div>
+      <div class="stat-item"><span class="stat-label">크기(X×Y)</span><span class="stat-value" id="statSize">-</span></div>
+    </div>
+    <div class="gcode-toolbar">
+      <span class="gcode-file-name" id="gcodeFileName"></span>
+      <button class="gcode-btn" id="rapidBtn" onclick="toggleRapid()">급이동 표시</button>
+      <button class="gcode-btn" onclick="resetView()">초기화</button>
+    </div>
+    <canvas id="gcodeCanvas"></canvas>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#0284C7"></div><span>절삭 이동 (G1)</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(156,163,175,0.6);border-top:2px dashed rgba(156,163,175,0.6);height:0"></div><span>급이동 (G0)</span></div>
+    </div>
+    <p class="stl-hint">마우스 드래그: 이동 · 휠: 확대/축소</p>
+  </div>
+
+<div class="tips-panel"><h3>💡 ヒント</h3><ul><li>Use the layer slider to inspect toolpaths layer by layer.</li><li>Travel moves and extrusion moves are shown in different colors.</li><li>Supports GCode from Cura, PrusaSlicer, Bambu Studio, and more.</li></ul></div>
+<div class="faq-section"><h2>よくある質問</h2><details><summary>Which slicers are supported?</summary><p>All slicers that produce standard GCode are supported, including Cura, PrusaSlicer, Bambu Studio, and Simplify3D.</p></details><details><summary>What if the file is very large?</summary><p>Very large files may load slowly depending on your browser's performance. Consider previewing only a few layers at a time.</p></details><details><summary>ファイルはインターネットにアップロードされますか？</summary><p>いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。</p></details></div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+
+  <div class="related-tools">
+  <h2>関連ツール</h2>
+  <div class="related-grid">
+    <a href="stl-viewer.html" class="related-card"><span class="related-icon">🖨️</span><span>STL 뷰어</span></a>
+    <a href="gpx-viewer.html" class="related-card"><span class="related-icon">🗺️</span><span>GPX 뷰어</span></a>
+    <a href="gpx-maker.html" class="related-card"><span class="related-icon">✏️</span><span>GPX 만들기</span></a>
+    <a href="docx-viewer.html" class="related-card"><span class="related-icon">📝</span><span>DOCX 뷰어</span></a>
+  </div>
+</div>
+<div class="wooa-orig-anchor"></div>
+<footer class="footer"></footer>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const gcodeContainer = document.getElementById('gcodeContainer');
+const errorMsg = document.getElementById('errorMsg');
+const canvas = document.getElementById('gcodeCanvas');
+const ctx = canvas.getContext('2d');
+
+let allMoves = [];
+let showRapid = false;
+let scale = 1, offX = 0, offY = 0;
+let isDragging = false, lastMX = 0, lastMY = 0;
+let fitScale = 1, fitOffX = 0, fitOffY = 0;
+
+fileInput.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag-over'); if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
+
+async function handleFile(file) {
+  errorMsg.style.display = 'none';
+  try {
+    const text = await file.text();
+    const result = parseGCode(text);
+    if (!result.moves.length) throw new Error('이동 명령(G0/G1)을 찾을 수 없습니다.');
+
+    allMoves = result.moves;
+    document.getElementById('gcodeFileName').textContent = file.name;
+    document.getElementById('statMoves').textContent = result.moves.length.toLocaleString() + '개';
+    document.getElementById('statCut').textContent = result.cutCount.toLocaleString() + '개';
+    document.getElementById('statLayers').textContent = result.layers + '개';
+    document.getElementById('statSize').textContent =
+      result.rangeX.toFixed(1) + ' × ' + result.rangeY.toFixed(1) + ' mm';
+
+    dropZone.style.display = 'none';
+    gcodeContainer.style.display = 'block';
+
+    initCanvas(result);
+    draw();
+  } catch (err) {
+    errorMsg.textContent = 'GCode 파일을 읽는 중 오류가 발생했습니다: ' + err.message;
+    errorMsg.style.display = 'block';
+  }
+}
+
+function parseGCode(text) {
+  const moves = [];
+  let cx = 0, cy = 0, cz = 0;
+  const zSet = new Set();
+  let cutCount = 0;
+  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+
+  for (const raw of text.split('\n')) {
+    const line = raw.replace(/[;(].*/, '').trim().toUpperCase();
+    if (!line) continue;
+
+    const gm = line.match(/G([01])\b/);
+    if (!gm) continue;
+    const gType = parseInt(gm[1]);
+
+    const xm = line.match(/X([-\d.]+)/);
+    const ym = line.match(/Y([-\d.]+)/);
+    const zm = line.match(/Z([-\d.]+)/);
+
+    const nx = xm ? parseFloat(xm[1]) : cx;
+    const ny = ym ? parseFloat(ym[1]) : cy;
+    const nz = zm ? parseFloat(zm[1]) : cz;
+
+    if (nx !== cx || ny !== cy) {
+      moves.push({ type: gType, x1: cx, y1: cy, x2: nx, y2: ny });
+      if (gType === 1) cutCount++;
+      minX = Math.min(minX, cx, nx); maxX = Math.max(maxX, cx, nx);
+      minY = Math.min(minY, cy, ny); maxY = Math.max(maxY, cy, ny);
+    }
+
+    cx = nx; cy = ny; cz = nz;
+    zSet.add(nz.toFixed(3));
+  }
+
+  return {
+    moves, cutCount,
+    layers: zSet.size,
+    minX, maxX, minY, maxY,
+    rangeX: maxX - minX || 0,
+    rangeY: maxY - minY || 0
+  };
+}
+
+function initCanvas(result) {
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  ctx.scale(dpr, dpr);
+
+  const pad = 50;
+  const sx = (W - pad * 2) / (result.rangeX || 1);
+  const sy = (H - pad * 2) / (result.rangeY || 1);
+  fitScale = Math.min(sx, sy);
+
+  const modelW = result.rangeX * fitScale;
+  const modelH = result.rangeY * fitScale;
+  fitOffX = (W - modelW) / 2 - result.minX * fitScale;
+  fitOffY = (H + modelH) / 2 + result.minY * fitScale;
+
+  scale = 1; offX = 0; offY = 0;
+
+  window.addEventListener('resize', () => {
+    canvas.style.width = '100%';
+  });
+}
+
+function toScreen(x, y) {
+  const s = fitScale * scale;
+  return [x * s + fitOffX + offX, -y * s + fitOffY + offY];
+}
+
+function draw() {
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  ctx.clearRect(0, 0, W, H);
+
+  ctx.lineWidth = Math.max(0.5, 0.8 / scale);
+
+  for (const m of allMoves) {
+    if (m.type === 0 && !showRapid) continue;
+    const [x1, y1] = toScreen(m.x1, m.y1);
+    const [x2, y2] = toScreen(m.x2, m.y2);
+
+    if (m.type === 0) {
+      ctx.strokeStyle = 'rgba(156,163,175,0.5)';
+      ctx.setLineDash([4, 4]);
+    } else {
+      ctx.strokeStyle = '#0284C7';
+      ctx.setLineDash([]);
+    }
+
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+  }
+  ctx.setLineDash([]);
+}
+
+canvas.addEventListener('mousedown', e => { isDragging = true; lastMX = e.clientX; lastMY = e.clientY; });
+canvas.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  offX += e.clientX - lastMX;
+  offY += e.clientY - lastMY;
+  lastMX = e.clientX; lastMY = e.clientY;
+  draw();
+});
+canvas.addEventListener('mouseup', () => isDragging = false);
+canvas.addEventListener('mouseleave', () => isDragging = false);
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left;
+  const my = e.clientY - rect.top;
+  const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+  offX = mx + (offX - mx) * factor;
+  offY = my + (offY - my) * factor;
+  scale *= factor;
+  draw();
+}, { passive: false });
+
+// Touch support
+let lastTouchDist = 0;
+canvas.addEventListener('touchstart', e => {
+  if (e.touches.length === 1) { isDragging = true; lastMX = e.touches[0].clientX; lastMY = e.touches[0].clientY; }
+  if (e.touches.length === 2) { lastTouchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); }
+});
+canvas.addEventListener('touchmove', e => {
+  e.preventDefault();
+  if (e.touches.length === 1 && isDragging) {
+    offX += e.touches[0].clientX - lastMX; offY += e.touches[0].clientY - lastMY;
+    lastMX = e.touches[0].clientX; lastMY = e.touches[0].clientY;
+    draw();
+  }
+  if (e.touches.length === 2) {
+    const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+    const factor = d / lastTouchDist;
+    scale *= factor; lastTouchDist = d;
+    draw();
+  }
+}, { passive: false });
+canvas.addEventListener('touchend', () => isDragging = false);
+
+function toggleRapid() {
+  showRapid = !showRapid;
+  const btn = document.getElementById('rapidBtn');
+  btn.classList.toggle('active', showRapid);
+  btn.textContent = showRapid ? '급이동 숨기기' : '급이동 표시';
+  draw();
+}
+
+function resetView() {
+  scale = 1; offX = 0; offY = 0;
+  draw();
+}
+</script>
+<script src="../js/wooahouse-originals-tool-ja.js"></script>
+<script src="../js/pwa-install.js"></script>
+<script src="../js/wooa-sidebar-ja.js"></script>
+<script src="../js/wooa-footer-ja.js"></script>
+</body>
+</html>

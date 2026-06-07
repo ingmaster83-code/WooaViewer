@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="b97d5945d07fd0d0993c3f853a7b793a2ecc6293">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZIP ビューア 無料オンライン インストール不要 — ZIPファイルの内容を表示 | WooaViewer</title>
+  <meta name="description" content="ZIPファイルをアップロードしてツリー構造で内容を表示。内部のテキストファイルと画像ファイルをクリックしてプレビュー。解凍せずにZIPの内容を確認。インストール不要。">
+  <meta name="keywords" content="ZIPビューア, ZIPファイルビューア, zipを開く, アーカイブビューア">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/ja/zip-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/zip-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/zip-viewer.html">
+    <link rel="alternate" hreflang="ja" href="https://wooaviewer.wooahouse.com/ja/zip-viewer.html">
+<link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/zip-viewer.html">
+  <meta property="og:title" content="ZIP ビューア 無料オンライン インストール不要 — ZIPファイルの内容を表示 | WooaViewer">
+  <meta property="og:description" content="ZIPファイルをアップロードしてツリー構造で内容を表示。内部のテキストファイルと画像ファイルをクリックしてプレビュー。解凍せずにZIPの内容を確認。インストール不要。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/ja/zip-viewer.html">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <meta property="og:site_name" content="WooaViewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ZIP ビューア 無料オンライン インストール不要 — ZIPファイルの内容を表示 | WooaViewer">
+  <meta name="twitter:description" content="ZIPファイルをアップロードしてツリー構造で内容を表示。内部のテキストファイルと画像ファイルをクリックしてプレビュー。解凍せずにZIPの内容を確認。インストール不要。">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"ZIP 내용물 뷰어","url":"https://wooaviewer.wooahouse.com/ja/zip-viewer.html","description":"ZIP 압축 파일의 내부 목록을 트리 구조로 보여주는 온라인 뷰어. 텍스트·이미지 미리보기 지원.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .zip-summary { display:none; background:#F0F9FF; border:1px solid #BAE6FD; border-radius:10px; padding:12px 16px; margin-top:16px; font-size:0.85rem; color:#0369A1; }
+    .zip-summary span { margin-right:20px; font-weight:600; }
+    .zip-tree { background:white; border-radius:10px; padding:16px; margin-top:10px; box-shadow:0 2px 12px rgba(0,0,0,.08); display:none; max-height:560px; overflow:auto; }
+    .zip-folder { margin:2px 0; }
+    .zip-folder-header { display:flex; align-items:center; gap:6px; cursor:pointer; padding:4px 6px; border-radius:6px; font-weight:600; font-size:0.88rem; color:#374151; }
+    .zip-folder-header:hover { background:#F3F4F6; }
+    .zip-folder-toggle { font-size:0.75rem; color:#6B7280; width:12px; display:inline-block; transition:transform 0.15s; }
+    .zip-folder-toggle.open { transform:rotate(90deg); }
+    .zip-folder-children { margin-left:20px; border-left:1px dashed #E5E7EB; padding-left:8px; }
+    .zip-file { display:flex; align-items:center; gap:8px; padding:4px 6px; border-radius:6px; cursor:pointer; font-size:0.85rem; color:#374151; }
+    .zip-file:hover { background:#EFF6FF; color:#0284C7; }
+    .zip-file-name { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .zip-file-meta { font-size:0.75rem; color:#9CA3AF; white-space:nowrap; }
+    .zip-preview { display:none; background:white; border-radius:10px; padding:16px; margin-top:10px; box-shadow:0 2px 12px rgba(0,0,0,.08); }
+    .zip-preview-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+    .zip-preview-title { font-size:0.88rem; font-weight:700; color:#374151; word-break:break-all; }
+    .zip-preview-close { background:none; border:1px solid #E5E7EB; border-radius:6px; padding:4px 10px; cursor:pointer; font-size:0.8rem; color:#6B7280; font-family:inherit; }
+    .zip-preview-close:hover { background:#F3F4F6; }
+    .zip-preview-content { max-height:400px; overflow:auto; }
+    .zip-preview-text { width:100%; background:#F9FAFB; border:1px solid #E5E7EB; border-radius:6px; padding:12px; font-family:'Courier New',monospace; font-size:0.82rem; line-height:1.6; color:#374151; resize:none; outline:none; box-sizing:border-box; min-height:200px; }
+    .zip-preview-img { max-width:100%; max-height:380px; border-radius:6px; display:block; margin:0 auto; }
+    .zip-icon { font-size:1rem; }
+  
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="json-viewer.html">JSON</a><a href="csv-viewer.html">CSV</a>
+      <a href="index.html">すべてのツール ›</a>
+    </nav>
+  <div class="header-right">
+      <div class="lang-switcher">
+        <a href="../zip-viewer.html">KO</a>
+        <span>|</span>
+        <a href="../en/zip-viewer.html">EN</a>
+        <span>|</span>
+        <a href="zip-viewer.html" class="active">JA</a>
+      </div>
+      <a href="../about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">About</a>
+    </div>
+  </div>
+</header>
+
+<script src="../js/wooa-sites-bar.js"></script>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>ZIP Viewer</span></div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">🗜️</span>
+    <h1>ZIP ビューア — ZIPの内容を無料でオンラインで表示</h1>
+    <p>ZIPファイルをアップロードしてツリー構造で内容を表示。テキストと画像ファイルのプレビューに対応。</p>
+  </div>
+
+  <div class="drop-zone" id="dropZone">
+    <span class="drop-zone-icon">🗜️</span>
+    <h3>ZIP Drop your file here</h3>
+    <p>Supports .zip format</p>
+    <label class="btn-select">ファイルを選択<input type="file" id="fileInput" accept=".zip" style="display:none"></label>
+  </div>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div class="zip-summary" id="zipSummary">
+    <span id="sumFiles">파일 0개</span>
+    <span id="sumFolders">폴더 0개</span>
+    <span id="sumSize">총 0 KB</span>
+  </div>
+
+  <div class="zip-tree" id="zipTree"></div>
+
+  <div class="zip-preview" id="zipPreview">
+    <div class="zip-preview-header">
+      <div class="zip-preview-title" id="previewTitle"></div>
+      <button class="zip-preview-close" onclick="closePreview()">닫기</button>
+    </div>
+    <div class="zip-preview-content" id="previewContent"></div>
+  </div>
+
+<div class="tips-panel"><h3>💡 ヒント</h3><ul><li>View the file list, sizes, and compression ratio inside a ZIP archive.</li><li>Text and image files inside the ZIP can be previewed.</li><li>Password-protected ZIP files cannot be opened.</li></ul></div>
+<div class="faq-section"><h2>よくある質問</h2><details><summary>Can I extract individual files?</summary><p>Yes, individual files can be selected for preview or download.</p></details><details><summary>Are RAR and 7Z supported?</summary><p>Currently only ZIP format is supported. RAR and 7Z are not available.</p></details><details><summary>ファイルはインターネットにアップロードされますか？</summary><p>いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。</p></details></div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+
+  <div class="related-tools">
+  <h2>関連ツール</h2>
+  <div class="related-grid">
+    <a href="json-viewer.html" class="related-card"><span class="related-icon">🗂️</span><span>JSON 뷰어</span></a>
+    <a href="xml-viewer.html" class="related-card"><span class="related-icon">📄</span><span>XML 뷰어</span></a>
+    <a href="csv-viewer.html" class="related-card"><span class="related-icon">📊</span><span>CSV 뷰어</span></a>
+    <a href="yaml-viewer.html" class="related-card"><span class="related-icon">🗃️</span><span>YAML 뷰어</span></a>
+  </div>
+</div>
+<div class="wooa-orig-anchor"></div>
+<footer class="footer"></footer>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const errorMsg = document.getElementById('errorMsg');
+const zipTree = document.getElementById('zipTree');
+const zipSummary = document.getElementById('zipSummary');
+const zipPreview = document.getElementById('zipPreview');
+
+const TEXT_EXTS = new Set(['txt','js','cjs','mjs','ts','css','html','htm','json','md','xml','csv','yaml','yml','ini','cfg','sh','bat','py','rb','php','java','c','cpp','h','go','rs','sql','log','env','gitignore','editorconfig','toml']);
+const IMG_EXTS  = new Set(['jpg','jpeg','png','gif','webp','svg','bmp','ico','avif']);
+
+function extOf(name) { return name.split('.').pop().toLowerCase(); }
+function isText(name) { return TEXT_EXTS.has(extOf(name)); }
+function isImage(name) { return IMG_EXTS.has(extOf(name)); }
+function fmtSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
+  return (bytes/1024/1024).toFixed(2) + ' MB';
+}
+function fileIcon(name) {
+  const e = extOf(name);
+  if (IMG_EXTS.has(e)) return '🖼️';
+  if (e==='pdf') return '📕';
+  if (e==='json'||e==='xml'||e==='yaml'||e==='yml') return '📋';
+  if (e==='js'||e==='ts'||e==='py'||e==='rb'||e==='php'||e==='java'||e==='c'||e==='cpp'||e==='go'||e==='rs') return '💻';
+  if (e==='html'||e==='htm'||e==='css') return '🌐';
+  if (e==='md') return '📝';
+  if (e==='csv') return '📊';
+  if (e==='zip'||e==='gz'||e==='tar'||e==='7z'||e==='rar') return '🗜️';
+  return '📄';
+}
+
+fileInput.addEventListener('change', e => { if (e.target.files[0]) loadZip(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files[0]) loadZip(e.dataTransfer.files[0]);
+});
+
+let loadedZip = null;
+
+function loadZip(file) {
+  errorMsg.style.display = 'none';
+  zipTree.style.display = 'none';
+  zipSummary.style.display = 'none';
+  closePreview();
+
+  JSZip.loadAsync(file).then(zip => {
+    loadedZip = zip;
+    const entries = [];
+    zip.forEach((relativePath, zipEntry) => {
+      entries.push({ path: relativePath, entry: zipEntry });
+    });
+
+    // build tree structure
+    const root = {};
+    let totalSize = 0;
+    let fileCount = 0;
+    let folderCount = 0;
+
+    entries.forEach(({ path, entry }) => {
+      if (entry.dir) {
+        folderCount++;
+        return;
+      }
+      fileCount++;
+      const uncompressedSize = entry._data ? (entry._data.uncompressedSize || 0) : 0;
+      totalSize += uncompressedSize;
+      const parts = path.replace(/\/$/, '').split('/');
+      let node = root;
+      for (let i = 0; i < parts.length - 1; i++) {
+        if (!node[parts[i]]) node[parts[i]] = { __type: 'folder', __children: {} };
+        node = node[parts[i]].__children;
+      }
+      const fname = parts[parts.length - 1];
+      node[fname] = { __type: 'file', __path: path, __size: uncompressedSize, __entry: entry };
+    });
+
+    document.getElementById('sumFiles').textContent = '파일 ' + fileCount + '개';
+    document.getElementById('sumFolders').textContent = '폴더 ' + folderCount + '개';
+    document.getElementById('sumSize').textContent = '총 ' + fmtSize(totalSize);
+    zipSummary.style.display = 'block';
+
+    zipTree.innerHTML = renderTree(root, 0);
+    zipTree.style.display = 'block';
+    zipTree.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }).catch(err => {
+    errorMsg.textContent = 'ZIP 파일을 읽을 수 없습니다: ' + err.message;
+    errorMsg.style.display = 'block';
+  });
+}
+
+function renderTree(node, depth) {
+  let html = '';
+  const keys = Object.keys(node).sort((a, b) => {
+    const af = node[a].__type === 'folder', bf = node[b].__type === 'folder';
+    if (af && !bf) return -1;
+    if (!af && bf) return 1;
+    return a.localeCompare(b, 'ko');
+  });
+  keys.forEach(key => {
+    const item = node[key];
+    const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    if (item.__type === 'folder') {
+      const uid = 'zf' + Math.random().toString(36).slice(2);
+      html += `<div class="zip-folder">
+        <div class="zip-folder-header" onclick="toggleFolder('${uid}')">
+          <span class="zip-folder-toggle open" id="tog_${uid}">▶</span>
+          <span>📁</span><span>${esc(key)}</span>
+        </div>
+        <div class="zip-folder-children" id="${uid}">${renderTree(item.__children, depth+1)}</div>
+      </div>`;
+    } else {
+      const canPreview = isText(key) || isImage(key);
+      const sizeStr = item.__size ? fmtSize(item.__size) : '';
+      html += `<div class="zip-file" onclick="${canPreview ? `previewFile('${esc(item.__path).replace(/'/g,"\\'")}')` : ''}">
+        <span class="zip-icon">${fileIcon(key)}</span>
+        <span class="zip-file-name">${esc(key)}</span>
+        <span class="zip-file-meta">${sizeStr}${canPreview ? ' 👁️' : ''}</span>
+      </div>`;
+    }
+  });
+  return html;
+}
+
+function toggleFolder(uid) {
+  const el = document.getElementById(uid);
+  const tog = document.getElementById('tog_' + uid);
+  if (!el) return;
+  const isOpen = el.style.display !== 'none';
+  el.style.display = isOpen ? 'none' : 'block';
+  tog.classList.toggle('open', !isOpen);
+}
+
+function previewFile(path) {
+  if (!loadedZip) return;
+  const entry = loadedZip.file(path);
+  if (!entry) return;
+  const name = path.split('/').pop();
+  document.getElementById('previewTitle').textContent = name;
+
+  if (isImage(name)) {
+    entry.async('blob').then(blob => {
+      const url = URL.createObjectURL(blob);
+      document.getElementById('previewContent').innerHTML = `<img class="zip-preview-img" src="${url}" alt="${name}">`;
+      zipPreview.style.display = 'block';
+      zipPreview.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  } else if (isText(name)) {
+    entry.async('string').then(text => {
+      const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      document.getElementById('previewContent').innerHTML = `<textarea class="zip-preview-text" readonly>${esc(text)}</textarea>`;
+      zipPreview.style.display = 'block';
+      zipPreview.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+}
+
+function closePreview() {
+  zipPreview.style.display = 'none';
+  document.getElementById('previewContent').innerHTML = '';
+}
+</script>
+<script src="../js/wooahouse-originals-tool-ja.js"></script>
+<script src="../js/pwa-install.js"></script>
+<script src="../js/wooa-sidebar-ja.js"></script>
+<script src="../js/wooa-footer-ja.js"></script>
+</body>
+</html>

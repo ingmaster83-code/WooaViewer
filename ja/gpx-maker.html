@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="b97d5945d07fd0d0993c3f853a7b793a2ecc6293">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPX メーカー — GPSルートを無料でオンラインで作成・編集 | WooaViewer</title>
+  <meta name="description" content="地図上をクリックしてGPSルートを描き、GPXファイルとして保存。既存のGPXファイルを読み込んで編集・更新も可能。無料、インストール不要、サーバーアップロードなし。">
+  <meta name="keywords" content="GPXメーカー, GPSルート作成, gpxを作成, ルートエディタ">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/ja/gpx-maker.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/gpx-maker.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/gpx-maker.html">
+    <link rel="alternate" hreflang="ja" href="https://wooaviewer.wooahouse.com/ja/gpx-maker.html">
+<link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/gpx-maker.html">
+  <meta property="og:title" content="GPX メーカー — GPSルートを無料でオンラインで作成・編集 | WooaViewer">
+  <meta property="og:description" content="地図上をクリックしてGPSルートを描き、GPXファイルとして保存。既存のGPXファイルを読み込んで編集・更新も可能。無料、インストール不要、サーバーアップロードなし。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/ja/gpx-maker.html">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <meta property="og:site_name" content="WooaViewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GPX メーカー — GPSルートを無料でオンラインで作成・編集 | WooaViewer">
+  <meta name="twitter:description" content="地図上をクリックしてGPSルートを描き、GPXファイルとして保存。既存のGPXファイルを読み込んで編集・更新も可能。無料、インストール不要、サーバーアップロードなし。">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"GPX Maker","url":"https://wooaviewer.wooahouse.com/ja/gpx-maker.html","description":"Click on the map to create GPS routes and export as GPX. Load and edit existing GPX files.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .lang-switcher{display:flex;align-items:center;gap:4px;}
+    .lang-switcher a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.8rem;font-weight:600;padding:3px 8px;border-radius:12px;transition:background 0.15s;}
+    .lang-switcher a.active{color:white;background:rgba(255,255,255,0.25);}
+    .lang-switcher a:hover{color:white;background:rgba(255,255,255,0.18);}
+    .lang-switcher span{color:rgba(255,255,255,0.3);font-size:0.75rem;}
+    .gpx-maker-wrap{display:flex;flex-direction:column;gap:10px;margin-top:4px;}
+    .gpx-name-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+    .gpx-name-bar label{font-size:0.85rem;font-weight:600;color:#374151;white-space:nowrap;}
+    .gpx-name-bar input{flex:1;min-width:160px;padding:7px 12px;border:1px solid #D1D5DB;border-radius:8px;font-size:0.9rem;outline:none;transition:border-color .2s;}
+    .gpx-name-bar input:focus{border-color:#0284C7;box-shadow:0 0 0 3px rgba(2,132,199,.12);}
+    .gpx-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+    .gpx-toolbar .sep{width:1px;height:28px;background:#E5E7EB;margin:0 2px;}
+    .mode-btn{padding:7px 14px;border-radius:8px;border:1px solid #D1D5DB;background:white;font-size:0.84rem;font-weight:600;cursor:pointer;transition:all .15s;color:#374151;}
+    .mode-btn:hover{border-color:#0284C7;color:#0284C7;}
+    .mode-btn.active{background:#0284C7;border-color:#0284C7;color:white;}
+    .act-btn{padding:7px 13px;border-radius:8px;border:1px solid #D1D5DB;background:white;font-size:0.84rem;cursor:pointer;transition:all .15s;color:#374151;font-weight:500;}
+    .act-btn:hover{background:#F3F4F6;}
+    .act-btn.danger:hover{background:#FEF2F2;border-color:#FCA5A5;color:#DC2626;}
+    .act-btn.primary{background:#0284C7;border-color:#0284C7;color:white;font-weight:600;}
+    .act-btn.primary:hover{background:#0369a1;}
+    .load-btn{padding:7px 13px;border-radius:8px;border:1px solid #D1D5DB;background:white;font-size:0.84rem;cursor:pointer;transition:all .15s;color:#374151;font-weight:500;}
+    .load-btn:hover{background:#F3F4F6;}
+    #gpxMakerMap{height:480px;border-radius:10px;overflow:hidden;border:1px solid #E5E7EB;cursor:crosshair;}
+    .gpx-stats-bar{display:flex;flex-wrap:wrap;gap:10px;}
+    .gpx-stat-chip{background:#F1F5F9;border-radius:8px;padding:8px 14px;font-size:0.83rem;}
+    .gpx-stat-chip span{font-weight:700;color:#0284C7;}
+    .gpx-hint{background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:10px 14px;font-size:0.82rem;color:#78350F;line-height:1.6;}
+    .gpx-hint strong{color:#92400E;}
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="gpx-viewer.html">GPX Viewer</a>
+      <a href="json-viewer.html">JSON</a>
+      <a href="log-viewer.html">LOG</a>
+      <a href="index.html">すべてのツール ›</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <a href="../gpx-maker.html">KO</a>
+        <span>|</span>
+        <a href="../en/gpx-maker.html">EN</a>
+        <span>|</span>
+        <a href="gpx-maker.html" class="active">JA</a>
+      </div>
+      <a href="../about.html" style="color:rgba(255,255,255,0.85);font-size:0.85rem;text-decoration:none;margin-left:8px;">About</a>
+    </div>
+  </div>
+</header>
+<script src="../js/wooa-sites-bar.js"></script>
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<div class="page-with-sidebar">
+<div class="tool-page">
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>GPX Maker</span></div>
+  <div class="tool-header">
+    <span class="tool-header-icon">✏️</span>
+    <h1>GPX メーカー</h1>
+    <p>地図上をクリックしてGPSルートを描き、GPXファイルとして保存。既存のGPXファイルの編集も可能。</p>
+  </div>
+
+  <div class="gpx-maker-wrap">
+    <div class="gpx-name-bar">
+      <label for="routeName">📝 Route name</label>
+      <input type="text" id="routeName" placeholder="My Route" maxlength="80">
+    </div>
+
+    <div class="gpx-toolbar">
+      <button id="modeTrack" class="mode-btn active" onclick="setMode('track')" title="Click on map to add track points">📍 Add Track</button>
+      <button id="modeWpt" class="mode-btn" onclick="setMode('waypoint')" title="Click on map to add waypoints">🚩 Waypoint</button>
+      <div class="sep"></div>
+      <button class="act-btn" onclick="undoLast()" title="Remove last added point">↩️ Undo</button>
+      <button class="act-btn danger" onclick="confirmClear()" title="Delete all points">🗑️ Clear All</button>
+      <div class="sep"></div>
+      <label class="load-btn" title="Load an existing GPX file to edit">📂 Load GPX<input type="file" id="gpxLoadInput" accept=".gpx" style="display:none" onchange="loadGPXFile(this)"></label>
+      <button class="act-btn primary" onclick="saveGPX()" title="Download as GPX file">💾 Save GPX</button>
+      <button class="act-btn" onclick="locateMe()" title="Move map to my location" style="margin-left:auto;">📡 My Location</button>
+    </div>
+
+    <div id="gpxMakerMap"></div>
+
+    <div class="gpx-stats-bar" id="gpxStatsBar">
+      <div class="gpx-stat-chip">Track points <span id="statPts">0</span></div>
+      <div class="gpx-stat-chip">Distance <span id="statDist">0.00</span> km</div>
+      <div class="gpx-stat-chip">Waypoints <span id="statWpts">0</span></div>
+    </div>
+
+    <div class="gpx-hint" id="modeHint">
+      <strong>📍 Track mode:</strong> Click on the map to add track points. Points are connected in the order you click them. Click an existing blue dot to remove it.
+    </div>
+  </div>
+
+<div class="related-tools">
+  <h2>関連ツール</h2>
+  <div class="related-grid">
+    <a href="stl-viewer.html" class="related-card"><span class="related-icon">🖨️</span><span>STL 뷰어</span></a>
+    <a href="gcode-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>GCode 뷰어</span></a>
+    <a href="gpx-viewer.html" class="related-card"><span class="related-icon">🗺️</span><span>GPX 뷰어</span></a>
+    <a href="docx-viewer.html" class="related-card"><span class="related-icon">📝</span><span>DOCX 뷰어</span></a>
+  </div>
+</div>
+<div class="wooa-orig-anchor"></div>
+<div class="tips-panel">
+  <h3>💡 ヒント</h3>
+  <ul>
+    <li>Plan hiking, cycling, or running routes by clicking on the map, then export as GPX to import directly into Garmin devices, Strava, AllTrails, or Komoot.</li>
+    <li>Load an existing GPX file to make it editable — add or remove track points and waypoints, then save the updated route.</li>
+    <li>Click a waypoint marker to open its popup, then press the <strong>Delete</strong> button to remove it. Click a blue track dot to remove that track point.</li>
+  </ul>
+</div>
+<div class="faq-section">
+  <h2>よくある質問</h2>
+  <details>
+    <summary>Where can I use the GPX file I create?</summary>
+    <p>Almost any GPS device or app supports GPX — including Garmin devices, Strava, Komoot, AllTrails, OsmAnd, and Google Maps (via import). Use each app's "Import route" or "Import GPX" feature.</p>
+  </details>
+  <details>
+    <summary>Can I add elevation data to my route?</summary>
+    <p>Track points added by clicking the map do not include elevation. If you need elevation data, export the GPX and then use a tool like GPSBabel or GPS Visualizer to add elevation from a DEM dataset.</p>
+  </details>
+  <details>
+    <summary>Is my data uploaded to a server?</summary>
+    <p>No. All processing happens entirely in your browser. Your route data is never sent to any server. Only map tile images are fetched from OpenStreetMap to render the map.</p>
+  </details>
+</div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+<footer class="footer"></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+let map, polyline;
+let trackPoints = [], waypoints = [], actionStack = [], mode = 'track';
+
+map = L.map('gpxMakerMap', {center:[40,0], zoom:3});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',maxZoom:19
+}).addTo(map);
+polyline = L.polyline([], {color:'#0284C7', weight:3, opacity:0.85}).addTo(map);
+map.on('click', e => { if(mode==='track')addTrackPoint(e.latlng); else addWaypoint(e.latlng); });
+
+const trackIcon = () => L.divIcon({className:'',html:`<div style="width:12px;height:12px;background:#0284C7;border:2px solid white;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.35);cursor:pointer;" title="Click to remove"></div>`,iconSize:[12,12],iconAnchor:[6,6]});
+
+function setMode(m){
+  mode=m;
+  document.getElementById('modeTrack').classList.toggle('active',m==='track');
+  document.getElementById('modeWpt').classList.toggle('active',m==='waypoint');
+  document.getElementById('modeHint').innerHTML = m==='track'
+    ? '<strong>📍 Track mode:</strong> Click on the map to add track points. Click an existing blue dot to remove it.'
+    : '<strong>🚩 Waypoint mode:</strong> Click on the map to add a named waypoint. Click a marker to delete it.';
+}
+
+function addTrackPoint(latlng){
+  const marker=L.marker(latlng,{icon:trackIcon()}).addTo(map);
+  marker.on('click',e=>{L.DomEvent.stopPropagation(e);removeTrackPoint(trackPoints.findIndex(p=>p.marker===marker));});
+  trackPoints.push({lat:latlng.lat,lon:latlng.lng,marker});
+  actionStack.push({type:'track'});
+  updatePolyline();updateStats();
+}
+function removeTrackPoint(idx){
+  if(idx<0||idx>=trackPoints.length)return;
+  map.removeLayer(trackPoints[idx].marker);trackPoints.splice(idx,1);updatePolyline();updateStats();
+}
+function addWaypoint(latlng){
+  const name=prompt('Enter waypoint name:','Waypoint '+(waypoints.length+1));
+  if(name===null)return;
+  const wpName=name.trim()||('Waypoint '+(waypoints.length+1));
+  const marker=L.marker(latlng).addTo(map);
+  marker.bindPopup(`<strong>${escHTML(wpName)}</strong><br><button onclick="removeWaypointByMarker(this)" style="margin-top:6px;padding:3px 10px;border:none;background:#DC2626;color:white;border-radius:4px;cursor:pointer;font-size:0.8rem;">Delete</button>`);
+  waypoints.push({lat:latlng.lat,lon:latlng.lng,name:wpName,marker});
+  actionStack.push({type:'waypoint'});updateStats();
+}
+function removeWaypointByMarker(btn){
+  const popup=btn.closest('.leaflet-popup');
+  const marker=waypoints.find(w=>w.marker.getPopup()&&w.marker.getPopup()._container===popup)?.marker;
+  if(!marker)return;
+  const idx=waypoints.findIndex(w=>w.marker===marker);
+  if(idx>=0){map.removeLayer(waypoints[idx].marker);waypoints.splice(idx,1);updateStats();}
+}
+function undoLast(){
+  if(!actionStack.length)return;
+  const last=actionStack.pop();
+  if(last.type==='track'&&trackPoints.length){const pt=trackPoints.pop();map.removeLayer(pt.marker);updatePolyline();}
+  else if(last.type==='waypoint'&&waypoints.length){const wp=waypoints.pop();map.closePopup();map.removeLayer(wp.marker);}
+  updateStats();
+}
+function confirmClear(){
+  if(!trackPoints.length&&!waypoints.length)return;
+  if(!confirm('Delete all track points and waypoints?'))return;
+  clearAll();
+}
+function clearAll(){
+  trackPoints.forEach(p=>map.removeLayer(p.marker));waypoints.forEach(w=>map.removeLayer(w.marker));
+  trackPoints=[];waypoints=[];actionStack=[];updatePolyline();updateStats();
+}
+function updatePolyline(){polyline.setLatLngs(trackPoints.map(p=>[p.lat,p.lon]));}
+function updateStats(){
+  let dist=0;
+  for(let i=1;i<trackPoints.length;i++)dist+=haversine(trackPoints[i-1].lat,trackPoints[i-1].lon,trackPoints[i].lat,trackPoints[i].lon);
+  document.getElementById('statPts').textContent=trackPoints.length;
+  document.getElementById('statDist').textContent=(dist/1000).toFixed(2);
+  document.getElementById('statWpts').textContent=waypoints.length;
+}
+function locateMe(){map.locate({setView:true,maxZoom:14});}
+function loadGPXFile(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>importGPX(e.target.result);
+  reader.readAsText(file,'UTF-8');input.value='';
+}
+function importGPX(text){
+  clearAll();
+  try{
+    const doc=new DOMParser().parseFromString(text,'text/xml');
+    if(doc.querySelector('parsererror')){alert('Failed to parse GPX file.');return;}
+    const name=doc.querySelector('metadata name,trk name')?.textContent||'';
+    if(name)document.getElementById('routeName').value=name;
+    doc.querySelectorAll('trkpt').forEach(pt=>{
+      const lat=parseFloat(pt.getAttribute('lat')),lon=parseFloat(pt.getAttribute('lon'));
+      if(!isNaN(lat)&&!isNaN(lon))addTrackPoint(L.latLng(lat,lon));
+    });
+    doc.querySelectorAll('wpt').forEach(pt=>{
+      const lat=parseFloat(pt.getAttribute('lat')),lon=parseFloat(pt.getAttribute('lon'));
+      const wpName=pt.querySelector('name')?.textContent||'Waypoint';
+      if(!isNaN(lat)&&!isNaN(lon)){
+        const marker=L.marker(L.latLng(lat,lon)).addTo(map);
+        marker.bindPopup(`<strong>${escHTML(wpName)}</strong><br><button onclick="removeWaypointByMarker(this)" style="margin-top:6px;padding:3px 10px;border:none;background:#DC2626;color:white;border-radius:4px;cursor:pointer;font-size:0.8rem;">Delete</button>`);
+        waypoints.push({lat,lon,name:wpName,marker});actionStack.push({type:'waypoint'});
+      }
+    });
+    updateStats();
+    const all=[...trackPoints.map(p=>[p.lat,p.lon]),...waypoints.map(w=>[w.lat,w.lon])];
+    if(all.length)map.fitBounds(L.latLngBounds(all).pad(0.1));
+  }catch(e){alert('GPX parse error: '+e.message);}
+}
+function saveGPX(){
+  if(!trackPoints.length&&!waypoints.length){alert('No points to save. Click on the map to add track points first.');return;}
+  const name=document.getElementById('routeName').value.trim()||'My Route';
+  const now=new Date().toISOString();
+  let xml=`<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="WooaViewer GPX Maker" xmlns="http://www.topografix.com/GPX/1/1">\n  <metadata>\n    <name>${escXML(name)}</name>\n    <time>${now}</time>\n  </metadata>\n`;
+  for(const wp of waypoints)xml+=`  <wpt lat="${wp.lat.toFixed(7)}" lon="${wp.lon.toFixed(7)}"><name>${escXML(wp.name)}</name></wpt>\n`;
+  if(trackPoints.length){
+    xml+=`  <trk>\n    <name>${escXML(name)}</name>\n    <trkseg>\n`;
+    for(const pt of trackPoints)xml+=`      <trkpt lat="${pt.lat.toFixed(7)}" lon="${pt.lon.toFixed(7)}"></trkpt>\n`;
+    xml+=`    </trkseg>\n  </trk>\n`;
+  }
+  xml+=`</gpx>`;
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([xml],{type:'application/gpx+xml'}));
+  a.download=name.replace(/[\\/:*?"<>|]/g,'_')+'.gpx';
+  a.click();setTimeout(()=>URL.revokeObjectURL(a.href),10000);
+}
+function haversine(la1,lo1,la2,lo2){
+  const R=6371000,f1=la1*Math.PI/180,f2=la2*Math.PI/180;
+  const df=(la2-la1)*Math.PI/180,dl=(lo2-lo1)*Math.PI/180;
+  const a=Math.sin(df/2)**2+Math.cos(f1)*Math.cos(f2)*Math.sin(dl/2)**2;
+  return 2*R*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+function escHTML(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function escXML(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');}
+</script>
+<script src="../js/wooahouse-originals-tool-ja.js"></script>
+<script src="../js/pwa-install.js"></script>
+<script src="../js/wooa-sidebar-ja.js"></script>
+<script src="../js/wooa-footer-ja.js"></script>
+</body>
+</html>

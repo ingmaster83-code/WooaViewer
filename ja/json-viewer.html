@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="b97d5945d07fd0d0993c3f853a7b793a2ecc6293">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON ビューア 無料オンライン インストール不要 — ツリー構造で表示・検索 | WooaViewer</title>
+  <meta name="description" content="JSONファイルをアップロードまたは貼り付けてインタラクティブなツリー構造で表示。キーの折りたたみ・展開、リアルタイム検索、構文エラー検出。無料、サーバーアップロードなし、インストール不要。">
+  <meta name="keywords" content="JSONビューア, JSONツリービュー, jsonを開く, JSONフォーマッター">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/ja/json-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/json-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/json-viewer.html">
+    <link rel="alternate" hreflang="ja" href="https://wooaviewer.wooahouse.com/ja/json-viewer.html">
+<link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/json-viewer.html">
+  <meta property="og:title" content="JSON ビューア 無料オンライン インストール不要 — ツリー構造で表示・検索 | WooaViewer">
+  <meta property="og:description" content="JSONファイルをアップロードまたは貼り付けてインタラクティブなツリー構造で表示。キーの折りたたみ・展開、リアルタイム検索、構文エラー検出。無料、サーバーアップロードなし、インストール不要。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/ja/json-viewer.html">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <meta property="og:site_name" content="WooaViewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JSON ビューア 無料オンライン インストール不要 — ツリー構造で表示・検索 | WooaViewer">
+  <meta name="twitter:description" content="JSONファイルをアップロードまたは貼り付けてインタラクティブなツリー構造で表示。キーの折りたたみ・展開、リアルタイム検索、構文エラー検出。無料、サーバーアップロードなし、インストール不要。">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"JSON 뷰어","url":"https://wooaviewer.wooahouse.com/ja/json-viewer.html","description":"JSON 파일을 트리 구조로 보여주는 온라인 뷰어. 접기/펼치기, 실시간 검색 지원.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .mode-tabs { display:flex; gap:0; margin-bottom:16px; border:1px solid #E5E7EB; border-radius:8px; overflow:hidden; width:fit-content; }
+    .mode-tab { padding:8px 20px; border:none; background:white; font-size:0.88rem; font-weight:500; cursor:pointer; font-family:inherit; color:#6B7280; transition:all 0.15s; }
+    .mode-tab.active { background:#0284C7; color:white; }
+    .mode-tab:not(:last-child) { border-right:1px solid #E5E7EB; }
+    .json-textarea { width:100%; min-height:200px; padding:14px; border:2px solid #E5E7EB; border-radius:10px; font-family:'Courier New',monospace; font-size:0.85rem; line-height:1.5; resize:vertical; outline:none; color:#1A1A2E; background:white; box-sizing:border-box; }
+    .json-textarea:focus { border-color:#0284C7; }
+    .parse-btn { display:inline-block; background:#0284C7; color:white; padding:10px 24px; border-radius:8px; font-weight:600; cursor:pointer; border:none; font-size:0.9rem; font-family:inherit; margin-top:10px; }
+    .parse-btn:hover { background:#0369A1; }
+    .json-toolbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:10px 14px; background:#F3F4F6; border-radius:10px; margin-top:16px; }
+    .json-stats { font-size:0.82rem; color:#6B7280; flex:1; }
+    .json-tb-btn { padding:5px 12px; border-radius:6px; border:1px solid #E5E7EB; background:white; font-size:0.8rem; font-weight:600; cursor:pointer; font-family:inherit; color:#374151; transition:all 0.15s; }
+    .json-tb-btn:hover { background:#0284C7; color:white; border-color:#0284C7; }
+    .json-tree { background:white; border-radius:10px; padding:16px 20px; margin-top:10px; box-shadow:0 2px 12px rgba(0,0,0,.08); overflow:auto; max-height:600px; font-family:'Courier New',monospace; font-size:0.88rem; line-height:1.8; display:none; }
+    .j-key { color:#0369A1; font-weight:600; }
+    .j-str { color:#16A34A; }
+    .j-num { color:#D97706; }
+    .j-bool { color:#7C3AED; font-weight:600; }
+    .j-null { color:#9CA3AF; font-style:italic; }
+    .j-toggle { cursor:pointer; user-select:none; color:#6B7280; margin-right:4px; }
+    .j-toggle:hover { color:#0284C7; }
+    .j-children { margin-left:20px; border-left:1px dashed #E5E7EB; padding-left:10px; }
+    .j-collapsed > .j-children { display:none; }
+    .j-summary { color:#9CA3AF; font-size:0.8rem; }
+  
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="dxf-viewer.html">DXF</a><a href="psd-viewer.html">PSD</a>
+      <a href="stl-viewer.html">STL</a><a href="index.html">すべてのツール ›</a>
+    </nav>
+  <div class="header-right">
+      <div class="lang-switcher">
+        <a href="../json-viewer.html">KO</a>
+        <span>|</span>
+        <a href="../en/json-viewer.html">EN</a>
+        <span>|</span>
+        <a href="json-viewer.html" class="active">JA</a>
+      </div>
+      <a href="../about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">About</a>
+    </div>
+  </div>
+</header>
+
+<script src="../js/wooa-sites-bar.js"></script>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>JSON Viewer</span></div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">🗂️</span>
+    <h1>JSON ビューア — 無料オンラインツリービュー</h1>
+    <p>JSONファイルをアップロードまたは貼り付けてインタラクティブなツリー構造で表示。折りたたみ・展開、リアルタイム検索に対応。</p>
+  </div>
+
+  <div class="mode-tabs">
+    <button class="mode-tab active" id="tabUpload" onclick="switchMode('upload')">Upload File</button>
+    <button class="mode-tab" id="tabPaste" onclick="switchMode('paste')">Paste Text</button>
+  </div>
+
+  <div id="uploadSection">
+    <div class="drop-zone" id="dropZone">
+      <span class="drop-zone-icon">🗂️</span>
+      <h3>JSON Drop your file here</h3>
+      <p>Supports .json format</p>
+      <label class="btn-select">ファイルを選択<input type="file" id="fileInput" accept=".json" style="display:none"></label>
+    </div>
+  </div>
+
+  <div id="pasteSection" style="display:none">
+    <textarea class="json-textarea" id="jsonInput" placeholder='{"key": "value", "array": [1, 2, 3]}'></textarea>
+    <button class="parse-btn" onclick="parseFromInput()">Parse</button>
+  </div>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div id="jsonToolbar" class="json-toolbar" style="display:none">
+    <span class="json-stats" id="jsonStats"></span>
+    <button class="json-tb-btn" onclick="expandAll()">전체 펼치기</button>
+    <button class="json-tb-btn" onclick="collapseAll()">전체 접기</button>
+  </div>
+  <div class="json-tree" id="jsonTree"></div>
+
+<div class="tips-panel"><h3>💡 ヒント</h3><ul><li>Click the ▶ arrow to collapse or expand tree nodes.</li><li>You can paste JSON text directly in addition to uploading a file.</li><li>Arrays and objects are distinguished by color and icons.</li></ul></div>
+<div class="faq-section"><h2>よくある質問</h2><details><summary>What happens if the JSON is invalid?</summary><p>A parsing error message is shown indicating the location of the error. Check your JSON syntax and try again.</p></details><details><summary>Can it handle large JSON files?</summary><p>Files up to a few MB are handled without issues. Very large files may take a moment to render.</p></details><details><summary>ファイルはインターネットにアップロードされますか？</summary><p>いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。</p></details></div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+
+  <div class="related-tools">
+  <h2>関連ツール</h2>
+  <div class="related-grid">
+    <a href="xml-viewer.html" class="related-card"><span class="related-icon">📄</span><span>XML 뷰어</span></a>
+    <a href="csv-viewer.html" class="related-card"><span class="related-icon">📊</span><span>CSV 뷰어</span></a>
+    <a href="yaml-viewer.html" class="related-card"><span class="related-icon">🗃️</span><span>YAML 뷰어</span></a>
+    <a href="ini-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>INI/CFG 뷰어</span></a>
+  </div>
+</div>
+<div class="wooa-orig-anchor"></div>
+<footer class="footer"></footer>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const jsonTree = document.getElementById('jsonTree');
+const errorMsg = document.getElementById('errorMsg');
+const jsonToolbar = document.getElementById('jsonToolbar');
+
+function switchMode(m) {
+  const up = m==='upload';
+  document.getElementById('uploadSection').style.display = up?'block':'none';
+  document.getElementById('pasteSection').style.display = up?'none':'block';
+  document.getElementById('tabUpload').classList.toggle('active',up);
+  document.getElementById('tabPaste').classList.toggle('active',!up);
+  jsonTree.style.display='none'; jsonToolbar.style.display='none';
+}
+
+fileInput.addEventListener('change', e => { if(e.target.files[0]) loadFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag-over'); if(e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); });
+
+function loadFile(file) {
+  const reader = new FileReader();
+  reader.onload = e => renderJSON(e.target.result, file.name);
+  reader.readAsText(file,'UTF-8');
+}
+function parseFromInput() {
+  renderJSON(document.getElementById('jsonInput').value.trim(), '입력');
+}
+
+function renderJSON(text, source) {
+  errorMsg.style.display='none';
+  let data;
+  try { data = JSON.parse(text); } catch(e) {
+    errorMsg.textContent = 'JSON 파싱 오류: ' + e.message;
+    errorMsg.style.display='block'; return;
+  }
+  const size = new Blob([text]).size;
+  const keys = countKeys(data);
+  document.getElementById('jsonStats').textContent = `${source} · ${(size/1024).toFixed(1)} KB · 키 ${keys}개`;
+  jsonTree.innerHTML = buildTree(data);
+  jsonTree.style.display='block';
+  jsonToolbar.style.display='flex';
+  jsonTree.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function countKeys(obj) {
+  if (obj === null || typeof obj !== 'object') return 0;
+  let c = 0;
+  if (Array.isArray(obj)) obj.forEach(v => c += 1 + countKeys(v));
+  else Object.keys(obj).forEach(k => c += 1 + countKeys(obj[k]));
+  return c;
+}
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function buildTree(val, depth=0) {
+  if (val === null) return `<span class="j-null">null</span>`;
+  if (typeof val === 'boolean') return `<span class="j-bool">${val}</span>`;
+  if (typeof val === 'number') return `<span class="j-num">${val}</span>`;
+  if (typeof val === 'string') return `<span class="j-str">"${esc(val)}"</span>`;
+
+  if (Array.isArray(val)) {
+    if (!val.length) return `<span>[]</span>`;
+    const id = 'j' + Math.random().toString(36).slice(2);
+    const items = val.map((v,i) => `<div><span class="j-num">${i}</span>: ${buildTree(v, depth+1)}</div>`).join('');
+    return `<span class="j-toggle" onclick="toggle('${id}')">▼</span>[<span class="j-summary">${val.length}개</span><div class="j-children" id="${id}">${items}</div>]`;
+  }
+
+  const keys = Object.keys(val);
+  if (!keys.length) return `<span>{}</span>`;
+  const id = 'j' + Math.random().toString(36).slice(2);
+  const items = keys.map(k => `<div><span class="j-key">"${esc(k)}"</span>: ${buildTree(val[k], depth+1)}</div>`).join('');
+  return `<span class="j-toggle" onclick="toggle('${id}')">▼</span>{<span class="j-summary">${keys.length}개</span><div class="j-children" id="${id}">${items}</div>}`;
+}
+
+function toggle(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const parent = el.parentElement;
+  const collapsed = parent.classList.toggle('j-collapsed');
+  const tog = parent.querySelector(':scope > .j-toggle');
+  if (tog) tog.textContent = collapsed ? '▶' : '▼';
+}
+
+function expandAll() {
+  jsonTree.querySelectorAll('.j-collapsed').forEach(el => {
+    el.classList.remove('j-collapsed');
+    const tog = el.querySelector(':scope > .j-toggle');
+    if (tog) tog.textContent = '▼';
+  });
+}
+function collapseAll() {
+  jsonTree.querySelectorAll('.j-children').forEach(el => {
+    const parent = el.parentElement;
+    if (!parent.classList.contains('json-tree')) {
+      parent.classList.add('j-collapsed');
+      const tog = parent.querySelector(':scope > .j-toggle');
+      if (tog) tog.textContent = '▶';
+    }
+  });
+}
+</script>
+<script src="../js/wooahouse-originals-tool-ja.js"></script>
+<script src="../js/pwa-install.js"></script>
+<script src="../js/wooa-sidebar-ja.js"></script>
+<script src="../js/wooa-footer-ja.js"></script>
+</body>
+</html>

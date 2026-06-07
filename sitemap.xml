@@ -59,4 +59,41 @@
   <url><loc>https://wooaviewer.wooahouse.com/en/gpx-viewer.html</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wooaviewer.wooahouse.com/gpx-maker.html</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://wooaviewer.wooahouse.com/en/gpx-maker.html</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/index.html</loc><lastmod>2026-06-07</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/docx-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/xlsx-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/dxf-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/psd-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/stl-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/markdown-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/json-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/epub-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/heic-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/gcode-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/xml-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/csv-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/zip-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/svg-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/font-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/pptx-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/eml-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/yaml-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/diff-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/pdf-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/rtf-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/vcf-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/ics-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/msg-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/tiff-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/odt-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/torrent-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/log-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/srt-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/hex-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/ini-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/m3u-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/cbz-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/tar-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/gpx-viewer.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wooaviewer.wooahouse.com/ja/gpx-maker.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

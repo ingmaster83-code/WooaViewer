@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+  <meta name="naver-site-verification" content="b97d5945d07fd0d0993c3f853a7b793a2ecc6293">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSD ビューア 無料オンライン インストール不要 — Photoshopなしでレイヤーリスト表示 | WooaViewer</title>
+  <meta name="description" content="Adobe Photoshopなしでブラウザで.psdファイルを無料でプレビュー。レイヤーリストと合成画像のプレビューを表示。ファイルはサーバーに送信されません、インストール不要。">
+  <meta name="keywords" content="PSDビューア, Photoshopビューア, psdを開く, レイヤービューア">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/ja/psd-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/psd-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/psd-viewer.html">
+    <link rel="alternate" hreflang="ja" href="https://wooaviewer.wooahouse.com/ja/psd-viewer.html">
+<link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/psd-viewer.html">
+  <meta property="og:title" content="PSD ビューア 無料オンライン インストール不要 — Photoshopなしでレイヤーリスト表示 | WooaViewer">
+  <meta property="og:description" content="Adobe Photoshopなしでブラウザで.psdファイルを無料でプレビュー。レイヤーリストと合成画像のプレビューを表示。ファイルはサーバーに送信されません、インストール不要。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/ja/psd-viewer.html">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <meta property="og:site_name" content="WooaViewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PSD ビューア 無料オンライン インストール不要 — Photoshopなしでレイヤーリスト表示 | WooaViewer">
+  <meta name="twitter:description" content="Adobe Photoshopなしでブラウザで.psdファイルを無料でプレビュー。レイヤーリストと合成画像のプレビューを表示。ファイルはサーバーに送信されません、インストール不要。">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"PSD 뷰어","url":"https://wooaviewer.wooahouse.com/ja/psd-viewer.html","description":"Photoshop 없이 .psd 파일을 브라우저에서 무료로 열어보는 온라인 뷰어. 레이어 목록 확인 지원.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .psd-container { display:none; margin-top:20px; }
+    .psd-info-bar { display:flex; align-items:center; gap:12px; padding:10px 16px; background:#F3F4F6; border-radius:10px; margin-bottom:14px; flex-wrap:wrap; }
+    .psd-info-text { font-size:0.82rem; color:#6B7280; }
+    .psd-preview { text-align:center; background:white; border-radius:12px; padding:20px; box-shadow:0 2px 12px rgba(0,0,0,.08); }
+    .psd-preview img { max-width:100%; height:auto; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.12); }
+    .layer-panel { background:white; border-radius:12px; padding:20px; margin-top:16px; box-shadow:0 2px 12px rgba(0,0,0,.08); }
+    .layer-title { font-weight:600; font-size:0.9rem; color:#6B7280; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:14px; }
+    .layer-item { display:flex; align-items:center; gap:10px; padding:8px 10px; border-radius:8px; font-size:0.85rem; color:#374151; background:#F9FAFB; margin-bottom:6px; }
+    .layer-item:last-child { margin-bottom:0; }
+    .layer-thumb { width:32px; height:32px; border-radius:4px; object-fit:cover; background:#E5E7EB; flex-shrink:0; }
+    .layer-name { flex:1; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .layer-type { font-size:0.72rem; color:#9CA3AF; }
+    .layer-hidden { opacity:0.45; }
+    .spinner-wrap { text-align:center; padding:40px; }
+    .spinner { display:inline-block; width:32px; height:32px; border:3px solid #E0F2FE; border-top-color:#0284C7; border-radius:50%; animation:spin .8s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+  
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="dxf-viewer.html">DXF</a><a href="psd-viewer.html">PSD</a>
+      <a href="stl-viewer.html">STL</a><a href="index.html">すべてのツール ›</a>
+    </nav>
+  <div class="header-right">
+      <div class="lang-switcher">
+        <a href="../psd-viewer.html">KO</a>
+        <span>|</span>
+        <a href="../en/psd-viewer.html">EN</a>
+        <span>|</span>
+        <a href="psd-viewer.html" class="active">JA</a>
+      </div>
+      <a href="../about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">About</a>
+    </div>
+  </div>
+</header>
+
+<script src="../js/wooa-sites-bar.js"></script>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>PSD Viewer</span></div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">🎨</span>
+    <h1>PSD ビューア — Photoshopファイルを無料でオンラインで開く</h1>
+    <p>.psdファイルをアップロードして、Adobe Photoshopなしでプレビュー。レイヤーリストと合成画像を表示。</p>
+  </div>
+
+  <div class="drop-zone" id="dropZone">
+    <span class="drop-zone-icon">🎨</span>
+    <h3>PSD Drop your file here</h3>
+    <p>.psd 형식만 지원합니다</p>
+    <label class="btn-select">ファイルを選択<input type="file" id="fileInput" accept=".psd" style="display:none"></label>
+  </div>
+
+  <div id="loadingWrap" class="spinner-wrap" style="display:none"><div class="spinner"></div><p style="margin-top:12px;color:#6B7280;font-size:0.88rem">PSD 파일 분석 중...</p></div>
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div class="psd-container" id="psdContainer">
+    <div class="psd-info-bar">
+      <span class="psd-info-text" id="psdFileName"></span>
+      <span class="psd-info-text" id="psdSize"></span>
+      <span class="psd-info-text" id="psdLayers"></span>
+    </div>
+    <div class="psd-preview"><img id="psdPreview" src="" alt="PSD 미리보기"></div>
+    <div class="layer-panel" id="layerPanel" style="display:none">
+      <div class="layer-title">레이어 목록</div>
+      <div id="layerList"></div>
+    </div>
+  </div>
+
+<div class="tips-panel"><h3>💡 ヒント</h3><ul><li>A merged preview of the PSD file is displayed.</li><li>The layer list can be viewed alongside the preview.</li><li>Use Save as PNG to download the image.</li></ul></div>
+<div class="faq-section"><h2>よくある質問</h2><details><summary>Can I view individual layers?</summary><p>The current version supports viewing the layer list and merged preview only. For individual layer editing, use Photoshop or GIMP.</p></details><details><summary>Can I open very large PSD files?</summary><p>Very large files may fail to load due to browser memory limits.</p></details><details><summary>ファイルはインターネットにアップロードされますか？</summary><p>いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。</p></details></div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+
+  <div class="related-tools">
+  <h2>関連ツール</h2>
+  <div class="related-grid">
+    <a href="dxf-viewer.html" class="related-card"><span class="related-icon">📐</span><span>DXF 뷰어</span></a>
+    <a href="heic-viewer.html" class="related-card"><span class="related-icon">📷</span><span>HEIC 뷰어</span></a>
+    <a href="tiff-viewer.html" class="related-card"><span class="related-icon">🖼️</span><span>TIFF 뷰어</span></a>
+    <a href="svg-viewer.html" class="related-card"><span class="related-icon">🔷</span><span>SVG 뷰어</span></a>
+  </div>
+</div>
+<div class="wooa-orig-anchor"></div>
+<footer class="footer"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/ag-psd@17/dist/bundle-umd.js"></script>
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const psdContainer = document.getElementById('psdContainer');
+const errorMsg = document.getElementById('errorMsg');
+const loadingWrap = document.getElementById('loadingWrap');
+
+fileInput.addEventListener('change', e => { if(e.target.files[0]) loadFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag-over'); if(e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); });
+
+function loadFile(file) {
+  errorMsg.style.display='none';
+  loadingWrap.style.display='block';
+  dropZone.style.display='none';
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const psd = agPsd.readPsd(e.target.result, { skipLayerImageData: false, skipCompositeImageData: false, skipThumbnail: false });
+      loadingWrap.style.display='none';
+
+      // 합성 이미지
+      const canvas = psd.canvas;
+      if (!canvas) { throw new Error('합성 이미지를 추출할 수 없습니다.'); }
+      document.getElementById('psdPreview').src = canvas.toDataURL('image/png');
+      document.getElementById('psdFileName').textContent = file.name;
+      document.getElementById('psdSize').textContent = `${psd.width} × ${psd.height}px`;
+
+      // 레이어 목록
+      const layers = flattenLayers(psd.children || []);
+      document.getElementById('psdLayers').textContent = `레이어 ${layers.length}개`;
+      if (layers.length) {
+        const list = document.getElementById('layerList');
+        list.innerHTML = layers.map(l => {
+          const thumb = l.canvas ? `<img class="layer-thumb" src="${l.canvas.toDataURL()}" alt="">` : `<div class="layer-thumb"></div>`;
+          const hidden = l.hidden ? ' layer-hidden' : '';
+          const type = l.children ? '그룹' : (l.text ? '텍스트' : '레이어');
+          return `<div class="layer-item${hidden}">${thumb}<span class="layer-name">${esc(l.name||'(unnamed)')}</span><span class="layer-type">${type}</span></div>`;
+        }).join('');
+        document.getElementById('layerPanel').style.display='block';
+      }
+
+      psdContainer.style.display='block';
+    } catch(err) {
+      loadingWrap.style.display='none';
+      dropZone.style.display='block';
+      errorMsg.textContent = 'PSD 파일을 읽는 중 오류가 발생했습니다: ' + err.message;
+      errorMsg.style.display='block';
+    }
+  };
+  reader.onerror = () => { loadingWrap.style.display='none'; dropZone.style.display='block'; errorMsg.textContent='Cannot read file.'; errorMsg.style.display='block'; };
+  reader.readAsArrayBuffer(file);
+}
+
+function flattenLayers(layers, result=[]) {
+  for (const l of [...layers].reverse()) {
+    result.push(l);
+    if (l.children) flattenLayers(l.children, result);
+  }
+  return result;
+}
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+</script>
+<script src="../js/wooahouse-originals-tool-ja.js"></script>
+<script src="../js/pwa-install.js"></script>
+<script src="../js/wooa-sidebar-ja.js"></script>
+<script src="../js/wooa-footer-ja.js"></script>
+</body>
+</html>
