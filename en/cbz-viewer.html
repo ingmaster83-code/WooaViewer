@@ -50,6 +50,38 @@
     .cbz-modal{position:fixed;inset:0;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;z-index:9999;cursor:zoom-out;}
     .cbz-modal-img{max-width:92vw;max-height:92vh;object-fit:contain;border-radius:4px;}
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I open CBR files too?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CBR uses RAR compression, which is not currently supported. Only CBZ (ZIP-based) files are supported. To open a CBR, convert it to CBZ using a tool like Calibre or CDisplay Ex first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "The page order looks wrong.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pages are sorted by the filename inside the CBZ archive. Filenames with numbers should sort correctly automatically. If the order is wrong, check the internal filenames of the CBZ."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my file uploaded to a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All processing happens entirely within your browser — your files are never uploaded to any server. This zero-server architecture keeps your data 100% private, safe for sensitive documents and enterprise security environments."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>

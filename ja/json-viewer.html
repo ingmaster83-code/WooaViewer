@@ -65,6 +65,38 @@
     .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
     .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "JSONが無効な場合はどうなりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "エラーの場所を示すパースエラーメッセージが表示されます。JSON構文を確認して再試行してください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "大きなJSONファイルに対応していますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "数MBまでのファイルは問題なく処理できます。非常に大きなファイルはレンダリングに少し時間がかかることがあります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ファイルはインターネットにアップロードされますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

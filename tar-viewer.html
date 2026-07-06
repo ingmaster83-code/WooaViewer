@@ -57,6 +57,38 @@
     .tar-stats{font-size:0.82rem;color:#6B7280;margin-top:8px;}
     .tar-dir{color:#0284C7;}
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "TAR와 ZIP의 차이는 무엇인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TAR은 Unix/Linux에서 파일을 하나로 묶는 형식이지만 자체 압축 기능은 없습니다. 보통 GZIP(.tar.gz) 또는 BZIP2(.tar.bz2)와 함께 사용합니다. ZIP은 파일 묶기와 압축을 동시에 처리합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": ".gz 단일 파일도 열 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GZIP으로 압축된 단일 파일은 내부 TAR 구조가 없으므로 파일 목록 방식으로는 열 수 없습니다. 현재 뷰어는 TAR 구조(.tar, .tar.gz, .tgz)만 지원합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "파일이 서버에 업로드되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아니요. 모든 처리는 브라우저 안에서만 이루어지며 파일은 서버로 전송되지 않습니다. 개인정보와 민감한 데이터가 외부로 유출될 걱정이 없으며, 기업 보안 환경에서도 안심하고 사용할 수 있습니다."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>

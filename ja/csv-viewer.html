@@ -77,6 +77,38 @@
     .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
     .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "どのエンコーディングに対応していますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "UTF-8とEUC-KR（CP949）を自動検出します。文字化けする場合は先にエンコーディング変換ツールをご使用ください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ファイルサイズに制限はありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ブラウザのメモリに依存しますが、通常数十MBのファイルは処理できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ファイルはインターネットにアップロードされますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

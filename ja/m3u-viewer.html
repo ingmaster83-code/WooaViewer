@@ -53,6 +53,38 @@
     .m3u-table td{padding:7px 12px;border-bottom:1px solid #F3F4F6;vertical-align:middle;}
     .m3u-stats{font-size:0.82rem;color:#6B7280;margin-top:8px;}
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "M3UとM3U8の違いは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "M3Uはシンプルなテキストプレイリスト形式です。M3U8は同じ形式ですが明示的にUTF-8でエンコードされており、AppleのアダプティブビットレートストリーミングプロトコルであるHLSにも使用されます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "再生時間が-1や空白で表示されるのはなぜですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "-1の再生時間はライブストリームまたは再生時間メタデータのないトラックを示します。このビューアではダッシュ（-）として表示されます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ファイルはインターネットにアップロードされますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>

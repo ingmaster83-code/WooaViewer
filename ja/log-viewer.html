@@ -63,6 +63,38 @@
     .bg-info { background:#D1FAE5; color:#059669; }
     .bg-debug { background:#DBEAFE; color:#2563EB; }
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "どのログ形式に対応していますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "テキストベースのログファイルであれば対応しています。ERROR、WARN、INFO、DEBUGキーワードは大文字小文字を問わず自動検出されます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ログレベルが検出されない場合はどうすればよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "キーワードは大文字小文字を区別せず検出されます。カスタム形式の場合はキーワード検索でフィルタリングしてください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ファイルはインターネットにアップロードされますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>

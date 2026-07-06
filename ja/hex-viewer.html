@@ -51,6 +51,38 @@
     .hex-asc{color:#FCD34D;white-space:pre;}
     .hex-stats{font-size:0.82rem;color:#6B7280;margin-top:8px;}
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "HEXビューアは何に使いますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HEXビューアはファイル形式の分析・ファイルシグネチャの確認・バイナリデータのデバッグ・破損ファイルの診断に使用されます。開発者やセキュリティ研究者が一般的に使用します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "なぜ最初の8 KBしか表示されないのですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "大きなファイル全体を表示するとブラウザが遅くなります。ヘッダー領域（最初の数KB）に最も重要な構造情報が含まれているため、8 KBは分析の実用的な上限です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ファイルはインターネットにアップロードされますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>

@@ -52,6 +52,38 @@
     .hex-asc{color:#FCD34D;white-space:pre;}
     .hex-stats{font-size:0.82rem;color:#6B7280;margin-top:8px;}
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "HEX 뷰어는 어떤 용도로 사용하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "파일 포맷 분석, 파일 시그니처 확인, 바이너리 데이터 디버깅, 손상된 파일 진단 등에 활용합니다. 개발자·보안 연구자들이 자주 사용합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "왜 첫 8KB만 표시하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "대용량 파일 전체를 표시하면 브라우저가 느려질 수 있습니다. 파일 구조 파악에는 헤더 영역(첫 수KB)이 가장 중요하므로 첫 8KB만 표시합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "파일이 서버에 업로드되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아니요. 모든 처리는 브라우저 안에서만 이루어지며 파일은 서버로 전송되지 않습니다. 개인정보와 민감한 데이터가 외부로 유출될 걱정이 없으며, 기업 보안 환경에서도 안심하고 사용할 수 있습니다."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>

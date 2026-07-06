@@ -64,6 +64,38 @@
     .bg-info { background:#D1FAE5; color:#059669; }
     .bg-debug { background:#DBEAFE; color:#2563EB; }
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "어떤 로그 형식을 지원하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "특정 형식 제약 없이 텍스트 기반 로그 파일이면 모두 지원합니다. ERROR, WARN, INFO, DEBUG 키워드를 자동 감지합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "로그 레벨 감지가 안 되는 경우가 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "로그 레벨 키워드가 대소문자 구분 없이 감지됩니다. 커스텀 형식의 경우 키워드 검색으로 필터링하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "파일이 인터넷에 업로드되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아니요. 모든 처리는 브라우저 안에서만 이루어지며 파일은 서버로 전송되지 않습니다. 개인정보와 민감한 데이터가 외부로 유출될 걱정이 없으며, 기업 보안 환경에서도 안심하고 사용할 수 있습니다."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>

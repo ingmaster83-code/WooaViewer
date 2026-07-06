@@ -56,6 +56,38 @@
     .tar-stats{font-size:0.82rem;color:#6B7280;margin-top:8px;}
     .tar-dir{color:#0284C7;}
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "TARとZIPの違いは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TARはファイルを圧縮なしで1つのアーカイブにまとめます。通常GZIP（.tar.gz）またはBZIP2（.tar.bz2）と組み合わせて圧縮します。ZIPはアーカイブ化と圧縮を1ステップで行い、Windows上でより一般的です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "通常の.gzファイルを開けますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": ".gzファイルはTAR構造のない単一の圧縮ファイルです。このビューアはTAR構造（.tar、.tar.gz、.tgz）が必要です。通常の.gzファイルを解凍するにはgunzipコマンドまたは7-Zipをご使用ください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ファイルはインターネットにアップロードされますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>

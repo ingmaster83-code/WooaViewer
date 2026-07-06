@@ -54,6 +54,38 @@
     .j-children{margin-left:20px;border-left:1px dashed #E5E7EB;padding-left:10px}
     .j-collapsed>.j-children{display:none}.j-summary{color:#9CA3AF;font-size:0.8rem}
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "YAMLが無効な場合はどうなりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "場所を示すパースエラーが表示されます。正しいインデントとコロンの使用を確認してください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "タブとスペースの両方のインデントに対応していますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "YAML標準に従い、スペースインデントのみ対応しています。タブインデントはパースエラーになります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ファイルはインターネットにアップロードされますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

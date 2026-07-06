@@ -52,6 +52,38 @@
     .ini-table tr:hover td{background:#F8FAFC;}
     .ini-stats{font-size:0.82rem;color:#6B7280;margin-top:8px;}
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "INIファイル形式とは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "INIはシンプルなテキストベースの設定形式です。グループは [セクション] ヘッダーで定義され、設定は キー=値 のペアとして保存されます。Windowsレジストリより以前から存在し、あらゆるプラットフォームのアプリケーションで広く使われています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": ".cfg、.conf、.propertiesファイルにも対応していますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。拡張子に関わらず、同じキー=値の構造を使用するファイルであればすべて対応しています。パーサーはファイル名ではなくファイルの内容から形式を検出します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ファイルはインターネットにアップロードされますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "いいえ。すべての処理はブラウザ内のみで行われます。ファイルは一切サーバーに送信されません。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>
