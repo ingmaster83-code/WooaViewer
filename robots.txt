@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
 
+User-agent: Daum
+Allow: /
+
 Sitemap: https://wooaviewer.wooahouse.com/sitemap.xml
 
 #DaumWebMasterTool:55a67825b951f3256828a4a6b04e2559830996256218d9dc8dfb0f88ba638004:5OHFs/qHHlfCvAas17iLzw==
