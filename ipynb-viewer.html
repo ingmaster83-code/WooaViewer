@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="naver-site-verification" content="b97d5945d07fd0d0993c3f853a7b793a2ecc6293">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jupyter Notebook 뷰어 — .ipynb 파일 브라우저에서 바로 보기 무료 | WooaViewer</title>
+  <meta name="description" content=".ipynb 파일 드래그 → 코드·마크다운 셀과 실행 결과(이미지·텍스트)를 브라우저에서 바로 렌더링. 서버 전송 없음.">
+  <meta name="keywords" content="ipynb뷰어, Jupyter뷰어, 주피터노트북뷰어, ipynb열기, 노트북파일뷰어, 무료ipynb뷰어, 온라인주피터뷰어, ipynb미리보기, jupyter notebook viewer">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/ipynb-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/ipynb-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/ipynb-viewer.html">
+  <link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/ipynb-viewer.html">
+  <meta property="og:title" content="Jupyter Notebook 뷰어 — .ipynb 파일 브라우저에서 바로 보기 무료 | WooaViewer">
+  <meta property="og:description" content=".ipynb 파일 드래그 → 코드·마크다운 셀과 실행 결과를 브라우저에서 바로 렌더링.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/ipynb-viewer.html">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <meta property="og:site_name" content="WooaViewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jupyter Notebook 뷰어 — .ipynb 파일 브라우저에서 바로 보기 무료 | WooaViewer">
+  <meta name="twitter:description" content=".ipynb 파일 드래그 → 코드·마크다운 셀과 실행 결과를 브라우저에서 바로 렌더링.">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Jupyter Notebook 뷰어","url":"https://wooaviewer.wooahouse.com/ipynb-viewer.html","description":".ipynb Jupyter Notebook 파일을 브라우저에서 무료로 렌더링해서 보는 온라인 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+<script src="js/ad-dev-placeholder.js"></script>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .nb-output { background: white; border-radius: 14px; padding: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); display: none; }
+    .nb-meta { font-size: 0.8rem; color: #6B7280; padding: 10px 18px; border-bottom: 1px solid #E5E7EB; }
+    .nb-cell { padding: 14px 18px; border-bottom: 1px solid #F3F4F6; }
+    .nb-cell:last-child { border-bottom: none; }
+    .nb-cell-md { line-height: 1.8; color: #1A1A2E; }
+    .nb-cell-md h1, .nb-cell-md h2, .nb-cell-md h3 { margin: 0.6em 0 0.4em; font-weight: 700; }
+    .nb-cell-md h1 { font-size: 1.7rem; } .nb-cell-md h2 { font-size: 1.35rem; } .nb-cell-md h3 { font-size: 1.1rem; }
+    .nb-cell-md p { margin-bottom: 0.7em; }
+    .nb-cell-md code { background: #F3F4F6; padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.88em; }
+    .nb-cell-md pre { background: #1E293B; color: #E2E8F0; padding: 16px; border-radius: 8px; overflow-x: auto; }
+    .nb-code-wrap { display: flex; gap: 10px; }
+    .nb-code-label { flex-shrink: 0; width: 64px; font-size: 0.74rem; color: #9CA3AF; font-family: 'Courier New', monospace; padding-top: 12px; text-align: right; }
+    .nb-code-body { flex: 1; min-width: 0; }
+    .nb-code-input { background: #F3F4F6; border-radius: 8px; padding: 12px 16px; overflow-x: auto; margin: 0; }
+    .nb-code-input code { font-family: 'Courier New', monospace; font-size: 0.86rem; color: #1A1A2E; white-space: pre; }
+    .nb-output-block { margin-top: 8px; padding: 10px 16px; }
+    .nb-output-stream { font-family: 'Courier New', monospace; font-size: 0.84rem; white-space: pre-wrap; color: #374151; }
+    .nb-output-error { font-family: 'Courier New', monospace; font-size: 0.84rem; white-space: pre-wrap; color: #DC2626; background: #FEF2F2; border-radius: 6px; padding: 10px 14px; }
+    .nb-output-image { max-width: 100%; border-radius: 6px; }
+    .nb-cell-raw { font-family: 'Courier New', monospace; font-size: 0.84rem; color: #6B7280; background: #F9FAFB; padding: 10px 16px; border-radius: 6px; white-space: pre-wrap; }
+    .nb-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-left: 6px; }
+    .nb-badge-md { background: #DBEAFE; color: #1D4ED8; }
+    .nb-badge-code { background: #DCFCE7; color: #15803D; }
+
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"코드가 실제로 실행되나요?","acceptedAnswer":{"@type":"Answer","text":"아니요. 이 도구는 노트북 파일에 이미 저장된 코드와 실행 결과(출력, 이미지)를 그대로 보여줄 뿐, 코드를 다시 실행하지는 않습니다."}},
+    {"@type":"Question","name":"실행 결과 이미지도 보이나요?","acceptedAnswer":{"@type":"Answer","text":"네. matplotlib 등에서 생성된 PNG 이미지 출력이 노트북에 저장되어 있다면 그대로 표시됩니다."}},
+    {"@type":"Question","name":"파일이 인터넷에 업로드되나요?","acceptedAnswer":{"@type":"Answer","text":"아니요. 모든 처리는 브라우저 안에서만 이루어지며 파일은 서버로 전송되지 않습니다. 개인정보와 민감한 데이터가 외부로 유출될 걱정이 없으며, 기업 보안 환경에서도 안심하고 사용할 수 있습니다."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="json-viewer.html">JSON</a>
+      <a href="markdown-viewer.html">Markdown</a><a href="ipynb-viewer.html">IPYNB</a>
+      <a href="index.html">전체 도구 ›</a>
+    </nav>
+  <div class="header-right">
+    <div class="lang-switcher">
+        <a href="ipynb-viewer.html" class="active">KO</a>
+        <span>|</span>
+        <a href="en/ipynb-viewer.html">EN</a>
+      </div>
+    <a href="about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">소개</a>
+    </div>
+  </div>
+</header>
+
+<script src="js/wooa-sites-bar.js"></script>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb">
+    <a href="index.html">WooaViewer</a>
+    <span>›</span>
+    <span>Jupyter Notebook 뷰어</span>
+  </div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">📓</span>
+    <h1>Jupyter Notebook 뷰어</h1>
+    <p>.ipynb 파일을 업로드하면 코드·마크다운 셀과 실행 결과를 브라우저에서 바로 확인할 수 있습니다. 파일은 서버에 전송되지 않습니다.</p>
+  </div>
+
+  <div class="drop-zone" id="dropZone">
+    <span class="drop-zone-icon">📓</span>
+    <h3>.ipynb 파일을 여기에 끌어다 놓으세요</h3>
+    <p>Jupyter Notebook (.ipynb) 형식만 지원합니다</p>
+    <label class="btn-select">파일 선택<input type="file" id="fileInput" accept=".ipynb" style="display:none"></label>
+  </div>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div class="nb-output" id="nbOutput">
+    <div class="nb-meta" id="nbMeta"></div>
+    <div id="nbCells"></div>
+  </div>
+
+<div class="related-tools">
+  <h2>함께 쓰면 좋은 도구</h2>
+  <div class="related-grid">
+    <a href="markdown-viewer.html" class="related-card"><span class="related-icon">📋</span><span>Markdown 뷰어</span></a>
+    <a href="json-viewer.html" class="related-card"><span class="related-icon">🧩</span><span>JSON 뷰어</span></a>
+    <a href="csv-viewer.html" class="related-card"><span class="related-icon">📊</span><span>CSV 뷰어</span></a>
+    <a href="log-viewer.html" class="related-card"><span class="related-icon">📜</span><span>LOG 뷰어</span></a>
+  </div>
+</div>
+<div class="wooa-orig-anchor"></div>
+<div class="tips-panel"><h3>💡 Tips</h3><ul><li>코드 셀과 마크다운 셀이 원본 노트북 순서 그대로 표시됩니다.</li><li>matplotlib 등에서 생성된 이미지 출력이 저장되어 있다면 함께 렌더링됩니다.</li><li>코드를 실제로 실행하지는 않으며, 저장된 결과만 보여줍니다.</li></ul></div>
+<div class="faq-section"><h2>자주 묻는 질문</h2><details><summary>코드가 실제로 실행되나요?</summary><p>아니요. 이 도구는 노트북 파일에 이미 저장된 코드와 실행 결과(출력, 이미지)를 그대로 보여줄 뿐, 코드를 다시 실행하지는 않습니다.</p></details><details><summary>실행 결과 이미지도 보이나요?</summary><p>네. matplotlib 등에서 생성된 PNG 이미지 출력이 노트북에 저장되어 있다면 그대로 표시됩니다.</p></details><details><summary>파일이 인터넷에 업로드되나요?</summary><p>아니요. 모든 처리는 브라우저 안에서만 이루어지며 파일은 서버로 전송되지 않습니다. 개인정보와 민감한 데이터가 외부로 유출될 걱정이 없으며, 기업 보안 환경에서도 안심하고 사용할 수 있습니다.</p></details></div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+
+<footer class="footer"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+marked.setOptions({ breaks: true, gfm: true });
+
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const errorMsg = document.getElementById('errorMsg');
+const nbOutput = document.getElementById('nbOutput');
+const nbCells = document.getElementById('nbCells');
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function joinSource(src) {
+  if (Array.isArray(src)) return src.join('');
+  return src || '';
+}
+
+function renderOutput(output) {
+  if (output.output_type === 'stream') {
+    return `<div class="nb-output-block nb-output-stream">${escapeHtml(joinSource(output.text))}</div>`;
+  }
+  if (output.output_type === 'error') {
+    const trace = (output.traceback || []).join('\n');
+    return `<div class="nb-output-block nb-output-error">${escapeHtml(trace || (output.ename + ': ' + output.evalue))}</div>`;
+  }
+  if (output.output_type === 'execute_result' || output.output_type === 'display_data') {
+    const data = output.data || {};
+    if (data['image/png']) {
+      return `<div class="nb-output-block"><img class="nb-output-image" src="data:image/png;base64,${data['image/png'].replace(/\n/g,'')}"></div>`;
+    }
+    if (data['text/html']) {
+      return `<div class="nb-output-block">${joinSource(data['text/html'])}</div>`;
+    }
+    if (data['text/plain']) {
+      return `<div class="nb-output-block nb-output-stream">${escapeHtml(joinSource(data['text/plain']))}</div>`;
+    }
+  }
+  return '';
+}
+
+function renderNotebook(nb) {
+  const cells = nb.cells || [];
+  const lang = (nb.metadata && nb.metadata.kernelspec && nb.metadata.kernelspec.display_name) || (nb.metadata && nb.metadata.language_info && nb.metadata.language_info.name) || '알 수 없음';
+  document.getElementById('nbMeta').textContent = `총 ${cells.length}개 셀 · 커널: ${lang}`;
+
+  let execCount = 0;
+  nbCells.innerHTML = cells.map(cell => {
+    const type = cell.cell_type;
+    const source = joinSource(cell.source);
+    if (type === 'markdown') {
+      return `<div class="nb-cell"><div class="nb-cell-md">${marked.parse(source)}</div></div>`;
+    }
+    if (type === 'code') {
+      execCount++;
+      const label = cell.execution_count != null ? `In [${cell.execution_count}]` : 'In [ ]';
+      const outputsHtml = (cell.outputs || []).map(renderOutput).join('');
+      return `<div class="nb-cell"><div class="nb-code-wrap"><div class="nb-code-label">${label}</div><div class="nb-code-body"><pre class="nb-code-input"><code>${escapeHtml(source)}</code></pre>${outputsHtml}</div></div></div>`;
+    }
+    // raw cell
+    return `<div class="nb-cell"><div class="nb-cell-raw">${escapeHtml(source)}</div></div>`;
+  }).join('');
+
+  nbOutput.style.display = 'block';
+  dropZone.style.display = 'none';
+  nbOutput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function loadFile(file) {
+  errorMsg.style.display = 'none';
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const nb = JSON.parse(e.target.result);
+      if (!nb.cells) throw new Error('유효한 .ipynb 파일이 아닙니다 (cells 필드 없음)');
+      renderNotebook(nb);
+    } catch (err) {
+      errorMsg.textContent = '노트북 파일을 읽는 중 오류가 발생했습니다: ' + err.message;
+      errorMsg.style.display = 'block';
+    }
+  };
+  reader.onerror = () => {
+    errorMsg.textContent = '파일을 읽는 중 오류가 발생했습니다.';
+    errorMsg.style.display = 'block';
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+fileInput.addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+});
+</script>
+<script src="js/wooahouse-originals-tool.js"></script>
+<script src="js/pwa-install.js"></script>
+<script src="js/wooa-sidebar.js"></script>
+<script src="js/wooa-footer.js"></script>
+</body>
+</html>

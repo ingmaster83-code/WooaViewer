@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+  <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="naver-site-verification" content="b97d5945d07fd0d0993c3f853a7b793a2ecc6293">
+  <meta name="google-site-verification" content="tNM8tmr_6DFold03YSScWz4KEtu5Zo0Fsqc03u5Afms">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLTF·GLB 뷰어 — 3D 모델 브라우저에서 360도 회전 확인 무료 | WooaViewer</title>
+  <meta name="description" content=".gltf·.glb 3D 모델 드래그 → 브라우저에서 바로 회전·확대·축소. 마우스로 360도 3D 뷰. 설치·서버 전송 없음.">
+  <meta name="keywords" content="GLTF뷰어, GLB뷰어, 3D뷰어, gltf열기, glb열기, 무료3D뷰어, 온라인3D뷰어, 3D모델뷰어, glb파일열기, 3D모델확인">
+  <link rel="canonical" href="https://wooaviewer.wooahouse.com/gltf-viewer.html">
+  <link rel="alternate" hreflang="ko" href="https://wooaviewer.wooahouse.com/gltf-viewer.html">
+  <link rel="alternate" hreflang="en" href="https://wooaviewer.wooahouse.com/en/gltf-viewer.html">
+  <link rel="alternate" hreflang="x-default" href="https://wooaviewer.wooahouse.com/en/gltf-viewer.html">
+  <meta property="og:title" content="GLTF·GLB 뷰어 — 3D 모델 브라우저에서 360도 회전 확인 무료 | WooaViewer">
+  <meta property="og:description" content=".gltf·.glb 3D 모델 드래그 → 브라우저에서 바로 회전·확대·축소. 마우스로 360도 3D 뷰.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wooaviewer.wooahouse.com/gltf-viewer.html">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://wooaviewer.wooahouse.com/og-image.png">
+  <meta property="og:site_name" content="WooaViewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GLTF·GLB 뷰어 — 3D 모델 브라우저에서 360도 회전 확인 무료 | WooaViewer">
+  <meta name="twitter:description" content=".gltf·.glb 3D 모델 드래그 → 브라우저에서 바로 회전·확대·축소. 마우스로 360도 3D 뷰.">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"GLTF·GLB 뷰어","url":"https://wooaviewer.wooahouse.com/gltf-viewer.html","description":".gltf·.glb 3D 모델을 브라우저에서 무료로 회전·확대해서 확인하는 온라인 3D 뷰어","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ko","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+<script src="js/ad-dev-placeholder.js"></script>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0284C7">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .stl-container { display:none; margin-top:20px; }
+    .stl-toolbar { display:flex; align-items:center; gap:10px; padding:10px 14px; background:#F3F4F6; border-radius:10px 10px 0 0; flex-wrap:wrap; }
+    .stl-file-name { font-size:0.82rem; color:#6B7280; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .stl-btn { padding:6px 14px; border-radius:6px; border:1px solid #E5E7EB; background:white; font-size:0.82rem; font-weight:600; cursor:pointer; font-family:inherit; color:#1A1A2E; transition:all 0.15s; }
+    .stl-btn:hover { background:#0284C7; color:white; border-color:#0284C7; }
+    #stlCanvas { width:100%; height:560px; background:#1E293B; border:1px solid #E5E7EB; border-top:none; border-radius:0 0 10px 10px; display:block; }
+    .stl-hint { font-size:0.78rem; color:#9CA3AF; text-align:center; margin-top:8px; }
+    .stl-meta { font-size:0.78rem; color:#6B7280; text-align:center; margin-top:4px; }
+
+    .lang-switcher { display:flex; align-items:center; gap:4px; }
+    .lang-switcher a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; font-weight:600; padding:3px 8px; border-radius:12px; transition:background 0.15s; }
+    .lang-switcher a.active { color:white; background:rgba(255,255,255,0.25); }
+    .lang-switcher a:hover { color:white; background:rgba(255,255,255,0.18); }
+    .lang-switcher span { color:rgba(255,255,255,0.3); font-size:0.75rem; }
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "GLTF와 GLB의 차이는 무엇인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GLTF는 JSON 텍스트와 텍스처·바이너리 파일이 분리된 형식이고, GLB는 이 모든 것을 하나의 파일로 압축한 바이너리 형식입니다. 텍스처가 포함된 모델은 GLB 형식을 권장합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "외부 텍스처 파일을 참조하는 GLTF도 열리나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "별도의 텍스처·bin 파일을 참조하는 .gltf는 해당 파일들을 함께 업로드할 수 없어 텍스처 없이 표시되거나 로드에 실패할 수 있습니다. 모든 리소스가 포함된 .glb 파일 사용을 권장합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "파일이 인터넷에 업로드되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아니요. 모든 처리는 브라우저 안에서만 이루어지며 파일은 서버로 전송되지 않습니다. 개인정보와 민감한 데이터가 외부로 유출될 걱정이 없으며, 기업 보안 환경에서도 안심하고 사용할 수 있습니다."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">WooaViewer</a>
+    <nav>
+      <a href="docx-viewer.html">DOCX</a><a href="xlsx-viewer.html">XLSX</a>
+      <a href="stl-viewer.html">STL</a><a href="gltf-viewer.html">GLTF</a>
+      <a href="index.html">전체 도구 ›</a>
+    </nav>
+  <div class="header-right">
+    <div class="lang-switcher">
+        <a href="gltf-viewer.html" class="active">KO</a>
+        <span>|</span>
+        <a href="en/gltf-viewer.html">EN</a>
+      </div>
+    <a href="about.html" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; margin-left:8px;">소개</a>
+    </div>
+  </div>
+</header>
+
+<script src="js/wooa-sites-bar.js"></script>
+
+<div class="mobile-top-ad">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:80px" data-ad-client="ca-pub-6464921081676309" data-ad-slot="7080296704" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="page-with-sidebar">
+<div class="tool-page">
+
+  <div class="breadcrumb"><a href="index.html">WooaViewer</a><span>›</span><span>GLTF·GLB 뷰어</span></div>
+
+  <div class="tool-header">
+    <span class="tool-header-icon">🧊</span>
+    <h1>GLTF·GLB 뷰어</h1>
+    <p>.gltf·.glb 3D 모델을 브라우저에서 바로 회전·확대해서 확인하세요. 마우스로 자유롭게 조작할 수 있습니다.</p>
+  </div>
+
+  <div class="drop-zone" id="dropZone">
+    <span class="drop-zone-icon">🧊</span>
+    <h3>GLTF·GLB 파일을 여기에 끌어다 놓으세요</h3>
+    <p>.gltf, .glb 형식 지원 (텍스처 포함은 .glb 권장)</p>
+    <label class="btn-select">파일 선택<input type="file" id="fileInput" accept=".gltf,.glb" style="display:none"></label>
+  </div>
+
+  <div id="errorMsg" class="alert alert-error" style="display:none"></div>
+
+  <div class="stl-container" id="stlContainer">
+    <div class="stl-toolbar">
+      <span class="stl-file-name" id="stlFileName"></span>
+      <button class="stl-btn" id="wireBtn" onclick="toggleWire()">와이어프레임</button>
+      <button class="stl-btn" onclick="resetCamera()">초기화</button>
+    </div>
+    <canvas id="stlCanvas"></canvas>
+    <p class="stl-hint">마우스 드래그: 회전 · 휠: 확대/축소 · 우클릭 드래그: 이동</p>
+    <p class="stl-meta" id="stlMeta"></p>
+  </div>
+
+<div class="related-tools">
+  <h2>함께 쓰면 좋은 도구</h2>
+  <div class="related-grid">
+    <a href="stl-viewer.html" class="related-card"><span class="related-icon">🖨️</span><span>STL 뷰어</span></a>
+    <a href="gcode-viewer.html" class="related-card"><span class="related-icon">⚙️</span><span>GCode 뷰어</span></a>
+    <a href="dxf-viewer.html" class="related-card"><span class="related-icon">📐</span><span>DXF 뷰어</span></a>
+    <a href="psd-viewer.html" class="related-card"><span class="related-icon">🎨</span><span>PSD 뷰어</span></a>
+  </div>
+</div>
+<div class="wooa-orig-anchor"></div>
+<div class="tips-panel"><h3>💡 Tips</h3><ul><li>텍스처·머티리얼이 포함된 모델은 모든 리소스가 하나로 압축된 .glb 형식이 가장 안정적으로 열립니다.</li><li>마우스 드래그로 3D 모델을 회전하고 휠로 확대/축소할 수 있습니다.</li><li>Sketchfab, Blender, Google 3D 모델 등에서 내보낸 GLTF/GLB 파일을 바로 확인할 수 있습니다.</li></ul></div>
+<div class="faq-section"><h2>자주 묻는 질문</h2><details><summary>GLTF와 GLB의 차이는 무엇인가요?</summary><p>GLTF는 JSON 텍스트와 텍스처·바이너리 파일이 분리된 형식이고, GLB는 이 모든 것을 하나의 파일로 압축한 바이너리 형식입니다. 텍스처가 포함된 모델은 GLB 형식을 권장합니다.</p></details><details><summary>외부 텍스처 파일을 참조하는 GLTF도 열리나요?</summary><p>별도의 텍스처·bin 파일을 참조하는 .gltf는 해당 파일들을 함께 업로드할 수 없어 텍스처 없이 표시되거나 로드에 실패할 수 있습니다. 모든 리소스가 포함된 .glb 파일 사용을 권장합니다.</p></details><details><summary>파일이 인터넷에 업로드되나요?</summary><p>아니요. 모든 처리는 브라우저 안에서만 이루어지며 파일은 서버로 전송되지 않습니다. 개인정보와 민감한 데이터가 외부로 유출될 걱정이 없으며, 기업 보안 환경에서도 안심하고 사용할 수 있습니다.</p></details></div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+
+<footer class="footer"></footer>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const stlContainer = document.getElementById('stlContainer');
+const errorMsg = document.getElementById('errorMsg');
+const canvas = document.getElementById('stlCanvas');
+
+let renderer, scene, camera, controls, root;
+let isWire = false;
+
+function initThree() {
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setClearColor(0x1E293B);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.01, 10000);
+
+  const ambient = new THREE.AmbientLight(0xffffff, 0.7);
+  const dir1 = new THREE.DirectionalLight(0xffffff, 1.0);
+  dir1.position.set(1, 2, 3);
+  const dir2 = new THREE.DirectionalLight(0x8ecfff, 0.5);
+  dir2.position.set(-2, -1, -1);
+  scene.add(ambient, dir1, dir2);
+
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.08;
+
+  resizeRenderer();
+  window.addEventListener('resize', resizeRenderer);
+  animate();
+}
+
+function resizeRenderer() {
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  renderer.setSize(w, h, false);
+  if (camera) { camera.aspect = w / h; camera.updateProjectionMatrix(); }
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+function countStats(object) {
+  let meshCount = 0, triCount = 0;
+  object.traverse(o => {
+    if (o.isMesh) {
+      meshCount++;
+      const geo = o.geometry;
+      if (geo && geo.index) triCount += geo.index.count / 3;
+      else if (geo && geo.attributes.position) triCount += geo.attributes.position.count / 3;
+    }
+  });
+  return { meshCount, triCount: Math.round(triCount) };
+}
+
+function loadModel(buffer, filename) {
+  const loader = new GLTFLoader();
+  const ext = filename.toLowerCase().endsWith('.gltf') ? '.gltf' : '.glb';
+
+  loader.parse(buffer, '', (gltf) => {
+    if (root) { scene.remove(root); }
+    root = gltf.scene || gltf.scenes[0];
+
+    root.traverse(o => {
+      if (o.isMesh) {
+        o.material.side = THREE.DoubleSide;
+        if (Array.isArray(o.material)) o.material.forEach(m => m.wireframe = isWire);
+        else o.material.wireframe = isWire;
+      }
+    });
+
+    scene.add(root);
+
+    const box = new THREE.Box3().setFromObject(root);
+    const center = box.getCenter(new THREE.Vector3());
+    root.position.sub(center);
+    const size = box.getSize(new THREE.Vector3()).length();
+    camera.position.set(0, 0, size * 1.8 || 3);
+    camera.near = (size || 1) * 0.001;
+    camera.far = (size || 1) * 100;
+    camera.updateProjectionMatrix();
+    controls.target.set(0, 0, 0);
+    controls.update();
+
+    const stats = countStats(root);
+    document.getElementById('stlMeta').textContent = `메쉬 ${stats.meshCount}개 · 삼각형 약 ${stats.triCount.toLocaleString()}개`;
+  }, (err) => {
+    errorMsg.textContent = 'GLTF/GLB 파일을 읽는 중 오류가 발생했습니다: ' + (err.message || '알 수 없는 오류') + ' (외부 텍스처를 참조하는 파일이라면 .glb로 내보내 다시 시도해보세요.)';
+    errorMsg.style.display = 'block';
+  });
+}
+
+fileInput.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag-over'); if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
+
+async function handleFile(file) {
+  errorMsg.style.display = 'none';
+  try {
+    const buffer = await file.arrayBuffer();
+    if (!renderer) initThree();
+    loadModel(buffer, file.name);
+    document.getElementById('stlFileName').textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+    dropZone.style.display = 'none';
+    stlContainer.style.display = 'block';
+    resizeRenderer();
+  } catch (err) {
+    errorMsg.textContent = '파일을 읽는 중 오류가 발생했습니다: ' + err.message;
+    errorMsg.style.display = 'block';
+  }
+}
+
+window.toggleWire = function() {
+  if (!root) return;
+  isWire = !isWire;
+  root.traverse(o => {
+    if (o.isMesh) {
+      if (Array.isArray(o.material)) o.material.forEach(m => m.wireframe = isWire);
+      else o.material.wireframe = isWire;
+    }
+  });
+  document.getElementById('wireBtn').textContent = isWire ? '솔리드' : '와이어프레임';
+};
+
+window.resetCamera = function() {
+  if (!controls) return;
+  controls.reset();
+};
+</script>
+<script src="js/wooahouse-originals-tool.js"></script>
+<script src="js/pwa-install.js"></script>
+<script src="js/wooa-sidebar.js"></script>
+<script src="js/wooa-footer.js"></script>
+</body>
+</html>
